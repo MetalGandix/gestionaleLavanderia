@@ -1,0 +1,5 @@
+Npm install:
+    - express
+    - mysql
+    - body-parser
+    - nodemon (resetta in automatico ogni volta che salvo)
