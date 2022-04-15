@@ -9,6 +9,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor() { }
 
+  username: string = "User"
+
   ngOnInit() {
   }
 
