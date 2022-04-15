@@ -7,7 +7,7 @@
       <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
       <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
     </button>
-    Responsive side navigation
+    Menù
   </mat-toolbar>
   
   <mat-sidenav-container>
@@ -23,17 +23,17 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </button>
-      <button mat-button class="menu-button" routerLink="/profile" *ngIf="sidenav.mode === 'over'"
+      <button mat-button class="menu-button" routerLink="/ritiro-capi" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
         <mat-icon>person</mat-icon>
-        <span>gestione ritiro capi</span>
+        <span>Gestione ritiro capi</span>
       </button>
-      <button mat-button class="menu-button" routerLink="/about" *ngIf="sidenav.mode === 'over'"
+      <button mat-button class="menu-button" routerLink="/consegna-capi" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
         <mat-icon>info</mat-icon>
         <span>Consegna capi</span>
       </button>
-      <button mat-button class="menu-button" routerLink="/profile" *ngIf="sidenav.mode === 'over'"
+      <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
         <mat-icon>person</mat-icon>
         <span>Statistiche</span>
@@ -53,6 +53,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content mat-elevation-z8">
+          <router-outlet></router-outlet>
     </div>
 </mat-sidenav-content>
 </mat-sidenav-container>

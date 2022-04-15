@@ -1,0 +1,45 @@
+<mat-tab-group style="margin-bottom: 30px;" [(selectedIndex)]="selectedTable">
+  <mat-tab label="Capi in entrata"><h1 style="color: black; margin-top: 30px;"> Capi in entrata </h1></mat-tab>
+  <mat-tab label="Capi in uscita" > <h1 style="color: black; margin-top: 30px;"> Capi in uscita </h1></mat-tab>
+  <mat-tab label="Incassi"><h1 style="color: black; margin-top: 30px;"> Incassi </h1> </mat-tab>
+  <mat-tab label="Nastri"><h1 style="color: black; margin-top: 30px;"> Nastri </h1> </mat-tab>
+</mat-tab-group>
+
+<div class="mat-elevation-z8" [hidden]="selectedTable!=3">
+  <table mat-table [dataSource]="nastroTable">
+    <ng-container matColumnDef="Lavorazione">
+      <th mat-header-cell *matHeaderCellDef> Lavoraz. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Lavorazione}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Numero">
+      <th mat-header-cell *matHeaderCellDef> Numero </th>
+      <td mat-cell *matCellDef="let element"> {{element.Numero}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Nastro">
+      <th mat-header-cell *matHeaderCellDef> Nastro </th>
+      <td mat-cell *matCellDef="let element"> {{element.Nastro}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Posizione">
+      <th mat-header-cell *matHeaderCellDef> Posizione </th>
+      <td mat-cell *matCellDef="let element"> {{element.Posizione}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Prodotto">
+      <th mat-header-cell *matHeaderCellDef> Prodotto </th>
+      <td mat-cell *matCellDef="let element"> {{element.Prodotto}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Servizio">
+      <th mat-header-cell *matHeaderCellDef> Servizio </th>
+      <td mat-cell *matCellDef="let element"> {{element.Servizio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Cliente">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.Cliente}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsNastri"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsNastri;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

@@ -10,11 +10,24 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
+import { ConsegnaCapiComponent } from './pages/consegna-capi/consegna-capi.component';
+import { StatisticheComponent } from './pages/statistiche/statistiche.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    RitiroCapiComponent,
+    ConsegnaCapiComponent,
+    StatisticheComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +38,13 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
