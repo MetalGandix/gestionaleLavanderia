@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FattureComponent } from './pages/fatture/fatture.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     SidebarComponent,
     RitiroCapiComponent,
     ConsegnaCapiComponent,
-    StatisticheComponent
+    StatisticheComponent,
+    FattureComponent
   ],
   imports: [
     BrowserModule,

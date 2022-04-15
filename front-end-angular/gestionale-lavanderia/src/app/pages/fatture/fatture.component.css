@@ -1,0 +1,48 @@
+.mat-tab-label .mat-tab-label-content{
+    color: black;
+}
+
+.gestione-fatture{
+    display: flex;
+}
+
+.gestione-fatture-element{
+    margin-right: 40px;
+    font-size: large;
+}
+
+a{
+    color: black;
+}
+
+section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    width: 490px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
