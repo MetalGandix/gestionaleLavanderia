@@ -11,6 +11,10 @@
     font-size: large;
 }
 
+.button-element-first-row{
+    font-size:large;
+}
+
 a{
     color: black;
 }
@@ -45,4 +49,29 @@ section {
     display: flex;
     justify-content: center;
     width: 120px;
+  }
+
+  .second-row-gestione-fatture{
+      display: flex;
+      margin-top: 25px;
+  }
+
+  .input-data{
+      width: 80px;
+  }
+
+  .input-cliente{
+    width: 300px;
+    }
+
+  .second-row-buttons-p{
+    font-size: large; color: #c2185b; text-align-last: center;
+  }
+
+  .select-year{
+    width: 65px;
+  }
+
+  .element-ten-select-div{
+    text-align-last: center;
   }
