@@ -1,59 +1,68 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()"
-    >
-      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Menù
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" style="width: fit-content;">
+    <img class="avatar mat-elevation-z8" />
+
+    <h4 class="name">User</h4>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/home" *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
     </button>
-    Menù
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" style="width: fit-content;">
-      <img class="avatar mat-elevation-z8"/>
-  
-      <h4 class="name">User</h4>
-  
-      <mat-divider></mat-divider>
-  
-      <button mat-button class="menu-button" routerLink="/home" *ngIf="sidenav.mode === 'over'"
+    <button mat-button class="menu-button" routerLink="/ritiro-capi" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/ritiro-capi" *ngIf="sidenav.mode === 'over'"
+      <mat-icon>person</mat-icon>
+      <span>Gestione ritiro capi</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/consegna-capi" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
-        <mat-icon>person</mat-icon>
-        <span>Gestione ritiro capi</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/consegna-capi" *ngIf="sidenav.mode === 'over'"
+      <span class="material-icons">
+        checkroom
+        </span>
+      <span> Consegna capi</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
-        <mat-icon>info</mat-icon>
-        <span>Consegna capi</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
+      <span class="material-icons">
+        trending_up
+      </span>
+      <span> Statistiche</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/profile" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
-        <mat-icon>person</mat-icon>
-        <span>Statistiche</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="/profile" *ngIf="sidenav.mode === 'over'"
+      <mat-icon>person</mat-icon>
+      <span>Clienti: modalità consultazione</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
-        <mat-icon>person</mat-icon>
-        <span>Clienti: modalità consultazione</span>
-      </button>
-  
-      <mat-divider></mat-divider>
-  
-      <button mat-button class="menu-button" routerLink="/help">
-        <mat-icon>help</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
-          <router-outlet></router-outlet>
+      <span class="material-icons">
+        paid
+      </span>
+      <span> Fatture</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/help">
+      <span class="material-icons">
+        logout
+        </span>
+        <span> Logout</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
     </div>
-</mat-sidenav-content>
+  </mat-sidenav-content>
 </mat-sidenav-container>
