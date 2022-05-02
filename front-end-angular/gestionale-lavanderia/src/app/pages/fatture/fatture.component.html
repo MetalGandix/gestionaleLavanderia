@@ -129,4 +129,89 @@
         <select class="input-cliente">
         </select>
     </div>
+    <div class="second-element" style="text-align-last: center; margin-left: 20px;">
+        <div class="second-row-buttons-p">
+            <button>NON SO</button>
+        </div>
+    </div>
 </div>
+
+<div class="third-row-gestione-fatture">
+    <div class="first-element" style="text-align-last: center; display: flex;">
+        <div class="align-items-document" style="margin-right: 30px;">
+            <p class="second-row-buttons-p" style="margin-right: 10px;">Documento</p>
+            <select style="height: fit-content;" class="input-cliente">
+            </select>
+        </div>
+        <div class="align-items-document">
+            <p class="second-row-buttons-p" style="margin-right: 10px;">Pagamento</p>
+            <select style="height: fit-content;" class="input-cliente">
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="dettagli-documento">
+    <p style="color: black; text-align: center; font-size: x-large;">Dettagli Documento</p>
+    <table>
+        <tr>
+            <th style="width: 30px;"></th>
+            <th>Servizio</th>
+            <th>Descrizione</th>
+            <th>Q. 1h</th>
+            <th>Prezzo</th>
+            <th>Importo</th>
+            <th>IVA</th>
+        </tr>
+        <tr>
+            <button mat-raised-button>Seleziona</button>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+        </tr>
+    </table>
+
+    <div class="riquadro-basso-sinistra">
+        <table>
+            <tr>
+                <th style="width: 30px;"></th>
+                <th>Aliquota</th>
+                <th>Imponibile</th>
+                <th>IVA</th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="riquadro-basso-centro">
+        <mat-card>
+            <mat-card-title>Totali Generali</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <mat-card-content>
+                <div class="order-card">
+                    <div class="first-two-element" style="margin-right: 50px;">
+                        <p>Totale Imponibile</p>
+                        <input style="margin-bottom: 30px;">
+                        <div class="totale-fattura-euro">
+                            <p>Totale Fattura in euro</p>
+                            <input>
+                        </div>
+                    </div>
+                    <div class="last-element">
+                        <p>Totale Iva</p>
+                        <input>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+

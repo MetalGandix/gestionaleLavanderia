@@ -54,14 +54,25 @@ section {
   .second-row-gestione-fatture{
       display: flex;
       margin-top: 25px;
+      margin-bottom: 30px;
   }
+
+  .align-items-document{
+    display: flex;
+  }
+
+  .third-row-gestione-fatture{
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
 
   .input-data{
       width: 80px;
   }
 
   .input-cliente{
-    width: 300px;
+    width: 200px;
     }
 
   .second-row-buttons-p{
@@ -74,4 +85,40 @@ section {
 
   .element-ten-select-div{
     text-align-last: center;
+  }
+
+  .card-util{
+    background:#ffeeee;
+  }
+
+  table{
+    width: -webkit-fill-available;
+  }
+
+  th{
+    color: black;
+  }
+
+  td{
+    color: black;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align-last: center;
+  }
+
+  .riquadro-basso-sinistra{
+    margin-top: 100px;
+    display: -webkit-inline-box;
+  }
+
+  .riquadro-basso-centro{
+    display: -webkit-inline-box;
+    margin-left: 30%;
+  }
+
+  .order-card{
+    display: flex;
   }
