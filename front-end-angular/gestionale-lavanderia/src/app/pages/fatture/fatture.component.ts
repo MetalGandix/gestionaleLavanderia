@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { jsPDF } from "jspdf";
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-fatture',
@@ -7,23 +9,46 @@ import { jsPDF } from "jspdf";
   styleUrls: ['./fatture.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class FattureComponent implements OnInit {
+export class FattureComponent{
 
-  constructor() { }
+  @ViewChild('pdfViewerOnDemand') pdfViewerOnDemand
+  @ViewChild('pdfViewerAutoLoad') pdfViewerAutoLoad
 
   doc = new jsPDF();
 
-  createPDF(){
-  // Default export is a4 paper, portrait, using millimeters for units
-  this.doc.text("Hello world!", 10, 10);
-  this.doc.save("a4.pdf");
+  constructor(private http: HttpClient) {
+    let url = "api/document/getmypdf"; // Or your url
+    this.downloadFile(url).subscribe(
+      (res) => {
+        this.pdfViewerAutoLoad.pdfSrc = res; // pdfSrc can be Blob or Uint8Array
+        this.pdfViewerAutoLoad.refresh(); // Ask pdf viewer to load/refresh pdf
+      }
+    );
   }
 
-  importPDF(){
+  downloadFile(url: string): any {
+    return this.http.get(url, { responseType: 'blob' })
+      .pipe(
+        map((result: any) => {
+          return result;
+        })
+      );
   }
 
+  createPDF() { //jspdf
+    // Default export is a4 paper, portrait, using millimeters for units
+    this.doc.text("Hello world!", 10, 10);
+    this.doc.save("a4.pdf");
+  }
 
-  ngOnInit(): void {
+  openPdf() { //ng2-pdfjs.viewer
+    let url = "url to fetch pdf as byte array";
+    this.downloadFile(url).subscribe(
+      (res: any) => {
+        this.pdfViewerOnDemand.pdfSrc = res; // pdfSrc can be Blob or Uint8Array
+        this.pdfViewerOnDemand.refresh(); // Ask pdf viewer to load/reresh pdf
+      }
+    )
   }
 
 }

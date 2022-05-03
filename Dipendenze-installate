@@ -5,5 +5,6 @@ Npm install:
     - nodemon (resetta in automatico ogni volta che salvo)
 Angular:
     - jspdf
+    - ng2-pdfjs-viewer
 Builder:
     - ECMAScript module (ESM) bundle
