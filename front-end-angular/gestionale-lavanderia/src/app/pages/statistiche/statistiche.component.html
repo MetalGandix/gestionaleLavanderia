@@ -5,6 +5,49 @@
   <mat-tab label="Nastri"><h1 style="color: black; margin-top: 30px;"> Nastri </h1> </mat-tab>
 </mat-tab-group>
 
+<!-- CAPI IN ENTRATA -->
+<div class="mat-elevation-z8" [hidden]="selectedTable!=0">
+  <table mat-table [dataSource]="capiInEntrataTable">
+    <ng-container matColumnDef="Data">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.Data}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Orario">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.Orario}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Lavorazione">
+      <th mat-header-cell *matHeaderCellDef> Lavoraz. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Lavorazione}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Numero">
+      <th mat-header-cell *matHeaderCellDef> Numero </th>
+      <td mat-cell *matCellDef="let element"> {{element.Numero}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Prodotto">
+      <th mat-header-cell *matHeaderCellDef> Prodotto </th>
+      <td mat-cell *matCellDef="let element"> {{element.Prodotto}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Servizio">
+      <th mat-header-cell *matHeaderCellDef> Servizio </th>
+      <td mat-cell *matCellDef="let element"> {{element.Servizio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="DataRiconoscimento">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.DataRiconoscimento}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Cliente">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.Cliente}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCapiInEntrata"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCapiInEntrata;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
 <div class="mat-elevation-z8" [hidden]="selectedTable!=3">
   <table mat-table [dataSource]="nastroTable">
     <ng-container matColumnDef="Lavorazione">
@@ -39,7 +82,25 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumnsNastri;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
                  aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>
+
+<mat-card>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="rangePicker">
+      <input matStartDate placeholder="Start date">
+      <input matEndDate placeholder="End date"
+      (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #rangePicker>
+      <mat-date-range-picker-actions>
+        <button mat-button matDateRangePickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+      </mat-date-range-picker-actions>
+    </mat-date-range-picker>
+  </mat-form-field>
+</mat-card>

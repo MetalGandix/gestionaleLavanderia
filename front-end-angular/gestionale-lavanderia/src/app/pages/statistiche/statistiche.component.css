@@ -5,3 +5,8 @@ table {
   .mat-tab-label .mat-tab-label-content{
       color: black;
   }
+
+  .example-form-field {
+    margin: 0 8px 16px 0;
+  }
+  

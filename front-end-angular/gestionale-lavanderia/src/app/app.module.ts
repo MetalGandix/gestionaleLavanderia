@@ -23,6 +23,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FattureComponent } from './pages/fatture/fatture.component';
 import { MatCardModule } from '@angular/material/card';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer'; // <-- Import PdfJsViewerModule module
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { PdfJsViewerModule } from 'ng2-pdfjs-viewer'; // <-- Import PdfJsViewerM
     MatButtonToggleModule,
     MatTabsModule,
     MatCardModule,
-    PdfJsViewerModule
+    PdfJsViewerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

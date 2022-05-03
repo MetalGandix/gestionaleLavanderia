@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -9,22 +12,58 @@ import { MatTableDataSource } from '@angular/material/table';
   encapsulation: ViewEncapsulation.None
 })
 export class StatisticheComponent{
-  displayedColumnsNastri: string[] = ['Lavorazione', 'Numero', 'Nastro', 'Posizione', 'Prodotto', 'Servizio', 'Cliente'];
 
-  displayedColumnsCapiInEntrata: String[] = ["Data", "Orario", "Lavorazione", "Numero", "Prodotto", "Servizio", "DataRiconoscimento", "Cliente"]
+  campaignOne: FormGroup;
+
+  @Input()color: ThemePalette
+
+  constructor(){
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    this.campaignOne = new FormGroup({
+      start: new FormControl(new Date(year, month, 13)),
+      end: new FormControl(new Date(year, month, 16)),
+    });
+  }
+
+  displayedColumnsNastri: string[] = ['Lavorazione', 'Numero', 'Nastro', 'Posizione', 'Prodotto', 'Servizio', 'Cliente'];
   nastroTable = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
+  displayedColumnsCapiInEntrata: String[] = ["Data", "Orario", "Lavorazione", "Numero", "Prodotto", "Servizio", "DataRiconoscimento", "Cliente"]
+  capiInEntrataTable = new MatTableDataSource<capiInEntrata>(CAPI_IN_ENTRATA);
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  events: string[] = [];
+
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.events.push(`${type}: ${event.value}`);
+    console.log(this.events)
+  }
 
   public selectedTable: number = 0;
 
   ngAfterViewInit() {
     this.nastroTable.paginator = this.paginator;
+    this.capiInEntrataTable.paginator = this.paginator
   }
 
   selectTable(){
     console.log(this.selectedTable)
   }
+}
+
+export interface capiInEntrata {
+  Data: String;
+  Orario: string;
+  Lavorazione: string;
+  Numero: string;
+  Prodotto: string;
+  Servizio: string;
+  DataRiconoscimento: string;
+  Cliente: string
 }
 
 export interface PeriodicElement {
@@ -36,6 +75,10 @@ export interface PeriodicElement {
   Servizio: string;
   Cliente: string;
 }
+
+const CAPI_IN_ENTRATA: capiInEntrata[] = [
+  {Data: "03/05/2022", Orario: "11:00", Lavorazione: "0002", Numero: '11', Prodotto: "Pantalone grigio", Servizio: "Servizio z", DataRiconoscimento: "05/05/2022", Cliente:"Mauro Gambetti"}
+]
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {Lavorazione: "0008", Numero: '11',  Nastro:0, Posizione: "0", Prodotto: "Pantalone uomo", Servizio:"Servizio x", Cliente:"Cliente x"},
