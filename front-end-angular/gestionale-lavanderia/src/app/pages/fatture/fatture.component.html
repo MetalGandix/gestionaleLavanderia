@@ -164,7 +164,7 @@
             <th>IVA</th>
         </tr>
         <tr>
-            <button mat-raised-button>Seleziona</button>
+            <button mat-raised-button (click)="createPDF()">Seleziona</button>
             <td>None</td>
             <td>None</td>
             <td>None</td>
@@ -207,10 +207,19 @@
                     </div>
                 </div>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div class="riquadro-basso-destra">
+        <mat-card style="text-align-last: center;">
+            <mat-card-title>
+               Recupera lavorazioni da fatturare
+            </mat-card-title>
+            <button mat-raised-button color="primary" (click)="createPDF()">
+            <mat-card-content>
+                <mat-icon style="font-size: 50px;">attach_file</mat-icon>
+            </mat-card-content>
+        </button>
         </mat-card>
     </div>
 </div>

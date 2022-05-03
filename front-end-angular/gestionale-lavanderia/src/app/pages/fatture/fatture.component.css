@@ -119,6 +119,11 @@ section {
     margin-left: 30%;
   }
 
+  .riquadro-basso-destra{
+    display: -webkit-inline-box;
+    margin-left: 10%;
+  }
+
   .order-card{
     display: flex;
   }

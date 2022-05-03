@@ -3,3 +3,7 @@ Npm install:
     - mysql
     - body-parser
     - nodemon (resetta in automatico ogni volta che salvo)
+Angular:
+    - jspdf
+Builder:
+    - ECMAScript module (ESM) bundle
