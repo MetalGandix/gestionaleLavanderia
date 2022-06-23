@@ -12,6 +12,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Abiti;
+import gestionaleLavanderia.magistralThesis.model.Capi.Camicie;
+import gestionaleLavanderia.magistralThesis.model.Capi.Cappelli;
+import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
+import gestionaleLavanderia.magistralThesis.model.Capi.GiaccheEGiacconi;
+import gestionaleLavanderia.magistralThesis.model.Capi.Gonne;
+import gestionaleLavanderia.magistralThesis.model.Capi.Maglie;
+import gestionaleLavanderia.magistralThesis.model.Capi.Pantaloni;
+import gestionaleLavanderia.magistralThesis.model.Capi.PigiamaEVestaglie;
+import gestionaleLavanderia.magistralThesis.model.Capi.Scarpe;
+import gestionaleLavanderia.magistralThesis.model.Capi.Tappeti;
+import gestionaleLavanderia.magistralThesis.model.Capi.Tende;
+import gestionaleLavanderia.magistralThesis.model.Capi.TrapunteEPiumoni;
+import gestionaleLavanderia.magistralThesis.model.Capi.Varie;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.AbitiRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.CamicieRepository;
@@ -73,11 +86,38 @@ public class AbitiController {
     @Autowired
     private VarieRepository varieRepo;
 
-    @GetMapping("/getAllCapi")
-    public String getCapi(@PathVariable String username) {
+    @GetMapping("/getAllCapiFromUser/{username}")
+    public ComplexCapiObject getCapi(@PathVariable String username) {
         DAOUser user = userRepo.findByUsername(username);
-        Abiti abitiUser = userRepo.findAbitiById(user.getId());
-        return "Ecco i capi";
+        long id = user.getId();
+        Abiti abiti = userRepo.findAbitiById(id);
+        Camicie camicie = userRepo.findCamicieById(id);
+        Cappelli cappelli = userRepo.findCappelliById(id);
+        GiaccheEGiacconi giaccheEGiacconi = userRepo.findGiaccheEGiacconiById(id);
+        Gonne gonne = userRepo.findGonneById(id);
+        Maglie maglie = userRepo.findMaglieById(id);
+        Pantaloni pantaloni = userRepo.findPantaloniById(id);
+        PigiamaEVestaglie pigiamiEVestaglie = userRepo.findPigiamaEVestaglieById(id);
+        Scarpe scarpe = userRepo.findScarpeById(id);
+        Tappeti tappeti = userRepo.findTappetiById(id);
+        Tende tende = userRepo.findTendeById(id);
+        TrapunteEPiumoni trapunteEPiumoni = userRepo.findTrapunteEPiumoniById(id);
+        Varie varie = userRepo.findVarieById(id);
+        ComplexCapiObject complexObject = new ComplexCapiObject();
+        complexObject.setAbiti(abiti);
+        complexObject.setCamicie(camicie);
+        complexObject.setCappelli(cappelli);
+        complexObject.setGiaccheEGiacconi(giaccheEGiacconi);
+        complexObject.setGonne(gonne);
+        complexObject.setMaglie(maglie);
+        complexObject.setPantaloni(pantaloni);
+        complexObject.setPigiamaEVestaglie(pigiamiEVestaglie);
+        complexObject.setScarpe(scarpe);
+        complexObject.setTappeti(tappeti);
+        complexObject.setTende(tende);
+        complexObject.setTrapunteEPiumoni(trapunteEPiumoni);
+        complexObject.setVarie(varie);
+        return complexObject;
     }
 
     
