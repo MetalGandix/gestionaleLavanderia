@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Abiti;
@@ -80,6 +82,50 @@ public class AbitiController {
 
     @Autowired
     private VarieRepository varieRepo;
+
+    @PostMapping("/insertDress")
+    public String insertDress(@RequestBody ComplexCapiObject capiObject){
+        if(capiObject.getAbiti() != null){
+            abitiRepo.save(capiObject.getAbiti());
+        }
+        if(capiObject.getCamicie() != null){
+            camicieRepo.save(capiObject.getCamicie());
+        }
+        if(capiObject.getCappelli() != null){
+        cappelliRepo.save(capiObject.getCappelli());
+        }
+        if(capiObject.getGiaccheEGiacconi() != null){
+            giaccheEGiacconiRepo.save(capiObject.getGiaccheEGiacconi());
+        }
+        if(capiObject.getGonne() != null){
+            gonneRepo.save(capiObject.getGonne());
+        }
+        if(capiObject.getMaglie() != null){
+            maglieRepo.save(capiObject.getMaglie());
+        }
+        if(capiObject.getPantaloni() != null){
+            pantaloniRepo.save(capiObject.getPantaloni());
+        }
+        if(capiObject.getPigiamaEVestaglie() != null){
+            pigiamiEVestaglieRepo.save(capiObject.getPigiamaEVestaglie());
+        }
+        if(capiObject.getScarpe() != null){
+            scarpeRepo.save(capiObject.getScarpe());
+        }
+        if(capiObject.getTappeti() != null){
+            tappetiRepo.save(capiObject.getTappeti());
+        }
+        if(capiObject.getTende() != null){
+            tendeRepo.save(capiObject.getTende());
+        }
+        if(capiObject.getTrapunteEPiumoni() != null){
+            trapunteEPiumoniRepo.save(capiObject.getTrapunteEPiumoni());
+        }
+        if(capiObject.getVarie() != null){
+            varieRepo.save(capiObject.getVarie());
+        }
+        return "Capi inseriti";  
+    }
 
     @GetMapping("/getAllCapiFromUser/{username}")
     public ComplexCapiObject getCapi(@PathVariable String username) {

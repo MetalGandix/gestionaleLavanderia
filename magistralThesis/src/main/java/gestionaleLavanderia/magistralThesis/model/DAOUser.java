@@ -1,14 +1,9 @@
 package gestionaleLavanderia.magistralThesis.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import gestionaleLavanderia.magistralThesis.model.Roles.Role;
-
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
