@@ -26,7 +26,11 @@ import org.springframework.data.repository.query.Param;
 public interface UserDaoRepository extends JpaRepository<DAOUser, Long> {
 	DAOUser findByUsername(String username);
 
-	@Query("SELECT o FROM Abiti o where o.id = :id") 
+	/*CREATE TEMPORARY TABLE TempDress AS SELECT * FROM Abiti o where o.id = id;
+	ALTER TABLE TempDress DROP COLUMN user_username;
+	SELECT * FROM TempDress; */
+
+	@Query("SELECT o FROM Abiti o where o.id = :id")
     Abiti findAbitiById(@Param("id") long id);
 
 	@Query("SELECT o FROM Camicie o where o.id = :id") 

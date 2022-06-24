@@ -1,7 +1,6 @@
 package gestionaleLavanderia.magistralThesis.model.Capi;
 
 public class ComplexCapiObject {
-    long id;
     Pantaloni pantaloni;
     Gonne gonne;
     Camicie camicie;
@@ -16,9 +15,6 @@ public class ComplexCapiObject {
     Tende tende;
     Varie varie;
 
-    public long getId() {
-        return id;
-    }
     public Pantaloni getPantaloni() {
         return pantaloni;
     }
