@@ -19,10 +19,11 @@ public class DAOUser implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@Column
 	private String username;
+
 	@Column
-	@JsonIgnore
 	private String password;
 
 	@Column

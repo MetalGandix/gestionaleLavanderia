@@ -2,6 +2,7 @@ package gestionaleLavanderia.magistralThesis.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,12 @@ public class UserController {
     @Autowired
     private UserDaoRepository userRepository;
 
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
+
     @PostMapping("/user")
     String addUser(@RequestBody DAOUser user){
+        user.setPassword(bcryptEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "Utente aggiunto con successo!!";
     }

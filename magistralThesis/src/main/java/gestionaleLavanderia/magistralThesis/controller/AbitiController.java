@@ -1,14 +1,9 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Abiti;
@@ -89,20 +84,19 @@ public class AbitiController {
     @GetMapping("/getAllCapiFromUser/{username}")
     public ComplexCapiObject getCapi(@PathVariable String username) {
         DAOUser user = userRepo.findByUsername(username);
-        long id = user.getId();
-        Abiti abiti = userRepo.findAbitiById(id);
-        Camicie camicie = userRepo.findCamicieById(id);
-        Cappelli cappelli = userRepo.findCappelliById(id);
-        GiaccheEGiacconi giaccheEGiacconi = userRepo.findGiaccheEGiacconiById(id);
-        Gonne gonne = userRepo.findGonneById(id);
-        Maglie maglie = userRepo.findMaglieById(id);
-        Pantaloni pantaloni = userRepo.findPantaloniById(id);
-        PigiamaEVestaglie pigiamiEVestaglie = userRepo.findPigiamaEVestaglieById(id);
-        Scarpe scarpe = userRepo.findScarpeById(id);
-        Tappeti tappeti = userRepo.findTappetiById(id);
-        Tende tende = userRepo.findTendeById(id);
-        TrapunteEPiumoni trapunteEPiumoni = userRepo.findTrapunteEPiumoniById(id);
-        Varie varie = userRepo.findVarieById(id);
+        Abiti abiti = abitiRepo.findByAbitiUtente(user);
+        Camicie camicie = camicieRepo.findByCamiciaUtente(user);
+        Cappelli cappelli = cappelliRepo.findByCappelloUtente(user);
+        GiaccheEGiacconi giaccheEGiacconi = giaccheEGiacconiRepo.findByGiaccheEGiacconiUtente(user);
+        Gonne gonne = gonneRepo.findByGonnaUtente(user);
+        Maglie maglie = maglieRepo.findByMagliaUtente(user);
+        Pantaloni pantaloni = pantaloniRepo.findByPantaloniUtente(user);
+        PigiamaEVestaglie pigiamiEVestaglie = pigiamiEVestaglieRepo.findByVestagliaUtente(user);
+        Scarpe scarpe = scarpeRepo.findByScarpeUtente(user);
+        Tappeti tappeti = tappetiRepo.findByTappetoUtente(user);
+        Tende tende = tendeRepo.findByTendeUtente(user);
+        TrapunteEPiumoni trapunteEPiumoni = trapunteEPiumoniRepo.findByTrapunteEPiumoniUtente(user);
+        Varie varie = varieRepo.findByVarieUtente(user);
         ComplexCapiObject complexObject = new ComplexCapiObject();
         complexObject.setAbiti(abiti);
         complexObject.setCamicie(camicie);
@@ -120,5 +114,4 @@ public class AbitiController {
         return complexObject;
     }
 
-    
 }

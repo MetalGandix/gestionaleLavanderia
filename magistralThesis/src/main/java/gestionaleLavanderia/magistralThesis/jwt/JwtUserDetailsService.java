@@ -9,12 +9,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
-import gestionaleLavanderia.magistralThesis.repository.UserRoleRepository;
 
 //@Service 
 @Service(value = "userService") //role based
@@ -22,12 +20,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private UserDaoRepository userDao;
-
-	@Autowired
-	private UserRoleRepository userRoleRepository;
-
-	@Autowired
-	private PasswordEncoder bcryptEncoder;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
