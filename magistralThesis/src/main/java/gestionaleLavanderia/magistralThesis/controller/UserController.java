@@ -2,6 +2,7 @@ package gestionaleLavanderia.magistralThesis.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,6 +45,11 @@ public class UserController {
     @GetMapping("/vediUtenti")
     public List<DAOUser> vediUtenti() {
         return (List<DAOUser>) userRepository.findAll();
+    }
+
+    @GetMapping("/getSpecificUsers/{username}")
+    public List<DAOUser> getUsersQuery(@Param("titolo") DAOUser user) {
+        return (List<DAOUser>) userRepository.searchUser(user.getUsername());
     }
     
     @GetMapping("/vediUtenti/{username}")
