@@ -1,3 +1,18 @@
 <p>find-user works!</p>
 
+<p style="color: black">Cerca qua l'utente:</p>
 
+<input [(ngModel)]="userSearched"> <button (click)="findUserLike()">CERCA</button>
+<br><br>
+<div>
+    <p style="color: black">Utenti trovati:</p>
+    <div *ngFor="let list of userFiltredList">
+        <p style="color:black;">{{list.username}}</p>
+    </div>
+</div>
+<br><br>
+<div>
+    <div *ngFor="let list of userList">
+        <p style="color:black;">{{list.username}}</p>
+    </div>
+</div>

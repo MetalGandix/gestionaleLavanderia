@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/classes/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-find-user',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serviceUser: UserService) { }
 
-  ngOnInit(): void {
+  userList: User[] = []
+  userFiltredList: User[] = []
+  userSearched: string;
+
+  ngOnInit() {
+    this.serviceUser.findAllUser().subscribe(lista => {
+      this.userList = lista
+    })
   }
 
+  findUserLike(){
+    this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
+      this.userFiltredList = filteredUsers
+    })
+  }
 }

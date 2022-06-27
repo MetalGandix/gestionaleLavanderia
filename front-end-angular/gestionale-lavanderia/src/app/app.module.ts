@@ -13,7 +13,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
 import { ConsegnaCapiComponent } from './pages/consegna-capi/consegna-capi.component';
 import { StatisticheComponent } from './pages/statistiche/statistiche.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
@@ -25,8 +25,8 @@ import { MatCardModule } from '@angular/material/card';
 import { PdfJsViewerModule } from 'ng2-pdfjs-viewer'; // <-- Import PdfJsViewerModule module
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { FindUserComponent } from './find-user/find-user.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FindUserComponent } from './pages/find-user/find-user.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { FindUserComponent } from './find-user/find-user.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
