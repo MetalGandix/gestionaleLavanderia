@@ -8,7 +8,6 @@
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" style="width: fit-content;">
-    <img class="avatar mat-elevation-z8" />
 
     <h4 class="name">User</h4>
 
@@ -28,7 +27,7 @@
       (click)="sidenav.toggle()">
       <span class="material-icons">
         checkroom
-        </span>
+      </span>
       <span> Consegna capi</span>
     </button>
     <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
@@ -38,7 +37,7 @@
       </span>
       <span> Statistiche</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/profile" *ngIf="sidenav.mode === 'over'"
+    <button mat-button class="menu-button" routerLink="/home" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
       <mat-icon>person</mat-icon>
       <span> Clienti: modalità consultazione</span>
@@ -50,14 +49,19 @@
       </span>
       <span> Fatture</span>
     </button>
+    <button mat-button class="menu-button" routerLink="/find-user" *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()">
+      <mat-icon>person</mat-icon>
+      <span> Visualizza utente</span>
+    </button>
 
     <mat-divider></mat-divider>
 
     <button mat-button class="menu-button" routerLink="/help">
       <span class="material-icons">
         logout
-        </span>
-        <span> Logout</span>
+      </span>
+      <span> Logout</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
