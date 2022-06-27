@@ -84,7 +84,7 @@ public class AbitiController {
     private VarieRepository varieRepo;
 
     @PostMapping("/insertDress")
-    public String insertDress(@RequestBody ComplexCapiObject capiObject){
+    public String insertDressForUser(@RequestBody ComplexCapiObject capiObject){
         if(capiObject.getAbiti() != null){
             abitiRepo.save(capiObject.getAbiti());
         }
@@ -92,7 +92,7 @@ public class AbitiController {
             camicieRepo.save(capiObject.getCamicie());
         }
         if(capiObject.getCappelli() != null){
-        cappelliRepo.save(capiObject.getCappelli());
+            cappelliRepo.save(capiObject.getCappelli());
         }
         if(capiObject.getGiaccheEGiacconi() != null){
             giaccheEGiacconiRepo.save(capiObject.getGiaccheEGiacconi());

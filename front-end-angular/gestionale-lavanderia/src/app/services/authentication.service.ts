@@ -43,8 +43,8 @@ logOut() {
  });
 }
 
-getRole(){
- let token = jwt_decode(sessionStorage.getItem('token'));
- return token['role'];
-}
+// getRole(){
+//  let token: string!nu = jwt_decode(sessionStorage.getItem('token'));
+//  return token['role'];
+// }
 }

@@ -26,6 +26,7 @@ import { PdfJsViewerModule } from 'ng2-pdfjs-viewer'; // <-- Import PdfJsViewerM
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { FindUserComponent } from './find-user/find-user.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ConsegnaCapiComponent,
     StatisticheComponent,
     FattureComponent,
+    FindUserComponent,
   ],
   imports: [
     BrowserModule,
