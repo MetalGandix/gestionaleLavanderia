@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
+import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,11 +11,15 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor(private serviceUser: UserService) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService) { }
 
   userList: User[] = []
   userFiltredList: User[] = []
   userSearched: string;
+  userClicked: string;
+  userSingle: User
+  capiOfUser: ComplexCapiObject
+
 
   ngOnInit() {
     this.serviceUser.findAllUser().subscribe(lista => {
@@ -24,6 +30,13 @@ export class FindUserComponent implements OnInit {
   findUserLike(){
     this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
       this.userFiltredList = filteredUsers
+    })
+  }
+
+  findCapiSingleUser(username: string){
+    this.capiService.findCapiForSingleUser(username).subscribe(x => {
+      this.capiOfUser = x
+      console.log(this.capiOfUser)
     })
   }
 }

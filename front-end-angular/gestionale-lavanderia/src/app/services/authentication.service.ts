@@ -3,17 +3,18 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { GlobalVariablesService } from './global variables/global-variables.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private httpClient:HttpClient, private router: Router, private location: Location) { 
+  constructor(private httpClient:HttpClient, private router: Router, private location: Location, private globalVariables: GlobalVariablesService) { 
   }
 
 authenticate(username, password) {
- return this.httpClient.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
+ return this.httpClient.post<any>(this.globalVariables.url + 'authenticate',{username,password}).pipe(
    map(
      userData => {
      sessionStorage.setItem('username',username);

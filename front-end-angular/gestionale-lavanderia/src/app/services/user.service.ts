@@ -2,28 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../classes/user';
+import { GlobalVariablesService } from './global variables/global-variables.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  url: string
 
-  constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080/';
+  constructor(private http: HttpClient, private globalVariables: GlobalVariablesService) {
   } 
 
   public findAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.url + "vediUtenti");
+    return this.http.get<User[]>(this.globalVariables.url + "vediUtenti");
   }
 
   public findUtenteSingolo(username: string): Observable<User[]> {
-    return this.http.get<User[]>(this.url + "vediUtenti/" + username);
+    return this.http.get<User[]>(this.globalVariables.url + "vediUtenti/" + username);
   }
 
   public findUtenteFiltrato(username: string): Observable<User[]> {
-    return this.http.get<User[]>(this.url + "getSpecificUsers/" + username)
+    return this.http.get<User[]>(this.globalVariables.url + "getSpecificUsers/" + username)
   }
 
 }

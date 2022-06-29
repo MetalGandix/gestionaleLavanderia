@@ -4,15 +4,15 @@
 
 <input [(ngModel)]="userSearched"> <button (click)="findUserLike()">CERCA</button>
 <br><br>
-<div>
+<div class="found_users">
     <p style="color: black">Utenti trovati:</p>
     <div *ngFor="let list of userFiltredList">
-        <p style="color:black;">{{list.username}}</p>
+        <button (click)="findCapiSingleUser(list.username)"><p style="color:black;">{{list.username}}</p></button>
     </div>
 </div>
 <br><br>
-<div>
+<div class="all_users">
     <div *ngFor="let list of userList">
-        <p style="color:black;">{{list.username}}</p>
+        <button (click)="findCapiSingleUser(list.username)"><p style="color:black;">{{list.username}}</p></button>
     </div>
 </div>
