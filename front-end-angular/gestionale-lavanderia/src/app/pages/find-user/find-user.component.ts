@@ -1,18 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Abiti } from 'src/app/classes/capi_classes/abiti';
-import { Camicie } from 'src/app/classes/capi_classes/camicie';
-import { Cappelli } from 'src/app/classes/capi_classes/cappelli';
+import { Router } from '@angular/router';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
-import { GiaccheEGiacconi } from 'src/app/classes/capi_classes/giacche-egiacconi';
-import { Gonne } from 'src/app/classes/capi_classes/gonne';
-import { Maglie } from 'src/app/classes/capi_classes/maglie';
-import { Pantaloni } from 'src/app/classes/capi_classes/pantaloni';
-import { PigiamaEVestaglie } from 'src/app/classes/capi_classes/pigiama-evestaglie';
-import { Scarpe } from 'src/app/classes/capi_classes/scarpe';
-import { Tappeti } from 'src/app/classes/capi_classes/tappeti';
-import { Tende } from 'src/app/classes/capi_classes/tende';
-import { TrapunteEPiumoni } from 'src/app/classes/capi_classes/trapunte-epiumoni';
-import { Varie } from 'src/app/classes/capi_classes/varie';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
@@ -24,16 +12,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router) { }
 
   userList: User[] = []
   userFiltredList: User[] = []
   userSearched: string;
   userClicked: string;
-  userSingle: User
+  singleUser: User
   capiOfUser: ComplexCapiObject
-  capiToAdd: ComplexCapiObject = new ComplexCapiObject()
-
 
   ngOnInit() {
     this.serviceUser.findAllUser().subscribe(lista => {
@@ -41,59 +27,33 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  findUserLike(){
+  findUserLike() {
     this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
       this.userFiltredList = filteredUsers
     })
   }
 
-  findCapiSingleUser(username: string){
+  findCapiSingleUser(username: string) {
     this.capiService.findCapiForSingleUser(username).subscribe(x => {
       this.capiOfUser = x
       console.log(this.capiOfUser)
     })
   }
 
-  insertIntoUser(abiti: Abiti, camicie: Camicie, cappelli: Cappelli, giaccheEGiacconi: GiaccheEGiacconi, gonne: Gonne, maglie: Maglie, pantaloni: Pantaloni, pigiamaEVestaglie: PigiamaEVestaglie, scarpe: Scarpe, tappeti: Tappeti, tende: Tende, trapunteEPiumoni: TrapunteEPiumoni, varie: Varie){
-    if(abiti != null || !undefined){
-      this.capiToAdd.abiti = abiti
-    }
-    if(camicie != null || !undefined){
-      this.capiToAdd.camicie = camicie
-    }
-    if(cappelli != null || !undefined){
-      this.capiToAdd.cappelli = cappelli
-    }
-    if(giaccheEGiacconi != null || !undefined){
-      this.capiToAdd.giaccheEGiacconi = giaccheEGiacconi
-    }
-    if(gonne != null || !undefined){
-      this.capiToAdd.gonne = gonne
-    }
-    if(maglie != null || !undefined){
-      this.capiToAdd.maglie = maglie
-    }
-    if(pantaloni != null || !undefined){
-      this.capiToAdd.pantaloni = pantaloni
-    }
-    if(pigiamaEVestaglie != null || !undefined){
-      this.capiToAdd.pigiamaEVestaglie = pigiamaEVestaglie
-    }
-    if(scarpe != null || !undefined){
-      this.capiToAdd.scarpe = scarpe
-    }
-    if(tappeti != null || !undefined){
-      this.capiToAdd.tappeti = tappeti
-    }
-    if(tende != null || !undefined){
-      this.capiToAdd.tende = tende
-    }
-    if(trapunteEPiumoni != null || !undefined){
-      this.capiToAdd.trapunteEPiumoni = trapunteEPiumoni
-    }
-    if(varie != null || !undefined){
-      this.capiToAdd.varie = varie
-    }
-    this.capiService.insertDressForUser(this.capiToAdd).subscribe()
+  findUtenteSingolo(username: string){
+    this.findCapiSingleUser(username)
+    this.serviceUser.findUtenteSingolo(username).subscribe(user=>{
+      this.singleUser = user
+    }).add(() => {
+      // retrieve objects of logged user
+      this.goToConsegnaCapi()
+    })
   }
+
+  goToConsegnaCapi() {
+    this.router.navigate(["/consegna-capi"], {
+      state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
+    })
+  }
+
 }

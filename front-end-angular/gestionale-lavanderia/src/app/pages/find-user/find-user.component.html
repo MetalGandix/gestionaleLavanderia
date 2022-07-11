@@ -6,23 +6,27 @@
 <br><br>
 <div class="found_users">
     <p style="color: black">Utenti trovati:</p>
-        <table class="table table-bordered">
-            <thead class="table-bordered">
-                <tr style="color: rgba(63, 63, 54, 0.85);">
-                    <th scope="col">Nome utente: </th>
-                    <th scope="col">Vedi capi: </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="vertical-align: middle;" *ngFor="let list of userFiltredList">
-                    <td>
-                        <p style="color:black;">{{list.username}}</p>
-                    </td>
-                    <td>
-                        <button (click)="findCapiSingleUser(list.username)">Capi</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table table-bordered">
+        <thead class="table-bordered">
+            <tr style="color: rgba(63, 63, 54, 0.85);">
+                <th scope="col">Nome utente: </th>
+                <th scope="col"> </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="vertical-align: middle; margin-right: 3%;" *ngFor="let list of userFiltredList">
+                <td>
+                    <p style="color:black;">{{list.username}}</p>
+                </td>
+                <td style="text-align-last: center;">
+                    <button (click)="findCapiSingleUser(list.username)">Vedi capi</button>
+                </td>
+                <td style="text-align-last: center;">
+                    <button (click)="findUtenteSingolo(list.username)">Aggiungi capi</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <br><br>

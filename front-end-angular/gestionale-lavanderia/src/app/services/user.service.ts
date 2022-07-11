@@ -17,8 +17,8 @@ export class UserService {
     return this.http.get<User[]>(this.globalVariables.url + "vediUtenti");
   }
 
-  public findUtenteSingolo(username: string): Observable<User[]> {
-    return this.http.get<User[]>(this.globalVariables.url + "vediUtenti/" + username);
+  public findUtenteSingolo(username: string): Observable<User> {
+    return this.http.get<User>(this.globalVariables.url + "vediUtenti/" + username);
   }
 
   public findUtenteFiltrato(username: string): Observable<User[]> {
