@@ -19,4 +19,8 @@ export class CapiService {
     return this.http.get<ComplexCapiObject>(this.globalVariables.url + "getAllCapiFromUser/" + username);
   }
 
+  public insertDressForUser(complexCapiObject: ComplexCapiObject){
+    return this.http.post<ComplexCapiObject>(this.globalVariables.url + "insertDress", complexCapiObject);
+  }
+
 }
