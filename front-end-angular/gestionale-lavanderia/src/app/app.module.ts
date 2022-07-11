@@ -14,7 +14,7 @@ import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
 import { ConsegnaCapiComponent } from './pages/consegna-capi/consegna-capi.component';
 import { StatisticheComponent } from './pages/statistiche/statistiche.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -61,7 +61,7 @@ import { FindUserComponent } from './pages/find-user/find-user.component';
     MatInputModule,
     MatDatepickerModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

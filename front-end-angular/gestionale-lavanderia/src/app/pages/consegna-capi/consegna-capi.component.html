@@ -1,3 +1,16 @@
 <div class="container">
     <p style="color:black;">Aggiungi dei capi all'utente: {{singleUser.username}}</p>
 </div>
+
+<mat-form-field appearance="fill" class="example-form-field">
+    <mat-label style="color: black">Scrivi o scegli una data</mat-label>
+    <input matInput [matDatepicker]="datepicker" style="color: black">
+    <mat-hint style="color: black">Giorni/Mesi/Anni</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="datepicker" style="color: black"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Annulla</button>
+        <button mat-raised-button color="basic" matDatepickerApply>Scegli questa data</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>

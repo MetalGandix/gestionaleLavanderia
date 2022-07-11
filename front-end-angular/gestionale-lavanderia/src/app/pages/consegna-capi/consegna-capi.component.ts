@@ -33,6 +33,9 @@ export class ConsegnaCapiComponent implements OnInit {
 
 
   ngOnInit(){
+    if(window.history.state.singleUser == undefined || window.history.state.singleUser == null){
+      this.router.navigate(["/find-user"])
+    }
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
     console.log(this.capiOfUser)
