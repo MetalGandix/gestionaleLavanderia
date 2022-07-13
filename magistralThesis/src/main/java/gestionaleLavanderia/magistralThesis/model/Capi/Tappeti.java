@@ -14,7 +14,7 @@ public class Tappeti {
     private long id;
 
     @Column
-    private String tappeto;
+    private int tappeto;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -25,11 +25,11 @@ public class Tappeti {
         return id;
     }
 
-    public String getTappeto() {
+    public int getTappeto() {
         return tappeto;
     }
 
-    public void setTappeto(String tappeto) {
+    public void setTappeto(int tappeto) {
         this.tappeto = tappeto;
     }
 

@@ -19,95 +19,95 @@ public class Scarpe {
     }
 
     @Column
-    private String ciabatte;
+    private int ciabatte;
 
     @Column
-    private String clark;
+    private int clark;
 
     @Column
-    private String converse;
+    private int converse;
 
     @Column
-    private String hogan;
+    private int hogan;
 
     @Column
-    private String nike;
+    private int nike;
 
     @Column
-    private String scarpeDaGinnastica;
+    private int scarpeDaGinnastica;
 
     @Column
-    private String scarponcini;
+    private int scarponcini;
 
     @Column
-    private String impermeabili;
+    private int impermeabili;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DAOUser scarpeUtente;
 
-    public String getCiabatte() {
+    public int getCiabatte() {
         return ciabatte;
     }
 
-    public void setCiabatte(String ciabatte) {
+    public void setCiabatte(int ciabatte) {
         this.ciabatte = ciabatte;
     }
 
-    public String getClark() {
+    public int getClark() {
         return clark;
     }
 
-    public void setClark(String clark) {
+    public void setClark(int clark) {
         this.clark = clark;
     }
 
-    public String getConverse() {
+    public int getConverse() {
         return converse;
     }
 
-    public void setConverse(String converse) {
+    public void setConverse(int converse) {
         this.converse = converse;
     }
 
-    public String getHogan() {
+    public int getHogan() {
         return hogan;
     }
 
-    public void setHogan(String hogan) {
+    public void setHogan(int hogan) {
         this.hogan = hogan;
     }
 
-    public String getNike() {
+    public int getNike() {
         return nike;
     }
 
-    public void setNike(String nike) {
+    public void setNike(int nike) {
         this.nike = nike;
     }
 
-    public String getScarpeDaGinnastica() {
+    public int getScarpeDaGinnastica() {
         return scarpeDaGinnastica;
     }
 
-    public void setScarpeDaGinnastica(String scarpeDaGinnastica) {
+    public void setScarpeDaGinnastica(int scarpeDaGinnastica) {
         this.scarpeDaGinnastica = scarpeDaGinnastica;
     }
 
-    public String getScarponcini() {
+    public int getScarponcini() {
         return scarponcini;
     }
 
-    public void setScarponcini(String scarponcini) {
+    public void setScarponcini(int scarponcini) {
         this.scarponcini = scarponcini;
     }
 
-    public String getImpermeabili() {
+    public int getImpermeabili() {
         return impermeabili;
     }
 
-    public void setImpermeabili(String impermeabili) {
+    public void setImpermeabili(int impermeabili) {
         this.impermeabili = impermeabili;
     }
 

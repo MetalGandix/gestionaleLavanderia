@@ -15,6 +15,7 @@ import { Tende } from 'src/app/classes/capi_classes/tende';
 import { TrapunteEPiumoni } from 'src/app/classes/capi_classes/trapunte-epiumoni';
 import { Varie } from 'src/app/classes/capi_classes/varie';
 import { User } from 'src/app/classes/user';
+import { DressArrayService } from 'src/app/services/arrays/dress-array.service';
 import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -25,18 +26,30 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ConsegnaCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private dressArray: DressArrayService) { }
 
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
   capiOfUser: ComplexCapiObject
+  abiti: Abiti = new Abiti()
+  camicie: Camicie = new Camicie()
+  cappelli: Cappelli = new Cappelli()
+  giaccheEGiacconi: GiaccheEGiacconi = new GiaccheEGiacconi()
+  gonne: Gonne = new Gonne()
+  maglie: Maglie = new Maglie()
   pantaloni: Pantaloni = new Pantaloni()
+  pigiamaEVestaglie: PigiamaEVestaglie = new PigiamaEVestaglie()
+  scarpe: Scarpe = new Scarpe()
+  tappeti: Tappeti = new Tappeti()
+  tende: Tende = new Tende()
+  trapunteEPiumoni: TrapunteEPiumoni = new TrapunteEPiumoni()
+  varie: Varie = new Varie()
 
-  pantaloni_array = [{name:"Pantalone divisa", icon:"assets//images//pantalone_divisa.png", value: 1},{name:"Pantalone donna", icon:"", value: 2},
-  {name:"Pantalone solo stiro", icon:"", value: 3},{name:"Pantalone uomo", icon:"assets//images//jeans_uomo.png", value: 4},{name:"Pantaloni pelle", icon:"", value: 5},{name:"Tuta donna", icon:"", value: 6}]
+  //Array
+  pantaloni_array = this.dressArray.pantaloni_array
 
-  ngOnInit(){
-    if(window.history.state.singleUser == undefined || window.history.state.singleUser == null){
+  ngOnInit() {
+    if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
       this.router.navigate(["/find-user"])
     }
     this.singleUser = window.history.state.singleUser
@@ -44,75 +57,66 @@ export class ConsegnaCapiComponent implements OnInit {
     console.log(this.capiOfUser)
   }
 
-  insertPantaloni(){
-    this.pantaloni.pantaloneDivisa
-  }
-
-  insertIntoUser(abiti: Abiti, camicie: Camicie, cappelli: Cappelli, giaccheEGiacconi: GiaccheEGiacconi, gonne: Gonne, maglie: Maglie, pantaloni: Pantaloni, pigiamaEVestaglie: PigiamaEVestaglie, scarpe: Scarpe, tappeti: Tappeti, tende: Tende, trapunteEPiumoni: TrapunteEPiumoni, varie: Varie) {
-    if (abiti != null || !undefined) {
-      this.capiToAdd.abiti = abiti
+  insertIntoUser() {
+    if (this.abiti != null) {
+      this.capiToAdd.abiti = this.abiti
     }
-    if (camicie != null || !undefined) {
-      this.capiToAdd.camicie = camicie
+    if (this.camicie != null) {
+      this.capiToAdd.camicie = this.camicie
     }
-    if (cappelli != null || !undefined) {
-      this.capiToAdd.cappelli = cappelli
+    if (this.cappelli != null) {
+      this.capiToAdd.cappelli = this.cappelli
     }
-    if (giaccheEGiacconi != null || !undefined) {
-      this.capiToAdd.giaccheEGiacconi = giaccheEGiacconi
+    if (this.giaccheEGiacconi != null) {
+      this.capiToAdd.giaccheEGiacconi = this.giaccheEGiacconi
     }
-    if (gonne != null || !undefined) {
-      this.capiToAdd.gonne = gonne
+    if (this.gonne != null) {
+      this.capiToAdd.gonne = this.gonne
     }
-    if (maglie != null || !undefined) {
-      this.capiToAdd.maglie = maglie
+    if (this.maglie != null) {
+      this.capiToAdd.maglie = this.maglie
     }
-    if (pantaloni != null || !undefined) {
-      this.capiToAdd.pantaloni = pantaloni
+    if (this.pantaloni != null) {
+      this.capiToAdd.pantaloni = this.pantaloni
     }
-    if (pigiamaEVestaglie != null || !undefined) {
-      this.capiToAdd.pigiamaEVestaglie = pigiamaEVestaglie
+    if (this.pigiamaEVestaglie != null) {
+      this.capiToAdd.pigiamaEVestaglie = this.pigiamaEVestaglie
     }
-    if (scarpe != null || !undefined) {
-      this.capiToAdd.scarpe = scarpe
+    if (this.scarpe != null) {
+      this.capiToAdd.scarpe = this.scarpe
     }
-    if (tappeti != null || !undefined) {
-      this.capiToAdd.tappeti = tappeti
+    if (this.tappeti != null) {
+      this.capiToAdd.tappeti = this.tappeti
     }
-    if (tende != null || !undefined) {
-      this.capiToAdd.tende = tende
+    if (this.tende != null) {
+      this.capiToAdd.tende = this.tende
     }
-    if (trapunteEPiumoni != null || !undefined) {
-      this.capiToAdd.trapunteEPiumoni = trapunteEPiumoni
+    if (this.trapunteEPiumoni != null) {
+      this.capiToAdd.trapunteEPiumoni = this.trapunteEPiumoni
     }
-    if (varie != null || !undefined) {
-      this.capiToAdd.varie = varie
+    if (this.varie != null) {
+      this.capiToAdd.varie = this.varie
     }
     this.capiService.insertDressForUser(this.capiToAdd).subscribe()
   }
 
-  sendTest(){
-    this.capiToAdd.pantaloni = this.pantaloni
-    this.capiService.insertDressForUser(this.capiToAdd).subscribe()
-  }
-
-  insert(number){
-    if(number == 1){
+  insertPantaloni(number) {
+    if (number == 1) {
       this.pantaloni.pantaloneDivisa++
     }
-    if(number == 2){
+    if (number == 2) {
       this.pantaloni.pantaloneDonna++
     }
-    if(number == 3){
+    if (number == 3) {
       this.pantaloni.pantaloneSoloStiro++
     }
-    if(number == 4){
+    if (number == 4) {
       this.pantaloni.pantaloneUomo++
     }
-    if(number == 5){
+    if (number == 5) {
       this.pantaloni.pantalonePelle++
     }
-    if(number == 6){
+    if (number == 6) {
       this.pantaloni.tutaDonna++
     }
     this.pantaloni.pantaloniUtente = this.singleUser

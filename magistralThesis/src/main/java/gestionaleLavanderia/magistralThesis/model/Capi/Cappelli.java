@@ -15,13 +15,13 @@ public class Cappelli {
     private long id;
 
     @Column
-    private String berretto;
+    private int berretto;
 
     @Column
-    private String cappello;
+    private int cappello;
 
     @Column
-    private String cappelloPelle;
+    private int cappelloPelle;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -32,27 +32,27 @@ public class Cappelli {
         return id;
     }
 
-    public String getBerretto() {
+    public int getBerretto() {
         return berretto;
     }
 
-    public void setBerretto(String berretto) {
+    public void setBerretto(int berretto) {
         this.berretto = berretto;
     }
 
-    public String getCappello() {
+    public int getCappello() {
         return cappello;
     }
 
-    public void setCappello(String cappello) {
+    public void setCappello(int cappello) {
         this.cappello = cappello;
     }
 
-    public String getCappelloPelle() {
+    public int getCappelloPelle() {
         return cappelloPelle;
     }
 
-    public void setCappelloPelle(String cappelloPelle) {
+    public void setCappelloPelle(int cappelloPelle) {
         this.cappelloPelle = cappelloPelle;
     }
 

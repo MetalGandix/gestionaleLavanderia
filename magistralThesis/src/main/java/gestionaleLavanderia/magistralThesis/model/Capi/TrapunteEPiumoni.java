@@ -16,61 +16,61 @@ public class TrapunteEPiumoni {
     private long id;
 
     @Column
-    private String coperta1PiazzaLana;
+    private int coperta1PiazzaLana;
 
     @Column
-    private String coperta2PiazzeLana;
+    private int coperta2PiazzeLana;
 
     @Column
-    private String copertaBambino;
+    private int copertaBambino;
 
     @Column
-    private String copertaUncinetto;
+    private int copertaUncinetto;
 
     @Column
-    private String prematerasso;
+    private int prematerasso;
 
     @Column
-    private String cuscinoPiuma;
+    private int cuscinoPiuma;
 
     @Column
-    private String cuscinoSintetico;
+    private int cuscinoSintetico;
 
     @Column
-    private String federe;
+    private int federe;
 
     @Column
-    private String lenzuola1Piazza;
+    private int lenzuola1Piazza;
 
     @Column
-    private String leunzuolo2Piazze;
+    private int leunzuolo2Piazze;
 
     @Column
-    private String merinos2Piazze;
+    private int merinos2Piazze;
 
     @Column
-    private String piumone1PiazzaOca;
+    private int piumone1PiazzaOca;
 
     @Column
-    private String piumone1PSintetico;
+    private int piumone1PSintetico;
 
     @Column
-    private String piumone2PiazzeOca;
+    private int piumone2PiazzeOca;
 
     @Column
-    private String piumone2PSintetico;
+    private int piumone2PSintetico;
 
     @Column
-    private String saccoAPelo1Piazza;
+    private int saccoAPelo1Piazza;
 
     @Column
-    private String saccoAPelo2Piazze;
+    private int saccoAPelo2Piazze;
 
     @Column
-    private String trapunta1Piazza;
+    private int trapunta1Piazza;
 
     @Column
-    private String trapunta2Piazze;
+    private int trapunta2Piazze;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -89,155 +89,155 @@ public class TrapunteEPiumoni {
         return id;
     }
 
-    public String getCoperta1PiazzaLana() {
+    public int getCoperta1PiazzaLana() {
         return coperta1PiazzaLana;
     }
 
-    public void setCoperta1PiazzaLana(String coperta1PiazzaLana) {
+    public void setCoperta1PiazzaLana(int coperta1PiazzaLana) {
         this.coperta1PiazzaLana = coperta1PiazzaLana;
     }
 
-    public String getCoperta2PiazzeLana() {
+    public int getCoperta2PiazzeLana() {
         return coperta2PiazzeLana;
     }
 
-    public void setCoperta2PiazzeLana(String coperta2PiazzeLana) {
+    public void setCoperta2PiazzeLana(int coperta2PiazzeLana) {
         this.coperta2PiazzeLana = coperta2PiazzeLana;
     }
 
-    public String getCopertaBambino() {
+    public int getCopertaBambino() {
         return copertaBambino;
     }
 
-    public void setCopertaBambino(String copertaBambino) {
+    public void setCopertaBambino(int copertaBambino) {
         this.copertaBambino = copertaBambino;
     }
 
-    public String getCopertaUncinetto() {
+    public int getCopertaUncinetto() {
         return copertaUncinetto;
     }
 
-    public void setCopertaUncinetto(String copertaUncinetto) {
+    public void setCopertaUncinetto(int copertaUncinetto) {
         this.copertaUncinetto = copertaUncinetto;
     }
 
-    public String getPrematerasso() {
+    public int getPrematerasso() {
         return prematerasso;
     }
 
-    public void setPrematerasso(String prematerasso) {
+    public void setPrematerasso(int prematerasso) {
         this.prematerasso = prematerasso;
     }
 
-    public String getCuscinoPiuma() {
+    public int getCuscinoPiuma() {
         return cuscinoPiuma;
     }
 
-    public void setCuscinoPiuma(String cuscinoPiuma) {
+    public void setCuscinoPiuma(int cuscinoPiuma) {
         this.cuscinoPiuma = cuscinoPiuma;
     }
 
-    public String getCuscinoSintetico() {
+    public int getCuscinoSintetico() {
         return cuscinoSintetico;
     }
 
-    public void setCuscinoSintetico(String cuscinoSintetico) {
+    public void setCuscinoSintetico(int cuscinoSintetico) {
         this.cuscinoSintetico = cuscinoSintetico;
     }
 
-    public String getFedere() {
+    public int getFedere() {
         return federe;
     }
 
-    public void setFedere(String federe) {
+    public void setFedere(int federe) {
         this.federe = federe;
     }
 
-    public String getLenzuola1Piazza() {
+    public int getLenzuola1Piazza() {
         return lenzuola1Piazza;
     }
 
-    public void setLenzuola1Piazza(String lenzuola1Piazza) {
+    public void setLenzuola1Piazza(int lenzuola1Piazza) {
         this.lenzuola1Piazza = lenzuola1Piazza;
     }
 
-    public String getLeunzuolo2Piazze() {
+    public int getLeunzuolo2Piazze() {
         return leunzuolo2Piazze;
     }
 
-    public void setLeunzuolo2Piazze(String leunzuolo2Piazze) {
+    public void setLeunzuolo2Piazze(int leunzuolo2Piazze) {
         this.leunzuolo2Piazze = leunzuolo2Piazze;
     }
 
-    public String getMerinos2Piazze() {
+    public int getMerinos2Piazze() {
         return merinos2Piazze;
     }
 
-    public void setMerinos2Piazze(String merinos2Piazze) {
+    public void setMerinos2Piazze(int merinos2Piazze) {
         this.merinos2Piazze = merinos2Piazze;
     }
 
-    public String getPiumone1PiazzaOca() {
+    public int getPiumone1PiazzaOca() {
         return piumone1PiazzaOca;
     }
 
-    public void setPiumone1PiazzaOca(String piumone1PiazzaOca) {
+    public void setPiumone1PiazzaOca(int piumone1PiazzaOca) {
         this.piumone1PiazzaOca = piumone1PiazzaOca;
     }
 
-    public String getPiumone1PSintetico() {
+    public int getPiumone1PSintetico() {
         return piumone1PSintetico;
     }
 
-    public void setPiumone1PSintetico(String piumone1pSintetico) {
+    public void setPiumone1PSintetico(int piumone1pSintetico) {
         piumone1PSintetico = piumone1pSintetico;
     }
 
-    public String getPiumone2PiazzeOca() {
+    public int getPiumone2PiazzeOca() {
         return piumone2PiazzeOca;
     }
 
-    public void setPiumone2PiazzeOca(String piumone2PiazzeOca) {
+    public void setPiumone2PiazzeOca(int piumone2PiazzeOca) {
         this.piumone2PiazzeOca = piumone2PiazzeOca;
     }
 
-    public String getPiumone2PSintetico() {
+    public int getPiumone2PSintetico() {
         return piumone2PSintetico;
     }
 
-    public void setPiumone2PSintetico(String piumone2pSintetico) {
+    public void setPiumone2PSintetico(int piumone2pSintetico) {
         piumone2PSintetico = piumone2pSintetico;
     }
 
-    public String getSaccoAPelo1Piazza() {
+    public int getSaccoAPelo1Piazza() {
         return saccoAPelo1Piazza;
     }
 
-    public void setSaccoAPelo1Piazza(String saccoAPelo1Piazza) {
+    public void setSaccoAPelo1Piazza(int saccoAPelo1Piazza) {
         this.saccoAPelo1Piazza = saccoAPelo1Piazza;
     }
 
-    public String getSaccoAPelo2Piazze() {
+    public int getSaccoAPelo2Piazze() {
         return saccoAPelo2Piazze;
     }
 
-    public void setSaccoAPelo2Piazze(String saccoAPelo2Piazze) {
+    public void setSaccoAPelo2Piazze(int saccoAPelo2Piazze) {
         this.saccoAPelo2Piazze = saccoAPelo2Piazze;
     }
 
-    public String getTrapunta1Piazza() {
+    public int getTrapunta1Piazza() {
         return trapunta1Piazza;
     }
 
-    public void setTrapunta1Piazza(String trapunta1Piazza) {
+    public void setTrapunta1Piazza(int trapunta1Piazza) {
         this.trapunta1Piazza = trapunta1Piazza;
     }
 
-    public String getTrapunta2Piazze() {
+    public int getTrapunta2Piazze() {
         return trapunta2Piazze;
     }
 
-    public void setTrapunta2Piazze(String trapunta2Piazze) {
+    public void setTrapunta2Piazze(int trapunta2Piazze) {
         this.trapunta2Piazze = trapunta2Piazze;
     }
 

@@ -15,88 +15,88 @@ public class GiaccheEGiacconi {
     private long id;
 
     @Column
-    private String cappottoBimbo;
+    private int cappottoBimbo;
 
     @Column
-    private String cappottoDonna;
+    private int cappottoDonna;
 
     @Column
-    private String cappottoUnisex;
+    private int cappottoUnisex;
 
     @Column
-    private String cappottoUomo;
+    private int cappottoUomo;
 
     @Column
-    private String giaccaDonna;
+    private int giaccaDonna;
 
     @Column
-    private String giaccaUomo;
+    private int giaccaUomo;
 
     @Column
-    private String giacconeCortoDonna;
+    private int giacconeCortoDonna;
 
     @Column
-    private String giacconeCortoUomo;
+    private int giacconeCortoUomo;
 
     @Column
-    private String giacconeCotone;
+    private int giacconeCotone;
 
     @Column
-    private String giacconeLungoDonna;
+    private int giacconeLungoDonna;
 
     @Column
-    private String giacconeLungoUomo;
+    private int giacconeLungoUomo;
 
     @Column
-    private String giacconeUnisex;
+    private int giacconeUnisex;
 
     @Column
-    private String giubbetto;
+    private int giubbetto;
 
     @Column
-    private String giubbettoJeans;
+    private int giubbettoJeans;
 
     @Column
-    private String giubbinoEstivoUnisex;
+    private int giubbinoEstivoUnisex;
 
     @Column
-    private String impermeabileUnisex;
+    private int impermeabileUnisex;
 
     @Column
-    private String internoGiaccone;
+    private int internoGiaccone;
 
     @Column
-    private String montone;
+    private int montone;
 
     @Column
-    private String pellicciaSintetica;
+    private int pellicciaSintetica;
 
     @Column
-    private String piumino7_8Donna;
+    private int piumino7_8Donna;
 
     @Column
-    private String piumino7_8Uomo;
+    private int piumino7_8Uomo;
 
     @Column
-    private String piuminoCortoDonna;
+    private int piuminoCortoDonna;
 
     @Column
-    private String piuminoCortoUomo;
+    private int piuminoCortoUomo;
 
     @Column
-    private String piuminoLungoDonna;
+    private int piuminoLungoDonna;
 
     @Column
-    private String piuminoLungoUomo;
+    private int piuminoLungoUomo;
 
     @Column
-    private String soprabito;
+    private int soprabito;
 
     @Column
-    private String tranch;
+    private int tranch;
 
     @Column
-    private String woolrich;
+    private int woolrich;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -108,227 +108,227 @@ public class GiaccheEGiacconi {
     }
 
 
-    public String getCappottoBimbo() {
+    public int getCappottoBimbo() {
         return cappottoBimbo;
     }
 
-    public void setCappottoBimbo(String cappottoBimbo) {
+    public void setCappottoBimbo(int cappottoBimbo) {
         this.cappottoBimbo = cappottoBimbo;
     }
 
-    public String getCappottoDonna() {
+    public int getCappottoDonna() {
         return cappottoDonna;
     }
 
-    public void setCappottoDonna(String cappottoDonna) {
+    public void setCappottoDonna(int cappottoDonna) {
         this.cappottoDonna = cappottoDonna;
     }
 
-    public String getCappottoUnisex() {
+    public int getCappottoUnisex() {
         return cappottoUnisex;
     }
 
-    public void setCappottoUnisex(String cappottoUnisex) {
+    public void setCappottoUnisex(int cappottoUnisex) {
         this.cappottoUnisex = cappottoUnisex;
     }
 
-    public String getCappottoUomo() {
+    public int getCappottoUomo() {
         return cappottoUomo;
     }
 
-    public void setCappottoUomo(String cappottoUomo) {
+    public void setCappottoUomo(int cappottoUomo) {
         this.cappottoUomo = cappottoUomo;
     }
 
-    public String getGiaccaDonna() {
+    public int getGiaccaDonna() {
         return giaccaDonna;
     }
 
-    public void setGiaccaDonna(String giaccaDonna) {
+    public void setGiaccaDonna(int giaccaDonna) {
         this.giaccaDonna = giaccaDonna;
     }
 
-    public String getGiaccaUomo() {
+    public int getGiaccaUomo() {
         return giaccaUomo;
     }
 
-    public void setGiaccaUomo(String giaccaUomo) {
+    public void setGiaccaUomo(int giaccaUomo) {
         this.giaccaUomo = giaccaUomo;
     }
 
-    public String getGiacconeCortoDonna() {
+    public int getGiacconeCortoDonna() {
         return giacconeCortoDonna;
     }
 
-    public void setGiacconeCortoDonna(String giacconeCortoDonna) {
+    public void setGiacconeCortoDonna(int giacconeCortoDonna) {
         this.giacconeCortoDonna = giacconeCortoDonna;
     }
 
-    public String getGiacconeCortoUomo() {
+    public int getGiacconeCortoUomo() {
         return giacconeCortoUomo;
     }
 
-    public void setGiacconeCortoUomo(String giacconeCortoUomo) {
+    public void setGiacconeCortoUomo(int giacconeCortoUomo) {
         this.giacconeCortoUomo = giacconeCortoUomo;
     }
 
-    public String getGiacconeCotone() {
+    public int getGiacconeCotone() {
         return giacconeCotone;
     }
 
-    public void setGiacconeCotone(String giacconeCotone) {
+    public void setGiacconeCotone(int giacconeCotone) {
         this.giacconeCotone = giacconeCotone;
     }
 
-    public String getGiacconeLungoDonna() {
+    public int getGiacconeLungoDonna() {
         return giacconeLungoDonna;
     }
 
-    public void setGiacconeLungoDonna(String giacconeLungoDonna) {
+    public void setGiacconeLungoDonna(int giacconeLungoDonna) {
         this.giacconeLungoDonna = giacconeLungoDonna;
     }
 
-    public String getGiacconeLungoUomo() {
+    public int getGiacconeLungoUomo() {
         return giacconeLungoUomo;
     }
 
-    public void setGiacconeLungoUomo(String giacconeLungoUomo) {
+    public void setGiacconeLungoUomo(int giacconeLungoUomo) {
         this.giacconeLungoUomo = giacconeLungoUomo;
     }
 
-    public String getGiacconeUnisex() {
+    public int getGiacconeUnisex() {
         return giacconeUnisex;
     }
 
-    public void setGiacconeUnisex(String giacconeUnisex) {
+    public void setGiacconeUnisex(int giacconeUnisex) {
         this.giacconeUnisex = giacconeUnisex;
     }
 
-    public String getGiubbetto() {
+    public int getGiubbetto() {
         return giubbetto;
     }
 
-    public void setGiubbetto(String giubbetto) {
+    public void setGiubbetto(int giubbetto) {
         this.giubbetto = giubbetto;
     }
 
-    public String getGiubbettoJeans() {
+    public int getGiubbettoJeans() {
         return giubbettoJeans;
     }
 
-    public void setGiubbettoJeans(String giubbettoJeans) {
+    public void setGiubbettoJeans(int giubbettoJeans) {
         this.giubbettoJeans = giubbettoJeans;
     }
 
-    public String getGiubbinoEstivoUnisex() {
+    public int getGiubbinoEstivoUnisex() {
         return giubbinoEstivoUnisex;
     }
 
-    public void setGiubbinoEstivoUnisex(String giubbinoEstivoUnisex) {
+    public void setGiubbinoEstivoUnisex(int giubbinoEstivoUnisex) {
         this.giubbinoEstivoUnisex = giubbinoEstivoUnisex;
     }
 
-    public String getImpermeabileUnisex() {
+    public int getImpermeabileUnisex() {
         return impermeabileUnisex;
     }
 
-    public void setImpermeabileUnisex(String impermeabileUnisex) {
+    public void setImpermeabileUnisex(int impermeabileUnisex) {
         this.impermeabileUnisex = impermeabileUnisex;
     }
 
-    public String getInternoGiaccone() {
+    public int getInternoGiaccone() {
         return internoGiaccone;
     }
 
-    public void setInternoGiaccone(String internoGiaccone) {
+    public void setInternoGiaccone(int internoGiaccone) {
         this.internoGiaccone = internoGiaccone;
     }
 
-    public String getMontone() {
+    public int getMontone() {
         return montone;
     }
 
-    public void setMontone(String montone) {
+    public void setMontone(int montone) {
         this.montone = montone;
     }
 
-    public String getPellicciaSintetica() {
+    public int getPellicciaSintetica() {
         return pellicciaSintetica;
     }
 
-    public void setPellicciaSintetica(String pellicciaSintetica) {
+    public void setPellicciaSintetica(int pellicciaSintetica) {
         this.pellicciaSintetica = pellicciaSintetica;
     }
 
-    public String getPiumino7_8Donna() {
+    public int getPiumino7_8Donna() {
         return piumino7_8Donna;
     }
 
-    public void setPiumino7_8Donna(String piumino7_8Donna) {
+    public void setPiumino7_8Donna(int piumino7_8Donna) {
         this.piumino7_8Donna = piumino7_8Donna;
     }
 
-    public String getPiumino7_8Uomo() {
+    public int getPiumino7_8Uomo() {
         return piumino7_8Uomo;
     }
 
-    public void setPiumino7_8Uomo(String piumino7_8Uomo) {
+    public void setPiumino7_8Uomo(int piumino7_8Uomo) {
         this.piumino7_8Uomo = piumino7_8Uomo;
     }
 
-    public String getPiuminoCortoDonna() {
+    public int getPiuminoCortoDonna() {
         return piuminoCortoDonna;
     }
 
-    public void setPiuminoCortoDonna(String piuminoCortoDonna) {
+    public void setPiuminoCortoDonna(int piuminoCortoDonna) {
         this.piuminoCortoDonna = piuminoCortoDonna;
     }
 
-    public String getPiuminoCortoUomo() {
+    public int getPiuminoCortoUomo() {
         return piuminoCortoUomo;
     }
 
-    public void setPiuminoCortoUomo(String piuminoCortoUomo) {
+    public void setPiuminoCortoUomo(int piuminoCortoUomo) {
         this.piuminoCortoUomo = piuminoCortoUomo;
     }
 
-    public String getPiuminoLungoDonna() {
+    public int getPiuminoLungoDonna() {
         return piuminoLungoDonna;
     }
 
-    public void setPiuminoLungoDonna(String piuminoLungoDonna) {
+    public void setPiuminoLungoDonna(int piuminoLungoDonna) {
         this.piuminoLungoDonna = piuminoLungoDonna;
     }
 
-    public String getPiuminoLungoUomo() {
+    public int getPiuminoLungoUomo() {
         return piuminoLungoUomo;
     }
 
-    public void setPiuminoLungoUomo(String piuminoLungoUomo) {
+    public void setPiuminoLungoUomo(int piuminoLungoUomo) {
         this.piuminoLungoUomo = piuminoLungoUomo;
     }
 
-    public String getSoprabito() {
+    public int getSoprabito() {
         return soprabito;
     }
 
-    public void setSoprabito(String soprabito) {
+    public void setSoprabito(int soprabito) {
         this.soprabito = soprabito;
     }
 
-    public String getTranch() {
+    public int getTranch() {
         return tranch;
     }
 
-    public void setTranch(String tranch) {
+    public void setTranch(int tranch) {
         this.tranch = tranch;
     }
 
-    public String getWoolrich() {
+    public int getWoolrich() {
         return woolrich;
     }
 
-    public void setWoolrich(String woolrich) {
+    public void setWoolrich(int woolrich) {
         this.woolrich = woolrich;
     }
 

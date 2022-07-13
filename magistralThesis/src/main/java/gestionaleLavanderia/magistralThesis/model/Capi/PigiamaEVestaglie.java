@@ -14,7 +14,7 @@ public class PigiamaEVestaglie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String vestaglia;
+    private int vestaglia;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -25,11 +25,11 @@ public class PigiamaEVestaglie {
         return id;
     }
 
-    public String getVestaglia() {
+    public int getVestaglia() {
         return vestaglia;
     }
 
-    public void setVestaglia(String vestaglia) {
+    public void setVestaglia(int vestaglia) {
         this.vestaglia = vestaglia;
     }
 

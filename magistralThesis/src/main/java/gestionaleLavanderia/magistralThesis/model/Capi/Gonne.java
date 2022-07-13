@@ -15,16 +15,16 @@ public class Gonne {
     private long id;
 
     @Column
-    private String gonna;
+    private int gonna;
 
     @Column
-    private String gonnaJeans;
+    private int gonnaJeans;
 
     @Column
-    private String gonnaPelle;
+    private int gonnaPelle;
 
     @Column
-    private String gonnaPieghe;
+    private int gonnaPieghe;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -35,35 +35,35 @@ public class Gonne {
         return id;
     }
 
-    public String getGonna() {
+    public int getGonna() {
         return gonna;
     }
 
-    public void setGonna(String gonna) {
+    public void setGonna(int gonna) {
         this.gonna = gonna;
     }
 
-    public String getGonnaJeans() {
+    public int getGonnaJeans() {
         return gonnaJeans;
     }
 
-    public void setGonnaJeans(String gonnaJeans) {
+    public void setGonnaJeans(int gonnaJeans) {
         this.gonnaJeans = gonnaJeans;
     }
 
-    public String getGonnaPelle() {
+    public int getGonnaPelle() {
         return gonnaPelle;
     }
 
-    public void setGonnaPelle(String gonnaPelle) {
+    public void setGonnaPelle(int gonnaPelle) {
         this.gonnaPelle = gonnaPelle;
     }
 
-    public String getGonnaPieghe() {
+    public int getGonnaPieghe() {
         return gonnaPieghe;
     }
 
-    public void setGonnaPieghe(String gonnaPieghe) {
+    public void setGonnaPieghe(int gonnaPieghe) {
         this.gonnaPieghe = gonnaPieghe;
     }
 

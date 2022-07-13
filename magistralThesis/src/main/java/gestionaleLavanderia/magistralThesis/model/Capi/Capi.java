@@ -10,51 +10,51 @@ public class Capi {
     private long id;
 
     @Column
-    private String pantaloni;
+    private int pantaloni;
 
     @Column
-    private String gonne;
+    private int gonne;
 
     @Column
-    private String camicie;
+    private int camicie;
 
     @Column
-    private String cappelli;
+    private int cappelli;
 
     @Column
-    private String abiti;
+    private int abiti;
 
     @Column
-    private String giaccheEgiacconi;
+    private int giaccheEgiacconi;
 
     @Column
-    private String trapunteEPiumoni;
+    private int trapunteEPiumoni;
 
     @Column
-    private String maglie;
+    private int maglie;
 
     @Column
-    private String pigiamiEVestaglie;
+    private int pigiamiEVestaglie;
 
     @Column
-    private String scarpe;
+    private int scarpe;
     
     @Column
-    private String tappeti;
+    private int tappeti;
 
     @Column
-    private String tende;
+    private int tende;
 
     @Column
-    private String varie;
+    private int varie;
 
-    @Column String immagineUrl;
+    @Column int immagineUrl;
 
-    public String getImmagineUrl() {
+    public int getImmagineUrl() {
         return immagineUrl;
     }
 
-    public void setImmagineUrl(String immagineUrl) {
+    public void setImmagineUrl(int immagineUrl) {
         this.immagineUrl = immagineUrl;
     }
 
@@ -62,107 +62,107 @@ public class Capi {
         return id;
     }
     
-    public String getPantaloni() {
+    public int getPantaloni() {
         return pantaloni;
     }
 
-    public void setPantaloni(String pantaloni) {
+    public void setPantaloni(int pantaloni) {
         this.pantaloni = pantaloni;
     }
 
-    public String getGonne() {
+    public int getGonne() {
         return gonne;
     }
 
-    public void setGonne(String gonne) {
+    public void setGonne(int gonne) {
         this.gonne = gonne;
     }
 
-    public String getCamicie() {
+    public int getCamicie() {
         return camicie;
     }
 
-    public void setCamicie(String camicie) {
+    public void setCamicie(int camicie) {
         this.camicie = camicie;
     }
 
-    public String getCappelli() {
+    public int getCappelli() {
         return cappelli;
     }
 
-    public void setCappelli(String cappelli) {
+    public void setCappelli(int cappelli) {
         this.cappelli = cappelli;
     }
 
-    public String getAbiti() {
+    public int getAbiti() {
         return abiti;
     }
 
-    public void setAbiti(String abiti) {
+    public void setAbiti(int abiti) {
         this.abiti = abiti;
     }
 
-    public String getGiaccheEgiacconi() {
+    public int getGiaccheEgiacconi() {
         return giaccheEgiacconi;
     }
 
-    public void setGiaccheEgiacconi(String giaccheEgiacconi) {
+    public void setGiaccheEgiacconi(int giaccheEgiacconi) {
         this.giaccheEgiacconi = giaccheEgiacconi;
     }
 
-    public String getTrapunteEPiumoni() {
+    public int getTrapunteEPiumoni() {
         return trapunteEPiumoni;
     }
 
-    public void setTrapunteEPiumoni(String trapunteEPiumoni) {
+    public void setTrapunteEPiumoni(int trapunteEPiumoni) {
         this.trapunteEPiumoni = trapunteEPiumoni;
     }
 
-    public String getMaglie() {
+    public int getMaglie() {
         return maglie;
     }
 
-    public void setMaglie(String maglie) {
+    public void setMaglie(int maglie) {
         this.maglie = maglie;
     }
 
-    public String getPigiamiEVestaglie() {
+    public int getPigiamiEVestaglie() {
         return pigiamiEVestaglie;
     }
 
-    public void setPigiamiEVestaglie(String pigiamiEVestaglie) {
+    public void setPigiamiEVestaglie(int pigiamiEVestaglie) {
         this.pigiamiEVestaglie = pigiamiEVestaglie;
     }
 
-    public String getScarpe() {
+    public int getScarpe() {
         return scarpe;
     }
 
-    public void setScarpe(String scarpe) {
+    public void setScarpe(int scarpe) {
         this.scarpe = scarpe;
     }
 
-    public String getTappeti() {
+    public int getTappeti() {
         return tappeti;
     }
 
-    public void setTappeti(String tappeti) {
+    public void setTappeti(int tappeti) {
         this.tappeti = tappeti;
     }
 
-    public String getTende() {
+    public int getTende() {
         return tende;
     }
 
-    public void setTende(String tende) {
+    public void setTende(int tende) {
         this.tende = tende;
     }
 
-    public String getVarie() {
+    public int getVarie() {
         return varie;
     }
 
-    public void setVarie(String varie) {
+    public void setVarie(int varie) {
         this.varie = varie;
     }
 

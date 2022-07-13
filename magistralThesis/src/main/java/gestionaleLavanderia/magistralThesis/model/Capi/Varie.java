@@ -15,94 +15,94 @@ public class Varie {
     private long id;
 
     @Column
-    private String accappatoi;
+    private int accappatoi;
 
     @Column
-    private String accessori;
+    private int accessori;
 
     @Column
-    private String bambolaStoffa;
+    private int bambolaStoffa;
 
     @Column
-    private String borsa;
+    private int borsa;
 
     @Column
-    private String calzini;
+    private int calzini;
 
     @Column
-    private String canottaUnisex;
+    private int canottaUnisex;
 
     @Column
-    private String capoConRiporti;
+    private int capoConRiporti;
 
     @Column
-    private String cinturaDiPelle;
+    private int cinturaDiPelle;
 
     @Column
-    private String cinturaDiStoffa;
+    private int cinturaDiStoffa;
 
     @Column
-    private String copriDivano;
+    private int copriDivano;
 
     @Column
-    private String copriPoltrona;
+    private int copriPoltrona;
 
     @Column
-    private String copriSedia;
+    private int copriSedia;
 
     @Column
-    private String doppioPetto;
+    private int doppioPetto;
 
     @Column
-    private String foulard;
+    private int foulard;
 
     @Column
-    private String giccaPelle;
+    private int giccaPelle;
 
     @Column
-    private String giletConTasche;
+    private int giletConTasche;
 
     @Column
-    private String giletDiPelle;
+    private int giletDiPelle;
 
     @Column
-    private String guantiLana;
+    private int guantiLana;
 
     @Column
-    private String guantiPelle;
+    private int guantiPelle;
 
     @Column
-    private String guantiUomo;
+    private int guantiUomo;
 
     @Column
-    private String pigiamaBimbo;
+    private int pigiamaBimbo;
 
     @Column
-    private String scarponcino;
+    private int scarponcino;
     
     @Column
-    private String sciarpa;
+    private int sciarpa;
 
     @Column
-    private String sciarpaBambino;
+    private int sciarpaBambino;
 
     @Column
-    private String sciarpaDiCotone;
+    private int sciarpaDiCotone;
 
     @Column
-    private String sciarpaDiSeta;
+    private int sciarpaDiSeta;
 
     @Column
-    private String tovagliaRettangolare;
+    private int tovagliaRettangolare;
 
     @Column
-    private String tovagliaRotonda;
+    private int tovagliaRotonda;
 
     @Column
-    private String tutaSciBimbo;
+    private int tutaSciBimbo;
 
     @Column
-    private String tutaSciAdulto;
+    private int tutaSciAdulto;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -113,244 +113,244 @@ public class Varie {
         return id;
     }
 
-    public String getAccappatoi() {
+    public int getAccappatoi() {
         return accappatoi;
     }
 
-    public void setAccappatoi(String accappatoi) {
+    public void setAccappatoi(int accappatoi) {
         this.accappatoi = accappatoi;
     }
 
-    public String getAccessori() {
+    public int getAccessori() {
         return accessori;
     }
 
-    public void setAccessori(String accessori) {
+    public void setAccessori(int accessori) {
         this.accessori = accessori;
     }
 
-    public String getBambolaStoffa() {
+    public int getBambolaStoffa() {
         return bambolaStoffa;
     }
 
-    public void setBambolaStoffa(String bambolaStoffa) {
+    public void setBambolaStoffa(int bambolaStoffa) {
         this.bambolaStoffa = bambolaStoffa;
     }
 
-    public String getBorsa() {
+    public int getBorsa() {
         return borsa;
     }
 
-    public void setBorsa(String borsa) {
+    public void setBorsa(int borsa) {
         this.borsa = borsa;
     }
 
-    public String getCalzini() {
+    public int getCalzini() {
         return calzini;
     }
 
-    public void setCalzini(String calzini) {
+    public void setCalzini(int calzini) {
         this.calzini = calzini;
     }
 
-    public String getCanottaUnisex() {
+    public int getCanottaUnisex() {
         return canottaUnisex;
     }
 
-    public void setCanottaUnisex(String canottaUnisex) {
+    public void setCanottaUnisex(int canottaUnisex) {
         this.canottaUnisex = canottaUnisex;
     }
 
-    public String getCapoConRiporti() {
+    public int getCapoConRiporti() {
         return capoConRiporti;
     }
 
-    public void setCapoConRiporti(String capoConRiporti) {
+    public void setCapoConRiporti(int capoConRiporti) {
         this.capoConRiporti = capoConRiporti;
     }
 
-    public String getCinturaDiPelle() {
+    public int getCinturaDiPelle() {
         return cinturaDiPelle;
     }
 
-    public void setCinturaDiPelle(String cinturaDiPelle) {
+    public void setCinturaDiPelle(int cinturaDiPelle) {
         this.cinturaDiPelle = cinturaDiPelle;
     }
 
-    public String getCinturaDiStoffa() {
+    public int getCinturaDiStoffa() {
         return cinturaDiStoffa;
     }
 
-    public void setCinturaDiStoffa(String cinturaDiStoffa) {
+    public void setCinturaDiStoffa(int cinturaDiStoffa) {
         this.cinturaDiStoffa = cinturaDiStoffa;
     }
 
-    public String getCopriDivano() {
+    public int getCopriDivano() {
         return copriDivano;
     }
 
-    public void setCopriDivano(String copriDivano) {
+    public void setCopriDivano(int copriDivano) {
         this.copriDivano = copriDivano;
     }
 
-    public String getCopriPoltrona() {
+    public int getCopriPoltrona() {
         return copriPoltrona;
     }
 
-    public void setCopriPoltrona(String copriPoltrona) {
+    public void setCopriPoltrona(int copriPoltrona) {
         this.copriPoltrona = copriPoltrona;
     }
 
-    public String getCopriSedia() {
+    public int getCopriSedia() {
         return copriSedia;
     }
 
-    public void setCopriSedia(String copriSedia) {
+    public void setCopriSedia(int copriSedia) {
         this.copriSedia = copriSedia;
     }
 
-    public String getDoppioPetto() {
+    public int getDoppioPetto() {
         return doppioPetto;
     }
 
-    public void setDoppioPetto(String doppioPetto) {
+    public void setDoppioPetto(int doppioPetto) {
         this.doppioPetto = doppioPetto;
     }
 
-    public String getFoulard() {
+    public int getFoulard() {
         return foulard;
     }
 
-    public void setFoulard(String foulard) {
+    public void setFoulard(int foulard) {
         this.foulard = foulard;
     }
 
-    public String getGiccaPelle() {
+    public int getGiccaPelle() {
         return giccaPelle;
     }
 
-    public void setGiccaPelle(String giccaPelle) {
+    public void setGiccaPelle(int giccaPelle) {
         this.giccaPelle = giccaPelle;
     }
 
-    public String getGiletConTasche() {
+    public int getGiletConTasche() {
         return giletConTasche;
     }
 
-    public void setGiletConTasche(String giletConTasche) {
+    public void setGiletConTasche(int giletConTasche) {
         this.giletConTasche = giletConTasche;
     }
 
-    public String getGiletDiPelle() {
+    public int getGiletDiPelle() {
         return giletDiPelle;
     }
 
-    public void setGiletDiPelle(String giletDiPelle) {
+    public void setGiletDiPelle(int giletDiPelle) {
         this.giletDiPelle = giletDiPelle;
     }
 
-    public String getGuantiLana() {
+    public int getGuantiLana() {
         return guantiLana;
     }
 
-    public void setGuantiLana(String guantiLana) {
+    public void setGuantiLana(int guantiLana) {
         this.guantiLana = guantiLana;
     }
 
-    public String getGuantiPelle() {
+    public int getGuantiPelle() {
         return guantiPelle;
     }
 
-    public void setGuantiPelle(String guantiPelle) {
+    public void setGuantiPelle(int guantiPelle) {
         this.guantiPelle = guantiPelle;
     }
 
-    public String getGuantiUomo() {
+    public int getGuantiUomo() {
         return guantiUomo;
     }
 
-    public void setGuantiUomo(String guantiUomo) {
+    public void setGuantiUomo(int guantiUomo) {
         this.guantiUomo = guantiUomo;
     }
 
 
-    public String getPigiamaBimbo() {
+    public int getPigiamaBimbo() {
         return pigiamaBimbo;
     }
 
-    public void setPigiamaBimbo(String pigiamaBimbo) {
+    public void setPigiamaBimbo(int pigiamaBimbo) {
         this.pigiamaBimbo = pigiamaBimbo;
     }
 
-    public String getScarponcino() {
+    public int getScarponcino() {
         return scarponcino;
     }
 
-    public void setScarponcino(String scarponcino) {
+    public void setScarponcino(int scarponcino) {
         this.scarponcino = scarponcino;
     }
 
-    public String getSciarpa() {
+    public int getSciarpa() {
         return sciarpa;
     }
 
-    public void setSciarpa(String sciarpa) {
+    public void setSciarpa(int sciarpa) {
         this.sciarpa = sciarpa;
     }
 
-    public String getSciarpaBambino() {
+    public int getSciarpaBambino() {
         return sciarpaBambino;
     }
 
-    public void setSciarpaBambino(String sciarpaBambino) {
+    public void setSciarpaBambino(int sciarpaBambino) {
         this.sciarpaBambino = sciarpaBambino;
     }
 
-    public String getSciarpaDiCotone() {
+    public int getSciarpaDiCotone() {
         return sciarpaDiCotone;
     }
 
-    public void setSciarpaDiCotone(String sciarpaDiCotone) {
+    public void setSciarpaDiCotone(int sciarpaDiCotone) {
         this.sciarpaDiCotone = sciarpaDiCotone;
     }
 
-    public String getSciarpaDiSeta() {
+    public int getSciarpaDiSeta() {
         return sciarpaDiSeta;
     }
 
-    public void setSciarpaDiSeta(String sciarpaDiSeta) {
+    public void setSciarpaDiSeta(int sciarpaDiSeta) {
         this.sciarpaDiSeta = sciarpaDiSeta;
     }
 
-    public String getTovagliaRettangolare() {
+    public int getTovagliaRettangolare() {
         return tovagliaRettangolare;
     }
 
-    public void setTovagliaRettangolare(String tovagliaRettangolare) {
+    public void setTovagliaRettangolare(int tovagliaRettangolare) {
         this.tovagliaRettangolare = tovagliaRettangolare;
     }
 
-    public String getTovagliaRotonda() {
+    public int getTovagliaRotonda() {
         return tovagliaRotonda;
     }
 
-    public void setTovagliaRotonda(String tovagliaRotonda) {
+    public void setTovagliaRotonda(int tovagliaRotonda) {
         this.tovagliaRotonda = tovagliaRotonda;
     }
 
-    public String getTutaSciBimbo() {
+    public int getTutaSciBimbo() {
         return tutaSciBimbo;
     }
 
-    public void setTutaSciBimbo(String tutaSciBimbo) {
+    public void setTutaSciBimbo(int tutaSciBimbo) {
         this.tutaSciBimbo = tutaSciBimbo;
     }
 
-    public String getTutaSciAdulto() {
+    public int getTutaSciAdulto() {
         return tutaSciAdulto;
     }
 
-    public void setTutaSciAdulto(String tutaSciAdulto) {
+    public void setTutaSciAdulto(int tutaSciAdulto) {
         this.tutaSciAdulto = tutaSciAdulto;
     }
 

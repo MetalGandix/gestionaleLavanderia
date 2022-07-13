@@ -16,34 +16,34 @@ public class Maglie {
     private long id;
 
     @Column
-    private String babyDol;
+    private int babyDol;
 
     @Column
-    private String cardigan;
+    private int cardigan;
     
     @Column
-    private String felpa;
+    private int felpa;
 
     @Column
-    private String magliaBimbo;
+    private int magliaBimbo;
 
     @Column
-    private String magliaDonna;
+    private int magliaDonna;
 
     @Column
-    private String magliaUomo;
+    private int magliaUomo;
 
     @Column
-    private String maglioneCotone;
+    private int maglioneCotone;
 
     @Column
-    private String maglioneLana;
+    private int maglioneLana;
 
     @Column
-    private String tShirt;
+    private int tShirt;
 
     @Column
-    private String tShirtColorata;
+    private int tShirtColorata;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -62,83 +62,83 @@ public class Maglie {
         this.magliaUtente = magliaUtente;
     }
 
-    public String getBabyDol() {
+    public int getBabyDol() {
         return babyDol;
     }
 
-    public void setBabyDol(String babyDol) {
+    public void setBabyDol(int babyDol) {
         this.babyDol = babyDol;
     }
 
-    public String getCardigan() {
+    public int getCardigan() {
         return cardigan;
     }
 
-    public void setCardigan(String cardigan) {
+    public void setCardigan(int cardigan) {
         this.cardigan = cardigan;
     }
 
-    public String getFelpa() {
+    public int getFelpa() {
         return felpa;
     }
 
-    public void setFelpa(String felpa) {
+    public void setFelpa(int felpa) {
         this.felpa = felpa;
     }
 
-    public String getMagliaBimbo() {
+    public int getMagliaBimbo() {
         return magliaBimbo;
     }
 
-    public void setMagliaBimbo(String magliaBimbo) {
+    public void setMagliaBimbo(int magliaBimbo) {
         this.magliaBimbo = magliaBimbo;
     }
 
-    public String getMagliaDonna() {
+    public int getMagliaDonna() {
         return magliaDonna;
     }
 
-    public void setMagliaDonna(String magliaDonna) {
+    public void setMagliaDonna(int magliaDonna) {
         this.magliaDonna = magliaDonna;
     }
 
-    public String getMagliaUomo() {
+    public int getMagliaUomo() {
         return magliaUomo;
     }
 
-    public void setMagliaUomo(String magliaUomo) {
+    public void setMagliaUomo(int magliaUomo) {
         this.magliaUomo = magliaUomo;
     }
 
-    public String getMaglioneCotone() {
+    public int getMaglioneCotone() {
         return maglioneCotone;
     }
 
-    public void setMaglioneCotone(String maglioneCotone) {
+    public void setMaglioneCotone(int maglioneCotone) {
         this.maglioneCotone = maglioneCotone;
     }
 
-    public String getMaglioneLana() {
+    public int getMaglioneLana() {
         return maglioneLana;
     }
 
-    public void setMaglioneLana(String maglioneLana) {
+    public void setMaglioneLana(int maglioneLana) {
         this.maglioneLana = maglioneLana;
     }
 
-    public String gettShirt() {
+    public int gettShirt() {
         return tShirt;
     }
 
-    public void settShirt(String tShirt) {
+    public void settShirt(int tShirt) {
         this.tShirt = tShirt;
     }
 
-    public String gettShirtColorata() {
+    public int gettShirtColorata() {
         return tShirtColorata;
     }
 
-    public void settShirtColorata(String tShirtColorata) {
+    public void settShirtColorata(int tShirtColorata) {
         this.tShirtColorata = tShirtColorata;
     }
 

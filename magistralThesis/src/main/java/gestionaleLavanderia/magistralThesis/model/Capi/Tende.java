@@ -15,16 +15,16 @@ public class Tende {
     private long id;
 
     @Column
-    private String calateTenda;
+    private int calateTenda;
 
     @Column
-    private String mantovana;
+    private int mantovana;
 
     @Column
-    private String tenda;
+    private int tenda;
 
     @Column
-    private String tendaCampeggio;
+    private int tendaCampeggio;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -43,35 +43,35 @@ public class Tende {
         return id;
     }
 
-    public String getCalateTenda() {
+    public int getCalateTenda() {
         return calateTenda;
     }
 
-    public void setCalateTenda(String calateTenda) {
+    public void setCalateTenda(int calateTenda) {
         this.calateTenda = calateTenda;
     }
 
-    public String getMantovana() {
+    public int getMantovana() {
         return mantovana;
     }
 
-    public void setMantovana(String mantovana) {
+    public void setMantovana(int mantovana) {
         this.mantovana = mantovana;
     }
 
-    public String getTenda() {
+    public int getTenda() {
         return tenda;
     }
 
-    public void setTenda(String tenda) {
+    public void setTenda(int tenda) {
         this.tenda = tenda;
     }
 
-    public String getTendaCampeggio() {
+    public int getTendaCampeggio() {
         return tendaCampeggio;
     }
 
-    public void setTendaCampeggio(String tendaCampeggio) {
+    public void setTendaCampeggio(int tendaCampeggio) {
         this.tendaCampeggio = tendaCampeggio;
     }
 

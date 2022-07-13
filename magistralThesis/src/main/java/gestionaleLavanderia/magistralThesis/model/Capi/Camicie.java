@@ -15,34 +15,34 @@ public class Camicie {
     private long id;
 
     @Column
-    private String camiciaBimbo;
+    private int camiciaBimbo;
 
     @Column
-    private String camiciaCerimonia;
+    private int camiciaCerimonia;
 
     @Column
-    private String camiciaDonna;
+    private int camiciaDonna;
 
     @Column
-    private String camiciaJeans;
+    private int camiciaJeans;
 
     @Column
-    private String camiciaPelle;
+    private int camiciaPelle;
 
     @Column
-    private String camiciaPiegata;
+    private int camiciaPiegata;
 
     @Column
-    private String camiciaSetaDonna;
+    private int camiciaSetaDonna;
 
     @Column
-    private String camiciaSetaUomo;
+    private int camiciaSetaUomo;
 
     @Column
-    private String camiciaSoloStiro;
+    private int camiciaSoloStiro;
 
     @Column
-    private String camiciaUomo;
+    private int camiciaUomo;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
@@ -53,83 +53,83 @@ public class Camicie {
         return id;
     }
 
-    public String getCamiciaBimbo() {
+    public int getCamiciaBimbo() {
         return camiciaBimbo;
     }
 
-    public void setCamiciaBimbo(String camiciaBimbo) {
+    public void setCamiciaBimbo(int camiciaBimbo) {
         this.camiciaBimbo = camiciaBimbo;
     }
 
-    public String getCamiciaCerimonia() {
+    public int getCamiciaCerimonia() {
         return camiciaCerimonia;
     }
 
-    public void setCamiciaCerimonia(String camiciaCerimonia) {
+    public void setCamiciaCerimonia(int camiciaCerimonia) {
         this.camiciaCerimonia = camiciaCerimonia;
     }
 
-    public String getCamiciaDonna() {
+    public int getCamiciaDonna() {
         return camiciaDonna;
     }
 
-    public void setCamiciaDonna(String camiciaDonna) {
+    public void setCamiciaDonna(int camiciaDonna) {
         this.camiciaDonna = camiciaDonna;
     }
 
-    public String getCamiciaJeans() {
+    public int getCamiciaJeans() {
         return camiciaJeans;
     }
 
-    public void setCamiciaJeans(String camiciaJeans) {
+    public void setCamiciaJeans(int camiciaJeans) {
         this.camiciaJeans = camiciaJeans;
     }
 
-    public String getCamiciaPelle() {
+    public int getCamiciaPelle() {
         return camiciaPelle;
     }
 
-    public void setCamiciaPelle(String camiciaPelle) {
+    public void setCamiciaPelle(int camiciaPelle) {
         this.camiciaPelle = camiciaPelle;
     }
 
-    public String getCamiciaPiegata() {
+    public int getCamiciaPiegata() {
         return camiciaPiegata;
     }
 
-    public void setCamiciaPiegata(String camiciaPiegata) {
+    public void setCamiciaPiegata(int camiciaPiegata) {
         this.camiciaPiegata = camiciaPiegata;
     }
 
-    public String getCamiciaSetaDonna() {
+    public int getCamiciaSetaDonna() {
         return camiciaSetaDonna;
     }
 
-    public void setCamiciaSetaDonna(String camiciaSetaDonna) {
+    public void setCamiciaSetaDonna(int camiciaSetaDonna) {
         this.camiciaSetaDonna = camiciaSetaDonna;
     }
 
-    public String getCamiciaSetaUomo() {
+    public int getCamiciaSetaUomo() {
         return camiciaSetaUomo;
     }
 
-    public void setCamiciaSetaUomo(String camiciaSetaUomo) {
+    public void setCamiciaSetaUomo(int camiciaSetaUomo) {
         this.camiciaSetaUomo = camiciaSetaUomo;
     }
 
-    public String getCamiciaSoloStiro() {
+    public int getCamiciaSoloStiro() {
         return camiciaSoloStiro;
     }
 
-    public void setCamiciaSoloStiro(String camiciaSoloStiro) {
+    public void setCamiciaSoloStiro(int camiciaSoloStiro) {
         this.camiciaSoloStiro = camiciaSoloStiro;
     }
 
-    public String getCamiciaUomo() {
+    public int getCamiciaUomo() {
         return camiciaUomo;
     }
 
-    public void setCamiciaUomo(String camiciaUomo) {
+    public void setCamiciaUomo(int camiciaUomo) {
         this.camiciaUomo = camiciaUomo;
     }
 
