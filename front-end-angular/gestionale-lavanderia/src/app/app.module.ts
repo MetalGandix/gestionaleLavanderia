@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FindUserComponent } from './pages/find-user/find-user.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { FindUserComponent } from './pages/find-user/find-user.component';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatListModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]

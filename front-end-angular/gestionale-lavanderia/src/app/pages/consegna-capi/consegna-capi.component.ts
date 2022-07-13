@@ -44,9 +44,12 @@ export class ConsegnaCapiComponent implements OnInit {
   tende: Tende = new Tende()
   trapunteEPiumoni: TrapunteEPiumoni = new TrapunteEPiumoni()
   varie: Varie = new Varie()
+  choiceMenuList: number
 
   //Array
+  principal_array = this.dressArray.dress_array
   pantaloni_array = this.dressArray.pantaloni_array
+  maglie_array = this.dressArray.maglie_array
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -121,5 +124,13 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.pantaloni.pantaloniUtente = this.singleUser
     console.log(this.pantaloni)
+  }
+
+  insertMaglie(number) {
+
+  }
+
+  selectFromList(number){
+    this.choiceMenuList = number
   }
 }

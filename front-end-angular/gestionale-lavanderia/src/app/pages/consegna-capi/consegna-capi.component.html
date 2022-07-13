@@ -16,20 +16,36 @@
 </mat-form-field>
 
 <br><br>
-<div class="selezione_panni">
-  <div>
-    <p style="color:black;">PANTALONI</p>
-  </div>
 
-</div>
+<div class="flex-right-menu-dress">
+<mat-selection-list #shoes [multiple]="false">
+  <mat-list-option (click)="selectFromList(choice.value)" *ngFor="let choice of principal_array" [value]="choice.value">
+    <p style="color:black;">{{choice.name}}</p>
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Option selected: {{shoes.selectedOptions.selected[0]?.value}}
+</p>
+
+
 <br><br>
 <div class="container_vestiti">
 
-  <div (click)="insertPantaloni(p.value)" class="product" *ngFor="let p of pantaloni_array">
-    <img class="little_icon" [src]="p.icon" />
-    <p style="color:black;"><b>{{p.name}}</b></p>
+  <div *ngIf="choiceMenuList == 1">
+  <div (click)="insertPantaloni(dress.value)" class="product" *ngFor="let dress of pantaloni_array">
+    <img class="little_icon" [src]="dress.icon" />
+    <p style="color:black;"><b>{{dress.name}}</b></p>
   </div>
+</div>
+
+<div *ngIf="choiceMenuList == 8">
+  <div (click)="insertMaglie(dress.value)" class="product" *ngFor="let dress of maglie_array">
+    <img class="little_icon" [src]="dress.icon" />
+    <p style="color:black;"><b>{{dress.name}}</b></p>
+  </div>
+</div>
 
   <button (click)="insertIntoUser()">CLICCAMI PER INVIARE</button>
-
+</div>
 </div>

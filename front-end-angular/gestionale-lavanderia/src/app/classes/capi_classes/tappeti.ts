@@ -2,6 +2,6 @@ import { User } from "../user";
 
 export class Tappeti {
     id: number;
-    tappeto: string;
+    tappeto: number = 0;
     tappetoUtente: User;
 }

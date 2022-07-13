@@ -2,9 +2,9 @@ import { User } from "../user";
 
 export class Tende {
     id: number;
-    calateTenda: string;
-    mantovana: string;
-    tenda: string;
-    tendaCampeggio: string;
+    calateTenda: number = 0;
+    mantovana: number = 0;
+    tenda: number = 0;
+    tendaCampeggio: number = 0;
     tendeUtente: User;
 }

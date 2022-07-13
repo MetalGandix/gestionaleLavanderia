@@ -2,6 +2,6 @@ import { User } from "../user";
 
 export class PigiamaEVestaglie {
     id: number;
-    vestaglia: string;
+    vestaglia: number = 0;
     vestagliaUtente: User;
 }
