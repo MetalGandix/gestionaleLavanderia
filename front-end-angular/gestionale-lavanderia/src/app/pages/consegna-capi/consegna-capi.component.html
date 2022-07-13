@@ -14,3 +14,16 @@
       </mat-datepicker-actions>
     </mat-datepicker>
   </mat-form-field>
+
+  <br><br>
+  <div class="selezione_panni">
+    <div>
+      <p style="color:black;">PANTALONI</p>
+    </div>
+
+  </div>
+  <br><br>
+  <div (click)="insert(p.value)" class="product" *ngFor="let p of pantaloni_array">
+    <img class="little_icon" [src]="p.icon"/>
+    <p style="color:black;"><b>{{p.name}}</b></p>
+  </div> 

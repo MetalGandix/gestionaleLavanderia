@@ -30,7 +30,10 @@ export class ConsegnaCapiComponent implements OnInit {
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
   capiOfUser: ComplexCapiObject
+  pantaloni: Pantaloni
 
+  pantaloni_array = [{name:"Pantalone divisa", icon:"assets//images//pantalone_divisa.png", value: 1},{name:"Pantalone donna", icon:"", value: 2},
+  {name:"Pantalone solo stiro", icon:"", value: 3},{name:"Pantalone uomo", icon:"assets//images//jeans_uomo.png", value: 4},{name:"Pantaloni pelle", icon:"", value: 5},{name:"Tuta donna", icon:"", value: 6}]
 
   ngOnInit(){
     if(window.history.state.singleUser == undefined || window.history.state.singleUser == null){
@@ -39,6 +42,10 @@ export class ConsegnaCapiComponent implements OnInit {
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
     console.log(this.capiOfUser)
+  }
+
+  insertPantaloni(){
+    this.pantaloni.pantaloneDivisa
   }
 
   insertIntoUser(abiti: Abiti, camicie: Camicie, cappelli: Cappelli, giaccheEGiacconi: GiaccheEGiacconi, gonne: Gonne, maglie: Maglie, pantaloni: Pantaloni, pigiamaEVestaglie: PigiamaEVestaglie, scarpe: Scarpe, tappeti: Tappeti, tende: Tende, trapunteEPiumoni: TrapunteEPiumoni, varie: Varie) {
@@ -84,4 +91,7 @@ export class ConsegnaCapiComponent implements OnInit {
     this.capiService.insertDressForUser(this.capiToAdd).subscribe()
   }
 
+  insert(number){
+    
+  }
 }
