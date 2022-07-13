@@ -3,10 +3,10 @@ import { User } from "../user"
 export class Pantaloni {
     id: number
     pantaloniUtente: User;
-    pantaloneDivisa: string;
-    pantaloneDonna: string;
-    pantaloneSoloStiro: string;
-    pantaloneUomo: string;
-    pantalonePelle: string;
-    tutaDonna: string;
+    pantaloneDivisa: number = 0;
+    pantaloneDonna: number = 0;
+    pantaloneSoloStiro: number = 0;
+    pantaloneUomo: number = 0;
+    pantalonePelle: number = 0;
+    tutaDonna: number = 0;
 }

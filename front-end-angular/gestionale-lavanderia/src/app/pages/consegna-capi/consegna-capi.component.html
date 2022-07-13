@@ -23,7 +23,13 @@
 
   </div>
   <br><br>
+  <div class="container_vestiti">
   <div (click)="insert(p.value)" class="product" *ngFor="let p of pantaloni_array">
     <img class="little_icon" [src]="p.icon"/>
     <p style="color:black;"><b>{{p.name}}</b></p>
   </div> 
+
+  <button (click)="sendTest()">CLICCAMI PER INVIARE</button>
+
+</div>
+

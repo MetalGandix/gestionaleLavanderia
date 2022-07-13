@@ -30,7 +30,7 @@ export class ConsegnaCapiComponent implements OnInit {
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
   capiOfUser: ComplexCapiObject
-  pantaloni: Pantaloni
+  pantaloni: Pantaloni = new Pantaloni()
 
   pantaloni_array = [{name:"Pantalone divisa", icon:"assets//images//pantalone_divisa.png", value: 1},{name:"Pantalone donna", icon:"", value: 2},
   {name:"Pantalone solo stiro", icon:"", value: 3},{name:"Pantalone uomo", icon:"assets//images//jeans_uomo.png", value: 4},{name:"Pantaloni pelle", icon:"", value: 5},{name:"Tuta donna", icon:"", value: 6}]
@@ -91,7 +91,31 @@ export class ConsegnaCapiComponent implements OnInit {
     this.capiService.insertDressForUser(this.capiToAdd).subscribe()
   }
 
+  sendTest(){
+    this.capiToAdd.pantaloni = this.pantaloni
+    this.capiService.insertDressForUser(this.capiToAdd).subscribe()
+  }
+
   insert(number){
-    
+    if(number == 1){
+      this.pantaloni.pantaloneDivisa++
+    }
+    if(number == 2){
+      this.pantaloni.pantaloneDonna++
+    }
+    if(number == 3){
+      this.pantaloni.pantaloneSoloStiro++
+    }
+    if(number == 4){
+      this.pantaloni.pantaloneUomo++
+    }
+    if(number == 5){
+      this.pantaloni.pantalonePelle++
+    }
+    if(number == 6){
+      this.pantaloni.tutaDonna++
+    }
+    this.pantaloni.pantaloniUtente = this.singleUser
+    console.log(this.pantaloni)
   }
 }

@@ -23,65 +23,65 @@ public class Pantaloni {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DAOUser pantaloniUtente;
 
-    private String pantaloneDivisa;
+    private int pantaloneDivisa;
 
-    private String pantaloneDonna;
+    private int pantaloneDonna;
 
-    private String pantaloneSoloStiro;
+    private int pantaloneSoloStiro;
 
-    private String pantaloneUomo;
+    private int pantaloneUomo;
 
-    private String pantalonePelle;
+    private int pantalonePelle;
 
-    public String getPantaloneDivisa() {
+    public int getPantaloneDivisa() {
         return pantaloneDivisa;
     }
 
-    public void setPantaloneDivisa(String pantaloneDivisa) {
+    public void setPantaloneDivisa(int pantaloneDivisa) {
         this.pantaloneDivisa = pantaloneDivisa;
     }
 
-    public String getPantaloneDonna() {
+    public int getPantaloneDonna() {
         return pantaloneDonna;
     }
 
-    public void setPantaloneDonna(String pantaloneDonna) {
+    public void setPantaloneDonna(int pantaloneDonna) {
         this.pantaloneDonna = pantaloneDonna;
     }
 
-    public String getPantaloneSoloStiro() {
+    public int getPantaloneSoloStiro() {
         return pantaloneSoloStiro;
     }
 
-    public void setPantaloneSoloStiro(String pantaloneSoloStiro) {
+    public void setPantaloneSoloStiro(int pantaloneSoloStiro) {
         this.pantaloneSoloStiro = pantaloneSoloStiro;
     }
 
-    public String getPantaloneUomo() {
+    public int getPantaloneUomo() {
         return pantaloneUomo;
     }
 
-    public void setPantaloneUomo(String pantaloneUomo) {
+    public void setPantaloneUomo(int pantaloneUomo) {
         this.pantaloneUomo = pantaloneUomo;
     }
 
-    public String getPantalonePelle() {
+    public int getPantalonePelle() {
         return pantalonePelle;
     }
 
-    public void setPantalonePelle(String pantalonePelle) {
+    public void setPantalonePelle(int pantalonePelle) {
         this.pantalonePelle = pantalonePelle;
     }
 
-    public String getTutaDonna() {
+    public int getTutaDonna() {
         return tutaDonna;
     }
 
-    public void setTutaDonna(String tutaDonna) {
+    public void setTutaDonna(int tutaDonna) {
         this.tutaDonna = tutaDonna;
     }
 
-    private String tutaDonna;
+    private int tutaDonna;
 
     public DAOUser getPantaloniUtente() {
         return pantaloniUtente;
