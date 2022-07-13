@@ -130,7 +130,7 @@ export class ConsegnaCapiComponent implements OnInit {
 
   }
 
-  selectFromList(number){
+  selectFromList(number) {
     this.choiceMenuList = number
   }
 }

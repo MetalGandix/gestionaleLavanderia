@@ -40,9 +40,9 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  findUtenteSingolo(username: string){
+  findUtenteSingolo(username: string) {
     this.findCapiSingleUser(username)
-    this.serviceUser.findUtenteSingolo(username).subscribe(user=>{
+    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
       this.singleUser = user
     }).add(() => {
       // retrieve objects of logged user

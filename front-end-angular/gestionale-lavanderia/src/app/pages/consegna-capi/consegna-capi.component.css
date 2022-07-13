@@ -1,22 +1,22 @@
 .product {
-    width: 20%;
-    margin-right: 2%;
-    display: inline-block;
-    border: 1px solid black;
-    box-sizing: border-box;
-    text-align-last: center;
-    margin-top: 2%;
-  }
+  width: 20%;
+  margin-right: 2%;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+  text-align-last: center;
+  margin-top: 2%;
+}
 
 .little_icon {
   width: 130px;
   height: 130px;
 }
 
-.container_vestiti{
+.container_vestiti {
   width: 70%;
 }
 
-.flex-right-menu-dress{
+.flex-right-menu-dress {
   display: flex;
 }
