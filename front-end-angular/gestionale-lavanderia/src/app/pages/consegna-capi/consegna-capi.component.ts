@@ -127,7 +127,38 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   insertMaglie(number) {
-
+    if (number == 1) {
+      this.maglie.babyDol++
+    }
+    if (number == 2) {
+      this.maglie.cardigan++
+    }
+    if (number == 3) {
+      this.maglie.felpa++
+    }
+    if (number == 4) {
+      this.maglie.magliaBimbo++
+    }
+    if (number == 5) {
+      this.maglie.magliaDonna++
+    }
+    if (number == 6) {
+      this.maglie.magliaUomo++
+    }
+    if (number == 7) {
+      this.maglie.maglioneCotone++
+    }
+    if (number == 8) {
+      this.maglie.maglioneLana++
+    }
+    if (number == 9) {
+      this.maglie.tShirt++
+    }
+    if (number == 10) {
+      this.maglie.tShirtColorata++
+    }
+    this.maglie.magliaUtente = this.singleUser
+    console.log(this.maglie)
   }
 
   selectFromList(number) {
