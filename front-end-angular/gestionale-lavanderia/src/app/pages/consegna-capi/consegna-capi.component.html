@@ -46,6 +46,7 @@
   </div>
 </div>
 
-  <button (click)="insertIntoUser()">CLICCAMI PER INVIARE</button>
+<br><br>
+  <button *ngIf="choiceMenuList>0 && choiceMenuList<14" mat-raised-button color="basic" (click)="insertIntoUser()">CLICCAMI PER INVIARE</button>
 </div>
 </div>
