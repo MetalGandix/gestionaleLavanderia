@@ -14,9 +14,13 @@
 }
 
 .container_vestiti {
-  width: 70%;
+  width: 50%;
 }
 
 .flex-right-menu-dress {
   display: flex;
+}
+
+.stringArray{
+  margin-right: 2%;
 }

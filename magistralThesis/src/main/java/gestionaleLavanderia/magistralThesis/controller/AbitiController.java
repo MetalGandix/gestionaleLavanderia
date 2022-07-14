@@ -85,43 +85,43 @@ public class AbitiController {
 
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject){
-        if(capiObject.getAbiti() != null){
+        if(capiObject.getAbiti().getAbitiUtente() != null){
             abitiRepo.save(capiObject.getAbiti());
         }
-        if(capiObject.getCamicie() != null){
+        if(capiObject.getCamicie().getCamiciaUtente() != null){
             camicieRepo.save(capiObject.getCamicie());
         }
-        if(capiObject.getCappelli() != null){
+        if(capiObject.getCappelli().getCappelloUtente() != null){
             cappelliRepo.save(capiObject.getCappelli());
         }
-        if(capiObject.getGiaccheEGiacconi() != null){
+        if(capiObject.getGiaccheEGiacconi().getGiaccheEGiacconiUtente() != null){
             giaccheEGiacconiRepo.save(capiObject.getGiaccheEGiacconi());
         }
-        if(capiObject.getGonne() != null){
+        if(capiObject.getGonne().getGonnaUtente() != null){
             gonneRepo.save(capiObject.getGonne());
         }
-        if(capiObject.getMaglie() != null){
+        if(capiObject.getMaglie().getMagliaUtente() != null){
             maglieRepo.save(capiObject.getMaglie());
         }
-        if(capiObject.getPantaloni() != null){
+        if(capiObject.getPantaloni().getPantaloniUtente() != null){
             pantaloniRepo.save(capiObject.getPantaloni());
         }
-        if(capiObject.getPigiamaEVestaglie() != null){
+        if(capiObject.getPigiamaEVestaglie().getVestagliaUtente() != null){
             pigiamiEVestaglieRepo.save(capiObject.getPigiamaEVestaglie());
         }
-        if(capiObject.getScarpe() != null){
+        if(capiObject.getScarpe().getScarpeUtente() != null){
             scarpeRepo.save(capiObject.getScarpe());
         }
-        if(capiObject.getTappeti() != null){
+        if(capiObject.getTappeti().getTappetoUtente() != null){
             tappetiRepo.save(capiObject.getTappeti());
         }
-        if(capiObject.getTende() != null){
+        if(capiObject.getTende().getTendeUtente() != null){
             tendeRepo.save(capiObject.getTende());
         }
-        if(capiObject.getTrapunteEPiumoni() != null){
+        if(capiObject.getTrapunteEPiumoni().getTrapunteEPiumoniUtente() != null){
             trapunteEPiumoniRepo.save(capiObject.getTrapunteEPiumoni());
         }
-        if(capiObject.getVarie() != null){
+        if(capiObject.getVarie().getVarieUtente() != null){
             varieRepo.save(capiObject.getVarie());
         }
         return "Capi inseriti";  

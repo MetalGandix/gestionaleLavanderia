@@ -45,6 +45,7 @@ export class ConsegnaCapiComponent implements OnInit {
   trapunteEPiumoni: TrapunteEPiumoni = new TrapunteEPiumoni()
   varie: Varie = new Varie()
   choiceMenuList: number
+  selectedItems: string[] = []
 
   //Array
   principal_array = this.dressArray.dress_array
@@ -103,7 +104,7 @@ export class ConsegnaCapiComponent implements OnInit {
     this.capiService.insertDressForUser(this.capiToAdd).subscribe()
   }
 
-  insertPantaloni(number) {
+  insertPantaloni(number, name) {
     if (number == 1) {
       this.pantaloni.pantaloneDivisa++
     }
@@ -126,7 +127,7 @@ export class ConsegnaCapiComponent implements OnInit {
     console.log(this.pantaloni)
   }
 
-  insertMaglie(number) {
+  insertMaglie(number, name) {
     if (number == 1) {
       this.maglie.babyDol++
     }
@@ -158,6 +159,9 @@ export class ConsegnaCapiComponent implements OnInit {
       this.maglie.tShirtColorata++
     }
     this.maglie.magliaUtente = this.singleUser
+    if(!this.selectedItems.includes(name)){
+    this.selectedItems.push(name)
+    }
     console.log(this.maglie)
   }
 
