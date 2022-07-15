@@ -47,10 +47,20 @@ export class ConsegnaCapiComponent implements OnInit {
   choiceMenuList: number
   selectedItems: string[] = []
 
-  //Array
+  //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
   pantaloni_array = this.dressArray.pantaloni_array
   maglie_array = this.dressArray.maglie_array
+  varie_array = this.dressArray.varie_array
+  pigiami_array = this.dressArray.pigiami_array
+  scarpe_array = this.dressArray.scarpe_array
+  tappeti_array = this.dressArray.tappeti_array
+  tende_array = this.dressArray.tende_array
+  trapunteEPiumoni_array = this.dressArray.trapunteEPiumoni_array
+  giaccheEGiaccone_array = this.dressArray.giaccheEGiacconi_array
+  gonne_array = this.dressArray.gonne_array
+  camicie_array = this.dressArray.camicie_array
+  abiti_array = this.dressArray.abiti_array
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
