@@ -71,6 +71,232 @@ export class ConsegnaCapiComponent implements OnInit {
     console.log(this.capiOfUser)
   }
 
+  selectFromList(number) {
+    this.choiceMenuList = number
+  }
+
+  insertVarie(number: number, name) {
+    switch (number) {
+      case 1:
+        this.varie.accappatoi++
+        break;
+      case 2:
+        this.varie.accessori++
+        break;
+      case 3:
+        this.varie.bambolaStoffa++
+        break;
+      case 4:
+        this.varie.borsa++
+        break;
+      case 5:
+        this.varie.calzini++
+        break;
+      case 6:
+        this.varie.canottaUnisex++
+        break;
+      case 7:
+        this.varie.capoConRiporti++
+        break;
+      case 8:
+        this.varie.cinturaDiPelle++
+        break;
+      case 9:
+        this.varie.cinturaDiStoffa++
+        break;
+      case 10:
+        this.varie.copriDivano++
+        break;
+      case 11:
+        this.varie.copriPoltrona++
+        break;
+      case 12:
+        this.varie.copriSedia++
+        break;
+      case 13:
+        this.varie.doppioPetto++
+        break;
+      case 14:
+        this.varie.foulard++
+        break;
+      case 15:
+        this.varie.giccaPelle++
+        break;
+      case 16:
+        this.varie.giletConTasche++
+        break;
+      case 17:
+        this.varie.giletDiPelle++
+        break;
+      case 18:
+        this.varie.guantiLana++
+        break;
+      case 19:
+        this.varie.guantiPelle++
+        break;
+      case 20:
+        this.varie.guantiUomo++
+        break;
+      case 21:
+        this.varie.pigiamaBimbo++
+        break;
+      case 22:
+        this.varie.scarponcino++
+        break;
+      case 23:
+        this.varie.sciarpa++
+        break;
+      case 24:
+        this.varie.sciarpaBambino++
+        break;
+      case 25:
+        this.varie.sciarpaDiCotone++
+        break;
+      case 26:
+        this.varie.sciarpaDiSeta++
+        break;
+      case 27:
+        this.varie.tovagliaRettangolare++
+        break;
+      case 28:
+        this.varie.tovagliaRotonda++
+        break;
+      case 29:
+        this.varie.tutaSciBimbo++
+        break;
+      case 30:
+        this.varie.tutaSciAdulto++
+        break;
+    }
+    this.varie.varieUtente = this.singleUser
+    this.selectedItems.push(name)
+  }
+
+  insertPantaloni(number, name) {
+    switch (number) {
+      case 1:
+        this.pantaloni.pantaloneDivisa++
+        break;
+      case 2:
+        this.pantaloni.pantaloneDonna++
+        break;
+      case 3:
+        this.pantaloni.pantaloneSoloStiro++
+        break;
+      case 4:
+        this.pantaloni.pantaloneUomo++
+        break;
+      case 5:
+        this.pantaloni.pantalonePelle++
+        break;
+      case 6:
+        this.pantaloni.tutaDonna++
+        break;
+    }
+    this.pantaloni.pantaloniUtente = this.singleUser
+    console.log(this.pantaloni)
+  }
+
+  insertPigiami(number, name) {
+    switch (number) {
+      case 1:
+        this.pigiamaEVestaglie.vestaglia++
+        break;
+    }
+    this.pigiamaEVestaglie.vestagliaUtente = this.singleUser
+    console.log(this.pantaloni)
+  }
+
+  insertGonne(number, name) {
+    switch (number) {
+      case 1:
+        this.gonne.gonna++
+        break
+      case 2:
+        this.gonne.gonnaJeans++
+        break;
+      case 3:
+        this.gonne.gonnaPelle++
+        break;
+      case 4:
+        this.gonne.gonnaPieghe++
+        break;
+    }
+    this.gonne.gonnaUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
+  insertScarpe(number, name) {
+    switch (number) {
+      case 1:
+        this.scarpe.ciabatte++
+        break
+      case 2:
+        this.scarpe.clark++
+        break;
+      case 3:
+        this.scarpe.converse++
+        break;
+      case 4:
+        this.scarpe.hogan++
+        break;
+      case 5:
+        this.scarpe.nike++
+        break;
+      case 6:
+        this.scarpe.scarpeDaGinnastica++
+        break;
+      case 7:
+        this.scarpe.scarponcini++
+        break;
+      case 8:
+        this.scarpe.timberland++
+        break;
+    }
+    this.scarpe.scarpeUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
+  insertMaglie(number, name) {
+    switch (number) {
+      case 1:
+        this.maglie.babyDol++
+        break
+      case 2:
+        this.maglie.cardigan++
+        break;
+      case 3:
+        this.maglie.felpa++
+        break;
+      case 4:
+        this.maglie.magliaBimbo++
+        break;
+      case 5:
+        this.maglie.magliaDonna++
+        break;
+      case 6:
+        this.maglie.magliaUomo++
+        break;
+      case 7:
+        this.maglie.maglioneCotone++
+        break;
+      case 8:
+        this.maglie.maglioneLana++
+        break;
+      case 9:
+        this.maglie.tShirt++
+        break;
+      case 10:
+        this.maglie.tShirtColorata++
+        break;
+    }
+    this.maglie.magliaUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
   insertIntoUser() {
     if (this.abiti != null) {
       this.capiToAdd.abiti = this.abiti
@@ -114,68 +340,5 @@ export class ConsegnaCapiComponent implements OnInit {
     this.capiService.insertDressForUser(this.capiToAdd).subscribe()
   }
 
-  insertPantaloni(number, name) {
-    if (number == 1) {
-      this.pantaloni.pantaloneDivisa++
-    }
-    if (number == 2) {
-      this.pantaloni.pantaloneDonna++
-    }
-    if (number == 3) {
-      this.pantaloni.pantaloneSoloStiro++
-    }
-    if (number == 4) {
-      this.pantaloni.pantaloneUomo++
-    }
-    if (number == 5) {
-      this.pantaloni.pantalonePelle++
-    }
-    if (number == 6) {
-      this.pantaloni.tutaDonna++
-    }
-    this.pantaloni.pantaloniUtente = this.singleUser
-    console.log(this.pantaloni)
-  }
 
-  insertMaglie(number, name) {
-    if (number == 1) {
-      this.maglie.babyDol++
-    }
-    if (number == 2) {
-      this.maglie.cardigan++
-    }
-    if (number == 3) {
-      this.maglie.felpa++
-    }
-    if (number == 4) {
-      this.maglie.magliaBimbo++
-    }
-    if (number == 5) {
-      this.maglie.magliaDonna++
-    }
-    if (number == 6) {
-      this.maglie.magliaUomo++
-    }
-    if (number == 7) {
-      this.maglie.maglioneCotone++
-    }
-    if (number == 8) {
-      this.maglie.maglioneLana++
-    }
-    if (number == 9) {
-      this.maglie.tShirt++
-    }
-    if (number == 10) {
-      this.maglie.tShirtColorata++
-    }
-    this.maglie.magliaUtente = this.singleUser
-    if(!this.selectedItems.includes(name)){
-    this.selectedItems.push(name)
-    }
-    console.log(this.maglie)
-  }
-
-  selectFromList(number) {
-    this.choiceMenuList = number
-  }
 }

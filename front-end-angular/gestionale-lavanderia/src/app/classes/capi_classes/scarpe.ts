@@ -11,4 +11,5 @@ export class Scarpe {
     scarponcini: number = 0;
     impermeabili: number = 0;
     scarpeUtente: User;
+    timberland: number = 0;
 }
