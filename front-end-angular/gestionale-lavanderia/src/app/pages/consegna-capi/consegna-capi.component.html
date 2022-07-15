@@ -47,6 +47,41 @@
       </div>
     </div>
 
+    <div *ngIf="choiceMenuList == 3">
+      <div (click)="insertCamicie(dress.value, dress.name)" class="product" *ngFor="let dress of camicie_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 4">
+      <div (click)="insertCappelli(dress.value, dress.name)" class="product" *ngFor="let dress of cappelli_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 5">
+      <div (click)="insertAbiti(dress.value, dress.name)" class="product" *ngFor="let dress of abiti_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 6">
+      <div (click)="insertGiaccheEGiacconi(dress.value, dress.name)" class="product" *ngFor="let dress of giaccheEGiaccone_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 7">
+      <div (click)="insertTrapunteEPiumoni(dress.value, dress.name)" class="product" *ngFor="let dress of trapunteEPiumoni_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
     <div *ngIf="choiceMenuList == 8">
       <div (click)="insertMaglie(dress.value, dress.name)" class="product" *ngFor="let dress of maglie_array">
         <img class="little_icon" [src]="dress.icon" />
@@ -63,6 +98,20 @@
 
     <div *ngIf="choiceMenuList == 10">
       <div (click)="insertScarpe(dress.value, dress.name)" class="product" *ngFor="let dress of scarpe_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 11">
+      <div (click)="insertTappeti(dress.value, dress.name)" class="product" *ngFor="let dress of tappeti_array">
+        <img class="little_icon" [src]="dress.icon" />
+        <p style="color:black;"><b>{{dress.name}}</b></p>
+      </div>
+    </div>
+
+    <div *ngIf="choiceMenuList == 12">
+      <div (click)="insertTende(dress.value, dress.name)" class="product" *ngFor="let dress of tende_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>

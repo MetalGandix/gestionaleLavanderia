@@ -6,7 +6,7 @@ export class TrapunteEPiumoni {
     coperta2PiazzeLana: number = 0;
     copertaBambino: number = 0;
     copertaUncinetto: number = 0;
-    prematerasso: number = 0;
+    coprimaterasso: number = 0;
     cuscinoPiuma: number = 0;
     cuscinoSintetico: number = 0;
     federe: number = 0;

@@ -46,6 +46,7 @@ export class ConsegnaCapiComponent implements OnInit {
   varie: Varie = new Varie()
   choiceMenuList: number
   selectedItems: string[] = []
+  numberClicked: number[] = []
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -61,6 +62,7 @@ export class ConsegnaCapiComponent implements OnInit {
   gonne_array = this.dressArray.gonne_array
   camicie_array = this.dressArray.camicie_array
   abiti_array = this.dressArray.abiti_array
+  cappelli_array = this.dressArray.cappelli_array
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -73,6 +75,97 @@ export class ConsegnaCapiComponent implements OnInit {
 
   selectFromList(number) {
     this.choiceMenuList = number
+  }
+
+  insertGiaccheEGiacconi(number: number, name) {
+    switch (number) {
+      case 1:
+        this.giaccheEGiacconi.cappottoBimbo++
+        break;
+      case 2:
+        this.giaccheEGiacconi.cappottoDonna++
+        break;
+      case 3:
+        this.giaccheEGiacconi.cappottoUnisex++
+        break;
+      case 4:
+        this.giaccheEGiacconi.cappottoUomo++
+        break;
+      case 5:
+        this.giaccheEGiacconi.giaccaDonna++
+        break;
+      case 6:
+        this.giaccheEGiacconi.giaccaUomo++
+        break;
+      case 7:
+        this.giaccheEGiacconi.giacconeCortoDonna++
+        break;
+      case 8:
+        this.giaccheEGiacconi.giacconeCortoUomo++
+        break;
+      case 9:
+        this.giaccheEGiacconi.giacconeCotone++
+        break;
+      case 10:
+        this.giaccheEGiacconi.giacconeLungoDonna++
+        break;
+      case 11:
+        this.giaccheEGiacconi.giacconeLungoUomo++
+        break;
+      case 12:
+        this.giaccheEGiacconi.giacconeUnisex++
+        break;
+      case 13:
+        this.giaccheEGiacconi.giubbetto++
+        break;
+      case 14:
+        this.giaccheEGiacconi.giubbettoJeans++
+        break;
+      case 15:
+        this.giaccheEGiacconi.giubbinoEstivoUnisex++
+        break;
+      case 16:
+        this.giaccheEGiacconi.impermeabileUnisex++
+        break;
+      case 17:
+        this.giaccheEGiacconi.internoGiaccone++
+        break;
+      case 18:
+        this.giaccheEGiacconi.montone++
+        break;
+      case 19:
+        this.giaccheEGiacconi.pellicciaSintetica++
+        break;
+      case 20:
+        this.giaccheEGiacconi.piumino7_8Donna++
+        break;
+      case 21:
+        this.giaccheEGiacconi.piumino7_8Uomo++
+        break;
+      case 22:
+        this.giaccheEGiacconi.piuminoCortoDonna++
+        break;
+      case 23:
+        this.giaccheEGiacconi.piuminoCortoUomo++
+        break;
+      case 24:
+        this.giaccheEGiacconi.piuminoLungoDonna++
+        break;
+      case 25:
+        this.giaccheEGiacconi.piuminoLungoUomo++
+        break;
+      case 26:
+        this.giaccheEGiacconi.soprabito++
+        break;
+      case 27:
+        this.giaccheEGiacconi.tranch++
+        break;
+      case 28:
+        this.giaccheEGiacconi.woolrich++
+        break;
+    }
+    this.giaccheEGiacconi.giaccheEGiacconiUtente = this.singleUser
+    this.selectedItems.push(name)
   }
 
   insertVarie(number: number, name) {
@@ -194,7 +287,6 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.pantaloni.pantaloniUtente = this.singleUser
-    console.log(this.pantaloni)
   }
 
   insertPigiami(number, name) {
@@ -204,7 +296,6 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.pigiamaEVestaglie.vestagliaUtente = this.singleUser
-    console.log(this.pantaloni)
   }
 
   insertGonne(number, name) {
@@ -223,8 +314,54 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.gonne.gonnaUtente = this.singleUser
+    if (!this.numberClicked.includes(number)) {
+      this.numberClicked.push(number)
+    } else {
+    }
+    console.log(this.numberClicked)
     this.selectedItems.push(name)
-    console.log(this.maglie)
+  }
+
+  insertCappelli(number, name) {
+    switch (number) {
+      case 1:
+        this.cappelli.berretto++
+        break
+      case 2:
+        this.cappelli.cappello++
+        break;
+      case 3:
+        this.cappelli.cappelloPelle++
+        break;
+    }
+    this.cappelli.cappelloUtente = this.singleUser
+    this.selectedItems.push(name)
+  }
+
+  insertTappeti(number, name) {
+    switch (number) {
+      case 1:
+        this.tappeti.tappeto++
+        break
+    }
+    this.tappeti.tappetoUtente = this.singleUser
+    this.selectedItems.push(name)
+  }
+
+  insertTende(number, name) {
+    switch (number) {
+      case 1:
+        this.tende.calateTenda++
+        break
+      case 2:
+        this.tende.mantovana++
+        break
+      case 3:
+        this.tende.tendaCampeggio++
+        break
+    }
+    this.tende.tendeUtente = this.singleUser
+    this.selectedItems.push(name)
   }
 
   insertScarpe(number, name) {
@@ -255,6 +392,159 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.scarpe.scarpeUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
+  insertCamicie(number, name) {
+    switch (number) {
+      case 1:
+        this.camicie.camiciaBimbo++
+        break
+      case 2:
+        this.camicie.camiciaCerimonia++
+        break;
+      case 3:
+        this.camicie.camiciaDonna++
+        break;
+      case 4:
+        this.camicie.camiciaJeans++
+        break;
+      case 5:
+        this.camicie.camiciaPelle++
+        break;
+      case 6:
+        this.camicie.camiciaPiegata++
+        break;
+      case 7:
+        this.camicie.camiciaSetaDonna++
+        break;
+      case 8:
+        this.camicie.camiciaSetaUomo++
+        break;
+      case 9:
+        this.camicie.camiciaSoloStiro++
+        break;
+      case 10:
+        this.camicie.camiciaUomo++
+        break;
+    }
+    this.camicie.camiciaUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
+  insertTrapunteEPiumoni(number, name) {
+    switch (number) {
+      case 1:
+        this.trapunteEPiumoni.coperta1PiazzaLana++
+        break
+      case 2:
+        this.trapunteEPiumoni.coperta2PiazzeLana++
+        break;
+      case 3:
+        this.trapunteEPiumoni.copertaBambino++
+        break;
+      case 4:
+        this.trapunteEPiumoni.copertaUncinetto++
+        break;
+      case 5:
+        this.trapunteEPiumoni.coprimaterasso++
+        break;
+      case 6:
+        this.trapunteEPiumoni.cuscinoPiuma++
+        break;
+      case 7:
+        this.trapunteEPiumoni.cuscinoSintetico++
+        break;
+      case 8:
+        this.trapunteEPiumoni.federe++
+        break;
+      case 9:
+        this.trapunteEPiumoni.lenzuola1Piazza++
+        break;
+      case 10:
+        this.trapunteEPiumoni.leunzuolo2Piazze++
+        break;
+      case 11:
+        this.trapunteEPiumoni.merinos2Piazze++
+        break;
+      case 12:
+        this.trapunteEPiumoni.piumone1PiazzaOca++
+        break;
+      case 13:
+        this.trapunteEPiumoni.piumone1PSintetico++
+        break;
+      case 14:
+        this.trapunteEPiumoni.piumone2PiazzeOca++
+        break;
+      case 15:
+        this.trapunteEPiumoni.piumone2PSintetico++
+        break;
+      case 16:
+        this.trapunteEPiumoni.saccoAPelo1Piazza++
+        break;
+      case 17:
+        this.trapunteEPiumoni.saccoAPelo2Piazze++
+        break;
+      case 18:
+        this.trapunteEPiumoni.trapunta1Piazza++
+        break;
+      case 19:
+        this.trapunteEPiumoni.trapunta2Piazze++
+        break;
+    }
+    this.trapunteEPiumoni.trapunteEPiumoniUtente = this.singleUser
+    this.selectedItems.push(name)
+    console.log(this.maglie)
+  }
+
+  insertAbiti(number, name) {
+    switch (number) {
+      case 1:
+        this.abiti.abitoDonna
+        break
+      case 2:
+        this.abiti.abitoDonna++
+        break;
+      case 3:
+        this.abiti.abitoLungo++
+        break;
+      case 4:
+        this.abiti.abitoPizzo++
+        break;
+      case 5:
+        this.abiti.abitoSposa++
+        break;
+      case 6:
+        this.abiti.abitoUomo++
+        break;
+      case 7:
+        this.abiti.cravatta++
+        break;
+      case 8:
+        this.abiti.divisaPoliziaLocale++
+        break;
+      case 9:
+        this.abiti.divisaCarabiniere++
+        break;
+      case 10:
+        this.abiti.divisaFinanza++
+        break;
+      case 11:
+        this.abiti.divisaPolizia++
+        break;
+      case 12:
+        this.abiti.giletUomo++
+        break;
+      case 13:
+        this.abiti.tailleurGonna++
+        break;
+      case 14:
+        this.abiti.tailleurPantaloni++
+        break;
+    }
+    this.abiti.abitiUtente = this.singleUser
     this.selectedItems.push(name)
     console.log(this.maglie)
   }

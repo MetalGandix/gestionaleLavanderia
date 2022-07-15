@@ -28,7 +28,7 @@ public class TrapunteEPiumoni {
     private int copertaUncinetto;
 
     @Column
-    private int prematerasso;
+    private int coprimaterasso;
 
     @Column
     private int cuscinoPiuma;
@@ -121,12 +121,12 @@ public class TrapunteEPiumoni {
         this.copertaUncinetto = copertaUncinetto;
     }
 
-    public int getPrematerasso() {
-        return prematerasso;
+    public int getCoprimaterasso() {
+        return coprimaterasso;
     }
 
-    public void setPrematerasso(int prematerasso) {
-        this.prematerasso = prematerasso;
+    public void setCoprimaterasso(int coprimaterasso) {
+        this.coprimaterasso = coprimaterasso;
     }
 
     public int getCuscinoPiuma() {

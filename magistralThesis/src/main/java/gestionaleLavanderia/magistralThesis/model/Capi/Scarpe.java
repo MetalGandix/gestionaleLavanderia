@@ -41,12 +41,22 @@ public class Scarpe {
 
     @Column
     private int impermeabili;
-    
+
+    @Column
+    private int timberland;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DAOUser scarpeUtente;
+    
+    public int getTimberland() {
+        return timberland;
+    }
 
+    public void setTimberland(int timberland) {
+        this.timberland = timberland;
+    }
     public int getCiabatte() {
         return ciabatte;
     }

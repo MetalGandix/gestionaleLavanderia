@@ -44,7 +44,7 @@ export class DressArrayService {
   public gonne_array = [{ name: "Gonna", icon: "", value: 1 }, { name: "Gonna jeans", icon: "", value: 2 }, { name: "Gonna pelle", icon: "", value: 3 }, { name: "Gonna pieghe", icon: "", value: 4 }]  
 
   //Camicie Array
-  public camicie_array = [{ name: "Camicia bimbo", icon: "", value: 1 }, { name: "Camicia cerimonia", icon: "", value: 2 }, { name: "Camicia donna", icon: "", value: 3 }, { name: "Camicia jeans", icon: "", value: 4 }, { name: "Camicia pelle", icon: "", value: 5 }, { name: "Camicia piegata", icon: "", value: 6 }, { name: "Camicia seta", icon: "", value: 7 }, { name: "Camicia seta uomo", icon: "", value: 8 }, { name: "Camicia solo stiro", icon: "", value: 9 }, { name: "Camicia uomo", icon: "", value: 10 }]
+  public camicie_array = [{ name: "Camicia bimbo", icon: "", value: 1 }, { name: "Camicia cerimonia", icon: "", value: 2 }, { name: "Camicia donna", icon: "", value: 3 }, { name: "Camicia jeans", icon: "", value: 4 }, { name: "Camicia pelle", icon: "", value: 5 }, { name: "Camicia piegata", icon: "", value: 6 }, { name: "Camicia seta donna", icon: "", value: 7 }, { name: "Camicia seta uomo", icon: "", value: 8 }, { name: "Camicia solo stiro", icon: "", value: 9 }, { name: "Camicia uomo", icon: "", value: 10 }]
 
   //Cappelli Array
   public cappelli_array = [{ name: "Berretto", icon: "", value: 1 }, { name: "Cappello", icon: "", value: 2 }, { name: "Cappello pelle", icon: "", value: 3 }]
