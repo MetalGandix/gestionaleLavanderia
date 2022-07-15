@@ -123,7 +123,7 @@ border-color: black; border-width: thin;" appearance="fill" class="example-form-
       (click)="insertIntoUser()">CLICCAMI PER INVIARE</button>
   </div>
 
-  <div class="stringArray" *ngFor="let string of selectedItems">
+  <div class="stringArray" *ngFor="let string of selectedItems; index as i">
     <p style="color:black;">{{string}}</p>
   </div>
 </div>

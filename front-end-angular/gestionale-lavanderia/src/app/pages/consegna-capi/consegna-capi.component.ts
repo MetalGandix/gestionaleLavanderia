@@ -47,6 +47,7 @@ export class ConsegnaCapiComponent implements OnInit {
   choiceMenuList: number
   selectedItems: string[] = []
   numberClicked: number[] = []
+  extractedString: string
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -166,6 +167,7 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.giaccheEGiacconi.giaccheEGiacconiUtente = this.singleUser
     this.selectedItems.push(name)
+    console.log(this.selectedItems)
   }
 
   insertVarie(number: number, name) {
@@ -287,6 +289,7 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.pantaloni.pantaloniUtente = this.singleUser
+    this.selectedItems.push(name)
   }
 
   insertPigiami(number, name) {
@@ -296,6 +299,7 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.pigiamaEVestaglie.vestagliaUtente = this.singleUser
+    this.selectedItems.push(name)
   }
 
   insertGonne(number, name) {
