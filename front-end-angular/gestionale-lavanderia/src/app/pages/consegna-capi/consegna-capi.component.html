@@ -1,11 +1,11 @@
 <div class="container">
-  <p style="color:black;">Aggiungi dei capi all'utente: {{singleUser.username}}</p>
+  <p style="color:black; font-size: larger;">Aggiungi dei capi all'utente: <b>{{singleUser.username}}</b></p>
 </div>
 
-<mat-form-field appearance="fill" class="example-form-field">
+<mat-form-field style="border-style: ridge;
+border-color: black; border-width: thin;" appearance="fill" class="example-form-field">
   <mat-label style="color: black">Scrivi o scegli una data</mat-label>
   <input matInput [matDatepicker]="datepicker" style="color: black">
-  <mat-hint style="color: black">Giorni/Mesi/Anni</mat-hint>
   <mat-datepicker-toggle matSuffix [for]="datepicker" style="color: black"></mat-datepicker-toggle>
   <mat-datepicker #datepicker>
     <mat-datepicker-actions>
@@ -18,21 +18,15 @@
 <br><br>
 
 <div class="flex-right-menu-dress">
-  <mat-selection-list #shoes [multiple]="false">
+  <mat-selection-list style="margin-right: 1%;" #shoes [multiple]="false">
     <mat-list-option (click)="selectFromList(choice.value)" *ngFor="let choice of principal_array"
       [value]="choice.value">
       <p style="color:black;">{{choice.name}}</p>
     </mat-list-option>
   </mat-selection-list>
 
-  <p>
-    Option selected: {{shoes.selectedOptions.selected[0]?.value}}
-  </p>
-
-
   <br><br>
   <div class="container_vestiti">
-
     <div *ngIf="choiceMenuList == 1">
       <div (click)="insertPantaloni(dress.value, dress.name)" class="product" *ngFor="let dress of pantaloni_array">
         <img class="little_icon" [src]="dress.icon" />
