@@ -1,3 +1,5 @@
+<p style="color:black; text-align-last: center; font-size: x-large">AGGIUNGI CLIENTE ALLA PIATTAFORMA</p>
+
 <div class="container">
     <form method="post" autocomplete="on">
         <!--First name-->
@@ -25,6 +27,70 @@
         </div>
         <!--Second name-->
 
+        <div class="box">
+            <label for="indirizzo" class="fl fontLabel"> Indirizzo: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="indirizzo" placeholder="indirizzo" class="textBox" [(ngModel)]="indirizzo">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+
+        <div class="box">
+            <label for="codiceFiscale" class="fl fontLabel"> Codice fiscale: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="codiceFiscale" placeholder="Codice fiscale" class="textBox" [(ngModel)]="codiceFiscale">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="presentatoDa" class="fl fontLabel"> presentato da: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="presentatoDa" placeholder="presentato da:" class="textBox" [(ngModel)]="presentatoDa">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="Cap" class="fl fontLabel"> Cap: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="presentatoDa" placeholder="Cap" class="textBox" [(ngModel)]="cap">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="Cap" class="fl fontLabel"> Città: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="Citta" placeholder="Città di residenza" class="textBox" [(ngModel)]="citta">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="provincia" class="fl fontLabel"> Provincia: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="indirizzo" placeholder="Provincia di residenza" class="textBox" [(ngModel)]="provincia">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="regioneSociale" class="fl fontLabel"> Regione: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="regioneSociale" placeholder="Regione" class="textBox" [(ngModel)]="regioneSociale">
+            </div>
+            <div class="clr"></div>
+        </div>
+
 
         <!---Phone No.------>
         <div class="box">
@@ -47,6 +113,24 @@
             <div class="clr"></div>
         </div>
         <!--Email ID----->
+
+        <div class="box">
+            <label for="numeroCard" class="fl fontLabel">Numero card: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="regioneSociale" placeholder="Numero card" class="textBox" [(ngModel)]="numeroCard">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label for="scontoCard" class="fl fontLabel"> Sconto card: </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="regioneSociale" placeholder="scontoCard" class="textBox" [(ngModel)]="scontoCard">
+            </div>
+            <div class="clr"></div>
+        </div>
 
         <!---Gender----->
         <div class="box radio">
