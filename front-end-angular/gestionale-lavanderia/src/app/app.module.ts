@@ -29,7 +29,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FindUserComponent } from './pages/find-user/find-user.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AddUserComponent } from './pages/add-user/add-user.component'; 
+import { AddUserComponent } from './pages/add-user/add-user.component';
+import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component'; 
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
     FattureComponent,
     FindUserComponent,
     AddUserComponent,
+    MostraCapiComponent,
   ],
   imports: [
     BrowserModule,

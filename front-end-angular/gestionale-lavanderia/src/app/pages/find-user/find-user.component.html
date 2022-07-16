@@ -1,5 +1,4 @@
 <p style="color: black">Cerca qua l'utente:</p>
-
 <input [(ngModel)]="userSearched"> 
 <button (click)="findUserLike()">CERCA</button>
 <button (click)="removeFilter()">RIMUOVI FILTRO</button>
@@ -25,10 +24,10 @@
                     <p style="color:black;">a</p>
                 </td>
                 <td style="text-align-last: center;">
-                    <button (click)="findCapiSingleUser(list.username)">Vedi capi</button>
+                    <button (click)="goToMostraCapi(list.username)">Vedi capi</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button (click)="findUtenteSingolo(list.username)">Aggiungi capi</button>
+                    <button (click)="goToAggiungiCapi(list.username)">Aggiungi capi</button>
                 </td>
                 <td style="text-align-last: center;">
                     <button (click)="deleteUser(list.username)">Rimuovi questo utente</button>

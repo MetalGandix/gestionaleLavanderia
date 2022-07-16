@@ -47,19 +47,25 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  findUtenteSingolo(username: string) {
+  goToAggiungiCapi(username: string) {
     this.findCapiSingleUser(username)
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {
       this.singleUser = user
     }).add(() => {
-      // retrieve objects of logged user
-      this.goToConsegnaCapi()
+      this.router.navigate(["/consegna-capi"], {
+        state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
+      })
     })
   }
 
-  goToConsegnaCapi() {
-    this.router.navigate(["/consegna-capi"], {
-      state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
+  goToMostraCapi(username: string) {
+    this.findCapiSingleUser(username)
+    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+      this.singleUser = user
+    }).add(() => {
+      this.router.navigate(["/mostra-capi"], {
+        state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
+        })
     })
   }
 
