@@ -24,7 +24,13 @@ export class FindUserComponent implements OnInit {
 
   ngOnInit() {
     this.serviceUser.findAllUser().subscribe(lista => {
-      this.userList = lista
+      this.userFiltredList = lista
+    })
+  }
+
+  removeFilter(){
+    this.serviceUser.findAllUser().subscribe(lista => {
+      this.userFiltredList = lista
     })
   }
 
@@ -63,6 +69,7 @@ export class FindUserComponent implements OnInit {
         panelClass: ['blue-snackbar']
       })._dismissAfter(4000)
     )
+    this.findUserLike()
   }
 
 }

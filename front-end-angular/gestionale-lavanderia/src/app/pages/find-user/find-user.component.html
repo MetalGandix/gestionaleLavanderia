@@ -1,6 +1,8 @@
 <p style="color: black">Cerca qua l'utente:</p>
 
-<input [(ngModel)]="userSearched"> <button (click)="findUserLike()">CERCA</button>
+<input [(ngModel)]="userSearched"> 
+<button (click)="findUserLike()">CERCA</button>
+<button (click)="removeFilter()">RIMUOVI FILTRO</button>
 <br><br>
 <div class="found_users">
     <p style="color: black">Utenti trovati:</p>
