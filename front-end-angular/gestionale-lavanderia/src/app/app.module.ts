@@ -27,7 +27,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FindUserComponent } from './pages/find-user/find-user.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddUserComponent } from './pages/add-user/add-user.component'; 
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import {MatListModule} from '@angular/material/list';
     StatisticheComponent,
     FattureComponent,
     FindUserComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import {MatListModule} from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Abiti } from 'src/app/classes/capi_classes/abiti';
 import { Camicie } from 'src/app/classes/capi_classes/camicie';
@@ -26,7 +27,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ConsegnaCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private dressArray: DressArrayService) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private dressArray: DressArrayService, private _snackBar: MatSnackBar) { }
 
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
@@ -48,6 +49,7 @@ export class ConsegnaCapiComponent implements OnInit {
   selectedItems: string[] = []
   numberClicked: number[] = []
   extractedString: string
+  arrayProvvisorio: { name: string, icon: string, value: number }[]
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -72,6 +74,10 @@ export class ConsegnaCapiComponent implements OnInit {
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
     console.log(this.capiOfUser)
+  }
+
+  onPageChange($event) {
+    this.arrayProvvisorio = this.varie_array.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
   }
 
   selectFromList(number) {
@@ -631,7 +637,11 @@ export class ConsegnaCapiComponent implements OnInit {
     if (this.varie != null) {
       this.capiToAdd.varie = this.varie
     }
-    this.capiService.insertDressForUser(this.capiToAdd).subscribe()
+    this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
+      this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
+        panelClass: ['blue-snackbar']
+      })._dismissAfter(1000000)
+    )
   }
 
 

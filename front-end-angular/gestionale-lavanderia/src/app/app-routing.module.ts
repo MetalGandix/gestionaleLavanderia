@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 import { ConsegnaCapiComponent } from './pages/consegna-capi/consegna-capi.component';
 import { FattureComponent } from './pages/fatture/fatture.component';
 import { FindUserComponent } from './pages/find-user/find-user.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'statistiche', component: StatisticheComponent },
   { path: 'fatture', component: FattureComponent },
   { path: 'find-user', component: FindUserComponent },
+  { path: 'add-user', component: AddUserComponent },
 ];
 
 @NgModule({

@@ -117,10 +117,18 @@ border-color: black; border-width: thin;" appearance="fill" class="example-form-
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
+    <br><br>
+
+    <!-- <mat-paginator [length]="varie_array.length"
+              [pageSize]="16"
+              (page)="onPageChange($event)"
+              [pageSizeOptions]="[16]"
+              aria-label="Select page">
+    </mat-paginator> -->
 
     <br><br>
     <button *ngIf="choiceMenuList>0 && choiceMenuList<14" mat-raised-button color="basic"
-      (click)="insertIntoUser()">CLICCAMI PER INVIARE</button>
+      (click)="insertIntoUser()">Invia</button>
   </div>
 
   <div class="stringArray" *ngFor="let string of selectedItems; index as i">
