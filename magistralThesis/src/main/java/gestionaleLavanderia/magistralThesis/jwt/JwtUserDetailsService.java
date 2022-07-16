@@ -5,7 +5,6 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -48,9 +47,6 @@ public class JwtUserDetailsService implements UserDetailsService {
 	//role based
 	private Set<GrantedAuthority> getAuthority(DAOUser user) { //Prende i ruoli
         Set<GrantedAuthority> authorities = new HashSet<>();
-		user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
-		});
 		return authorities;
 	}
 

@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +27,11 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
 
-    @PostMapping("/user")
+    @PostMapping("/registerUser")
     String addUser(@RequestBody DAOUser user){
+        if(user.getPassword().length() != 0){
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
+        }
         userRepository.save(user);
         return "Utente aggiunto con successo!!";
     }
@@ -60,5 +63,11 @@ public class UserController {
     @PutMapping("/cambiaUtente/{usernameid}")
     public DAOUser cambiaUtente(Authentication a, @RequestBody DAOUser username) {
         return (DAOUser) userRepository.save(username);
+    }
+
+    @DeleteMapping("/deleteUser/{username}")
+    public String deleteUser(Authentication a, @PathVariable String username){
+        userRepository.delete(userRepository.findByUsername(username));        
+        return "Utente eliminato ";
     }
 }

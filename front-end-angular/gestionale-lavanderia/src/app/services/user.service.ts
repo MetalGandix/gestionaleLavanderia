@@ -25,4 +25,18 @@ export class UserService {
     return this.http.get<User[]>(this.globalVariables.url + "getSpecificUsers/" + username)
   }
 
+  public existUser(username: string) {
+    return this.http.get<boolean>(this.globalVariables.url + "existUser/"+ username);
+  }
+
+  public saveUser(user: User){
+    return this.http.post<User>(this.globalVariables.url + "registerUser", user);
+  }
+
+  public deleteUser(username: string){
+    return this.http.delete<string>(this.globalVariables.url + "deleteUser/" + username);
+  }
+
+
+
 }

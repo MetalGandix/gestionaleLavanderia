@@ -640,7 +640,7 @@ export class ConsegnaCapiComponent implements OnInit {
     this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
       this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
-      })._dismissAfter(1000000)
+      })._dismissAfter(4000)
     )
   }
 

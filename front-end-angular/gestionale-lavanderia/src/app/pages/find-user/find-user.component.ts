@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
 
   userList: User[] = []
   userFiltredList: User[] = []
@@ -54,6 +55,14 @@ export class FindUserComponent implements OnInit {
     this.router.navigate(["/consegna-capi"], {
       state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
     })
+  }
+
+  deleteUser(username: string){
+    this.serviceUser.deleteUser(username).subscribe().add(
+      this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
+        panelClass: ['blue-snackbar']
+      })._dismissAfter(4000)
+    )
   }
 
 }
