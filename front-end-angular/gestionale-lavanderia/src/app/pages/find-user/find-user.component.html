@@ -1,5 +1,5 @@
 <p style="color: black">Cerca qua l'utente:</p>
-<input [(ngModel)]="userSearched"> 
+<input [(ngModel)]="userSearched">
 <button (click)="findUserLike()">CERCA</button>
 <button (click)="removeFilter()">RIMUOVI FILTRO</button>
 <br><br>
@@ -18,7 +18,9 @@
         <tbody>
             <tr style="vertical-align: middle; margin-right: 3%;" *ngFor="let list of userFiltredList">
                 <td>
-                    <p style="color:black;">{{list.username}}</p>
+                    <p style="color:black;">{{list.username}}
+                        <button mat-raised-button (click)="openDialog()">Open dialog without animation</button>
+                    </p>
                 </td>
                 <td>
                     <p style="color:black;">a</p>

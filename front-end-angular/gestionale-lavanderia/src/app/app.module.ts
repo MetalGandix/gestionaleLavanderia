@@ -30,7 +30,10 @@ import { FindUserComponent } from './pages/find-user/find-user.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddUserComponent } from './pages/add-user/add-user.component';
-import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component'; 
+import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserDialogComponent } from './pages/find-user/user-dialog/user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
     FindUserComponent,
     AddUserComponent,
     MostraCapiComponent,
+    UserDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
     MatInputModule,
     MatDatepickerModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]

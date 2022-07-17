@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
 @Component({
   selector: 'app-find-user',
@@ -13,8 +15,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
+  openDialog(): void {
+    this.dialog.open(UserDialogComponent, {
+      width: '250px'
+    });
+  }
+  
   userList: User[] = []
   userFiltredList: User[] = []
   userSearched: string;
@@ -25,6 +33,12 @@ export class FindUserComponent implements OnInit {
   ngOnInit() {
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
+    })
+  }
+
+  showUserInfo(){
+    this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
+      this.userFiltredList = filteredUsers
     })
   }
 
