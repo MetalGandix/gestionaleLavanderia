@@ -1,6 +1,9 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
 import java.util.List;
+
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import gestionaleLavanderia.magistralThesis.mailSender.SmtpMailSender;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 
@@ -27,11 +31,15 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
 
+    @Autowired
+	private SmtpMailSender mailSender;
+
     @PostMapping("/registerUser")
-    String addUser(@RequestBody DAOUser user){
+    String addUser(@RequestBody DAOUser user) throws MessagingException{
         if(user.getPassword().length() != 0){
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         }
+        /*mailSender.send(user.getEmail(), "Sei stato registrato nel portale della lavanderia. ", "Ti arriveranno delle mail che ti segnaleranno quando un tuo panno depositato è pronto.");*/
         userRepository.save(user);
         return "Utente aggiunto con successo!!";
     }
