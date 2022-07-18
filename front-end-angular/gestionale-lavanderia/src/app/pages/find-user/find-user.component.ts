@@ -17,11 +17,6 @@ export class FindUserComponent implements OnInit {
 
   constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
-  openDialog(): void {
-    this.dialog.open(UserDialogComponent, {
-      width: '250px'
-    });
-  }
   
   userList: User[] = []
   userFiltredList: User[] = []
@@ -29,6 +24,16 @@ export class FindUserComponent implements OnInit {
   userClicked: string;
   singleUser: User
   capiOfUser: ComplexCapiObject
+
+  openDialog(username: string): void {
+    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+      this.singleUser = user
+      this.dialog.open(UserDialogComponent, {
+        width: '500px',
+        data: this.singleUser
+      });
+    })
+  }
 
   ngOnInit() {
     this.serviceUser.findAllUser().subscribe(lista => {

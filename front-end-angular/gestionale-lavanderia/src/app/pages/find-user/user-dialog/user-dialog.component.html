@@ -1,8 +1,18 @@
-<h1 mat-dialog-title>Delete file</h1>
-<div mat-dialog-content>
-  Would you like to delete cat.jpeg?
-</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+<h1 mat-dialog-title>Informazioni dell'utente: <b>{{singleUser.username}}</b></h1>
+<h1>Nome: {{singleUser.username}}</h1>
+<h1>Cognome: {{singleUser.lastname}}</h1>
+<h1>Numero: {{singleUser.number}}</h1>
+<h1>Email: {{singleUser.email}}</h1>
+<h1>Codice Fis: {{singleUser.codiceFiscale}}</h1>
+<h1>Cap: {{singleUser.cap}}</h1>
+<h1>Città: {{singleUser.citta}}</h1>
+<h1>Regione sociale: {{singleUser.regioneSociale}}</h1>
+<h1>Indirizzo: {{singleUser.indirizzo}}</h1>
+<h1>Provincia: {{singleUser.provincia}}</h1>
+<h1>Sesso: {{singleUser.sesso}}</h1>
+<h1>Presentato da: {{singleUser.presentatoDa}}</h1>
+<h1>Numero card: {{singleUser.numeroCard}}</h1>
+<h1>Sconto card: {{singleUser.scontoCard}}</h1>
+<div class="button_dialog" mat-dialog-actions>
+  <button class="button_close" mat-button mat-dialog-close>Chiudi</button>
 </div>

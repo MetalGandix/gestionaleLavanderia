@@ -17,22 +17,21 @@
         </thead>
         <tbody>
             <tr style="vertical-align: middle; margin-right: 3%;" *ngFor="let list of userFiltredList">
-                <td>
-                    <p style="color:black;">{{list.username}}
-                        <button mat-raised-button (click)="openDialog()">Open dialog without animation</button>
+                <td style="text-align-last: center;">
+                    <p style="color:black;"><a mat-raised-button color="warn" (click)="openDialog(list.username)">{{list.username}}</a>
                     </p>
                 </td>
                 <td>
                     <p style="color:black;">a</p>
                 </td>
                 <td style="text-align-last: center;">
-                    <button (click)="goToMostraCapi(list.username)">Vedi capi</button>
+                    <button mat-raised-button class="add_capi" (click)="goToMostraCapi(list.username)">Vedi capi dell'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button (click)="goToAggiungiCapi(list.username)">Aggiungi capi</button>
+                    <button mat-raised-button class="add_capi" (click)="goToAggiungiCapi(list.username)">Aggiungi capi all'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button (click)="deleteUser(list.username)">Rimuovi questo utente</button>
+                    <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo utente</button>
                 </td>
             </tr>
         </tbody>

@@ -2,18 +2,20 @@
   <p style="color:black; font-size: larger;">Aggiungi dei capi all'utente: <b>{{singleUser.username}}</b></p>
 </div>
 
-<mat-form-field style="border-style: ridge;
-border-color: black; border-width: thin;" appearance="fill" class="example-form-field">
-  <mat-label style="color: black">Scrivi o scegli una data</mat-label>
-  <input matInput [matDatepicker]="datepicker" style="color: black">
-  <mat-datepicker-toggle matSuffix [for]="datepicker" style="color: black"></mat-datepicker-toggle>
-  <mat-datepicker #datepicker>
-    <mat-datepicker-actions>
-      <button mat-button matDatepickerCancel>Annulla</button>
-      <button mat-raised-button color="basic" matDatepickerApply>Scegli questa data</button>
-    </mat-datepicker-actions>
-  </mat-datepicker>
-</mat-form-field>
+<div class="orario">
+  <mat-form-field style="border-style: ridge;
+  border-color: black; border-width: thin;" appearance="fill" class="example-form-field">
+    <mat-label style="color: black">Scrivi o scegli una data</mat-label>
+    <input matInput [matDatepicker]="datepicker" style="color: black">
+    <mat-datepicker-toggle matSuffix [for]="datepicker" style="color: black"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Annulla</button>
+        <button mat-raised-button color="basic" matDatepickerApply>Scegli questa data</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+</div>
 
 <br><br>
 
@@ -32,6 +34,7 @@ border-color: black; border-width: thin;" appearance="fill" class="example-form-
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
+      
     </div>
 
     <div *ngIf="choiceMenuList == 2">
