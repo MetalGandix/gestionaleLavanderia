@@ -6,7 +6,7 @@
   <mat-form-field style="border-style: ridge;
   border-color: black; border-width: thin;" appearance="fill" class="example-form-field">
     <mat-label style="color: black">Scrivi o scegli una data</mat-label>
-    <input matInput [matDatepicker]="datepicker" style="color: black">
+    <input matInput [matDatepicker]="datepicker" (dateInput)="onDateChange($event.value)" style="color: black">
     <mat-datepicker-toggle matSuffix [for]="datepicker" style="color: black"></mat-datepicker-toggle>
     <mat-datepicker #datepicker>
       <mat-datepicker-actions>

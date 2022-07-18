@@ -50,6 +50,7 @@ export class ConsegnaCapiComponent implements OnInit {
   numberClicked: number[] = []
   extractedString: string
   arrayProvvisorio: { name: string, icon: string, value: number }[]
+  datePickerDate: String
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -78,6 +79,15 @@ export class ConsegnaCapiComponent implements OnInit {
 
   onPageChange($event) {
     this.arrayProvvisorio = this.varie_array.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
+  }
+
+  onDateChange(value){
+    var splitted: string[] = value.toLocaleDateString().split("/", 3); 
+    if(splitted[1].length == 1){
+      splitted[1] = "0" + splitted[1]
+    }
+    this.datePickerDate = splitted[0] + "/" + splitted[1] + "/" + splitted[2]
+    console.log(this.datePickerDate)
   }
 
   selectFromList(number) {
@@ -637,6 +647,8 @@ export class ConsegnaCapiComponent implements OnInit {
     if (this.varie != null) {
       this.capiToAdd.varie = this.varie
     }
+    this.capiToAdd.date = this.datePickerDate 
+    this.capiToAdd.user = this.singleUser
     this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
       this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']

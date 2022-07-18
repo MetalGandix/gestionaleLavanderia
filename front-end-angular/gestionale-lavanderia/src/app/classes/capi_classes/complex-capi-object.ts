@@ -1,3 +1,4 @@
+import { User } from "../user";
 import { Abiti } from "./abiti";
 import { Camicie } from "./camicie";
 import { Cappelli } from "./cappelli";
@@ -26,4 +27,6 @@ export class ComplexCapiObject {
     tappeti: Tappeti;
     tende: Tende;
     varie: Varie;
+    user: User;
+    date: String;
 }

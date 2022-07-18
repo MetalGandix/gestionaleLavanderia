@@ -1,13 +1,16 @@
 package gestionaleLavanderia.magistralThesis.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "user")
 public class DAOUser implements Serializable{
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -56,7 +59,18 @@ public class DAOUser implements Serializable{
 
 	@Column 
 	private String provincia;
-	
+
+	@Column 
+    private LocalDate date;
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
 	public String getIndirizzo() {
 		return indirizzo;
 	}

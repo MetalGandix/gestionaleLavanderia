@@ -1,5 +1,13 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
+import java.util.Date;
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,7 +92,7 @@ public class AbitiController {
     private VarieRepository varieRepo;
 
     @PostMapping("/insertDress")
-    public String insertDressForUser(@RequestBody ComplexCapiObject capiObject){
+    public String insertDressForUser(@RequestBody ComplexCapiObject capiObject) throws ParseException{
         if(capiObject.getAbiti().getAbitiUtente() != null){
             abitiRepo.save(capiObject.getAbiti());
         }
@@ -123,6 +131,13 @@ public class AbitiController {
         }
         if(capiObject.getVarie().getVarieUtente() != null){
             varieRepo.save(capiObject.getVarie());
+        }
+        if(capiObject.getDate() != null){
+            DAOUser user = userRepo.findByUsername(capiObject.getUser().getUsername());
+            DateTimeFormatter inputParser = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
+            user.setDate(date);
+            userRepo.save(user);
         }
         return "Capi inseriti";  
     }

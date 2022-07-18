@@ -1,5 +1,7 @@
 package gestionaleLavanderia.magistralThesis.model.Capi;
 
+import gestionaleLavanderia.magistralThesis.model.DAOUser;
+
 public class ComplexCapiObject {
     Pantaloni pantaloni;
     Gonne gonne;
@@ -14,7 +16,21 @@ public class ComplexCapiObject {
     Tappeti tappeti;
     Tende tende;
     Varie varie;
+    DAOUser user;
+    String date;
 
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public DAOUser getUser() {
+        return user;
+    }
+    public void setUser(DAOUser user) {
+        this.user = user;
+    }
     public Pantaloni getPantaloni() {
         return pantaloni;
     }

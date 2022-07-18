@@ -15,4 +15,5 @@ export class User {
 	regioneSociale: string;
 	indirizzo: string;
 	provincia: string;
+	dataConsegna: Date;
 }
