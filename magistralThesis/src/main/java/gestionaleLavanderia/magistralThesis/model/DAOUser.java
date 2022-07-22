@@ -1,9 +1,7 @@
 package gestionaleLavanderia.magistralThesis.model;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.*;
 

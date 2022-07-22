@@ -30,7 +30,7 @@
   <br><br>
   <div class="container_vestiti">
     <div *ngIf="choiceMenuList == 1">
-      <div (click)="insertPantaloni(dress.value, dress.name)" class="product" *ngFor="let dress of pantaloni_array">
+      <div (click)="insertPantaloni(dress.value, dress)" class="product" *ngFor="let dress of pantaloni_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
@@ -38,103 +38,105 @@
     </div>
 
     <div *ngIf="choiceMenuList == 2">
-      <div (click)="insertGonne(dress.value, dress.name)" class="product" *ngFor="let dress of gonne_array">
+      <div (click)="insertGonne(dress.value, dress)" class="product" *ngFor="let dress of gonne_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 3">
-      <div (click)="insertCamicie(dress.value, dress.name)" class="product" *ngFor="let dress of camicie_array">
+      <div (click)="insertCamicie(dress.value, dress)" class="product" *ngFor="let dress of camicie_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 4">
-      <div (click)="insertCappelli(dress.value, dress.name)" class="product" *ngFor="let dress of cappelli_array">
+      <div (click)="insertCappelli(dress.value, dress)" class="product" *ngFor="let dress of cappelli_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 5">
-      <div (click)="insertAbiti(dress.value, dress.name)" class="product" *ngFor="let dress of abiti_array">
+      <div (click)="insertAbiti(dress.value, dress)" class="product" *ngFor="let dress of abiti_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 6">
-      <div (click)="insertGiaccheEGiacconi(dress.value, dress.name)" class="product" *ngFor="let dress of giaccheEGiaccone_array">
+      <div (click)="insertGiaccheEGiacconi(dress.value, dress)" class="product" *ngFor="let dress of giaccheEGiaccone_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 7">
-      <div (click)="insertTrapunteEPiumoni(dress.value, dress.name)" class="product" *ngFor="let dress of trapunteEPiumoni_array">
+      <div (click)="insertTrapunteEPiumoni(dress.value, dress)" class="product" *ngFor="let dress of trapunteEPiumoni_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 8">
-      <div (click)="insertMaglie(dress.value, dress.name)" class="product" *ngFor="let dress of maglie_array">
+      <div (click)="insertMaglie(dress.value, dress)" class="product" *ngFor="let dress of maglie_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 9">
-      <div (click)="insertPigiami(dress.value, dress.name)" class="product" *ngFor="let dress of pigiami_array">
+      <div (click)="insertPigiami(dress.value, dress)" class="product" *ngFor="let dress of pigiami_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 10">
-      <div (click)="insertScarpe(dress.value, dress.name)" class="product" *ngFor="let dress of scarpe_array">
+      <div (click)="insertScarpe(dress.value, dress)" class="product" *ngFor="let dress of scarpe_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 11">
-      <div (click)="insertTappeti(dress.value, dress.name)" class="product" *ngFor="let dress of tappeti_array">
+      <div (click)="insertTappeti(dress.value, dress)" class="product" *ngFor="let dress of tappeti_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 12">
-      <div (click)="insertTende(dress.value, dress.name)" class="product" *ngFor="let dress of tende_array">
+      <div (click)="insertTende(dress.value, dress)" class="product" *ngFor="let dress of tende_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 13">
-      <div (click)="insertVarie(dress.value, dress.name)" class="product" *ngFor="let dress of varie_array">
+      <div (click)="insertVarie(dress.value, dress)" class="product" *ngFor="let dress of arrayProvvisorio">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
     <br><br>
 
-    <!-- <mat-paginator [length]="varie_array.length"
+    <mat-paginator [length]="varie_array.length"
               [pageSize]="16"
               (page)="onPageChange($event)"
               [pageSizeOptions]="[16]"
               aria-label="Select page">
-    </mat-paginator> -->
+    </mat-paginator>
 
     <br><br>
     <button *ngIf="choiceMenuList>0 && choiceMenuList<14" mat-raised-button color="basic"
       (click)="insertIntoUser()">Invia</button>
   </div>
 
-  <div class="stringArray" *ngFor="let string of selectedItems; index as i">
-    <p style="color:black;">{{string}}</p>
-  </div>
+
+</div>
+
+<div class="stringArray" *ngFor="let string of selectedItems; index as i">
+  <p style="color:black;">{{string.name}}</p>
 </div>
