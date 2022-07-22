@@ -50,7 +50,7 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
-    this.onPageChange({pageIndex:0, pageSize: 16})
+    this.onPageChange({ pageIndex: 0, pageSize: 12 })
     console.log(this.capiOfUser)
   }
 
@@ -58,9 +58,9 @@ export class ConsegnaCapiComponent implements OnInit {
     this.arrayProvvisorio = this.varie_array.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
   }
 
-  onDateChange(value){
-    var splitted: string[] = value.toLocaleDateString().split("/", 3); 
-    if(splitted[1].length == 1){
+  onDateChange(value) {
+    var splitted: string[] = value.toLocaleDateString().split("/", 3);
+    if (splitted[1].length == 1) {
       splitted[1] = "0" + splitted[1]
     }
     this.datePickerDate = splitted[0] + "/" + splitted[1] + "/" + splitted[2]
@@ -570,7 +570,7 @@ export class ConsegnaCapiComponent implements OnInit {
     if (this.articolo != null) {
       this.capiToAdd.articolo = this.articolo
     }
-    this.capiToAdd.date = this.datePickerDate 
+    this.capiToAdd.date = this.datePickerDate
     this.capiToAdd.user = this.singleUser
     this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
       this._snackBar.open("Panni inseriti correttamente", "Chiudi", {

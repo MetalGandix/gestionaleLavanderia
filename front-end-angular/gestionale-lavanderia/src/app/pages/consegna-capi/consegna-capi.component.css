@@ -8,6 +8,10 @@
   margin-top: 2%;
 }
 
+.container-right-dress-result{
+  display: flex;
+}
+
 .product:hover{
   background-color:#d1cbcb;
 }
@@ -27,10 +31,16 @@
 
 .stringArray{
   margin-right: 2%;
+  text-align: right;
 }
 
 .mat-list-single-selected-option, .mat-list-single-selected-option:hover, .mat-list-single-selected-option:focus{
   background: rgb(0 0 0 / 12%);
+}
+
+.string-list{
+  flex: auto;
+  text-align-last: center;
 }
 
 .mat-form-field.mat-focused,.mat-form-field-label{

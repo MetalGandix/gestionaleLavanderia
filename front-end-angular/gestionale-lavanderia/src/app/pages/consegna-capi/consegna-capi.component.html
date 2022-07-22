@@ -19,6 +19,8 @@
 
 <br><br>
 
+
+
 <div class="flex-right-menu-dress">
   <mat-selection-list style="margin-right: 1%;" #shoes [multiple]="false">
     <mat-list-option (click)="selectFromList(choice.value)" *ngFor="let choice of principal_array"
@@ -34,7 +36,7 @@
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
-      
+
     </div>
 
     <div *ngIf="choiceMenuList == 2">
@@ -66,14 +68,16 @@
     </div>
 
     <div *ngIf="choiceMenuList == 6">
-      <div (click)="insertGiaccheEGiacconi(dress.value, dress)" class="product" *ngFor="let dress of giaccheEGiaccone_array">
+      <div (click)="insertGiaccheEGiacconi(dress.value, dress)" class="product"
+        *ngFor="let dress of giaccheEGiaccone_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
     </div>
 
     <div *ngIf="choiceMenuList == 7">
-      <div (click)="insertTrapunteEPiumoni(dress.value, dress)" class="product" *ngFor="let dress of trapunteEPiumoni_array">
+      <div (click)="insertTrapunteEPiumoni(dress.value, dress)" class="product"
+        *ngFor="let dress of trapunteEPiumoni_array">
         <img class="little_icon" [src]="dress.icon" />
         <p style="color:black;"><b>{{dress.name}}</b></p>
       </div>
@@ -122,11 +126,12 @@
     </div>
     <br><br>
 
-    <mat-paginator [length]="varie_array.length"
-              [pageSize]="16"
-              (page)="onPageChange($event)"
-              [pageSizeOptions]="[16]"
-              aria-label="Select page">
+    <mat-paginator 
+    [length]="varie_array.length" 
+    [pageSize]="12" 
+    (page)="onPageChange($event)" 
+    [pageSizeOptions]="[12]"
+    aria-label="Select page">
     </mat-paginator>
 
     <br><br>
@@ -134,9 +139,10 @@
       (click)="insertIntoUser()">Invia</button>
   </div>
 
+  <div class="string-list">
+    <div class="stringArray" *ngFor="let string of selectedItems; index as i">
+      <p style="color:black;">{{string.name}}</p>
+    </div>
+  </div>
 
-</div>
-
-<div class="stringArray" *ngFor="let string of selectedItems; index as i">
-  <p style="color:black;">{{string.name}}</p>
 </div>

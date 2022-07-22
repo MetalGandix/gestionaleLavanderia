@@ -28,7 +28,6 @@ public class AbitiController {
 
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject) throws ParseException{
-
         if(capiObject.getArticolo() != null){
             articoloRepo.save(capiObject.getArticolo());
         }
@@ -36,7 +35,9 @@ public class AbitiController {
             DAOUser user = userRepo.findByUsername(capiObject.getUser().getUsername());
             DateTimeFormatter inputParser = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
-            user.setDate(date);
+            capiObject.getArticolo().setDate(date);
+            capiObject.getArticolo().setArticoliUtente(user);
+            articoloRepo.save(capiObject.getArticolo());
             userRepo.save(user);
         }
         return "Capi inseriti";  

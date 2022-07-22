@@ -1,4 +1,6 @@
 package gestionaleLavanderia.magistralThesis.model.Capi;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -301,6 +303,17 @@ public class Articolo {
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DAOUser articoliUtente;
+
+	@Column 
+    private LocalDate date;
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
     public long getId() {
         return id;
