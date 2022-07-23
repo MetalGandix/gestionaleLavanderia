@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
@@ -20,7 +21,8 @@ import gestionaleLavanderia.magistralThesis.model.DAOUser;
 @Table(name = "articolo")
 public class Articolo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="mysequence", initialValue=1000)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="mysequence")
     private long id;
     @Column
     private int abitoDonnaSerale;

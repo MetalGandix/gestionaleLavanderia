@@ -52,4 +52,12 @@ public class AbitiController {
         return complexObject;
     }
 
+    
+    @GetMapping("/getAllArticoliFromUser/{username}")
+    public Articolo getArticolo(@PathVariable String username) {
+        DAOUser user = userRepo.findByUsername(username);
+        Articolo articolo = articoloRepo.findByArticoliUtente(user);
+        return articolo;
+    }
+
 }

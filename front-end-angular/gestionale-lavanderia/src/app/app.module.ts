@@ -34,6 +34,7 @@ import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDialogComponent } from './pages/find-user/user-dialog/user-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { UserDialogComponent } from './pages/find-user/user-dialog/user-dialog.c
     MatListModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]

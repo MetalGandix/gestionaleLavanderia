@@ -62,7 +62,6 @@ export class FindUserComponent implements OnInit {
   findCapiSingleUser(username: string) {
     this.capiService.findCapiForSingleUser(username).subscribe(x => {
       this.capiOfUser = x
-      console.log(this.capiOfUser)
     })
   }
 

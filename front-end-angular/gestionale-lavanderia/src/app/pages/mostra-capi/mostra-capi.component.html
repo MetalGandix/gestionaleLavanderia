@@ -1,27 +1,89 @@
 <p style="color:black; text-align-last: center; font-size: x-large;">Ecco i capi di <b>{{singleUser.username}}</b>!</p>
 
-<table class="table table-bordered">
-    <thead class="table-bordered">
-        <tr style="color: rgba(63, 63, 54, 0.85);">
-            <th scope="col"><p>Num. lavorazione</p></th>
-            <th scope="col"><p>Prodotto</p></th>
-            <th scope="col"><p>Servizio</p></th>
-            <th scope="col"><p>Prezzo</p></th>
-            <th scope="col"><p>Pronto</p></th>
-            <th scope="col"><p>Consegnato</p></th>
-            <th scope="col"><p>Note</p></th>
-
-        </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-        <td><p>None</p></td>
-    </tr>
-</tbody>
-</table>
+<div class="card my-5">
+    <div class="overflow-auto">
+        <!--spostato lo style nel CSS -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class=".table-bordered">
+                        <tr style="color: red;">
+                            <th class="header-column" scope="col">
+                                <p>Num Lavorazione</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Prodotto</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>quantità</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Scadenza</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Servizio</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Prezzo</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Pronto</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Consegnato</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Note</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Elimina</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class=".table-bordered">
+                        <tr *ngFor="let element of dix">
+                            <td class="table-element">{{ articoloUtente.id }}</td>
+                            <td class="table-element">{{ element.name }}</td>
+                            <td class="table-element">{{ element.value }}</td>
+                            <td class="table-element">{{ dataVisualizzata }}</td>
+                            <td class="table-element">?</td>
+                            <td class="table-element">?</td>
+                            <td *ngIf="element.ready" class="table-element" style="background-color: rgb(110, 191, 110);">
+                                <div class="form-check">
+                                    <input (change)="changeReady(element.id)" class="form-check-input"
+                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div></td>
+                            <td *ngIf="!element.ready" class="table-element" style="background-color: rgb(244, 66, 66);">
+                                <div class="form-check">
+                                    <input (change)="changeReady(element.id)" class="form-check-input"
+                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div></td>
+                            <td *ngIf="!element.consegnato" class="table-element" style="background-color: rgb(244, 66, 66);;">
+                                <div class="form-check">
+                                    <input (change)="changeConsegnato(element.id)" class="form-check-input"
+                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </td>
+                            <td *ngIf="element.consegnato" class="table-element" style="background-color: rgb(110, 191, 110);">
+                                <div class="form-check">
+                                    <input (change)="changeConsegnato(element.id)" class="form-check-input"
+                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="table-element">?</td>
+                            <td class="table-element"><button mat-raised-button>Elimina questo articolo</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

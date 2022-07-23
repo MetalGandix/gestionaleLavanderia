@@ -141,5 +141,6 @@ export class Articolo {
     tutaSciBimbo: number = 0;
     tutaSciAdulto: number = 0;
     tutaDonna: number = 0;
+    date: string;
     articoliUtente: User;
 }
