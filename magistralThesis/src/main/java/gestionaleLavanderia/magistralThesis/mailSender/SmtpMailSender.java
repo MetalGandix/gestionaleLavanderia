@@ -24,7 +24,7 @@ public class SmtpMailSender {
         helper.setTo(to);
         helper.setText(body, true); // true indicates html
         // continue using helper object for more functionalities like adding attachments, etc.
-        helper.setFrom("leonardo.mogianesi@studenti.unicam.com");
+        helper.setFrom("postmaster@sandbox11f50de68fd14ad59090e21dad934601.mailgun.org");
 
         javaMailSender.send(message);
     }
