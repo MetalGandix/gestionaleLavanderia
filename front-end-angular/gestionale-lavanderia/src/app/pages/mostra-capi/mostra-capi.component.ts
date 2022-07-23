@@ -25,7 +25,7 @@ export class MostraCapiComponent implements OnInit {
   arrayValuesNumber: number[] = []
   dataConsegna: Date
   dataVisualizzata: string
-  
+  listArticoli: Articolo[] = []
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -33,47 +33,56 @@ export class MostraCapiComponent implements OnInit {
     }
     this.singleUser = window.history.state.singleUser
     this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
-      this.articoloUtente = capi
+      this.listArticoli = capi
       console.log(this.articoloUtente)
     }).add(() => {
-      let id = -1
-      for (const property in this.articoloUtente) {
-        if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && this.articoloUtente[property] < 1000) {
-          id++
-          console.log("Name: " + property, "Number: " + this.articoloUtente[property])
-          this.dix.push({
-            name: property,
-            value: this.articoloUtente[property],
-            id: id,
-            ready: false,
-            consegnato: false
-          })
-          console.log(this.dix)
+      this.listArticoli.forEach(articolo => {
+        //Qua prendo ogni articolo presente nella lista di articoli
+        this.articoloUtente = articolo
+        //Creo un id da assegnare al dizionario
+        let id = -1
+        for (const property in this.articoloUtente) {
+          //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
+          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && this.articoloUtente[property] < 1000) {
+            const [year, month, day] = this.articoloUtente.date.split('-');
+            this.dataVisualizzata = day + "/" + month + "/" + year
+            id++
+            console.log("Name: " + property, "Number: " + this.articoloUtente[property])
+            this.dix.push({
+              idArticolo: this.articoloUtente.id,
+              name: property,
+              value: this.articoloUtente[property],
+              id: id,
+              ready: false,
+              consegnato: false,
+              scadenza: this.dataVisualizzata
+            })
+          }
         }
-      }
-      const [year, month, day] = this.articoloUtente.date.split('-');
-      this.dataVisualizzata = day + "/" + month + "/" + year
-      //Qua per poter fare la scadenza con il boolean rosso o verde
-      const date = new Date(+year, +month - 1, +day);
-      this.dataConsegna = date
+        console.log("Dizionario: ", this.dix)
+      })
     }
     )
   }
 
-  changeConsegnato(element){
-    if(this.dix[element].consegnato){
+  changeConsegnato(element) {
+    if (this.dix[element].consegnato) {
       this.dix[element].consegnato = false
-    }else{
+    } else {
       this.dix[element].consegnato = true
     }
     console.log(this.dix[element].consegnato)
   }
 
-  changeReady(element){
-    if(this.dix[element].ready){
+  changeReady(element) {
+    if (this.dix[element].ready) {
       this.dix[element].ready = false
-    }else{
+    } else {
       this.dix[element].ready = true
     }
+  }
+
+  changeArticle() {
+
   }
 }
