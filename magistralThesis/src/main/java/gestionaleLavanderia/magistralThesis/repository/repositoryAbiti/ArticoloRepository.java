@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
-import gestionaleLavanderia.magistralThesis.model.Capi.CapiInfo;
 
 @Repository
 public interface ArticoloRepository extends JpaRepository<Articolo, Integer>{
@@ -22,6 +21,4 @@ public interface ArticoloRepository extends JpaRepository<Articolo, Integer>{
     @Query(value = "SELECT o FROM Articolo o where o.articoliUtente = :user")
     List<Articolo> findListArticoli(@Param("user") DAOUser username);
 
-    @Query(value = "SELECT o FROM CapiInfo o where o.article = :articolo")
-    CapiInfo findInfoOfOneArticle(@Param("articolo") Articolo articolo);
 }

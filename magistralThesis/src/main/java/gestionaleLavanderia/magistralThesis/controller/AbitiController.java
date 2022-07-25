@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import gestionaleLavanderia.magistralThesis.mailSender.SmtpMailSender;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
-import gestionaleLavanderia.magistralThesis.model.Capi.CapiInfo;
 import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.ArticoloRepository;
@@ -48,9 +47,7 @@ public class AbitiController {
             capiObject.getArticolo().setDate(date);
             capiObject.getArticolo().setArticoliUtente(user);
             articoloRepo.save(capiObject.getArticolo());
-            CapiInfo capiInfo = new CapiInfo();
-            capiInfo.setArticle(capiObject.getArticolo());
-            capiInfoRepo.save(capiInfo);
+            userRepo.save(user);
             // mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ",
             //         "Controlla la tua mail per sapere quando è pronto");
         }
@@ -71,13 +68,6 @@ public class AbitiController {
         DAOUser user = userRepo.findByUsername(username);
         List<Articolo> articoloList = articoloRepo.findListArticoli(user);
         return articoloList;
-    }
-
-    @GetMapping("/getAllInfoOfArticle/{id}")
-    public CapiInfo getInfo(@PathVariable long id) {
-        Articolo articolo = articoloRepo.findById(id);
-        CapiInfo capoInfo = articoloRepo.findInfoOfOneArticle(articolo);
-        return capoInfo;
     }
 
     @GetMapping("/findArticleById/{id}")
