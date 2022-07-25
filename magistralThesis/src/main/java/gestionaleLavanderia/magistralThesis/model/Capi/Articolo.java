@@ -23,291 +23,291 @@ public class Articolo {
     @Id
     @SequenceGenerator(name="mysequence", initialValue=1000)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="mysequence")
-    private long id;
+    public long id;
     @Column
-    private int abitoDonnaSerale;
+    public int abitoDonnaSerale;
     @Column
-    private int abitoDonna;
+    public int abitoDonna;
     @Column
-    private int abitoLungo;
+    public int abitoLungo;
     @Column
-    private int abitoPizzo;
+    public int abitoPizzo;
     @Column
-    private int abitoSposa;
+    public int abitoSposa;
     @Column
-    private int abitoUomo;
+    public int abitoUomo;
     @Column
-    private int cravatta;
+    public int cravatta;
     @Column
-    private int divisaPoliziaLocale;
+    public int divisaPoliziaLocale;
     @Column
-    private int divisaCarabiniere;
+    public int divisaCarabiniere;
     @Column
-    private int divisaFinanza;
+    public int divisaFinanza;
     @Column
-    private int divisaPolizia;
+    public int divisaPolizia;
     @Column
-    private int giletUomo;
+    public int giletUomo;
     @Column
-    private int tailleurGonna;
+    public int tailleurGonna;
     @Column
-    private int tailleurPantaloni;
+    public int tailleurPantaloni;
     @Column
-    private int camiciaBimbo;
+    public int camiciaBimbo;
     @Column
-    private int camiciaCerimonia;
+    public int camiciaCerimonia;
     @Column
-    private int camiciaDonna;
+    public int camiciaDonna;
     @Column
-    private int camiciaJeans;
+    public int camiciaJeans;
     @Column
-    private int camiciaPelle;
+    public int camiciaPelle;
     @Column
-    private int camiciaPiegata;
+    public int camiciaPiegata;
     @Column
-    private int camiciaSetaDonna;
+    public int camiciaSetaDonna;
     @Column
-    private int camiciaSetaUomo;
+    public int camiciaSetaUomo;
     @Column
-    private int camiciaSoloStiro;
+    public int camiciaSoloStiro;
     @Column
-    private int camiciaUomo;
+    public int camiciaUomo;
     @Column
-    private int berretto;
+    public int berretto;
     @Column
-    private int cappello;
+    public int cappello;
     @Column
-    private int cappelloPelle;
+    public int cappelloPelle;
     @Column
-    private int cappottoBimbo;
+    public int cappottoBimbo;
     @Column
-    private int cappottoDonna;
+    public int cappottoDonna;
     @Column
-    private int cappottoUnisex;
+    public int cappottoUnisex;
     @Column
-    private int cappottoUomo;
+    public int cappottoUomo;
     @Column
-    private int giaccaDonna;
+    public int giaccaDonna;
     @Column
-    private int giaccaUomo;
+    public int giaccaUomo;
     @Column
-    private int giacconeCortoDonna;
+    public int giacconeCortoDonna;
     @Column
-    private int giacconeCortoUomo;
+    public int giacconeCortoUomo;
     @Column
-    private int giacconeCotone;
+    public int giacconeCotone;
     @Column
-    private int giacconeLungoDonna;
+    public int giacconeLungoDonna;
     @Column
-    private int giacconeLungoUomo;
+    public int giacconeLungoUomo;
     @Column
-    private int giacconeUnisex;
+    public int giacconeUnisex;
     @Column
-    private int giubbetto;
+    public int giubbetto;
     @Column
-    private int giubbettoJeans;
+    public int giubbettoJeans;
     @Column
-    private int giubbinoEstivoUnisex;
+    public int giubbinoEstivoUnisex;
     @Column
-    private int impermeabileUnisex;
+    public int impermeabileUnisex;
     @Column
-    private int internoGiaccone;
+    public int internoGiaccone;
     @Column
-    private int montone;
+    public int montone;
     @Column
-    private int pellicciaSintetica;
+    public int pellicciaSintetica;
     @Column
-    private int piumino7_8Donna;
+    public int piumino7_8Donna;
     @Column
-    private int piumino7_8Uomo;
+    public int piumino7_8Uomo;
     @Column
-    private int piuminoCortoDonna;
+    public int piuminoCortoDonna;
     @Column
-    private int piuminoCortoUomo;
+    public int piuminoCortoUomo;
     @Column
-    private int piuminoLungoDonna;
+    public int piuminoLungoDonna;
     @Column
-    private int piuminoLungoUomo;
+    public int piuminoLungoUomo;
     @Column
-    private int soprabito;
+    public int soprabito;
     @Column
-    private int tranch;
+    public int tranch;
     @Column
-    private int woolrich;
+    public int woolrich;
     @Column
-    private int gonna;
+    public int gonna;
     @Column
-    private int gonnaJeans;
+    public int gonnaJeans;
     @Column
-    private int gonnaPelle;
+    public int gonnaPelle;
     @Column
-    private int gonnaPieghe;
+    public int gonnaPieghe;
     @Column
-    private int babyDol;
+    public int babyDol;
     @Column
-    private int cardigan;
+    public int cardigan;
     @Column
-    private int felpa;
+    public int felpa;
     @Column
-    private int magliaBimbo;
+    public int magliaBimbo;
     @Column
-    private int magliaDonna;
+    public int magliaDonna;
     @Column
-    private int magliaUomo;
+    public int magliaUomo;
     @Column
-    private int maglioneCotone;
+    public int maglioneCotone;
     @Column
-    private int maglioneLana;
+    public int maglioneLana;
     @Column
-    private int tShirt;
+    public int tShirt;
     @Column
-    private int tShirtColorata;
+    public int tShirtColorata;
     @Column
-    private int pantaloneDivisa;
+    public int pantaloneDivisa;
     @Column
-    private int pantaloneDonna;
+    public int pantaloneDonna;
     @Column
-    private int pantaloneSoloStiro;
+    public int pantaloneSoloStiro;
     @Column
-    private int pantaloneUomo;
+    public int pantaloneUomo;
     @Column
-    private int pantalonePelle;
+    public int pantalonePelle;
     @Column
-    private int vestaglia;
+    public int vestaglia;
     @Column
-    private int ciabatte;
+    public int ciabatte;
     @Column
-    private int clark;
+    public int clark;
     @Column
-    private int converse;
+    public int converse;
     @Column
-    private int hogan;
+    public int hogan;
     @Column
-    private int nike;
+    public int nike;
     @Column
-    private int scarpeDaGinnastica;
+    public int scarpeDaGinnastica;
     @Column
-    private int scarponcini;
+    public int scarponcini;
     @Column
-    private int impermeabili;
+    public int impermeabili;
     @Column
-    private int timberland;
+    public int timberland;
     @Column
-    private int tappeto;
+    public int tappeto;
     @Column
-    private int calateTenda;
+    public int calateTenda;
     @Column
-    private int mantovana;
+    public int mantovana;
     @Column
-    private int tenda;
+    public int tenda;
     @Column
-    private int tendaCampeggio;
+    public int tendaCampeggio;
     @Column
-    private int coperta1PiazzaLana;
+    public int coperta1PiazzaLana;
     @Column
-    private int coperta2PiazzeLana;
+    public int coperta2PiazzeLana;
     @Column
-    private int copertaBambino;
+    public int copertaBambino;
     @Column
-    private int copertaUncinetto;
+    public int copertaUncinetto;
     @Column
-    private int coprimaterasso;
+    public int coprimaterasso;
     @Column
-    private int cuscinoPiuma;
+    public int cuscinoPiuma;
     @Column
-    private int cuscinoSintetico;
+    public int cuscinoSintetico;
     @Column
-    private int federe;
+    public int federe;
     @Column
-    private int lenzuola1Piazza;
+    public int lenzuola1Piazza;
     @Column
-    private int leunzuolo2Piazze;
+    public int leunzuolo2Piazze;
     @Column
-    private int merinos2Piazze;
+    public int merinos2Piazze;
     @Column
-    private int piumone1PiazzaOca;
+    public int piumone1PiazzaOca;
     @Column
-    private int piumone1PSintetico;
+    public int piumone1PSintetico;
     @Column
-    private int piumone2PiazzeOca;
+    public int piumone2PiazzeOca;
     @Column
-    private int piumone2PSintetico;
+    public int piumone2PSintetico;
     @Column
-    private int saccoAPelo1Piazza;
+    public int saccoAPelo1Piazza;
     @Column
-    private int saccoAPelo2Piazze;
+    public int saccoAPelo2Piazze;
     @Column
-    private int trapunta1Piazza;
+    public int trapunta1Piazza;
     @Column
-    private int trapunta2Piazze;
+    public int trapunta2Piazze;
     @Column
-    private int accappatoi;
+    public int accappatoi;
     @Column
-    private int accessori;
+    public int accessori;
     @Column
-    private int bambolaStoffa;
+    public int bambolaStoffa;
     @Column
-    private int borsa;
+    public int borsa;
     @Column
-    private int calzini;
+    public int calzini;
     @Column
-    private int canottaUnisex;
+    public int canottaUnisex;
     @Column
-    private int capoConRiporti;
+    public int capoConRiporti;
     @Column
-    private int cinturaDiPelle;
+    public int cinturaDiPelle;
     @Column
-    private int cinturaDiStoffa;
+    public int cinturaDiStoffa;
     @Column
-    private int copriDivano;
+    public int copriDivano;
     @Column
-    private int copriPoltrona;
+    public int copriPoltrona;
     @Column
-    private int copriSedia;
+    public int copriSedia;
     @Column
-    private int doppioPetto;
+    public int doppioPetto;
     @Column
-    private int foulard;
+    public int foulard;
     @Column
-    private int giccaPelle;
+    public int giccaPelle;
     @Column
-    private int giletConTasche;
+    public int giletConTasche;
     @Column
-    private int giletDiPelle;
+    public int giletDiPelle;
     @Column
-    private int guantiLana;
+    public int guantiLana;
     @Column
-    private int guantiPelle;
+    public int guantiPelle;
     @Column
-    private int guantiUomo;
+    public int guantiUomo;
     @Column
-    private int pigiamaBimbo;
+    public int pigiamaBimbo;
     @Column
-    private int scarponcino;
+    public int scarponcino;
     @Column
-    private int sciarpa;
+    public int sciarpa;
     @Column
-    private int sciarpaBambino;
+    public int sciarpaBambino;
     @Column
-    private int sciarpaDiCotone;
+    public int sciarpaDiCotone;
     @Column
-    private int sciarpaDiSeta;
+    public int sciarpaDiSeta;
     @Column
-    private int tovagliaRettangolare;
+    public int tovagliaRettangolare;
     @Column
-    private int tovagliaRotonda;
+    public int tovagliaRotonda;
     @Column
-    private int tutaSciBimbo;
+    public int tutaSciBimbo;
     @Column
-    private int tutaSciAdulto;
+    public int tutaSciAdulto;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private DAOUser articoliUtente;
+    public DAOUser articoliUtente;
 
 	@Column 
-    private LocalDate date;
+    public LocalDate date;
 
 	public LocalDate getDate() {
 		return date;

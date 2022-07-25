@@ -15,6 +15,8 @@ import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
 public interface ArticoloRepository extends JpaRepository<Articolo, Integer>{
     Articolo findByArticoliUtente(DAOUser user);
 
+    Articolo findById(long id);
+
     //Qua ho fatto una query che seleziona gli articoli presi dall'oggetto USER e crea una Lista con gli oggetti presi
     @Query(value = "SELECT o FROM Articolo o where o.articoliUtente = :user")
     List<Articolo> findListArticoli(@Param("user") DAOUser username);

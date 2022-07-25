@@ -28,4 +28,11 @@ export class CapiService {
     return this.http.post<ComplexCapiObject>(this.globalVariables.url + "insertDress", complexCapiObject);
   }
 
+  public getArticleByIf(id: number): Observable<Articolo>{
+    return this.http.get<Articolo>(this.globalVariables.url + "findArticleById/" + id);
+  }
+
+  public changeArticle(articolo: Articolo) {
+    return this.http.post<Articolo>(this.globalVariables.url + "changeArticoloFromUser", articolo);
+  }
 }
