@@ -103,6 +103,7 @@ export class MostraCapiComponent implements OnInit {
       }
     }).add(() =>{
       this.capiService.changeArticle(this.articleGeyById).subscribe().add(() =>{
+        //Una volta finita la subscribe, rimuovo dal dix l'elemento con l'indice idDix
         this.dix.splice(idDix)
       })
       }
