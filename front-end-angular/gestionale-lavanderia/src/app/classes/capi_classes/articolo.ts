@@ -143,4 +143,9 @@ export class Articolo {
     tutaDonna: number = 0;
     date: string;
     articoliUtente: User;
+    servizio: string;
+    prezzo: number;
+    pronto: boolean = false;
+    consegnato: boolean = false;
+    note: string;
 }

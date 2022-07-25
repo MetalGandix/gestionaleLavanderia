@@ -46,8 +46,8 @@
                             <td class="table-element">{{ element.name }}</td>
                             <td class="table-element">{{ element.value }}</td>
                             <td class="table-element">{{ element.scadenza }}</td>
-                            <td class="table-element">{{ element.service }}</td>
-                            <td class="table-element">{{ element.price }}</td>
+                            <td class="table-element">{{ element.servizio }}</td>
+                            <td class="table-element">{{ element.price }} €</td>
                             <td *ngIf="element.ready" class="table-element" style="background-color: rgb(110, 191, 110);">
                                 <div class="form-check">
                                     <input (change)="changeReady(element.id)" class="form-check-input"
@@ -78,7 +78,7 @@
                                     </label>
                                 </div>
                             </td>
-                            <td class="table-element"></td>
+                            <td class="table-element"><input value="{{element.note}}"></td>
                             <td class="table-element"><button (click)="changeArticle(element.idArticolo, element.normalName, element.id)" mat-raised-button>Elimina questo articolo</button></td>
                         </tr>
                     </tbody>

@@ -298,16 +298,65 @@ public class Articolo {
     public int tovagliaRotonda;
     @Column
     public int tutaSciBimbo;
-    @Column
+    @Column 
     public int tutaSciAdulto;
-
+    @Column
+    public String servizio;
+    @Column
+    public double prezzo;
+    @Column
+    public boolean pronto = false;
+    @Column
+    public boolean consegnato = false;
+    @Column
+    public String note;
+	@Column 
+    public LocalDate date;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     public DAOUser articoliUtente;
 
-	@Column 
-    public LocalDate date;
+    public boolean isPronto() {
+        return pronto;
+    }
+
+    public void setPronto(boolean pronto) {
+        this.pronto = pronto;
+    }
+
+    public boolean isConsegnato() {
+        return consegnato;
+    }
+
+    public void setConsegnato(boolean consegnato) {
+        this.consegnato = consegnato;
+    }
+
+    public String getServizio() {
+        return servizio;
+    }
+
+    public void setServizio(String servizio) {
+        this.servizio = servizio;
+    }
+
+    public double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
 	public LocalDate getDate() {
 		return date;

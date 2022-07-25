@@ -46,7 +46,6 @@ export class MostraCapiComponent implements OnInit {
     } else {
       this.dix[element].consegnato = true
     }
-    console.log(this.dix[element].consegnato)
   }
 
   changeReady(element) {
@@ -60,7 +59,6 @@ export class MostraCapiComponent implements OnInit {
   setDix(){
     this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
       this.listArticoli = capi
-      console.log(this.listArticoli)
     }).add(() => {
       this.listArticoli.forEach(articolo => {
         //Qua prendo ogni articolo presente nella lista di articoli
@@ -68,11 +66,10 @@ export class MostraCapiComponent implements OnInit {
         //Creo un id da assegnare al dizionario
         for (const property in this.articoloUtente) {
           //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
-          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && this.articoloUtente[property] < 1000) {
+          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && this.articoloUtente[property] < 1000 && property != "prezzo") {
             const [year, month, day] = this.articoloUtente.date.split('-');
             this.dataVisualizzata = day + "/" + month + "/" + year
             this.id++
-            console.log("Name: " + property, "Number: " + this.articoloUtente[property])
             this.nameToSplit = property.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             this.dix.push({
               idArticolo: this.articoloUtente.id,
@@ -80,9 +77,12 @@ export class MostraCapiComponent implements OnInit {
               name: this.nameToSplit,
               value: this.articoloUtente[property],
               id: this.id,
-              ready: false,
-              consegnato: false,
-              scadenza: this.dataVisualizzata
+              ready: this.articoloUtente.pronto,
+              consegnato: this.articoloUtente.consegnato,
+              scadenza: this.dataVisualizzata,
+              note: this.articoloUtente.note,
+              servizio: this.articoloUtente.servizio,
+              price: this.articoloUtente.prezzo
             })
           }
         }
@@ -98,13 +98,13 @@ export class MostraCapiComponent implements OnInit {
       for (const property in this.articleGeyById) {
         if (property == name) {
           this.articleGeyById[property]--
-          console.log(this.articleGeyById[property])
         }
       }
     }).add(() =>{
       this.capiService.changeArticle(this.articleGeyById).subscribe().add(() =>{
         //Una volta finita la subscribe, rimuovo dal dix l'elemento con l'indice idDix
-        this.dix.splice(idDix)
+        this.dix.splice(0,this.dix.length)
+        this.setDix()
       })
       }
     )

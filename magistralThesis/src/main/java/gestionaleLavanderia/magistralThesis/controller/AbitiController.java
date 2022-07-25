@@ -46,10 +46,15 @@ public class AbitiController {
             LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
             capiObject.getArticolo().setDate(date);
             capiObject.getArticolo().setArticoliUtente(user);
+            capiObject.getArticolo().setServizio("Standard");
+            capiObject.getArticolo().setPrezzo(8.50);
+            capiObject.getArticolo().setPronto(false);
+            capiObject.getArticolo().setConsegnato(false);
+            capiObject.getArticolo().setNote("Nessuna nota");
+            capiObject.getArticolo().setServizio("Standard");
             articoloRepo.save(capiObject.getArticolo());
-            userRepo.save(user);
             // mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ",
-            //         "Controlla la tua mail per sapere quando è pronto");
+            // "Controlla la tua mail per sapere quando è pronto");
         }
         return "Capi inseriti";
     }
@@ -87,8 +92,18 @@ public class AbitiController {
             if (f.getName() != "id") {
                 if (f.getName() != "articoliUtente") {
                     if (f.getName() != "date") {
-                        int a = (int) f.get(articolo);
-                        list.add(a);
+                        if (f.getName() != "servizio") {
+                            if (f.getName() != "prezzo") {
+                                if (f.getName() != "pronto") {
+                                    if (f.getName() != "consegnato") {
+                                        if (f.getName() != "note") {
+                                            int a = (int) f.get(articolo);
+                                            list.add(a);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
