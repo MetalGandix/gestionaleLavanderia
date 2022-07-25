@@ -28,7 +28,9 @@ export class MostraCapiComponent implements OnInit {
   dataConsegna: Date
   dataVisualizzata: string
   listArticoli: Articolo[] = []
-  nameToSplit: any
+  nameToSplit: any //Il nome maiuscolo
+  id: number = -1 //Questo id è l'id di ogni elemento nel dix
+
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -58,26 +60,26 @@ export class MostraCapiComponent implements OnInit {
   setDix(){
     this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
       this.listArticoli = capi
-      console.log(this.articoloUtente)
+      console.log(this.listArticoli)
     }).add(() => {
       this.listArticoli.forEach(articolo => {
         //Qua prendo ogni articolo presente nella lista di articoli
         this.articoloUtente = articolo
         //Creo un id da assegnare al dizionario
-        let id = -1
         for (const property in this.articoloUtente) {
           //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
           if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && this.articoloUtente[property] < 1000) {
             const [year, month, day] = this.articoloUtente.date.split('-');
             this.dataVisualizzata = day + "/" + month + "/" + year
-            id++
+            this.id++
             console.log("Name: " + property, "Number: " + this.articoloUtente[property])
             this.nameToSplit = property.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             this.dix.push({
               idArticolo: this.articoloUtente.id,
+              normalName: property, //Il nome da passare a changeArticle
               name: this.nameToSplit,
               value: this.articoloUtente[property],
-              id: id,
+              id: this.id,
               ready: false,
               consegnato: false,
               scadenza: this.dataVisualizzata

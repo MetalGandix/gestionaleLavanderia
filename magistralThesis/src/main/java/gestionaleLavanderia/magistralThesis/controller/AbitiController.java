@@ -48,7 +48,7 @@ public class AbitiController {
             capiObject.getArticolo().setArticoliUtente(user);
             articoloRepo.save(capiObject.getArticolo());
             userRepo.save(user);
-            mailSender.send(user.getEmail(), "Un tuo articolo è pronto !! ", "Vieni in lavanderia a ritirarlo.");
+            mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ", "Controlla la tua mail per sapere quando è pronto");
         }
         return "Capi inseriti";
     }
@@ -81,6 +81,7 @@ public class AbitiController {
         List<Integer> list = new ArrayList<Integer>();
         Field[] fields = articolo.getClass().getDeclaredFields();
         for (Field f : fields) {
+            //Iterando devo controllare che non iteri: l'id, il campo che joina l'utente e il campo date.
             if (f.getName() != "id") {
                 if (f.getName() != "articoliUtente") {
                     if (f.getName() != "date") {
