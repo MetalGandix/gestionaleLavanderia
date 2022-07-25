@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CapiInfo } from 'src/app/classes/capi-info';
 import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
@@ -28,6 +29,8 @@ export class MostraCapiComponent implements OnInit {
   dataConsegna: Date
   dataVisualizzata: string
   listArticoli: Articolo[] = []
+  capiInfoArray: CapiInfo[] = []
+  capoInfo: CapiInfo = new CapiInfo()
   nameToSplit: any //Il nome maiuscolo
   id: number = -1 //Questo id è l'id di ogni elemento nel dix
 
@@ -57,12 +60,17 @@ export class MostraCapiComponent implements OnInit {
     }
   }
 
+  getInfo(id: number){
+
+  }
+
   setDix(){
     this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
       this.listArticoli = capi
       console.log(this.listArticoli)
     }).add(() => {
       this.listArticoli.forEach(articolo => {
+        this.capiService.getInfoAboutArticle(articolo.id).subscribe(info => {
         //Qua prendo ogni articolo presente nella lista di articoli
         this.articoloUtente = articolo
         //Creo un id da assegnare al dizionario
@@ -80,13 +88,17 @@ export class MostraCapiComponent implements OnInit {
               name: this.nameToSplit,
               value: this.articoloUtente[property],
               id: this.id,
-              ready: false,
-              consegnato: false,
-              scadenza: this.dataVisualizzata
+              ready: info.ready,
+              consegnato: info.delivered,
+              scadenza: this.dataVisualizzata,
+              note: info.notes,
+              prezzo: info.price,
+              service: info.service
             })
           }
         }
         console.log("Dizionario: ", this.dix)
+      })
       })
     }
     )

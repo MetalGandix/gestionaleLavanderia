@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CapiInfo } from '../classes/capi-info';
 import { Articolo } from '../classes/capi_classes/articolo';
 import { ComplexCapiObject } from '../classes/capi_classes/complex-capi-object';
 import { User } from '../classes/user';
@@ -35,4 +36,9 @@ export class CapiService {
   public changeArticle(articolo: Articolo) {
     return this.http.post<Articolo>(this.globalVariables.url + "changeArticoloFromUser", articolo);
   }
+
+  public getInfoAboutArticle(id: number): Observable<CapiInfo>{
+    return this.http.get<CapiInfo>(this.globalVariables.url + "getAllInfoOfArticle/" + id);
+  }
+
 }

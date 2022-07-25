@@ -46,8 +46,8 @@
                             <td class="table-element">{{ element.name }}</td>
                             <td class="table-element">{{ element.value }}</td>
                             <td class="table-element">{{ element.scadenza }}</td>
-                            <td class="table-element">Standard</td>
-                            <td class="table-element">0,00</td>
+                            <td class="table-element">{{ element.service }}</td>
+                            <td class="table-element">{{ element.price }}</td>
                             <td *ngIf="element.ready" class="table-element" style="background-color: rgb(110, 191, 110);">
                                 <div class="form-check">
                                     <input (change)="changeReady(element.id)" class="form-check-input"
