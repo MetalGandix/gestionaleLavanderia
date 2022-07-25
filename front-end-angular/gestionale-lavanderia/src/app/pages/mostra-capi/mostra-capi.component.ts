@@ -28,6 +28,7 @@ export class MostraCapiComponent implements OnInit {
   dataConsegna: Date
   dataVisualizzata: string
   listArticoli: Articolo[] = []
+  nameToSplit: any
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -71,9 +72,10 @@ export class MostraCapiComponent implements OnInit {
             this.dataVisualizzata = day + "/" + month + "/" + year
             id++
             console.log("Name: " + property, "Number: " + this.articoloUtente[property])
+            this.nameToSplit = property.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             this.dix.push({
               idArticolo: this.articoloUtente.id,
-              name: property,
+              name: this.nameToSplit,
               value: this.articoloUtente[property],
               id: id,
               ready: false,
