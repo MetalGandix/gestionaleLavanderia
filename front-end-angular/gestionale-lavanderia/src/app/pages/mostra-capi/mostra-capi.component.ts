@@ -92,7 +92,7 @@ export class MostraCapiComponent implements OnInit {
     )
   }
 
-  changeArticle(articleId: number, name: string) {
+  changeArticle(articleId: number, name: string, idDix: number) {
     this.capiService.getArticleByIf(articleId).subscribe(article => {
       this.articleGeyById = article
       for (const property in this.articleGeyById) {
@@ -102,7 +102,9 @@ export class MostraCapiComponent implements OnInit {
         }
       }
     }).add(() =>{
-      this.capiService.changeArticle(this.articleGeyById).subscribe()
+      this.capiService.changeArticle(this.articleGeyById).subscribe().add(() =>{
+        this.dix.splice(idDix)
+      })
       }
     )
   }
