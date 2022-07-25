@@ -20,6 +20,7 @@ import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
 import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.ArticoloRepository;
+import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.CapiInfoRepository;
 
 @RestController
 @CrossOrigin
@@ -33,6 +34,9 @@ public class AbitiController {
 
     @Autowired
     private SmtpMailSender mailSender;
+
+    @Autowired
+    private CapiInfoRepository capiInfoRepo;
 
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
