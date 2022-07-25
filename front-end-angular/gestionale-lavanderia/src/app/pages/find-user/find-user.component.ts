@@ -66,7 +66,6 @@ export class FindUserComponent implements OnInit {
   }
 
   goToAggiungiCapi(username: string) {
-    this.findCapiSingleUser(username)
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {
       this.singleUser = user
     }).add(() => {
@@ -77,7 +76,6 @@ export class FindUserComponent implements OnInit {
   }
 
   goToMostraCapi(username: string) {
-    this.findCapiSingleUser(username)
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {
       this.singleUser = user
     }).add(() => {

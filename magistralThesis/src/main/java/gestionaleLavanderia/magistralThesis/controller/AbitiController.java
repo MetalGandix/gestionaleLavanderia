@@ -48,7 +48,8 @@ public class AbitiController {
             capiObject.getArticolo().setArticoliUtente(user);
             articoloRepo.save(capiObject.getArticolo());
             userRepo.save(user);
-            mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ", "Controlla la tua mail per sapere quando è pronto");
+            // mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ",
+            //         "Controlla la tua mail per sapere quando è pronto");
         }
         return "Capi inseriti";
     }
@@ -81,21 +82,23 @@ public class AbitiController {
         List<Integer> list = new ArrayList<Integer>();
         Field[] fields = articolo.getClass().getDeclaredFields();
         for (Field f : fields) {
-            //Iterando devo controllare che non iteri: l'id, il campo che joina l'utente e il campo date.
+            // Iterando devo controllare che non iteri: l'id, il campo che joina l'utente e
+            // il campo date.
             if (f.getName() != "id") {
                 if (f.getName() != "articoliUtente") {
                     if (f.getName() != "date") {
-                    int a = (int) f.get(articolo);
-                    list.add(a);
+                        int a = (int) f.get(articolo);
+                        list.add(a);
                     }
                 }
             }
         }
-        //Conta se nella lista ci sono degli elementi a 0, se non ci sono elimina l'oggetto
+        // Conta se nella lista ci sono degli elementi a 0, se non ci sono elimina
+        // l'oggetto
         if (list.stream().filter(i -> i != 0).count() == 0) {
             articoloRepo.delete(articolo);
             list.clear();
-        }else{
+        } else {
             articoloRepo.save(articolo);
         }
         return "Articolo cambiato correttamente";

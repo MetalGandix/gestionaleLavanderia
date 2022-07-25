@@ -27,6 +27,7 @@ export class ConsegnaCapiComponent implements OnInit {
   extractedString: string
   arrayProvvisorio: { name: string, icon: string, value: number }[]
   datePickerDate: String
+  arrayArticoli: Articolo[] = []
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -72,6 +73,7 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   insertGiaccheEGiacconi(number: number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.cappottoBimbo++
@@ -159,10 +161,13 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
     console.log(this.selectedItems)
   }
 
   insertVarie(number: number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.accappatoi++
@@ -256,9 +261,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertPantaloni(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.pantaloneDivisa++
@@ -280,18 +288,24 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertPigiami(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.vestaglia++
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertGonne(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.gonna++
@@ -312,9 +326,12 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     console.log(this.numberClicked)
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertCappelli(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.berretto++
@@ -327,18 +344,24 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertTappeti(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.tappeto++
         break
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertTende(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.calateTenda++
@@ -351,9 +374,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertScarpe(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.ciabatte++
@@ -381,9 +407,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertCamicie(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.camiciaBimbo++
@@ -417,9 +446,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertTrapunteEPiumoni(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.coperta1PiazzaLana++
@@ -480,9 +512,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertAbiti(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.abitoDonna
@@ -528,9 +563,12 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertMaglie(number, name) {
+    this.articolo = new Articolo()
     switch (number) {
       case 1:
         this.articolo.babyDol++
@@ -564,20 +602,23 @@ export class ConsegnaCapiComponent implements OnInit {
         break;
     }
     this.selectedItems.push(name)
+    this.arrayArticoli.push(this.articolo);
+    console.log(this.arrayArticoli)
   }
 
   insertIntoUser() {
-    if (this.articolo != null) {
-      this.capiToAdd.articolo = this.articolo
-    }
-    this.capiToAdd.date = this.datePickerDate
-    this.capiToAdd.user = this.singleUser
-    this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
-      this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
-        panelClass: ['blue-snackbar']
-      })._dismissAfter(4000)
-    )
+    this.arrayArticoli.forEach(singleArticle => {
+      if (singleArticle != null) {
+        this.capiToAdd.articolo = singleArticle
+      }
+      this.capiToAdd.date = this.datePickerDate
+      this.capiToAdd.user = this.singleUser
+      this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
+        this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
+          panelClass: ['blue-snackbar']
+        })._dismissAfter(4000)
+      )
+    })
   }
-
 
 }
