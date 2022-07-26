@@ -64,6 +64,9 @@ export class ConsegnaCapiComponent implements OnInit {
     if (splitted[1].length == 1) {
       splitted[1] = "0" + splitted[1]
     }
+    if (splitted[0].length == 1) {
+      splitted[0] = "0" + splitted[0]
+    }
     this.datePickerDate = splitted[0] + "/" + splitted[1] + "/" + splitted[2]
     console.log(this.datePickerDate)
   }
@@ -613,11 +616,11 @@ export class ConsegnaCapiComponent implements OnInit {
       }
       this.capiToAdd.date = this.datePickerDate
       this.capiToAdd.user = this.singleUser
-      this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(
+      this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(() => {
         this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
           panelClass: ['blue-snackbar']
-        })._dismissAfter(4000)
-      )
+        })._dismissAfter(4000), this.arrayArticoli.splice(0, this.arrayArticoli.length)
+      })
     })
   }
 

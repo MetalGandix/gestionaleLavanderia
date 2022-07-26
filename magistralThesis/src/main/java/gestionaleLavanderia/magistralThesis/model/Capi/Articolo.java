@@ -300,6 +300,8 @@ public class Articolo {
     public int tutaSciBimbo;
     @Column 
     public int tutaSciAdulto;
+    @Column 
+    public int tutaDonna;
     @Column
     public String servizio;
     @Column
@@ -317,6 +319,14 @@ public class Articolo {
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     public DAOUser articoliUtente;
+
+    public int getTutaDonna() {
+        return tutaDonna;
+    }
+
+    public void setTutaDonna(int tutaDonna) {
+        this.tutaDonna = tutaDonna;
+    }
 
     public boolean isPronto() {
         return pronto;

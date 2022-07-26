@@ -59,6 +59,12 @@ public class AbitiController {
         return "Capi inseriti";
     }
 
+    @GetMapping("/getAllArticles")
+    public List<Articolo> getArticles(){
+        List<Articolo> articleList = articoloRepo.findAll();
+        return articleList;
+    }
+
     @GetMapping("/getAllCapiFromUser/{username}")
     public ComplexCapiObject getCapi(@PathVariable String username) {
         DAOUser user = userRepo.findByUsername(username);

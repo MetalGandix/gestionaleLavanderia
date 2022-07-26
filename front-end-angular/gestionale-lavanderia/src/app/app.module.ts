@@ -34,7 +34,8 @@ import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDialogComponent } from './pages/find-user/user-dialog/user-dialog.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { GetAllCapiComponent } from './pages/get-all-capi/get-all-capi.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AddUserComponent,
     MostraCapiComponent,
     UserDialogComponent,
+    GetAllCapiComponent,
   ],
   imports: [
     BrowserModule,

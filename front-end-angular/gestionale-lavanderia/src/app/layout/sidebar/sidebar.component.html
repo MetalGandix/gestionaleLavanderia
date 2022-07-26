@@ -27,6 +27,13 @@
       </span>
       <span> Statistiche</span>
     </button>
+    <button mat-button class="menu-button" routerLink="/get-all-capi" *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()">
+    <span class="material-icons">
+      business_center
+    </span>
+    <span> Vedi tutti gli articoli</span>
+  </button>
     <button mat-button class="menu-button" routerLink="/fatture" *ngIf="sidenav.mode === 'over'"
       (click)="sidenav.toggle()">
       <span class="material-icons">

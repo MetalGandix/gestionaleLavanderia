@@ -41,4 +41,8 @@ export class CapiService {
     return this.http.get<CapiInfo>(this.globalVariables.url + "getAllInfoOfArticle/" + id);
   }
 
+  public getAllArticles(): Observable<Articolo[]>{
+    return this.http.get<Articolo[]>(this.globalVariables.url + "getAllArticles")
+  }
+
 }
