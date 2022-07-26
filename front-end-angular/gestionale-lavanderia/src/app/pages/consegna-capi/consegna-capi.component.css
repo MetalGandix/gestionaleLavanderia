@@ -8,6 +8,10 @@
   margin-top: 2%;
 }
 
+.p-style-side-choice{
+    color: black;
+}
+
 .container-right-dress-result{
   display: flex;
 }
@@ -49,4 +53,24 @@
 
 .orario{
   margin-top: 20px;
+}
+
+@media all and (max-width: 500px){
+  .product {
+    width: 100%;
+    margin-right: 2%;
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align-last: center;
+    margin-top: 2%;
+  }
+
+  .mat-list-text{
+    font-size: x-small;
+  }
+
+  .p-style-side-choice{
+    font-size: x-small;
+  }
 }
