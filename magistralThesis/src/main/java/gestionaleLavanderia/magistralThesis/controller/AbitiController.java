@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import gestionaleLavanderia.magistralThesis.mailSender.SmtpMailSender;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
 import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
@@ -63,7 +62,7 @@ public class AbitiController {
         Articolo articolo = articoloRepo.getLastArticolo();
         numeroLavorazione = articoloRepo.findNumeroLavorazione(articolo);
         }else{
-            numeroLavorazione = 1;
+            numeroLavorazione = 0;
         }
         return numeroLavorazione;
     }
