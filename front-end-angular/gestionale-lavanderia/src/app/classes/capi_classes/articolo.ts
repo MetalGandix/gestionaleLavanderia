@@ -148,4 +148,5 @@ export class Articolo {
     pronto: boolean = false;
     consegnato: boolean = false;
     note: string;
+    numeroLavorazione: number = 0;
 }

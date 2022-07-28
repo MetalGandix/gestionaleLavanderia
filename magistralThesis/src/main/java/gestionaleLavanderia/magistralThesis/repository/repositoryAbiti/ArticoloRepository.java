@@ -21,4 +21,12 @@ public interface ArticoloRepository extends JpaRepository<Articolo, Integer>{
     @Query(value = "SELECT o FROM Articolo o where o.articoliUtente = :user")
     List<Articolo> findListArticoli(@Param("user") DAOUser username);
 
+    @Query(value = "SELECT o.numeroLavorazione FROM Articolo o WHERE o.id = (SELECT MAX(o.id) FROM Articolo o)")
+    int findNumeroLavorazione(Articolo articolo);
+
+    @Query(value = "SELECT o FROM Articolo o WHERE o.id = (SELECT MAX(o.id) FROM Articolo o)")
+    Articolo getLastArticolo();
+
+
+
 }

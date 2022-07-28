@@ -314,11 +314,24 @@ public class Articolo {
     public String note;
 	@Column 
     public LocalDate date;
-    
+    @SequenceGenerator(name="sequenceLavorazioneArticolo", initialValue=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequenceLavorazioneArticolo")
+    @Column 
+    public int numeroLavorazione;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
     @OnDelete(action = OnDeleteAction.CASCADE)
     public DAOUser articoliUtente;
+
+        
+    public int getNumeroLavorazione() {
+        return numeroLavorazione;
+    }
+
+    public void setNumeroLavorazione(int numeroLavorazione) {
+        this.numeroLavorazione = numeroLavorazione;
+    }
 
     public int getTutaDonna() {
         return tutaDonna;

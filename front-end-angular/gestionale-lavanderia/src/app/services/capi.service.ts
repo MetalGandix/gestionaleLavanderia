@@ -29,7 +29,7 @@ export class CapiService {
     return this.http.post<ComplexCapiObject>(this.globalVariables.url + "insertDress", complexCapiObject);
   }
 
-  public getArticleByIf(id: number): Observable<Articolo>{
+  public getArticleById(id: number): Observable<Articolo>{
     return this.http.get<Articolo>(this.globalVariables.url + "findArticleById/" + id);
   }
 
@@ -43,6 +43,14 @@ export class CapiService {
 
   public getAllArticles(): Observable<Articolo[]>{
     return this.http.get<Articolo[]>(this.globalVariables.url + "getAllArticles")
+  }
+
+  public getLastNLavorazione(): Observable<number>{
+    return this.http.get<number>(this.globalVariables.url + "getLastNLavorazione")
+  }
+
+  public deleteArticle(id: number): Observable<number>{
+    return this.http.get<number>(this.globalVariables.url + "deleteArticle/" + id)
   }
 
 }

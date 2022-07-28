@@ -5,4 +5,5 @@ export class ComplexCapiObject {
     articolo: Articolo;
     user: User;
     date: String;
+    nLavorazione: number;
 }

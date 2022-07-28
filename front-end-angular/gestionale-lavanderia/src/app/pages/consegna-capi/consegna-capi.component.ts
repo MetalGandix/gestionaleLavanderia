@@ -610,16 +610,20 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   insertIntoUser() {
+    this.capiService.getLastNLavorazione().subscribe(lastLavorationNumber => {
+      this.capiToAdd.nLavorazione = lastLavorationNumber
+    }).add(() => {
     this.arrayArticoli.forEach(singleArticle => {
       if (singleArticle != null) {
         this.capiToAdd.articolo = singleArticle
       }
       this.capiToAdd.date = this.datePickerDate
       this.capiToAdd.user = this.singleUser
-      this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(() => {
-        this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
-          panelClass: ['blue-snackbar']
-        })._dismissAfter(4000), this.arrayArticoli.splice(0, this.arrayArticoli.length)
+        this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(() => {
+          this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
+            panelClass: ['blue-snackbar']
+          })._dismissAfter(4000), this.arrayArticoli.splice(0, this.arrayArticoli.length)
+        })
       })
     })
   }

@@ -6,7 +6,14 @@ public class ComplexCapiObject {
     Articolo articolo;
     DAOUser user;
     String date;
+    int nLavorazione;
 
+    public int getnLavorazione() {
+        return nLavorazione;
+    }
+    public void setnLavorazione(int nLavorazione) {
+        this.nLavorazione = nLavorazione;
+    }
     public Articolo getArticolo() {
         return articolo;
     }

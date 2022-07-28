@@ -9,6 +9,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,9 +32,6 @@ public class AbitiController {
     @Autowired
     private ArticoloRepository articoloRepo;
 
-    @Autowired
-    private SmtpMailSender mailSender;
-
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
             throws ParseException, MessagingException {
@@ -52,11 +50,22 @@ public class AbitiController {
             capiObject.getArticolo().setConsegnato(false);
             capiObject.getArticolo().setNote("Nessuna nota");
             capiObject.getArticolo().setServizio("Standard");
+            capiObject.getArticolo().setNumeroLavorazione(capiObject.getnLavorazione() +1);
             articoloRepo.save(capiObject.getArticolo());
-            // mailSender.send(user.getEmail(), "Tieniti pronto a ritirare gli articoli! ",
-            // "Controlla la tua mail per sapere quando è pronto");
         }
         return "Capi inseriti";
+    }
+
+    @GetMapping("/getLastNLavorazione")
+    public int getNLavorazione(){
+        int numeroLavorazione;
+        if(!articoloRepo.findAll().isEmpty()){
+        Articolo articolo = articoloRepo.getLastArticolo();
+        numeroLavorazione = articoloRepo.findNumeroLavorazione(articolo);
+        }else{
+            numeroLavorazione = 1;
+        }
+        return numeroLavorazione;
     }
 
     @GetMapping("/getAllArticles")
@@ -87,6 +96,13 @@ public class AbitiController {
         return articolo;
     }
 
+    @DeleteMapping("deleteArticle/{id}")
+    public String deleteArticle(@PathVariable long id){
+        Articolo articolo = articoloRepo.findById(id);
+        articoloRepo.delete(articolo);
+        return "Articolo eliminato";
+    }
+
     @PostMapping("/changeArticoloFromUser")
     public String changeArticolo(@RequestBody Articolo articolo)
             throws IllegalArgumentException, IllegalAccessException {
@@ -103,8 +119,10 @@ public class AbitiController {
                                 if (f.getName() != "pronto") {
                                     if (f.getName() != "consegnato") {
                                         if (f.getName() != "note") {
-                                            int a = (int) f.get(articolo);
-                                            list.add(a);
+                                            if (f.getName() != "numeroLavorazione"){
+                                                int a = (int) f.get(articolo);
+                                                list.add(a);
+                                            }
                                         }
                                     }
                                 }
@@ -117,8 +135,8 @@ public class AbitiController {
         // Conta se nella lista ci sono degli elementi a 0, se non ci sono elimina
         // l'oggetto
         if (list.stream().filter(i -> i != 0).count() == 0) {
-            articoloRepo.delete(articolo);
-            list.clear();
+        articoloRepo.delete(articolo);
+        list.clear();
         } else {
             articoloRepo.save(articolo);
         }
