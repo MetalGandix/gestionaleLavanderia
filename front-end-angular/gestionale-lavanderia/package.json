@@ -24,6 +24,7 @@
     "jspdf": "^2.5.1",
     "material-design-icons": "^3.0.1",
     "ng2-pdfjs-viewer": "^13.2.2",
+    "ngx-print": "^1.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

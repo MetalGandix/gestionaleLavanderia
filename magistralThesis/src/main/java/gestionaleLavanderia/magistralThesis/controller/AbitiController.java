@@ -34,10 +34,7 @@ public class AbitiController {
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
             throws ParseException, MessagingException {
-        if (capiObject.getArticolo() != null) {
-            articoloRepo.save(capiObject.getArticolo());
-        }
-        if (capiObject.getDate() != null) {
+        if (capiObject.getDate() != null && capiObject.getArticolo() != null) {
             DAOUser user = userRepo.findByUsername(capiObject.getUser().getUsername());
             DateTimeFormatter inputParser = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
@@ -49,10 +46,12 @@ public class AbitiController {
             capiObject.getArticolo().setConsegnato(false);
             capiObject.getArticolo().setNote("Nessuna nota");
             capiObject.getArticolo().setServizio("Standard");
-            capiObject.getArticolo().setNumeroLavorazione(capiObject.getnLavorazione() +1);
+            capiObject.getArticolo().setNumeroLavorazione(capiObject.getnLavorazione());
             articoloRepo.save(capiObject.getArticolo());
+            return "Capi inseriti";
+        }else{
+            return "Non hai selezionato articoli o messo date";
         }
-        return "Capi inseriti";
     }
 
     @GetMapping("/getLastNLavorazione")

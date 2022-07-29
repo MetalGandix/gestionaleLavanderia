@@ -28,6 +28,7 @@ export class ConsegnaCapiComponent implements OnInit {
   arrayProvvisorio: { name: string, icon: string, value: number }[]
   datePickerDate: String
   arrayArticoli: Articolo[] = []
+  numLavorazione: number = 0;
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -52,6 +53,10 @@ export class ConsegnaCapiComponent implements OnInit {
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
     this.onPageChange({ pageIndex: 0, pageSize: 12 })
+    this.capiService.getLastNLavorazione().subscribe(lastLavorationNumber => {
+      this.capiToAdd.nLavorazione = lastLavorationNumber+1
+      this.numLavorazione = lastLavorationNumber+1
+    })
     console.log(this.capiOfUser)
   }
 
@@ -68,6 +73,7 @@ export class ConsegnaCapiComponent implements OnInit {
       splitted[0] = "0" + splitted[0]
     }
     this.datePickerDate = splitted[0] + "/" + splitted[1] + "/" + splitted[2]
+    this.capiToAdd.date = this.datePickerDate
     console.log(this.datePickerDate)
   }
 
@@ -610,14 +616,10 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   insertIntoUser() {
-    this.capiService.getLastNLavorazione().subscribe(lastLavorationNumber => {
-      this.capiToAdd.nLavorazione = lastLavorationNumber
-    }).add(() => {
     this.arrayArticoli.forEach(singleArticle => {
       if (singleArticle != null) {
         this.capiToAdd.articolo = singleArticle
       }
-      this.capiToAdd.date = this.datePickerDate
       this.capiToAdd.user = this.singleUser
         this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(() => {
           this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
@@ -625,7 +627,6 @@ export class ConsegnaCapiComponent implements OnInit {
           })._dismissAfter(4000), this.arrayArticoli.splice(0, this.arrayArticoli.length)
         })
       })
-    })
   }
 
 }

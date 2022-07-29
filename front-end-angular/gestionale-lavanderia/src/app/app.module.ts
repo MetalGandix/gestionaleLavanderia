@@ -36,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserDialogComponent } from './pages/find-user/user-dialog/user-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { GetAllCapiComponent } from './pages/get-all-capi/get-all-capi.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { GetAllCapiComponent } from './pages/get-all-capi/get-all-capi.component
     MatSnackBarModule,
     MatMenuModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxPrintModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent]
