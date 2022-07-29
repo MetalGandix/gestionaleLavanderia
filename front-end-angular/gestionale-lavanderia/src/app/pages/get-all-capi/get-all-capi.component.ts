@@ -63,7 +63,7 @@ export class GetAllCapiComponent implements OnInit {
             this.id++
             this.nameToSplit = property.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             this.dix.push({
-              nameClient: this.articoloUtente.articoliUtente.username,
+              idDatabase: this.articoloUtente.id,
               idArticolo: this.articoloUtente.numeroLavorazione,
               normalName: property, //Il nome da passare a changeArticle
               name: this.nameToSplit,
@@ -84,7 +84,7 @@ export class GetAllCapiComponent implements OnInit {
     )
   }
 
-  changeArticle(articleId: number, name: string, idDix: number) {
+  changeArticle(articleId: number, name: string) {
     this.capiService.getArticleById(articleId).subscribe(article => {
       this.articleGeyById = article
       for (const property in this.articleGeyById) {
