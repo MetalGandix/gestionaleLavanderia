@@ -11,7 +11,7 @@ import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
 import { StatisticheComponent } from './pages/statistiche/statistiche.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', redirectTo: '/find-user', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'consegna-capi', component: ConsegnaCapiComponent },
   { path: 'ritiro-capi', component: RitiroCapiComponent },
