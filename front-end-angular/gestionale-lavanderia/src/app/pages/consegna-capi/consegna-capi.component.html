@@ -31,102 +31,17 @@
 
   <br><br>
   <div class="container_vestiti">
-    <div *ngIf="choiceMenuList == 1">
-      <div (click)="insertPantaloni(dress.value, dress)" class="product" *ngFor="let dress of pantaloni_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-
-    </div>
-
-    <div *ngIf="choiceMenuList == 2">
-      <div (click)="insertGonne(dress.value, dress)" class="product" *ngFor="let dress of gonne_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
+    <div>
+      <div class="product" (click)="selectDress(dress.property, dress.id)" *ngFor="let dress of arrayProvvisorio">
+        <img class="little_icon" />
+        <p style="color:black;"><b>{{dress.property}}</b></p>
       </div>
     </div>
-
-    <div *ngIf="choiceMenuList == 3">
-      <div (click)="insertCamicie(dress.value, dress)" class="product" *ngFor="let dress of camicie_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 4">
-      <div (click)="insertCappelli(dress.value, dress)" class="product" *ngFor="let dress of cappelli_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 5">
-      <div (click)="insertAbiti(dress.value, dress)" class="product" *ngFor="let dress of abiti_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 6">
-      <div (click)="insertGiaccheEGiacconi(dress.value, dress)" class="product"
-        *ngFor="let dress of giaccheEGiaccone_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 7">
-      <div (click)="insertTrapunteEPiumoni(dress.value, dress)" class="product"
-        *ngFor="let dress of trapunteEPiumoni_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 8">
-      <div (click)="insertMaglie(dress.value, dress)" class="product" *ngFor="let dress of maglie_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 9">
-      <div (click)="insertPigiami(dress.value, dress)" class="product" *ngFor="let dress of pigiami_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 10">
-      <div (click)="insertScarpe(dress.value, dress)" class="product" *ngFor="let dress of scarpe_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 11">
-      <div (click)="insertTappeti(dress.value, dress)" class="product" *ngFor="let dress of tappeti_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 12">
-      <div (click)="insertTende(dress.value, dress)" class="product" *ngFor="let dress of tende_array">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
-    </div>
-
-    <div *ngIf="choiceMenuList == 13">
-      <div (click)="insertVarie(dress.value, dress)" class="product" *ngFor="let dress of arrayProvvisorio">
-        <img class="little_icon" [src]="dress.icon" />
-        <p style="color:black;"><b>{{dress.name}}</b></p>
-      </div>
+    
     </div>
     <br><br>
 
-    <mat-paginator [length]="varie_array.length" [pageSize]="12" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
+    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
       aria-label="Select page">
     </mat-paginator>
 
@@ -171,5 +86,4 @@
       <p style="color:black;">ATTENZIONE! Non rispondiamo della rottura di cerniere, fibbie, bottoni, ricami, pailettes, accessori cuciti/incollati, tessuti usurati. Dopo 90 giorni dalla data di riconsegna previsa addebiteremo spese di reposito e non saremo più responsabili.</p>
     </div>
   </div>
-</div>
 </div>
