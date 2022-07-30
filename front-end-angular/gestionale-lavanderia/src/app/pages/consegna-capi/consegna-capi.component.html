@@ -23,31 +23,33 @@
 
 <div class="flex-right-menu-dress">
   <mat-selection-list style="margin-right: 1%;" #shoes [multiple]="false">
-    <mat-list-option (click)="selectFromList(choice.value)" *ngFor="let choice of principal_array"
-      [value]="choice.value">
-      <p style="color:black;">{{choice.name}}</p>
+    <mat-list-option (click)="selectCategory(choice.id)" *ngFor="let choice of categories"
+      [value]="choice.id">
+      <p style="color:black;">{{choice.nome}}</p>
     </mat-list-option>
   </mat-selection-list>
 
   <br><br>
   <div class="container_vestiti">
     <div>
-      <div class="product" (click)="selectDress(dress.property, dress.id)" *ngFor="let dress of arrayProvvisorio">
+      <div class="product" (click)="selectSubCategory(dress.id)" *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
         <img class="little_icon" />
-        <p style="color:black;"><b>{{dress.property}}</b></p>
+        <p style="color:black;"><b>{{dress.descrizione}}</b></p>
       </div>
     </div>
-    
+    <br>
+    <br>
+    <button mat-raised-button color="basic"
+      (click)="insertIntoUser()" printTitle="Ricevuta" printSectionId="print-section" ngxPrint>Invia</button>
     </div>
     <br><br>
 
-    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
+    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
       aria-label="Select page">
     </mat-paginator>
 
     <br><br>
-    <button *ngIf="choiceMenuList>0 && choiceMenuList<14" mat-raised-button color="basic"
-      (click)="insertIntoUser()" printTitle="Ricevuta" printSectionId="print-section" ngxPrint>Invia</button>
+
   </div>
 
   <div class="string-list">

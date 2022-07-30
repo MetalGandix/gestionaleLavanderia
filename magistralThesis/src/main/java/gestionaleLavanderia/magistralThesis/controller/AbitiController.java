@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import gestionaleLavanderia.magistralThesis.model.Categoria;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
 import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
+import gestionaleLavanderia.magistralThesis.repository.CategorieRepo;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.ArticoloRepository;
 
@@ -30,6 +33,9 @@ public class AbitiController {
 
     @Autowired
     private ArticoloRepository articoloRepo;
+
+    @Autowired
+    private CategorieRepo categoriaRepo;
 
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
@@ -64,6 +70,12 @@ public class AbitiController {
             numeroLavorazione = 0;
         }
         return numeroLavorazione;
+    }
+
+    @GetMapping("/getAllCategories")
+    public List<Categoria> getCategories(){
+        List<Categoria> categoryList = categoriaRepo.findAll();
+        return categoryList;
     }
 
     @GetMapping("/getAllArticles")

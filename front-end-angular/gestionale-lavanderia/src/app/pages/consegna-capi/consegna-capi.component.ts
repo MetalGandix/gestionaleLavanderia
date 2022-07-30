@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { isEmpty } from 'rxjs';
 import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
+import { Categoria } from 'src/app/classes/categoria';
+import { SottoCategoria } from 'src/app/classes/sotto-categoria';
 import { User } from 'src/app/classes/user';
 import { DressArrayService } from 'src/app/services/arrays/dress-array.service';
 import { CapiService } from 'src/app/services/capi.service';
@@ -34,6 +35,12 @@ export class ConsegnaCapiComponent implements OnInit {
   propertyArray: any[] = []
   counter = 0;
   finalArray: any[] = []
+  categories: Categoria[] = []
+  selectedCategory: number = 1;
+  subCategories: {[key: number]: SottoCategoria[]} = {}
+  pageIndex = 0;
+  pageSize = 0;
+  selectedSubCategories: {[key: number]: number} = {}
 
   //Array taken from service "dress-array"
   principal_array = this.dressArray.dress_array
@@ -62,6 +69,13 @@ export class ConsegnaCapiComponent implements OnInit {
       this.capiToAdd.nLavorazione = lastLavorationNumber + 1
       this.numLavorazione = lastLavorationNumber + 1
     })
+    this.capiService.getCategories().subscribe(listCat => {
+      this.categories = listCat
+      for(const category of this.categories){
+        this.subCategories[category.id] = category.sottocategorie
+      }
+      console.log(this.subCategories)
+    })
     let id: number = 0
     for (const property in this.articolo) {
       if (property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo") {
@@ -76,65 +90,21 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   onPageChange($event) {
-    this.arrayProvvisorio = this.propertyStringArray.slice($event.pageIndex * $event.pageSize, $event.pageIndex * $event.pageSize + $event.pageSize);
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
   }
 
-  //Creo un dizionario per le property e un array per gli articoli, controllo nell'array delle property se la property esiste, in tal caso sostituisco un oggetto
-  //temporaneo con i valori dell'articolo e poi scambio il value usando il dizionario delle property
-  selectDress(name, id) {
-    this.articolo = new Articolo()
-    if (this.arrayArticoli.length == 0) {
-      for (const property in this.articolo) {
-        if (property == name) {
-          this.articolo[property]++
-          this.articolo.id = id
-          this.propertyArray.push({
-            id: this.articolo.id,
-            property: property,
-            value: this.articolo[property]
-          })
-          this.arrayArticoli.push(this.articolo)
-        }
-      }
-    }else{
-      let canPush: boolean = true
-      for (const property in this.articolo) {
-        if (property == name) {
-          this.articolo[property]++
-          this.articolo.id = id
-          this.propertyArray.forEach(e => {
-            if(e.id === this.articolo.id){
-              e.value++
-              canPush = false
-            }
-          })
-          if(canPush == true){
-            this.propertyArray.push({
-              id: this.articolo.id,
-              property: property,
-              value: this.articolo[property]
-            })
-          this.arrayArticoli.push(this.articolo)
-          }
-        }
-      }
+  selectSubCategory(id){
+    if(!this.selectedSubCategories[id]){
+      this.selectedSubCategories[id] = 0
     }
-    let tempArticolo = new Articolo()
-    tempArticolo = this.arrayArticoli[id]
-    for(const property in tempArticolo){
-      if(property == name)
-      tempArticolo[property] = this.propertyArray[id].value
-    }
-    this.arrayArticoli[id] = tempArticolo
-    this.finalArray = this.arrayArticoli.filter(n => n)
-    // this.arrayArticoli.forEach(element => {
-    //   if(element !== undefined){
-    //     if(isEmpty())
-    //     this.finalArray.push(element)
-    //   }
-    // })
-    console.log(this.propertyArray)
-    console.log(this.arrayArticoli)
+    this.selectedSubCategories[id]++
+    console.log(this.selectedSubCategories)
+  }
+
+  selectCategory(id) {
+   this.selectedCategory = id
+   this.pageIndex = 0
   }
 
   onDateChange(value) {

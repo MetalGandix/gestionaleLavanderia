@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CapiInfo } from '../classes/capi-info';
 import { Articolo } from '../classes/capi_classes/articolo';
 import { ComplexCapiObject } from '../classes/capi_classes/complex-capi-object';
+import { Categoria } from '../classes/categoria';
 import { User } from '../classes/user';
 import { GlobalVariablesService } from './global variables/global-variables.service';
 
@@ -51,6 +52,10 @@ export class CapiService {
 
   public deleteArticle(id: number): Observable<number>{
     return this.http.get<number>(this.globalVariables.url + "deleteArticle/" + id)
+  }
+
+  public getCategories(): Observable<Categoria[]>{
+    return this.http.get<Categoria[]>(this.globalVariables.url + "getAllCategories")
   }
 
 }
