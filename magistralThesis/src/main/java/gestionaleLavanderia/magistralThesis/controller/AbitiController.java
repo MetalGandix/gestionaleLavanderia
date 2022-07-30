@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import gestionaleLavanderia.magistralThesis.model.Categoria;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
+import gestionaleLavanderia.magistralThesis.model.SottoCategoria;
 import gestionaleLavanderia.magistralThesis.model.Capi.Articolo;
 import gestionaleLavanderia.magistralThesis.model.Capi.ComplexCapiObject;
 import gestionaleLavanderia.magistralThesis.repository.CategorieRepo;
+import gestionaleLavanderia.magistralThesis.repository.SottoCategorieRepository;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 import gestionaleLavanderia.magistralThesis.repository.repositoryAbiti.ArticoloRepository;
 
@@ -36,6 +40,9 @@ public class AbitiController {
 
     @Autowired
     private CategorieRepo categoriaRepo;
+
+    @Autowired
+    private SottoCategorieRepository sottoCategoriaRepo;
 
     @PostMapping("/insertDress")
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
@@ -76,6 +83,12 @@ public class AbitiController {
     public List<Categoria> getCategories(){
         List<Categoria> categoryList = categoriaRepo.findAll();
         return categoryList;
+    }
+
+    @GetMapping("/getSubCategoryById/{id}")
+    public SottoCategoria getSubCatById(@PathVariable int id){
+        SottoCategoria sottoCategoria = sottoCategoriaRepo.findById(id);
+        return sottoCategoria;
     }
 
     @GetMapping("/getAllArticles")

@@ -6,6 +6,7 @@ import { CapiInfo } from '../classes/capi-info';
 import { Articolo } from '../classes/capi_classes/articolo';
 import { ComplexCapiObject } from '../classes/capi_classes/complex-capi-object';
 import { Categoria } from '../classes/categoria';
+import { SottoCategoria } from '../classes/sotto-categoria';
 import { User } from '../classes/user';
 import { GlobalVariablesService } from './global variables/global-variables.service';
 
@@ -56,6 +57,10 @@ export class CapiService {
 
   public getCategories(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.globalVariables.url + "getAllCategories")
+  }
+
+  public getSubCatFromId(id: number): Observable<SottoCategoria>{
+    return this.http.get<SottoCategoria>(this.globalVariables.url + "getSubCategoryById/" + id)
   }
 
 }

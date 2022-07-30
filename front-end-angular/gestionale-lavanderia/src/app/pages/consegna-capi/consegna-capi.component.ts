@@ -6,7 +6,6 @@ import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-obj
 import { Categoria } from 'src/app/classes/categoria';
 import { SottoCategoria } from 'src/app/classes/sotto-categoria';
 import { User } from 'src/app/classes/user';
-import { DressArrayService } from 'src/app/services/arrays/dress-array.service';
 import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,7 +16,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ConsegnaCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private dressArray: DressArrayService, private _snackBar: MatSnackBar) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
 
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
@@ -42,22 +41,6 @@ export class ConsegnaCapiComponent implements OnInit {
   pageSize = 0;
   selectedSubCategories: {[key: number]: number} = {}
 
-  //Array taken from service "dress-array"
-  principal_array = this.dressArray.dress_array
-  pantaloni_array = this.dressArray.pantaloni_array
-  maglie_array = this.dressArray.maglie_array
-  varie_array = this.dressArray.varie_array
-  pigiami_array = this.dressArray.pigiami_array
-  scarpe_array = this.dressArray.scarpe_array
-  tappeti_array = this.dressArray.tappeti_array
-  tende_array = this.dressArray.tende_array
-  trapunteEPiumoni_array = this.dressArray.trapunteEPiumoni_array
-  giaccheEGiaccone_array = this.dressArray.giaccheEGiacconi_array
-  gonne_array = this.dressArray.gonne_array
-  camicie_array = this.dressArray.camicie_array
-  abiti_array = this.dressArray.abiti_array
-  cappelli_array = this.dressArray.cappelli_array
-
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
       this.router.navigate(["/find-user"])
@@ -76,16 +59,6 @@ export class ConsegnaCapiComponent implements OnInit {
       }
       console.log(this.subCategories)
     })
-    let id: number = 0
-    for (const property in this.articolo) {
-      if (property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo") {
-        this.propertyStringArray.push({
-          id: id++,
-          property: property,
-          value: this.articolo[property]
-        })
-      }
-    }
     console.log(this.capiOfUser)
   }
 
@@ -100,6 +73,9 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.selectedSubCategories[id]++
     console.log(this.selectedSubCategories)
+    for(let key in this.selectedSubCategories){
+      console.log(key,":", this.selectedSubCategories[key])
+    }
   }
 
   selectCategory(id) {
@@ -125,6 +101,12 @@ export class ConsegnaCapiComponent implements OnInit {
   }
 
   insertIntoUser() {
+    for(let key in this.selectedSubCategories){
+       this.capiService.getSubCatFromId(parseInt(key, 10)).subscribe(subCat => {
+        this.articolo.sottocategoria = subCat
+        this.arrayArticoli.push(this.articolo)
+      })
+    }
     this.arrayArticoli.forEach(singleArticle => {
       if (singleArticle != null) {
         this.capiToAdd.articolo = singleArticle

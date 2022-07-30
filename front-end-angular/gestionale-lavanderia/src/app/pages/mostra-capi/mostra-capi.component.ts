@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
-import { DressArrayService } from 'src/app/services/arrays/dress-array.service';
 import { CapiService } from 'src/app/services/capi.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MostraCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private dressArray: DressArrayService, private _snackBar: MatSnackBar) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
 
 
   articleGeyById: Articolo = new Articolo()
