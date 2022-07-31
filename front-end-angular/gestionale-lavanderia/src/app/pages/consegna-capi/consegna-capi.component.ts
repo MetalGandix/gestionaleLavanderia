@@ -40,6 +40,9 @@ export class ConsegnaCapiComponent implements OnInit {
   pageIndex = 0;
   pageSize = 0;
   selectedSubCategories: {[key: number]: number} = {}
+  subCategoryArray: SottoCategoria[] = []
+  subCategory: SottoCategoria = new SottoCategoria()
+  numArray: any[] = []
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -52,14 +55,15 @@ export class ConsegnaCapiComponent implements OnInit {
       this.capiToAdd.nLavorazione = lastLavorationNumber + 1
       this.numLavorazione = lastLavorationNumber + 1
     })
+    this.capiService.getAllsubCat().subscribe(allSubCat => {
+      this.subCategoryArray = allSubCat
+    })
     this.capiService.getCategories().subscribe(listCat => {
       this.categories = listCat
       for(const category of this.categories){
         this.subCategories[category.id] = category.sottocategorie
       }
-      console.log(this.subCategories)
     })
-    console.log(this.capiOfUser)
   }
 
   onPageChange($event) {
@@ -67,15 +71,12 @@ export class ConsegnaCapiComponent implements OnInit {
     this.pageIndex = $event.pageIndex
   }
 
-  selectSubCategory(id){
-    if(!this.selectedSubCategories[id]){
-      this.selectedSubCategories[id] = 0
+  selectSubCategory(sottoCategoria: SottoCategoria){
+    if(!this.selectedSubCategories[sottoCategoria.id]){
+      this.selectedSubCategories[sottoCategoria.id] = 0
     }
-    this.selectedSubCategories[id]++
+    this.selectedSubCategories[sottoCategoria.id]++
     console.log(this.selectedSubCategories)
-    for(let key in this.selectedSubCategories){
-      console.log(key,":", this.selectedSubCategories[key])
-    }
   }
 
   selectCategory(id) {
@@ -102,22 +103,31 @@ export class ConsegnaCapiComponent implements OnInit {
 
   insertIntoUser() {
     for(let key in this.selectedSubCategories){
-       this.capiService.getSubCatFromId(parseInt(key, 10)).subscribe(subCat => {
-        this.articolo.sottocategoria = subCat
-        this.arrayArticoli.push(this.articolo)
+      this.numArray.push({
+        id: parseInt(key, 10)-1,
+        valore: this.selectedSubCategories[key]
       })
     }
+    this.numArray.forEach(elem => {
+      let articolo = new Articolo()
+      articolo.sottocategoria = this.subCategoryArray[elem.id]
+      articolo.quantity = elem.valore
+      this.arrayArticoli.push(articolo)
+    })
     this.arrayArticoli.forEach(singleArticle => {
       if (singleArticle != null) {
-        this.capiToAdd.articolo = singleArticle
+        this.articolo = singleArticle
       }
       this.capiToAdd.user = this.singleUser
+      this.capiToAdd.articolo = singleArticle
       this.capiService.insertDressForUser(this.capiToAdd).subscribe().add(() => {
         this._snackBar.open("Panni inseriti correttamente", "Chiudi", {
           panelClass: ['blue-snackbar']
         })._dismissAfter(4000), this.arrayArticoli.splice(0, this.arrayArticoli.length)
       })
     })
+    this.selectedSubCategories = {}
+    this.numArray = []
   }
 
 }

@@ -3,7 +3,7 @@ import { Articolo } from "./articolo";
 
 export class ComplexCapiObject {
     articolo: Articolo;
-    user: User;
+    user?: User;
     date: String;
     nLavorazione: number;
 }

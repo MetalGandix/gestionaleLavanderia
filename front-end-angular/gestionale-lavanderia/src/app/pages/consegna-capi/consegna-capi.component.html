@@ -1,5 +1,5 @@
 <div class="container">
-  <p style="color:black; font-size: larger;">Aggiungi dei capi all'utente: <b>{{singleUser.username}}</b></p>
+  <p style="color:black; font-size: larger;">Aggiungi dei capi all'utente: <b>{{singleUser!.username}}</b></p>
 </div>
 
 <div class="orario">
@@ -29,10 +29,12 @@
     </mat-list-option>
   </mat-selection-list>
 
+  <!-- .slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)" -->
+
   <br><br>
   <div class="container_vestiti">
     <div>
-      <div class="product" (click)="selectSubCategory(dress.id)" *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
+      <div class="product" (click)="selectSubCategory(dress)" *ngFor="let dress of subCategories[selectedCategory]">
         <img class="little_icon" />
         <p style="color:black;"><b>{{dress.descrizione}}</b></p>
       </div>

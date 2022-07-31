@@ -12,4 +12,5 @@ export class Articolo {
     note: string;
     numeroLavorazione: number = 0;
     sottocategoria: SottoCategoria;
+    quantity: number = 0;
 }

@@ -119,6 +119,12 @@ public class AbitiController {
         return articolo;
     }
 
+    @GetMapping("/getAllSubCat")
+    public List<SottoCategoria> getAllSubCat(){
+        List<SottoCategoria> subCat = sottoCategoriaRepo.findAll();
+        return subCat;
+    }
+
     @DeleteMapping("deleteArticle/{id}")
     public String deleteArticle(@PathVariable long id){
         Articolo articolo = articoloRepo.findById(id);

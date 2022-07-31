@@ -65,16 +65,15 @@ export class MostraCapiComponent implements OnInit {
         //Creo un id da assegnare al dizionario
         for (const property in this.articoloUtente) {
           //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
-          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo") {
+          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo" && property != "sottocategoria") {
             const [year, month, day] = this.articoloUtente.date.split('-');
             this.dataVisualizzata = day + "/" + month + "/" + year
             this.id++
-            this.nameToSplit = property.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
             this.dix.push({
               idDatabase: this.articoloUtente.id,
               idArticolo: this.articoloUtente.numeroLavorazione,
               normalName: property, //Il nome da passare a changeArticle
-              name: this.nameToSplit,
+              name: this.articoloUtente.sottocategoria.descrizione,
               value: this.articoloUtente[property],
               id: this.id,
               ready: this.articoloUtente.pronto,

@@ -63,4 +63,7 @@ export class CapiService {
     return this.http.get<SottoCategoria>(this.globalVariables.url + "getSubCategoryById/" + id)
   }
 
+  public getAllsubCat(): Observable<SottoCategoria[]>{
+    return this.http.get<SottoCategoria[]>(this.globalVariables.url + "getAllSubCat")
+  }
 }
