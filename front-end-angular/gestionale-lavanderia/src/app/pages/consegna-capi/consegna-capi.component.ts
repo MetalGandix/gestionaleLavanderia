@@ -71,6 +71,7 @@ export class ConsegnaCapiComponent implements OnInit {
         this.subCategories[category.id] = category.sottocategorie
       }
     })
+    this.propertyStringArray.length = 6
   }
 
   onPageChange($event) {
