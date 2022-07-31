@@ -33,7 +33,7 @@ export class ConsegnaCapiComponent implements OnInit {
   propertyStringArray: any[] = []
   propertyArray: any[] = []
   counter = 0;
-  finalArray: any[] = []
+  stringNamesArray: any[] = []
   categories: Categoria[] = []
   selectedCategory: number = 1;
   subCategories: {[key: number]: SottoCategoria[]} = {}
@@ -43,6 +43,12 @@ export class ConsegnaCapiComponent implements OnInit {
   subCategoryArray: SottoCategoria[] = []
   subCategory: SottoCategoria = new SottoCategoria()
   numArray: any[] = []
+  dixStringsLateral: {[key: number]: number} = {}
+  contatoreDizionarioStringhe: number = 0;
+  idDizionario: number = 0;
+  selectedSubCategoriesList: {[key: string]: number} = {}
+  dixSubCategoryLenght :any;
+
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -76,7 +82,12 @@ export class ConsegnaCapiComponent implements OnInit {
       this.selectedSubCategories[sottoCategoria.id] = 0
     }
     this.selectedSubCategories[sottoCategoria.id]++
-    console.log(this.selectedSubCategories)
+    if(!this.selectedSubCategoriesList[sottoCategoria.descrizione]){
+      this.selectedSubCategoriesList[sottoCategoria.descrizione] = 0
+    }
+    this.selectedSubCategoriesList[sottoCategoria.descrizione]++
+    this.dixSubCategoryLenght = Object.values(this.selectedSubCategoriesList).reduce((a, b) => a + b, 0)
+    console.log(this.dixSubCategoryLenght)
   }
 
   selectCategory(id) {

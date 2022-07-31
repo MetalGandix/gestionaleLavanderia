@@ -41,24 +41,21 @@
     </div>
     <br>
     <br>
+    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
+    aria-label="Select page">
+  </mat-paginator>
+  <br><br>
     <button mat-raised-button color="basic"
       (click)="insertIntoUser()" printTitle="Ricevuta" printSectionId="print-section" ngxPrint>Invia</button>
     </div>
-    <br><br>
-
-    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
-      aria-label="Select page">
-    </mat-paginator>
-
-    <br><br>
-
-  </div>
-
-  <div class="string-list">
-    <div class="stringArray" *ngFor="let string of selectedItems; index as i">
-      <p style="color:black;">{{string.name}}</p>
+    <div class="string-list">
+      <div class="stringArray" *ngFor="let string of selectedSubCategoriesList| keyvalue">
+        <p style="color:black;">{{string.key}} x {{string.value}} </p>
+      </div>
     </div>
   </div>
+
+
 
   <div style="display:none;">
   <div id="print-section">
@@ -77,11 +74,9 @@
       <br>
       <br>
       -------------------------------------------------------------------------------------------------
-      <p style="color:black;" *ngFor="let singleArticleNgFor of selectedItems">- {{singleArticleNgFor.name}}</p>
+      <p style="color:black;" *ngFor="let string of selectedSubCategoriesList| keyvalue">- {{string.key}} x {{string.value}}</p>
       -------------------------------------------------------------------------------------------------
-      <p style="color:black;">Totale capi: {{selectedItems.length}}</p>
-      -------------------------------------------------------------------------------------------------
-      <p style="color:black;">Totale capi: {{selectedItems.length}}</p>
+      <p style="color:black;">Totale capi: {{this.dixSubCategoryLenght}}</p>
       -------------------------------------------------------------------------------------------------
       <p style="color:black;">Totale 0,00</p>
       <p style="color:black;">Pagato 0,00</p>
