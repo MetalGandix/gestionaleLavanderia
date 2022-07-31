@@ -48,6 +48,7 @@ export class ConsegnaCapiComponent implements OnInit {
   idDizionario: number = 0;
   selectedSubCategoriesList: {[key: string]: number} = {}
   dixSubCategoryLenght :any;
+  disabledButton: boolean = false;
 
 
   ngOnInit() {
@@ -56,7 +57,7 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.singleUser = window.history.state.singleUser
     this.capiOfUser = window.history.state.capiOfUser
-    this.onPageChange({ pageIndex: 0, pageSize: 12 })
+    this.onPageChange({ pageIndex: 0, pageSize: 15 })
     this.capiService.getLastNLavorazione().subscribe(lastLavorationNumber => {
       this.capiToAdd.nLavorazione = lastLavorationNumber + 1
       this.numLavorazione = lastLavorationNumber + 1
@@ -87,12 +88,16 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.selectedSubCategoriesList[sottoCategoria.descrizione]++
     this.dixSubCategoryLenght = Object.values(this.selectedSubCategoriesList).reduce((a, b) => a + b, 0)
-    console.log(this.dixSubCategoryLenght)
   }
 
   selectCategory(id) {
    this.selectedCategory = id
    this.pageIndex = 0
+   this.showSubCategory(id)
+  }
+
+  showSubCategory(id: number){
+    this.propertyStringArray = this.subCategories[id]
   }
 
   onDateChange(value) {
@@ -105,7 +110,7 @@ export class ConsegnaCapiComponent implements OnInit {
     }
     this.datePickerDate = splitted[0] + "/" + splitted[1] + "/" + splitted[2]
     this.capiToAdd.date = this.datePickerDate
-    console.log(this.datePickerDate)
+    this.disabledButton = true
   }
 
   selectFromList(number) {

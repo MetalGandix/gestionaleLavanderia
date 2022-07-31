@@ -40,7 +40,6 @@ export class StatisticheComponent{
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
-    console.log(this.events)
   }
 
   public selectedTable: number = 0;
@@ -51,7 +50,6 @@ export class StatisticheComponent{
   }
 
   selectTable(){
-    console.log(this.selectedTable)
   }
 }
 

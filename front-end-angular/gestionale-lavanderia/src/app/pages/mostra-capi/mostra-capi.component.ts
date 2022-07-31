@@ -85,7 +85,6 @@ export class MostraCapiComponent implements OnInit {
             })
           }
         }
-        console.log("Dizionario: ", this.dix)
       })
     }
     )

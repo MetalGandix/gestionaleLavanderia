@@ -34,19 +34,24 @@
   <br><br>
   <div class="container_vestiti">
     <div>
-      <div class="product" (click)="selectSubCategory(dress)" *ngFor="let dress of subCategories[selectedCategory]">
+      <div class="product" (click)="selectSubCategory(dress)" *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
         <img class="little_icon" />
         <p style="color:black;"><b>{{dress.descrizione}}</b></p>
       </div>
     </div>
     <br>
     <br>
-    <mat-paginator [length]="propertyStringArray.length" [pageSize]="12" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[12]"
+    <mat-paginator [length]="propertyStringArray.length" [pageSize]="15" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[15]"
     aria-label="Select page">
   </mat-paginator>
   <br><br>
-    <button mat-raised-button color="basic"
+
+    <button *ngIf="disabledButton" mat-raised-button color="basic"
       (click)="insertIntoUser()" printTitle="Ricevuta" printSectionId="print-section" ngxPrint>Invia</button>
+
+      <button style="pointer-events: none; opacity: 65%;" *ngIf="!disabledButton" mat-raised-button color="basic"
+      >Invia</button>
+
     </div>
     <div class="string-list">
       <div class="stringArray" *ngFor="let string of selectedSubCategoriesList| keyvalue">

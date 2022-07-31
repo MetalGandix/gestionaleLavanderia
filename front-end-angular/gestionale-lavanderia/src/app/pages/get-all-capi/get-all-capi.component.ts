@@ -78,7 +78,6 @@ export class GetAllCapiComponent implements OnInit {
             })
           }
         }
-        console.log("Dizionario: ", this.dix)
       })
     }
     )
