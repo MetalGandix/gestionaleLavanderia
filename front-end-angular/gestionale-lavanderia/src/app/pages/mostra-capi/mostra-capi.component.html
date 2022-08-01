@@ -49,16 +49,17 @@
 
                             <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
 
-                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.quantity"
-                                (ngModelChange)="changeQuantity(element ,$event)"></td>
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                    [(ngModel)]="element.quantity" (ngModelChange)="changeQuantity(element ,$event)">
+                            </td>
 
                             <td class="table-element">{{ element.date }}</td>
-                            
-                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.servizio"
-                                    (ngModelChange)="changeServizio(element ,$event)"></td>
 
-                            <td style="width:8%"  class="table-element"><input style="width:70%"  ngModel [(ngModel)]="element.prezzo"
-                                    (ngModelChange)="changePrezzo(element ,$event)"> €</td>
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                    [(ngModel)]="element.servizio" (ngModelChange)="changeServizio(element ,$event)">
+                            </td>
+
+                            <td style="width:8%" class="table-element"><input style="width: 30%; border: none;" ngModel [(ngModel)]="element.prezzo" (ngModelChange)="changePrezzo(element ,$event)"> €</td>
 
                             <td *ngIf="element.pronto" class="table-element"
                                 style="background-color: rgb(110, 191, 110);">
@@ -100,7 +101,9 @@
                                 </div>
                             </td>
 
-                            <td class="table-element"><input ngModel (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+                            <td class="table-element"><input style="border: none;" ngModel
+                                    (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+
                             <td class="table-element"><button (click)="changeArticle(element)"
                                     mat-raised-button>Modifica questo articolo</button></td>
 
