@@ -29,6 +29,9 @@ export class MostraCapiComponent implements OnInit {
   listArticoli: Articolo[] = []
   nameToSplit: any //Il nome maiuscolo
   id: number = -1 //Questo id è l'id di ogni elemento nel dix
+  articolo: Articolo = new Articolo()
+  note: string;
+  pronto: boolean = false;
 
 
   ngOnInit() {
@@ -36,61 +39,57 @@ export class MostraCapiComponent implements OnInit {
       this.router.navigate(["/find-user"])
     }
     this.singleUser = window.history.state.singleUser
-    this.setDix()
+    this.getInfos()
   }
 
   changeConsegnato(element) {
-    if (this.dix[element].consegnato) {
-      this.dix[element].consegnato = false
+    if (element.consegnato) {
+      element.consegnato = false
     } else {
-      this.dix[element].consegnato = true
+      element.consegnato = true
     }
   }
 
   changeReady(element) {
-    if (this.dix[element].ready) {
-      this.dix[element].ready = false
+    if (element.pronto) {
+      element.pronto = false
     } else {
-      this.dix[element].ready = true
+      element.pronto = true
     }
   }
 
-  setDix(){
+  changeNota(element ,note: string){
+    element.note = note
+  }
+
+  changeServizio(element, servizio: string){
+    element.servizio = servizio
+  }
+
+  changePrezzo(element: Articolo, prezzo: number){
+    element.prezzo = prezzo
+  }
+
+  changeArticle(articolo: Articolo){
+    this.capiService.changeArticleInfo(articolo).subscribe().add(()=>
+      this._snackBar.open("Articolo modificato", "Chiudi", {
+        panelClass: ['blue-snackbar']
+      })._dismissAfter(4000)
+    )
+  }
+
+  changeQuantity(element: Articolo, quantity: number){
+    element.quantity = quantity
+  }
+
+  getInfos(){
     this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
       this.listArticoli = capi
-    }).add(() => {
-      this.listArticoli.forEach(articolo => {
-        //Qua prendo ogni articolo presente nella lista di articoli
-        this.articoloUtente = articolo
-        //Creo un id da assegnare al dizionario
-        for (const property in this.articoloUtente) {
-          //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
-          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo" && property != "sottocategoria") {
-            const [year, month, day] = this.articoloUtente.date.split('-');
-            this.dataVisualizzata = day + "/" + month + "/" + year
-            this.id++
-            this.dix.push({
-              idDatabase: this.articoloUtente.id,
-              idArticolo: this.articoloUtente.numeroLavorazione,
-              normalName: property, //Il nome da passare a changeArticle
-              name: this.articoloUtente.sottocategoria.descrizione,
-              value: this.articoloUtente[property],
-              id: this.id,
-              ready: this.articoloUtente.pronto,
-              consegnato: this.articoloUtente.consegnato,
-              scadenza: this.dataVisualizzata,
-              note: this.articoloUtente.note,
-              servizio: this.articoloUtente.servizio,
-              price: this.articoloUtente.prezzo
-            })
-          }
-        }
-      })
     }
     )
   }
 
-  changeArticle(articleId: number, name: string) {
+  deleteArticle(articleId: number, name: string) {
     this.capiService.getArticleById(articleId).subscribe(article => {
       this.articleGeyById = article
       for (const property in this.articleGeyById) {
@@ -99,10 +98,13 @@ export class MostraCapiComponent implements OnInit {
         }
       }
     }).add(() =>{
-      this.capiService.changeArticle(this.articleGeyById).subscribe().add(() =>{
+      this.capiService.deleteArticleFromUser(this.articleGeyById).subscribe().add(() =>{
         //Una volta finita la subscribe, rimuovo dal dix l'elemento con l'indice idDix
-        this.dix.splice(0,this.dix.length)
-        this.setDix()
+        this.listArticoli.splice(0,this.listArticoli.length)
+        this.getInfos()
+        this._snackBar.open("Articolo eliminato", "Chiudi", {
+          panelClass: ['blue-snackbar']
+        })._dismissAfter(4000)
       })
       }
     )

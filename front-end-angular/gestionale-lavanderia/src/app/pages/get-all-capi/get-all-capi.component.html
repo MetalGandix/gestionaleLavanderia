@@ -1,3 +1,5 @@
+<p style="color:black; text-align-last: center; font-size: x-large;">Capi di tutti i clienti</p>
+
 <div class="card my-5">
     <div class="overflow-auto">
         <!--spostato lo style nel CSS -->
@@ -7,10 +9,7 @@
                     <thead class=".table-bordered">
                         <tr style="color: red;">
                             <th class="header-column" scope="col">
-                                <p>Num Lavorazione</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Nome cliente</p>
+                                <p>Numero Lavorazione</p>
                             </th>
                             <th class="header-column" scope="col">
                                 <p>Prodotto</p>
@@ -37,51 +36,78 @@
                                 <p>Note</p>
                             </th>
                             <th class="header-column" scope="col">
+                                <p>Modifica</p>
+                            </th>
+                            <th class="header-column" scope="col">
                                 <p>Elimina</p>
                             </th>
                         </tr>
                     </thead>
                     <tbody class=".table-bordered">
-                        <tr *ngFor="let element of dix">
-                            <td class="table-element">{{ element.idArticolo }}</td>
-                            <td class="table-element">{{ element.nameClient }}</td>
-                            <td class="table-element">{{ element.name }}</td>
-                            <td class="table-element">{{ element.value }}</td>
-                            <td class="table-element">{{ element.scadenza }}</td>
-                            <td class="table-element">{{ element.servizio }}</td>
-                            <td class="table-element">{{ element.price }} €</td>
-                            <td *ngIf="element.ready" class="table-element" style="background-color: rgb(110, 191, 110);">
+                        <tr *ngFor="let element of listArticoli">
+                            <td class="table-element">{{ element.numeroLavorazione }}</td>
+
+                            <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
+
+                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.quantity"
+                                (ngModelChange)="changeQuantity(element ,$event)"></td>
+
+                            <td class="table-element">{{ element.date }}</td>
+                            
+                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.servizio"
+                                    (ngModelChange)="changeServizio(element ,$event)"></td>
+
+                            <td style="width:8%"  class="table-element"><input style="width:70%"  ngModel [(ngModel)]="element.prezzo"
+                                    (ngModelChange)="changePrezzo(element ,$event)"> €</td>
+
+                            <td *ngIf="element.pronto" class="table-element"
+                                style="background-color: rgb(110, 191, 110);">
                                 <div class="form-check">
-                                    <input (change)="changeReady(element.id)" class="form-check-input"
-                                        type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div></td>
-                            <td *ngIf="!element.ready" class="table-element" style="background-color: rgb(244, 66, 66);">
-                                <div class="form-check">
-                                    <input (change)="changeReady(element.id)" class="form-check-input"
-                                        type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div></td>
-                            <td *ngIf="!element.consegnato" class="table-element" style="background-color: rgb(244, 66, 66);;">
-                                <div class="form-check">
-                                    <input (change)="changeConsegnato(element.id)" class="form-check-input"
-                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <input (change)="changeReady(element)" class="form-check-input" type="checkbox"
+                                        value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
                             </td>
-                            <td *ngIf="element.consegnato" class="table-element" style="background-color: rgb(110, 191, 110);">
+
+                            <td *ngIf="!element.pronto" class="table-element"
+                                style="background-color: rgb(244, 66, 66);">
                                 <div class="form-check">
-                                    <input (change)="changeConsegnato(element.id)" class="form-check-input"
-                                        type="checkbox" value="" id="flexCheckDefault">
+                                    <input (change)="changeReady(element)" class="form-check-input" type="checkbox"
+                                        value="" id="flexCheckDefault">
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
                             </td>
-                            <td class="table-element"><input value="{{element.note}}"></td>
-                            <td class="table-element"><button (click)="changeArticle(element.idDatabase, element.normalName)" mat-raised-button>Elimina questo articolo</button></td>
+
+                            <td *ngIf="!element.consegnato" class="table-element"
+                                style="background-color: rgb(244, 66, 66);;">
+                                <div class="form-check">
+                                    <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
+                                        value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </td>
+
+                            <td *ngIf="element.consegnato" class="table-element"
+                                style="background-color: rgb(110, 191, 110);">
+                                <div class="form-check">
+                                    <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
+                                        value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </td>
+
+                            <td class="table-element"><input ngModel (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+                            <td class="table-element"><button (click)="changeArticle(element)"
+                                    mat-raised-button>Modifica questo articolo</button></td>
+
+                            <td class="table-element"><button style="background-color: red;"
+                                    (click)="deleteArticle(element.id, element.sottocategoria.descrizione)"
+                                    mat-raised-button>Elimina questo articolo</button></td>
+
                         </tr>
                     </tbody>
                 </table>

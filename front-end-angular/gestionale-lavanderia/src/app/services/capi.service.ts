@@ -35,8 +35,8 @@ export class CapiService {
     return this.http.get<Articolo>(this.globalVariables.url + "findArticleById/" + id);
   }
 
-  public changeArticle(articolo: Articolo) {
-    return this.http.post<Articolo>(this.globalVariables.url + "changeArticoloFromUser", articolo);
+  public deleteArticleFromUser(articolo: Articolo) {
+    return this.http.post<Articolo>(this.globalVariables.url + "deleteArticleFromUser", articolo);
   }
 
   public getInfoAboutArticle(id: number): Observable<CapiInfo>{
@@ -65,5 +65,9 @@ export class CapiService {
 
   public getAllsubCat(): Observable<SottoCategoria[]>{
     return this.http.get<SottoCategoria[]>(this.globalVariables.url + "getAllSubCat")
+  }
+
+  public changeArticleInfo(articolo: Articolo): Observable<Articolo>{
+    return this.http.put<Articolo>(this.globalVariables.url + "changeArticle", articolo)
   }
 }

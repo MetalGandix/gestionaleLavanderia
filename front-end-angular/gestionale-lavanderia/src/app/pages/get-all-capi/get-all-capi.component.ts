@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
@@ -11,7 +12,7 @@ import { CapiService } from 'src/app/services/capi.service';
 })
 export class GetAllCapiComponent implements OnInit {
 
-  constructor(private capiService: CapiService) { }
+  constructor(private capiService: CapiService, private _snackBar: MatSnackBar) { }
 
   articleGeyById: Articolo = new Articolo()
   singleUser: User
@@ -27,63 +28,57 @@ export class GetAllCapiComponent implements OnInit {
   id: number = -1 //Questo id è l'id di ogni elemento nel dix
 
   ngOnInit() {
-    this.setDix()
+    this.getInfos()
   }
 
   changeConsegnato(element) {
-    if (this.dix[element].consegnato) {
-      this.dix[element].consegnato = false
+    if (element.consegnato) {
+      element.consegnato = false
     } else {
-      this.dix[element].consegnato = true
+      element.consegnato = true
     }
   }
 
   changeReady(element) {
-    if (this.dix[element].ready) {
-      this.dix[element].ready = false
+    if (element.pronto) {
+      element.pronto = false
     } else {
-      this.dix[element].ready = true
+      element.pronto = true
     }
   }
 
-  setDix(){
-    this.capiService.getAllArticles().subscribe
-    (capi => {
-      this.listArticoli = capi
-    }).add(() => {
-      this.listArticoli.forEach(articolo => {
-        //Qua prendo ogni articolo presente nella lista di articoli
-        this.articoloUtente = articolo
-        //Creo un id da assegnare al dizionario
-        for (const property in this.articoloUtente) {
-          //Itero in tutto l'oggetto articolo finchè non trovo valori maggiori di 0
-          if (this.articoloUtente[property] != 0 && this.articoloUtente[property] != null && property != "id" && property != "servizio" && property != "date" && property != "numeroLavorazione" && property != "note" && property != "articoliUtente" && property != "prezzo" && property != "sottocategoria") {
-            const [year, month, day] = this.articoloUtente.date.split('-');
-            this.dataVisualizzata = day + "/" + month + "/" + year
-            this.id++
-            this.dix.push({
-              nameClient: this.articoloUtente.articoliUtente.username,
-              idDatabase: this.articoloUtente.id,
-              idArticolo: this.articoloUtente.numeroLavorazione,
-              normalName: property, //Il nome da passare a changeArticle
-              name: this.articoloUtente.sottocategoria.descrizione,
-              value: this.articoloUtente[property],
-              id: this.id,
-              ready: this.articoloUtente.pronto,
-              consegnato: this.articoloUtente.consegnato,
-              scadenza: this.dataVisualizzata,
-              note: this.articoloUtente.note,
-              servizio: this.articoloUtente.servizio,
-              price: this.articoloUtente.prezzo
-            })
-          }
-        }
-      })
-    }
+  changeNota(element ,note: string){
+    element.note = note
+  }
+
+  changeServizio(element, servizio: string){
+    element.servizio = servizio
+  }
+
+  changePrezzo(element: Articolo, prezzo: number){
+    element.prezzo = prezzo
+  }
+
+  changeArticle(articolo: Articolo){
+    this.capiService.changeArticleInfo(articolo).subscribe().add(()=>
+      this._snackBar.open("Articolo modificato", "Chiudi", {
+        panelClass: ['blue-snackbar']
+      })._dismissAfter(4000)
     )
   }
 
-  changeArticle(articleId: number, name: string) {
+  changeQuantity(element: Articolo, quantity: number){
+    element.quantity = quantity
+  }
+
+  getInfos(){
+    this.capiService.getAllArticles().subscribe
+    (capi => {
+      this.listArticoli = capi
+    })
+  }
+
+  deleteArticle(articleId: number, name: string) {
     this.capiService.getArticleById(articleId).subscribe(article => {
       this.articleGeyById = article
       for (const property in this.articleGeyById) {
@@ -92,10 +87,13 @@ export class GetAllCapiComponent implements OnInit {
         }
       }
     }).add(() =>{
-      this.capiService.changeArticle(this.articleGeyById).subscribe().add(() =>{
+      this.capiService.deleteArticleFromUser(this.articleGeyById).subscribe().add(() =>{
         //Una volta finita la subscribe, rimuovo dal dix l'elemento con l'indice idDix
-        this.dix.splice(0,this.dix.length)
-        this.setDix()
+        this.listArticoli.splice(0,this.listArticoli.length)
+        this.getInfos()
+        this._snackBar.open("Articolo eliminato", "Chiudi", {
+          panelClass: ['blue-snackbar']
+        })._dismissAfter(4000)
       })
       }
     )

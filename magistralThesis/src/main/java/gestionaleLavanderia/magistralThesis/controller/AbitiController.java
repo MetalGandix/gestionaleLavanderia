@@ -1,13 +1,9 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
-import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +11,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import gestionaleLavanderia.magistralThesis.model.Categoria;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.model.SottoCategoria;
@@ -53,11 +49,10 @@ public class AbitiController {
             LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
             capiObject.getArticolo().setDate(date);
             capiObject.getArticolo().setArticoliUtente(user);
-            capiObject.getArticolo().setServizio("Standard");
-            capiObject.getArticolo().setPrezzo(8.50);
+            capiObject.getArticolo().setPrezzo(0.00);
             capiObject.getArticolo().setPronto(false);
             capiObject.getArticolo().setConsegnato(false);
-            capiObject.getArticolo().setNote("Nessuna nota");
+            capiObject.getArticolo().setNote("");
             capiObject.getArticolo().setServizio("Standard");
             capiObject.getArticolo().setNumeroLavorazione(capiObject.getnLavorazione());
             articoloRepo.save(capiObject.getArticolo());
@@ -83,6 +78,12 @@ public class AbitiController {
     public List<Categoria> getCategories(){
         List<Categoria> categoryList = categoriaRepo.findAll();
         return categoryList;
+    }
+
+    @PutMapping("/changeArticle")
+    public String changeArticle(@RequestBody Articolo articolo){
+        articoloRepo.save(articolo);
+        return "Articolo modificato correttamente";
     }
 
     @GetMapping("/getSubCategoryById/{id}")
@@ -132,43 +133,10 @@ public class AbitiController {
         return "Articolo eliminato";
     }
 
-    @PostMapping("/changeArticoloFromUser")
+    @PostMapping("/deleteArticleFromUser")
     public String changeArticolo(@RequestBody Articolo articolo)
             throws IllegalArgumentException, IllegalAccessException {
-        List<Integer> list = new ArrayList<Integer>();
-        Field[] fields = articolo.getClass().getDeclaredFields();
-        for (Field f : fields) {
-            // Iterando devo controllare che non iteri: l'id, il campo che joina l'utente e
-            // il campo date.
-            if (f.getName() != "id") {
-                if (f.getName() != "articoliUtente") {
-                    if (f.getName() != "date") {
-                        if (f.getName() != "servizio") {
-                            if (f.getName() != "prezzo") {
-                                if (f.getName() != "pronto") {
-                                    if (f.getName() != "consegnato") {
-                                        if (f.getName() != "note") {
-                                            if (f.getName() != "numeroLavorazione"){
-                                                int a = (int) f.get(articolo);
-                                                list.add(a);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        // Conta se nella lista ci sono degli elementi a 0, se non ci sono elimina
-        // l'oggetto
-        if (list.stream().filter(i -> i != 0).count() == 0) {
         articoloRepo.delete(articolo);
-        list.clear();
-        } else {
-            articoloRepo.save(articolo);
-        }
         return "Articolo cambiato correttamente";
     }
 
