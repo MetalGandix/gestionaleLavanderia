@@ -50,10 +50,8 @@
       una data per poter aggiungere i capi</button>
 
     <div class="button-consegna-capi" style="display: inline-flex; width: -webkit-fill-available;">
-      <button style="margin-right: 3%;width: -webkit-fill-available;" *ngIf="disabledButton" mat-raised-button color="basic" (click)="insertIntoUser()">Aggiungi i capi</button>
-      <br><br>
-      <button style="margin-right: 3%;width: -webkit-fill-available;" *ngIf="disabledButton" mat-raised-button color="basic" printTitle="Ricevuta"
-        printSectionId="print-ricevuta" ngxPrint>Stampa ricevuta</button>
+      <button (click)="insertIntoUser()" style="margin-right: 3%;width: -webkit-fill-available;" *ngIf="disabledButton" mat-raised-button color="basic" (click)="insertIntoUser()" printTitle="Ricevuta"
+      printSectionId="print-ricevuta" ngxPrint>Stampa ricevuta</button>
       <br><br>
       <button *ngIf="disabledButton" mat-raised-button color="basic" printTitle="Ricevuta" style="width: -webkit-fill-available;"
         printSectionId="print-tagliando" ngxPrint>Stampa tagliando lavorazione</button>
@@ -103,7 +101,7 @@
 
 <div style="display:none;">
   <div id="print-tagliando">
-      <p style="color:black ;"><b>LAVORAZIONE:</b> *{{capiToAdd.nLavorazione}}*</p>
+      <p style="color:black ;"><b>N. LAVORAZIONE:</b> *{{capiToAdd.nLavorazione}}*</p>
       -------------------------------------------------------------------------------------------------
       <p style="color:black ;">Data consegna: {{capiToAdd.date}}</p>
       -------------------------------------------------------------------------------------------------
