@@ -23,8 +23,7 @@
 
 <div class="flex-right-menu-dress">
   <mat-selection-list style="margin-right: 1%;" #shoes [multiple]="false">
-    <mat-list-option (click)="selectCategory(choice.id)" *ngFor="let choice of categories"
-      [value]="choice.id">
+    <mat-list-option (click)="selectCategory(choice.id)" *ngFor="let choice of categories" [value]="choice.id">
       <p style="color:black;">{{choice.nome}}</p>
     </mat-list-option>
   </mat-selection-list>
@@ -34,36 +33,43 @@
   <br><br>
   <div class="container_vestiti">
     <div>
-      <div class="product" (click)="selectSubCategory(dress)" *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
+      <div class="product" (click)="selectSubCategory(dress)"
+        *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
         <img class="little_icon" />
         <p style="color:black;"><b>{{dress.descrizione}}</b></p>
       </div>
     </div>
     <br>
     <br>
-    <mat-paginator [length]="propertyStringArray.length" [pageSize]="15" [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[15]"
-    aria-label="Select page">
-  </mat-paginator>
-  <br><br>
+    <mat-paginator [length]="propertyStringArray.length" [pageSize]="15" [pageIndex]="pageIndex"
+      (page)="onPageChange($event)" [pageSizeOptions]="[15]" aria-label="Select page">
+    </mat-paginator>
 
-    <button *ngIf="disabledButton" mat-raised-button color="basic"
-      (click)="insertIntoUser()" printTitle="Ricevuta" printSectionId="print-section" ngxPrint>Invia</button>
+    <br><br>
+    <button style="pointer-events: none; opacity: 65%;" *ngIf="!disabledButton" mat-raised-button color="basic">Scegli
+      una data per poter aggiungere i capi</button>
 
-      <button style="pointer-events: none; opacity: 65%;" *ngIf="!disabledButton" mat-raised-button color="basic"
-      >Scegli una data per poter aggiungere i panni</button>
-
+    <div class="button-consegna-capi" style="display: inline-flex; width: -webkit-fill-available;">
+      <button style="margin-right: 3%;width: -webkit-fill-available;" *ngIf="disabledButton" mat-raised-button color="basic" (click)="insertIntoUser()">Aggiungi i capi</button>
+      <br><br>
+      <button style="margin-right: 3%;width: -webkit-fill-available;" *ngIf="disabledButton" mat-raised-button color="basic" printTitle="Ricevuta"
+        printSectionId="print-ricevuta" ngxPrint>Stampa ricevuta</button>
+      <br><br>
+      <button *ngIf="disabledButton" mat-raised-button color="basic" printTitle="Ricevuta" style="width: -webkit-fill-available;"
+        printSectionId="print-tagliando" ngxPrint>Stampa tagliando lavorazione</button>
     </div>
-    <div class="string-list">
-      <div class="stringArray" *ngFor="let string of selectedSubCategoriesList| keyvalue">
-        <p style="color:black;">{{string.key}} x {{string.value}} </p>
-      </div>
+    </div>
+
+
+  <div class="string-list">
+    <div class="stringArray" *ngFor="let string of selectedSubCategoriesList| keyvalue">
+      <p style="color:black;">{{string.key}} x {{string.value}} </p>
     </div>
   </div>
+</div>
 
-
-
-  <div style="display:none;">
-  <div id="print-section">
+<div style="display:none;">
+  <div id="print-ricevuta">
     <!--Your html stuff that you want to print-->
     <div class="string-list">
       <p style="color:black ;">MA.CRI SRLS</p>
@@ -79,7 +85,8 @@
       <br>
       <br>
       -------------------------------------------------------------------------------------------------
-      <p style="color:black;" *ngFor="let string of selectedSubCategoriesList| keyvalue">- {{string.key}} x {{string.value}}</p>
+      <p style="color:black;" *ngFor="let string of selectedSubCategoriesList| keyvalue">- {{string.key}} x
+        {{string.value}}</p>
       -------------------------------------------------------------------------------------------------
       <p style="color:black;">Totale capi: {{this.dixSubCategoryLenght}}</p>
       -------------------------------------------------------------------------------------------------
@@ -87,7 +94,19 @@
       <p style="color:black;">Pagato 0,00</p>
       <br>
       <br>
-      <p style="color:black;">ATTENZIONE! Non rispondiamo della rottura di cerniere, fibbie, bottoni, ricami, pailettes, accessori cuciti/incollati, tessuti usurati. Dopo 90 giorni dalla data di riconsegna previsa addebiteremo spese di reposito e non saremo più responsabili.</p>
+      <p style="color:black;">ATTENZIONE! Non rispondiamo della rottura di cerniere, fibbie, bottoni, ricami, pailettes,
+        accessori cuciti/incollati, tessuti usurati. Dopo 90 giorni dalla data di riconsegna previsa addebiteremo spese
+        di reposito e non saremo più responsabili.</p>
     </div>
   </div>
 </div>
+
+<div style="display:none;">
+  <div id="print-tagliando">
+      <p style="color:black ;"><b>LAVORAZIONE:</b> *{{capiToAdd.nLavorazione}}*</p>
+      -------------------------------------------------------------------------------------------------
+      <p style="color:black ;">Data consegna: {{capiToAdd.date}}</p>
+      -------------------------------------------------------------------------------------------------
+      <p style="color:black ;">Utente: {{capiToAdd.user?.username}}</p>
+    </div>
+  </div>
