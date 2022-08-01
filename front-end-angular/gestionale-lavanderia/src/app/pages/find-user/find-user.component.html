@@ -1,33 +1,51 @@
-<p style="color: black">Cerca qua l'utente:</p>
-<input [(ngModel)]="userSearched">
-<button (click)="findUserLike()">CERCA</button>
-<button (click)="removeFilter()">RIMUOVI FILTRO</button>
+<div style="text-align-last: center;">
+    <p style="color: black; font-size: large;">Cerca qua un utente digitandone il nome:</p>
+    <div class="flex-search-buttons" style="display: inline-grid; width: 20%;">
+    <input [(ngModel)]="userSearched">
+    <div class="button-div" style="display: flex; margin-top: 4%;">
+    <button style="place-self: center;width: 70%; margin-right: 10%;" mat-raised-button (click)="findUserLike()">CERCA</button>
+    <button mat-raised-button style="place-self: center;width: 70%;" (click)="removeFilter()">RIMUOVI FILTRO</button>
+</div>
+</div>
+</div>
 <br><br>
 <div class="found_users">
-    <p style="color: black">Utenti trovati:</p>
+    <p style="color: black"><b>Utenti trovati:</b></p>
     <table class="table table-bordered">
         <thead class="table-bordered">
             <tr style="color: rgba(63, 63, 54, 0.85);">
-                <th scope="col">Nome utente: </th>
-                <th scope="col"> </th>
-                <th scope="col"> </th>
-                <th scope="col"> </th>
+                <th scope="col">
+                    <p style="text-align-last: center;">Nome utente: </p>
+                </th>
+                <th scope="col">
+                    <p style="text-align-last: center;">Revisione: </p>
+                </th>
+                <th scope="col">
+                    <p style="text-align-last: center;">Aggiunta: </p>
+                </th>
+                <th scope="col">
+                    <p style="text-align-last: center;">Rimozione: </p>
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr style="vertical-align: middle; margin-right: 3%;" *ngFor="let list of userFiltredList">
                 <td style="text-align-last: center;">
-                    <p style="color:black;"><a mat-raised-button color="warn" (click)="openDialog(list.username)">{{list.username}}</a>
+                    <p style="color:black;"><a mat-raised-button color="warn"
+                            (click)="openDialog(list.username)">{{list.username}}</a>
                     </p>
                 </td>
                 <td style="text-align-last: center;">
-                    <button mat-raised-button class="add_capi" (click)="goToMostraCapi(list.username)">Vedi capi dell'utente</button>
+                    <button mat-raised-button class="add_capi" (click)="goToMostraCapi(list.username)">Vedi capi
+                        dell'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button mat-raised-button class="add_capi" (click)="goToAggiungiCapi(list.username)">Aggiungi capi all'utente</button>
+                    <button mat-raised-button class="add_capi" (click)="goToAggiungiCapi(list.username)">Aggiungi capi
+                        all'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo utente</button>
+                    <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo
+                        utente</button>
                 </td>
             </tr>
         </tbody>

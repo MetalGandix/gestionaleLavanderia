@@ -1,4 +1,4 @@
-<p style="color:black; text-align-last: center; font-size: x-large;">Capi di tutti i clienti</p>
+<p style="color:black; text-align-last: center; font-size: x-large;"><b>Lista di tutti gli articoli presenti: </b></p>
 
 <div class="card my-5">
     <div class="overflow-auto">
@@ -9,10 +9,13 @@
                     <thead class=".table-bordered">
                         <tr style="color: red;">
                             <th class="header-column" scope="col">
-                                <p>Numero Lavorazione</p>
+                                <p>N. Lavorazione</p>
                             </th>
                             <th class="header-column" scope="col">
-                                <p>Prodotto</p>
+                                <p>Utente</p>
+                            </th>
+                            <th class="header-column" scope="col">
+                                <p>Nome prodotto</p>
                             </th>
                             <th class="header-column" scope="col">
                                 <p>quantità</p>
@@ -45,20 +48,24 @@
                     </thead>
                     <tbody class=".table-bordered">
                         <tr *ngFor="let element of listArticoli">
+
                             <td class="table-element">{{ element.numeroLavorazione }}</td>
+
+                            <td class="table-element">{{ element.articoliUtente.username }}</td>
 
                             <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
 
-                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.quantity"
-                                (ngModelChange)="changeQuantity(element ,$event)"></td>
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                    [(ngModel)]="element.quantity" (ngModelChange)="changeQuantity(element ,$event)">
+                            </td>
 
                             <td class="table-element">{{ element.date }}</td>
-                            
-                            <td class="table-element" style="width:8%"><input style="width:80%;" ngModel [(ngModel)]="element.servizio"
-                                    (ngModelChange)="changeServizio(element ,$event)"></td>
 
-                            <td style="width:8%"  class="table-element"><input style="width:70%"  ngModel [(ngModel)]="element.prezzo"
-                                    (ngModelChange)="changePrezzo(element ,$event)"> €</td>
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                    [(ngModel)]="element.servizio" (ngModelChange)="changeServizio(element ,$event)">
+                            </td>
+
+                            <td style="width:8%" class="table-element"><input style="width: 30%; border: none;" ngModel [(ngModel)]="element.prezzo" (ngModelChange)="changePrezzo(element ,$event)"> €</td>
 
                             <td *ngIf="element.pronto" class="table-element"
                                 style="background-color: rgb(110, 191, 110);">
@@ -100,7 +107,9 @@
                                 </div>
                             </td>
 
-                            <td class="table-element"><input ngModel (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+                            <td class="table-element"><input style="border: none;" ngModel
+                                    (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+
                             <td class="table-element"><button (click)="changeArticle(element)"
                                     mat-raised-button>Modifica questo articolo</button></td>
 
