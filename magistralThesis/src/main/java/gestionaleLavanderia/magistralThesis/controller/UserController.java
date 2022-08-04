@@ -39,7 +39,7 @@ public class UserController {
         if(user.getPassword().length() != 0){
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         }
-        mailSender.send(user.getEmail(), "Sei stato registrato nel portale della lavanderia. ", "Ti arriveranno delle mail che ti segnaleranno quando un tuo panno depositato è pronto.");
+        //mailSender.send(user.getEmail(), "Sei stato registrato nel portale della lavanderia. ", "Ti arriveranno delle mail che ti segnaleranno quando un tuo panno depositato è pronto.");
         userRepository.save(user);
         return "Utente aggiunto con successo!!";
     }
