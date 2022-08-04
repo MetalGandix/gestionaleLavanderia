@@ -35,7 +35,7 @@
     <div>
       <div class="product" (click)="selectSubCategory(dress)"
         *ngFor="let dress of subCategories[selectedCategory].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
-        <img class="little_icon" />
+        <img class="little_icon" [src]="dress.icon_url"/>
         <p style="color:black;"><b>{{dress.descrizione}}</b></p>
       </div>
     </div>
