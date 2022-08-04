@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi-service/capi.service';
+import { SmartContractService } from 'src/app/services/smart-contract-service/smart-contract.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { UserDialogComponent } from './user-dialog/user-dialog.component';
 
@@ -15,7 +16,7 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
 })
 export class FindUserComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog, private smartContractService: SmartContractService) { }
 
   
   userList: User[] = []
@@ -24,6 +25,10 @@ export class FindUserComponent implements OnInit {
   userClicked: string;
   singleUser: User
   capiOfUser: ComplexCapiObject
+
+  contract(){
+    this.smartContractService.smartContract()
+  }
 
   openDialog(username: string): void {
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {

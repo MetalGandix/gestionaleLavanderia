@@ -26,6 +26,9 @@
                 <th scope="col">
                     <p style="text-align-last: center;">Rimozione: </p>
                 </th>
+                <th scope="col">
+                    <p style="text-align-last: center;">Contract: </p>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +49,9 @@
                 <td style="text-align-last: center;">
                     <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo
                         utente</button>
+                </td>
+                <td style="text-align-last: center;">
+                    <button class="remove_user" mat-raised-button (click)="contract()">Do a smart contract</button>
                 </td>
             </tr>
         </tbody>
