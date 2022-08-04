@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CapiInfo } from '../classes/capi-info';
-import { Articolo } from '../classes/capi_classes/articolo';
-import { ComplexCapiObject } from '../classes/capi_classes/complex-capi-object';
-import { Categoria } from '../classes/categoria';
-import { SottoCategoria } from '../classes/sotto-categoria';
-import { User } from '../classes/user';
-import { GlobalVariablesService } from './global variables/global-variables.service';
+import { CapiInfo } from '../../classes/capi-info';
+import { Articolo } from '../../classes/capi_classes/articolo';
+import { ComplexCapiObject } from '../../classes/capi_classes/complex-capi-object';
+import { Categoria } from '../../classes/categoria';
+import { SottoCategoria } from '../../classes/sotto-categoria';
+import { User } from '../../classes/user';
+import { GlobalVariablesService } from '../global variables/global-variables.service';
 
 @Injectable({
   providedIn: 'root'

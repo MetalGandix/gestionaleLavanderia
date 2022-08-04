@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import jwt_decode from 'jwt-decode';
-import { GlobalVariablesService } from './global variables/global-variables.service';
+import { GlobalVariablesService } from '../global variables/global-variables.service';
 
 @Injectable({
   providedIn: 'root'

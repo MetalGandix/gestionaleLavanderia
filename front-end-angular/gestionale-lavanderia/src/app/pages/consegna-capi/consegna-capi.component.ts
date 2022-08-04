@@ -6,8 +6,8 @@ import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-obj
 import { Categoria } from 'src/app/classes/categoria';
 import { SottoCategoria } from 'src/app/classes/sotto-categoria';
 import { User } from 'src/app/classes/user';
-import { CapiService } from 'src/app/services/capi.service';
-import { UserService } from 'src/app/services/user.service';
+import { CapiService } from 'src/app/services/capi-service/capi.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-consegna-capi',
