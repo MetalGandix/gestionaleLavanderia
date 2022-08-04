@@ -8,14 +8,12 @@ import { FindUserComponent } from './pages/find-user/find-user.component';
 import { GetAllCapiComponent } from './pages/get-all-capi/get-all-capi.component';
 import { MostraCapiComponent } from './pages/mostra-capi/mostra-capi.component';
 import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
-import { StatisticheComponent } from './pages/statistiche/statistiche.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/find-user', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'consegna-capi', component: ConsegnaCapiComponent },
   { path: 'ritiro-capi', component: RitiroCapiComponent },
-  { path: 'statistiche', component: StatisticheComponent },
   { path: 'fatture', component: FattureComponent },
   { path: 'find-user', component: FindUserComponent },
   { path: 'add-user', component: AddUserComponent },

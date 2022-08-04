@@ -12,7 +12,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { RitiroCapiComponent } from './pages/ritiro-capi/ritiro-capi.component';
 import { ConsegnaCapiComponent } from './pages/consegna-capi/consegna-capi.component';
-import { StatisticheComponent } from './pages/statistiche/statistiche.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,7 +43,6 @@ import { NgxPrintModule } from 'ngx-print';
     SidebarComponent,
     RitiroCapiComponent,
     ConsegnaCapiComponent,
-    StatisticheComponent,
     FattureComponent,
     FindUserComponent,
     AddUserComponent,
