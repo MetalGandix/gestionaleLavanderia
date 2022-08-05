@@ -39,7 +39,7 @@ export class MostraCapiComponent implements OnInit {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
       this.router.navigate(["/find-user"])
     }
-    this.onPageChange({ pageIndex: 0, pageSize: 10 })
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.singleUser = window.history.state.singleUser
     this.getInfos()
   }

@@ -39,7 +39,7 @@ export class FindUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.onPageChange({ pageIndex: 0, pageSize: 10 })
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })

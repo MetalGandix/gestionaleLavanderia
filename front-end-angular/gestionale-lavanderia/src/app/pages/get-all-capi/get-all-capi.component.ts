@@ -30,7 +30,7 @@ export class GetAllCapiComponent implements OnInit {
   pageSize = 0;
 
   ngOnInit() {
-    this.onPageChange({ pageIndex: 0, pageSize: 10 })
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.getInfos()
   }
 
