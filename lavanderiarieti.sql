@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 04, 2022 alle 15:30
+-- Creato il: Ago 05, 2022 alle 17:01
 -- Versione del server: 10.4.22-MariaDB
 -- Versione PHP: 8.1.2
 
@@ -40,26 +40,6 @@ CREATE TABLE `articolo` (
   `user_username` varchar(255) DEFAULT NULL,
   `sotto_categoria_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `articolo`
---
-
-INSERT INTO `articolo` (`id`, `consegnato`, `date`, `note`, `numero_lavorazione`, `prezzo`, `pronto`, `quantity`, `servizio`, `user_username`, `sotto_categoria_id`) VALUES
-(1102, b'0', '2022-08-03', 'La t-shirt è perfetta', 1, 10, b'1', 3, 'Standard', 'Leonardo', 30),
-(1106, b'0', '2022-08-08', '', 1, 0, b'0', 1, 'Standard', 'Leonardo', 34),
-(1222, b'1', '2022-08-04', '', 10, 9, b'1', 2, 'Standard', 'franco', 3),
-(1223, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 6),
-(1224, b'0', '2022-08-04', '', 10, 0, b'0', 2, 'Standard', 'franco', 10),
-(1225, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 19),
-(1226, b'0', '2022-08-04', '', 10, 0, b'0', 2, 'Standard', 'franco', 16),
-(1227, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 15),
-(1228, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 62),
-(1229, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 125),
-(1230, b'0', '2022-08-04', '', 10, 0, b'0', 1, 'Standard', 'franco', 136),
-(1231, b'0', '2022-08-09', '', 11, 0, b'0', 1, 'Standard', 'Leonardo', 134),
-(1232, b'0', '2022-08-09', '', 11, 0, b'0', 1, 'Standard', 'Leonardo', 18),
-(1233, b'0', '2022-08-09', '', 11, 0, b'0', 1, 'Standard', 'Leonardo', 19);
 
 -- --------------------------------------------------------
 
@@ -106,7 +86,7 @@ CREATE TABLE `mysequence` (
 --
 
 INSERT INTO `mysequence` (`next_val`) VALUES
-(1300);
+(1000);
 
 -- --------------------------------------------------------
 
@@ -272,30 +252,14 @@ INSERT INTO `sotto_categoria` (`id`, `descrizione`, `categoria_id`, `icon_url`) 
 
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL,
-  `cap` varchar(255) DEFAULT NULL,
-  `citta` varchar(255) DEFAULT NULL,
-  `codice_fiscale` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `indirizzo` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
-  `numero_card` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `presentato_da` varchar(255) DEFAULT NULL,
-  `provincia` varchar(255) DEFAULT NULL,
-  `regione_sociale` varchar(255) DEFAULT NULL,
-  `sconto_card` varchar(255) DEFAULT NULL,
   `sesso` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `user`
---
-
-INSERT INTO `user` (`id`, `cap`, `citta`, `codice_fiscale`, `email`, `indirizzo`, `lastname`, `number`, `numero_card`, `password`, `presentato_da`, `provincia`, `regione_sociale`, `sconto_card`, `sesso`, `username`) VALUES
-(1, '62100', 'Macerata', 'MGNLRD97T28E783J', 'leonardo.mogianesi@gmail.com', 'Via Metauro, 89C', 'Mogianesi', '3663467422', '333222', '', 'Comune di Macerata', 'Macerata', 'Marche', '10%', 'Maschio', 'Leonardo'),
-(4, '62100', 'Macerata', 'MGNLRD97T28E783J', 'leonardo.mogianesi@gmail.com', 'Via Metauro, 89C', 'aaaaa', '3663467422', NULL, '', NULL, 'macerata', 'Macerata', NULL, 'Maschio', 'franco');
 
 --
 -- Indici per le tabelle scaricate
@@ -349,7 +313,7 @@ ALTER TABLE `sotto_categoria`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Limiti per le tabelle scaricate

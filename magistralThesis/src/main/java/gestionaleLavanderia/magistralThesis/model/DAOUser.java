@@ -29,31 +29,7 @@ public class DAOUser implements Serializable{
 	private String sesso;
 
 	@Column 
-	private String codiceFiscale;
-
-	@Column 
-	private String presentatoDa;
-
-	@Column 
-	private String numeroCard;
-
-	@Column 
-	private String scontoCard;
-
-	@Column 
-	private String cap;
-
-	@Column 
-	private String citta;
-
-	@Column 
-	private String regioneSociale;
-
-	@Column 
 	private String indirizzo;
-
-	@Column 
-	private String provincia;
 
 	public String getIndirizzo() {
 		return indirizzo;
@@ -114,69 +90,4 @@ public class DAOUser implements Serializable{
 	public void setSesso(String sesso) {
 		this.sesso = sesso;
 	}
-
-	public String getCodiceFiscale() {
-		return codiceFiscale;
-	}
-
-	public void setCodiceFiscale(String codiceFiscale) {
-		this.codiceFiscale = codiceFiscale;
-	}
-
-	public String getPresentatoDa() {
-		return presentatoDa;
-	}
-
-	public void setPresentatoDa(String presentatoDa) {
-		this.presentatoDa = presentatoDa;
-	}
-
-	public String getNumeroCard() {
-		return numeroCard;
-	}
-
-	public void setNumeroCard(String numeroCard) {
-		this.numeroCard = numeroCard;
-	}
-
-	public String getScontoCard() {
-		return scontoCard;
-	}
-
-	public void setScontoCard(String scontoCard) {
-		this.scontoCard = scontoCard;
-	}
-
-	public String getCap() {
-		return cap;
-	}
-
-	public void setCap(String cap) {
-		this.cap = cap;
-	}
-
-	public String getCitta() {
-		return citta;
-	}
-
-	public void setCitta(String citta) {
-		this.citta = citta;
-	}
-
-	public String getRegioneSociale() {
-		return regioneSociale;
-	}
-
-	public void setRegioneSociale(String regioneSociale) {
-		this.regioneSociale = regioneSociale;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
 }
