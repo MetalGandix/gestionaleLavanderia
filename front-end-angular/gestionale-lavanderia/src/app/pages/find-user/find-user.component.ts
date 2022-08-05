@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi-service/capi.service';
@@ -17,7 +18,6 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
 export class FindUserComponent implements OnInit {
 
   constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog, private smartContractService: SmartContractService) { }
-
   
   userList: User[] = []
   userFiltredList: User[] = []
@@ -25,9 +25,22 @@ export class FindUserComponent implements OnInit {
   userClicked: string;
   singleUser: User
   capiOfUser: ComplexCapiObject
+  listArticoli: Articolo[] = []
+  allMoney: number[] = []
+  moneySum: number = 0;
 
-  contract(){
-    this.smartContractService.smartContract()
+  contract(username: string){
+    this.capiService.findArticoloForSingleUser(username).subscribe(capi => {
+      this.listArticoli = capi
+    }).add(() => {
+      this.listArticoli.forEach(articolo => {
+        this.allMoney.push(articolo.prezzo)
+      })
+      this.moneySum = this.allMoney.reduce((a, b) => a + b, 0)
+      console.log(this.moneySum)
+      this.smartContractService.convertAllMoney(this.moneySum)
+    }
+    )
   }
 
   openDialog(username: string): void {

@@ -11,6 +11,7 @@ export class SmartContractService {
 
   private web3: Web3;
   ganacheAddresses: string[] = []
+  ethereumOfClient: string = ""
 
   rawTx = {
     nonce: '0x00',
@@ -19,6 +20,15 @@ export class SmartContractService {
     to: '0xa22153431429b06586b8C844338930bf4861C095',
     value: '50',
     data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057'
+  }
+
+  convertAllMoney(money: number){
+    //Il 10% dei guadagni del cliente vengono guadagnati come ethereum
+    let moneyDividedBy10: number = money/10
+    let moneyToEth: number = moneyDividedBy10/1619
+    this.ethereumOfClient = parseFloat(moneyToEth.toString()).toFixed(6)
+    console.log("Ethereum to send: ", this.ethereumOfClient)
+    this.smartContract()
   }
 
   signedSmartContract() {
@@ -46,7 +56,7 @@ export class SmartContractService {
     console.log(addresses)
     this.web3.eth.accounts.signTransaction({
       from: addresses[0],
-      to: "0xa22153431429b06586b8C844338930bf4861C095",
+      to: addresses[1],
       value: "50",
       gas: 200000,
       nonce: 3123
@@ -54,8 +64,8 @@ export class SmartContractService {
 
     this.web3.eth.sendTransaction({
       from: addresses[0],
-      to: '0xa22153431429b06586b8C844338930bf4861C095',
-      value: this.web3.utils.toWei('0.1', 'ether')
+      to: addresses[1],
+      value: this.web3.utils.toWei(this.ethereumOfClient, 'ether')
     }).then(function (receipt) {
       console.log(receipt)
     });

@@ -5,6 +5,7 @@ import { Articolo } from 'src/app/classes/capi_classes/articolo';
 import { ComplexCapiObject } from 'src/app/classes/capi_classes/complex-capi-object';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi-service/capi.service';
+import { SmartContractService } from 'src/app/services/smart-contract-service/smart-contract.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/services/user-service/user.service';
 })
 export class MostraCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, private smartContractService: SmartContractService) { }
 
 
   articleGeyById: Articolo = new Articolo()
@@ -32,7 +33,8 @@ export class MostraCapiComponent implements OnInit {
   articolo: Articolo = new Articolo()
   note: string;
   pronto: boolean = false;
-
+  allMoney: number[] = []
+  moneySum: number = 0;
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
@@ -40,6 +42,15 @@ export class MostraCapiComponent implements OnInit {
     }
     this.singleUser = window.history.state.singleUser
     this.getInfos()
+  }
+
+  getEuros(){
+    this.listArticoli.forEach(articolo => {
+      this.allMoney.push(articolo.prezzo)
+    })
+    this.moneySum = this.allMoney.reduce((a, b) => a + b, 0)
+    console.log(this.moneySum)
+    this.smartContractService.convertAllMoney(this.moneySum)
   }
 
   changeConsegnato(element) {
