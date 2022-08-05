@@ -3,7 +3,6 @@
 <div class="card my-5">
     <div class="overflow-auto">
         <!--spostato lo style nel CSS -->
-        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class=".table-bordered">
@@ -44,8 +43,10 @@
                         </tr>
                     </thead>
                     <tbody class=".table-bordered">
-                        <tr *ngFor="let element of listArticoli">
-                            <td class="table-element">{{ element.numeroLavorazione }}</td>
+                        <tr *ngFor="let element of listArticoli.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                [(ngModel)]="element.numeroLavorazione" (ngModelChange)="changeNumeroLavorazione(element ,$event)">
+                        </td>
 
                             <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
 
@@ -114,7 +115,9 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
         </div>
     </div>
+    <mat-paginator [length]="listArticoli.length" [pageSize]="10" [pageIndex]="pageIndex"
+(page)="onPageChange($event)" [pageSizeOptions]="[10]" aria-label="Select page">
+</mat-paginator>
 </div>

@@ -32,14 +32,21 @@ export class MostraCapiComponent implements OnInit {
   articolo: Articolo = new Articolo()
   note: string;
   pronto: boolean = false;
-
+  pageIndex = 0;
+  pageSize = 0;
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
       this.router.navigate(["/find-user"])
     }
+    this.onPageChange({ pageIndex: 0, pageSize: 10 })
     this.singleUser = window.history.state.singleUser
     this.getInfos()
+  }
+
+  onPageChange($event) {
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
   }
 
   changeConsegnato(element) {
@@ -68,6 +75,10 @@ export class MostraCapiComponent implements OnInit {
 
   changePrezzo(element: Articolo, prezzo: number){
     element.prezzo = prezzo
+  }
+
+  changeNumeroLavorazione(element: Articolo, numLavorazione: number){
+    element.numeroLavorazione = numLavorazione
   }
 
   changeArticle(articolo: Articolo){
