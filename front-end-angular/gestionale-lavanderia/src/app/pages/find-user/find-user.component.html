@@ -53,7 +53,7 @@
             </tr>
         </tbody>
     </table>
-    <mat-paginator *ngIf="userFiltredList.length > 10" [length]="userFiltredList.length" [pageSize]="8"
+    <mat-paginator *ngIf="userFiltredList.length > 8" [length]="userFiltredList.length" [pageSize]="8"
         [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[8]" aria-label="Select page">
     </mat-paginator>
 </div>
