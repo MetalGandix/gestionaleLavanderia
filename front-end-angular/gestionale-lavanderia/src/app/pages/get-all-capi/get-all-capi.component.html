@@ -125,7 +125,7 @@
             </div>
         </div>
     </div>
-    <mat-paginator [length]="listArticoli.length" [pageSize]="10" [pageIndex]="pageIndex"
+    <mat-paginator *ngIf="listArticoli.length > 10" [length]="listArticoli.length" [pageSize]="10" [pageIndex]="pageIndex"
     (page)="onPageChange($event)" [pageSizeOptions]="[10]" aria-label="Select page">
     </mat-paginator>
 </div>

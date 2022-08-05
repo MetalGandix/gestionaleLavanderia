@@ -3,121 +3,122 @@
 <div class="card my-5">
     <div class="overflow-auto">
         <!--spostato lo style nel CSS -->
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class=".table-bordered">
-                        <tr style="color: red;">
-                            <th class="header-column" scope="col">
-                                <p>Numero Lavorazione</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Prodotto</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>quantità</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Scadenza</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Servizio</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Prezzo</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Pronto</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Consegnato</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Note</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Modifica</p>
-                            </th>
-                            <th class="header-column" scope="col">
-                                <p>Elimina</p>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class=".table-bordered">
-                        <tr *ngFor="let element of listArticoli.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
-                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
-                                [(ngModel)]="element.numeroLavorazione" (ngModelChange)="changeNumeroLavorazione(element ,$event)">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class=".table-bordered">
+                    <tr style="color: red;">
+                        <th class="header-column" scope="col">
+                            <p>Numero Lavorazione</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Prodotto</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>quantità</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Scadenza</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Servizio</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Prezzo</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Pronto</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Consegnato</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Note</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Modifica</p>
+                        </th>
+                        <th class="header-column" scope="col">
+                            <p>Elimina</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class=".table-bordered">
+                    <tr
+                        *ngFor="let element of listArticoli.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
+                        <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                [(ngModel)]="element.numeroLavorazione"
+                                (ngModelChange)="changeNumeroLavorazione(element ,$event)">
                         </td>
 
-                            <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
+                        <td class="table-element">{{ element.sottocategoria.descrizione }}</td>
 
-                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
-                                    [(ngModel)]="element.quantity" (ngModelChange)="changeQuantity(element ,$event)">
-                            </td>
+                        <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                [(ngModel)]="element.quantity" (ngModelChange)="changeQuantity(element ,$event)">
+                        </td>
 
-                            <td class="table-element">{{ element.date }}</td>
+                        <td class="table-element">{{ element.date }}</td>
 
-                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
-                                    [(ngModel)]="element.servizio" (ngModelChange)="changeServizio(element ,$event)">
-                            </td>
+                        <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                [(ngModel)]="element.servizio" (ngModelChange)="changeServizio(element ,$event)">
+                        </td>
 
-                            <td style="width:8%" class="table-element"><input style="width: 50%; border: none;" ngModel [(ngModel)]="element.prezzo" (ngModelChange)="changePrezzo(element ,$event)"> €</td>
+                        <td style="width:8%" class="table-element"><input style="width: 50%; border: none;" ngModel
+                                [(ngModel)]="element.prezzo" (ngModelChange)="changePrezzo(element ,$event)"> €</td>
 
-                            <td *ngIf="element.pronto" class="table-element"
-                                style="background-color: rgb(110, 191, 110);">
-                                <div class="form-check">
-                                    <input (change)="changeReady(element)" class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                            </td>
+                        <td *ngIf="element.pronto" class="table-element" style="background-color: rgb(110, 191, 110);">
+                            <div class="form-check">
+                                <input (change)="changeReady(element)" class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </td>
 
-                            <td *ngIf="!element.pronto" class="table-element"
-                                style="background-color: rgb(244, 66, 66);">
-                                <div class="form-check">
-                                    <input (change)="changeReady(element)" class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                            </td>
+                        <td *ngIf="!element.pronto" class="table-element" style="background-color: rgb(244, 66, 66);">
+                            <div class="form-check">
+                                <input (change)="changeReady(element)" class="form-check-input" type="checkbox" value=""
+                                    id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </td>
 
-                            <td *ngIf="!element.consegnato" class="table-element"
-                                style="background-color: rgb(244, 66, 66);;">
-                                <div class="form-check">
-                                    <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                            </td>
+                        <td *ngIf="!element.consegnato" class="table-element"
+                            style="background-color: rgb(244, 66, 66);;">
+                            <div class="form-check">
+                                <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
+                                    value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </td>
 
-                            <td *ngIf="element.consegnato" class="table-element"
-                                style="background-color: rgb(110, 191, 110);">
-                                <div class="form-check">
-                                    <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    </label>
-                                </div>
-                            </td>
+                        <td *ngIf="element.consegnato" class="table-element"
+                            style="background-color: rgb(110, 191, 110);">
+                            <div class="form-check">
+                                <input (change)="changeConsegnato(element)" class="form-check-input" type="checkbox"
+                                    value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </td>
 
-                            <td class="table-element"><input style="border: none;" ngModel
-                                    (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
+                        <td class="table-element"><input style="border: none;" ngModel
+                                (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
 
-                            <td class="table-element"><button (click)="changeArticle(element)"
-                                    mat-raised-button>Modifica questo articolo</button></td>
+                        <td class="table-element"><button (click)="changeArticle(element)" mat-raised-button>Modifica
+                                questo articolo</button></td>
 
-                            <td class="table-element"><button style="background-color: red;"
-                                    (click)="deleteArticle(element.id, element.sottocategoria.descrizione)"
-                                    mat-raised-button>Elimina questo articolo</button></td>
+                        <td class="table-element"><button style="background-color: red;"
+                                (click)="deleteArticle(element.id, element.sottocategoria.descrizione)"
+                                mat-raised-button>Elimina questo articolo</button></td>
 
-                        </tr>
-                    </tbody>
-                </table>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <mat-paginator [length]="listArticoli.length" [pageSize]="10" [pageIndex]="pageIndex"
-(page)="onPageChange($event)" [pageSizeOptions]="[10]" aria-label="Select page">
-</mat-paginator>
+    <mat-paginator *ngIf="listArticoli.length > 10" [length]="listArticoli.length" [pageSize]="10"
+        [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[10]" aria-label="Select page">
+    </mat-paginator>
 </div>

@@ -17,13 +17,16 @@ export class FindUserComponent implements OnInit {
 
   constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
-  
+
   userList: User[] = []
   userFiltredList: User[] = []
   userSearched: string;
   userClicked: string;
   singleUser: User
   capiOfUser: ComplexCapiObject
+  pageIndex = 0;
+  pageSize = 0;
+
 
   openDialog(username: string): void {
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {
@@ -36,18 +39,24 @@ export class FindUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onPageChange({ pageIndex: 0, pageSize: 10 })
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })
   }
 
-  showUserInfo(){
+  onPageChange($event) {
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
+  }
+
+  showUserInfo() {
     this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
       this.userFiltredList = filteredUsers
     })
   }
 
-  removeFilter(){
+  removeFilter() {
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })
@@ -81,11 +90,11 @@ export class FindUserComponent implements OnInit {
     }).add(() => {
       this.router.navigate(["/mostra-capi"], {
         state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
-        })
+      })
     })
   }
 
-  deleteUser(username: string){
+  deleteUser(username: string) {
     this.serviceUser.deleteUser(username).subscribe().add(
       this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
