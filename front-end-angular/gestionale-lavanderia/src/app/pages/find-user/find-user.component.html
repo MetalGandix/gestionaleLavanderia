@@ -35,7 +35,7 @@
                 *ngFor="let list of userFiltredList.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
                 <td style="text-align-last: center;">
                     <p style="color:black;"><a mat-raised-button color="warn"
-                            (click)="openDialog(list.username)">{{list.username}}</a>
+                            (click)="openDialog(list.username)">{{list.username}} {{list.lastname}}</a>
                     </p>
                 </td>
                 <td style="text-align-last: center;">
