@@ -31,17 +31,6 @@ export class SmartContractService {
     this.smartContract()
   }
 
-  signedSmartContract() {
-    var Tx = require('ethereumjs-tx').Transaction;
-    var privateKey = Buffer.from('099701ef2d45a0b137459e4f0ad8c2bbbc26857ed2bbd249b034622556394d18', 'hex');
-
-    var tx = new Tx(this.rawTx, { 'chain': 'ropsten' });
-    Tx.sign(privateKey);
-    var serializedTx = tx.serialize();
-    this.web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex'))
-      .on('receipt', console.log);
-  }
-
   smartContract(){
     //Connection with Ganache
     this.web3 = new Web3("http://127.0.0.1:7545")
