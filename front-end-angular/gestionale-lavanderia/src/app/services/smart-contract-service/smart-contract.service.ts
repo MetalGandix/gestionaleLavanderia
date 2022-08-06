@@ -13,15 +13,6 @@ export class SmartContractService {
   ganacheAddresses: string[] = []
   ethereumOfClient: string = ""
 
-  rawTx = {
-    nonce: '0x00',
-    gasPrice: '20000000000',
-    gasLimit: '6721975',
-    to: '0xa22153431429b06586b8C844338930bf4861C095',
-    value: '50',
-    data: '0x7f7465737432000000000000000000000000000000000000000000000000000000600057'
-  }
-
   convertAllMoney(money: number){
     //Il 10% dei guadagni del cliente vengono guadagnati come ethereum
     let moneyDividedBy10: number = money/10
@@ -34,6 +25,8 @@ export class SmartContractService {
   smartContract(){
     //Connection with Ganache
     this.web3 = new Web3("http://127.0.0.1:7545")
+
+    
 
     const accountsTemp = this.web3.eth.getAccounts()
     accountsTemp.then(addresses => {
