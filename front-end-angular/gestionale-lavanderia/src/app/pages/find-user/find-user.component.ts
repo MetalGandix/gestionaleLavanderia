@@ -30,6 +30,8 @@ export class FindUserComponent implements OnInit {
   moneySum: number = 0;
 
   contract(username: string){
+    this.moneySum = 0
+    this.allMoney = []
     this.capiService.findArticoloForSingleUser(username).subscribe(capi => {
       this.listArticoli = capi
     }).add(() => {
