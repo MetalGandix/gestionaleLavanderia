@@ -30,23 +30,39 @@ export class FindUserComponent implements OnInit {
   moneySum: number = 0;
   pageIndex = 0;
   pageSize = 0;
+  dictionaryMonthValue: { [key: number]: number[] } = {}
+  dictionaryCost : number[] = [];
+  sommaDizionario: number = 0;
 
-  contract(username: string){
+  contract(username: string) {
     this.moneySum = 0
     this.allMoney = []
     this.capiService.findArticoloForSingleUser(username).subscribe(capi => {
       this.listArticoli = capi
     }).add(() => {
+      let arrayMoney: number[] = []
       this.listArticoli.forEach(articolo => {
-        const date = new Date(articolo.date);
-        console.log(date)
-        this.allMoney.push(articolo.prezzo)
+        let date = new Date(articolo.initialDate);
+        arrayMoney.push(articolo.prezzo)
+        this.dictionaryMonthValue[date.getMonth()] = arrayMoney
       })
-      this.moneySum = this.allMoney.reduce((a, b) => a + b, 0)
-      console.log(this.moneySum)
+      console.log(this.dictionaryMonthValue)
+      this.sum(this.dictionaryMonthValue)
+      console.log(this.sommaDizionario)
       this.smartContractService.convertAllMoney(this.moneySum)
     }
     )
+  }
+
+  sum(obj) {
+    this.sommaDizionario = 0;
+    for( var el of obj ) {
+      if( obj.hasOwnProperty( el ) ) {
+        debugger
+        this.sommaDizionario += parseFloat( obj[el] );
+      }
+    }
+    return this.sommaDizionario;
   }
 
   openDialog(username: string): void {
