@@ -46,8 +46,9 @@ public class AbitiController {
         if (capiObject.getDate() != null && capiObject.getArticolo() != null) {
             DAOUser user = userRepo.findByUsername(capiObject.getUser().getUsername());
             DateTimeFormatter inputParser = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-            LocalDate date = LocalDate.parse(capiObject.getDate(), inputParser);
-            capiObject.getArticolo().setDate(date);
+            LocalDate deliveryDate = LocalDate.parse(capiObject.getDate(), inputParser);
+            capiObject.getArticolo().setDeliveryDate(deliveryDate);
+            capiObject.getArticolo().setInizialDate(LocalDate.now());
             capiObject.getArticolo().setArticoliUtente(user);
             capiObject.getArticolo().setPrezzo(0.00);
             capiObject.getArticolo().setPronto(false);

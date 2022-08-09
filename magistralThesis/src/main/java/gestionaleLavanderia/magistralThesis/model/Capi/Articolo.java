@@ -43,8 +43,12 @@ public class Articolo {
     public String note;
 
 	@Column 
-    public LocalDate date;
-    
+    public LocalDate deliveryDate;
+
+    @Column 
+    public LocalDate initialDate;
+
+
     @SequenceGenerator(name="sequenceLavorazioneArticolo", initialValue=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sequenceLavorazioneArticolo")
     @Column 
@@ -112,13 +116,21 @@ public class Articolo {
     public void setNote(String note) {
         this.note = note;
     }
-
-    public LocalDate getDate() {
-        return date;
+    
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public LocalDate getInizialDate() {
+        return initialDate;
+    }
+
+    public void setInizialDate(LocalDate inizialDate) {
+        this.initialDate = inizialDate;
     }
 
     public int getNumeroLavorazione() {

@@ -20,6 +20,9 @@
                             <p>Scadenza</p>
                         </th>
                         <th class="header-column" scope="col">
+                            <p>Data di arrivo</p>
+                        </th>
+                        <th class="header-column" scope="col">
                             <p>Servizio</p>
                         </th>
                         <th class="header-column" scope="col">
@@ -56,7 +59,9 @@
                                 [(ngModel)]="element.quantity" (ngModelChange)="changeQuantity(element ,$event)">
                         </td>
 
-                        <td class="table-element">{{ element.date }}</td>
+                        <td class="table-element">{{ element.deliveryDate }}</td>
+
+                        <td class="table-element">{{ element.initialDate }}</td>
 
                         <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
                                 [(ngModel)]="element.servizio" (ngModelChange)="changeServizio(element ,$event)">
