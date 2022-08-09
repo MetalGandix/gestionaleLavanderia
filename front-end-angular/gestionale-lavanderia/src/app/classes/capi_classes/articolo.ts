@@ -3,7 +3,8 @@ import { User } from "../user";
 
 export class Articolo {
     id: number;
-    date: string;
+    initialDate: string;
+    deliveryDate: string;
     articoliUtente: User;
     servizio: string;
     prezzo: number;
