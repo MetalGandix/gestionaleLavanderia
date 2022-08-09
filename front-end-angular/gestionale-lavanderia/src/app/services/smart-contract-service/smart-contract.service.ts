@@ -46,7 +46,7 @@ export class SmartContractService {
       //10^18 wei = 1 eth
       await contract.methods.sendEther(addresses[0]).send({
         from: addresses[1],
-        value: this.web3.utils.toWei("7", 'ether'), //msg.value
+        value: this.web3.utils.toWei(this.ethereumOfClient, 'ether'), //msg.value
         gas: 70000,
       }).on("receipt", function(receipt){
         console.log(receipt)
