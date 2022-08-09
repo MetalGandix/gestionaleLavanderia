@@ -36,6 +36,8 @@ export class FindUserComponent implements OnInit {
       this.listArticoli = capi
     }).add(() => {
       this.listArticoli.forEach(articolo => {
+        const date = new Date(articolo.date);
+        console.log(date)
         this.allMoney.push(articolo.prezzo)
       })
       this.moneySum = this.allMoney.reduce((a, b) => a + b, 0)
