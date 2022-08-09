@@ -34,18 +34,27 @@ export class SmartContractService {
   }
 
   async sendEtherUsingSmartContract(addresses: string[]) {
-    //Connection with Ganache
+    let laundryAddress = addresses[0]
+    let clientAddress = addresses[1]
+    
+    //Finding the contract using an absolute path
     const myContract = require('C:/Users/User/Desktop/Repository GitHub/gestionaleLavanderia/front-end-angular/gestionale-lavanderia/src/solidity-smart-contract/build/contracts/Sender.json');
+
+    //Finding the id of the blockchain network
     const id = await this.web3.eth.net.getId()
     const deployedNetwork = myContract.networks[id];
+
+    //Istantiating the contract
     const contract = new this.web3.eth.Contract(
       myContract.abi,
       deployedNetwork.address
     )
     console.log(contract)
+
+    //Using the method inside the solidity file called "Sender.sol" to send ethereum between 2 addresses
     //10^18 wei = 1 eth
-    await contract.methods.sendEther(addresses[0]).send({
-      from: addresses[1],
+    await contract.methods.sendEther(clientAddress).send({
+      from: laundryAddress,
       value: this.web3.utils.toWei(this.ethereumOfClient, 'ether'), //msg.value
       gas: 70000,
     }).on("receipt", function (receipt) {
