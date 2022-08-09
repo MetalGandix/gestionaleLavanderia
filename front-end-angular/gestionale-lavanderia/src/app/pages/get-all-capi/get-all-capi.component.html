@@ -47,9 +47,11 @@
                         </tr>
                     </thead>
                     <tbody class=".table-bordered">
-                        <tr *ngFor="let element of listArticoli">
+                        <tr *ngFor="let element of listArticoli.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
 
-                            <td class="table-element">{{ element.numeroLavorazione }}</td>
+                            <td class="table-element" style="width:8%"><input style="width:80%; border: none;" ngModel
+                                [(ngModel)]="element.numeroLavorazione" (ngModelChange)="changeNumeroLavorazione(element ,$event)">
+                        </td>
 
                             <td class="table-element">{{ element.articoliUtente.username }}</td>
 
@@ -123,4 +125,7 @@
             </div>
         </div>
     </div>
+    <mat-paginator *ngIf="listArticoli.length > 8" [length]="listArticoli.length" [pageSize]="8" [pageIndex]="pageIndex"
+    (page)="onPageChange($event)" [pageSizeOptions]="[8]" aria-label="Select page">
+    </mat-paginator>
 </div>

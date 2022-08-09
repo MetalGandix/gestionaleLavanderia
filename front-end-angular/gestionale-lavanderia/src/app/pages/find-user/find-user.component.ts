@@ -18,7 +18,7 @@ import { UserDialogComponent } from './user-dialog/user-dialog.component';
 export class FindUserComponent implements OnInit {
 
   constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog, private smartContractService: SmartContractService) { }
-  
+
   userList: User[] = []
   userFiltredList: User[] = []
   userSearched: string;
@@ -28,6 +28,8 @@ export class FindUserComponent implements OnInit {
   listArticoli: Articolo[] = []
   allMoney: number[] = []
   moneySum: number = 0;
+  pageIndex = 0;
+  pageSize = 0;
 
   contract(username: string){
     this.moneySum = 0
@@ -58,18 +60,24 @@ export class FindUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })
   }
 
-  showUserInfo(){
+  onPageChange($event) {
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
+  }
+
+  showUserInfo() {
     this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
       this.userFiltredList = filteredUsers
     })
   }
 
-  removeFilter(){
+  removeFilter() {
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })
@@ -103,11 +111,11 @@ export class FindUserComponent implements OnInit {
     }).add(() => {
       this.router.navigate(["/mostra-capi"], {
         state: { singleUser: this.singleUser, capiOfUser: this.capiOfUser }
-        })
+      })
     })
   }
 
-  deleteUser(username: string){
+  deleteUser(username: string) {
     this.serviceUser.deleteUser(username).subscribe().add(
       this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']

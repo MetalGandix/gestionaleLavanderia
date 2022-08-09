@@ -35,11 +35,14 @@ export class MostraCapiComponent implements OnInit {
   pronto: boolean = false;
   allMoney: number[] = []
   moneySum: number = 0;
+  pageIndex = 0;
+  pageSize = 0;
 
   ngOnInit() {
     if (window.history.state.singleUser == undefined || window.history.state.singleUser == null) {
       this.router.navigate(["/find-user"])
     }
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.singleUser = window.history.state.singleUser
     this.getInfos()
   }
@@ -51,6 +54,11 @@ export class MostraCapiComponent implements OnInit {
     this.moneySum = this.allMoney.reduce((a, b) => a + b, 0)
     console.log(this.moneySum)
     this.smartContractService.convertAllMoney(this.moneySum)
+  }
+
+  onPageChange($event) {
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
   }
 
   changeConsegnato(element) {
@@ -79,6 +87,10 @@ export class MostraCapiComponent implements OnInit {
 
   changePrezzo(element: Articolo, prezzo: number){
     element.prezzo = prezzo
+  }
+
+  changeNumeroLavorazione(element: Articolo, numLavorazione: number){
+    element.numeroLavorazione = numLavorazione
   }
 
   changeArticle(articolo: Articolo){

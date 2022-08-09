@@ -1,6 +1,0 @@
-Ricerca per data
-
-fixare le tables con il paginator
-
-visualizzatore pdf
-

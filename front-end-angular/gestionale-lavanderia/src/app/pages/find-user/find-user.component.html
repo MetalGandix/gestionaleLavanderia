@@ -1,12 +1,14 @@
 <div style="text-align-last: center;">
     <p style="color: black; font-size: large;">Cerca qua un utente digitandone il nome:</p>
     <div class="flex-search-buttons" style="display: inline-grid; width: 20%;">
-    <input [(ngModel)]="userSearched">
-    <div class="button-div" style="display: flex; margin-top: 4%;">
-    <button style="place-self: center;width: 70%; margin-right: 10%;" mat-raised-button (click)="findUserLike()">CERCA</button>
-    <button mat-raised-button style="place-self: center;width: 70%;" (click)="removeFilter()">RIMUOVI FILTRO</button>
-</div>
-</div>
+        <input [(ngModel)]="userSearched">
+        <div class="button-div" style="display: flex; margin-top: 4%;">
+            <button style="place-self: center;width: 70%; margin-right: 10%;" mat-raised-button
+                (click)="findUserLike()">CERCA</button>
+            <button mat-raised-button style="place-self: center;width: 70%;" (click)="removeFilter()">RIMUOVI
+                FILTRO</button>
+        </div>
+    </div>
 </div>
 <br><br>
 <div class="found_users">
@@ -32,14 +34,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr style="vertical-align: middle; margin-right: 3%;" *ngFor="let list of userFiltredList">
+            <tr style="vertical-align: middle; margin-right: 3%;"
+                *ngFor="let list of userFiltredList.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
                 <td style="text-align-last: center;">
                     <p style="color:black;"><a mat-raised-button color="warn"
-                            (click)="openDialog(list.username)">{{list.username}}</a>
+                            (click)="openDialog(list.username)">{{list.username}} {{list.lastname}}</a>
                     </p>
                 </td>
                 <td style="text-align-last: center;">
-                    <button mat-raised-button class="add_capi" (click)="goToMostraCapi(list.username)">Vedi capi
+                    <button mat-raised-button class="see_capi" (click)="goToMostraCapi(list.username)">Vedi capi
                         dell'utente</button>
                 </td>
                 <td style="text-align-last: center;">
@@ -56,5 +59,8 @@
             </tr>
         </tbody>
     </table>
+    <mat-paginator *ngIf="userFiltredList.length > 8" [length]="userFiltredList.length" [pageSize]="8"
+        [pageIndex]="pageIndex" (page)="onPageChange($event)" [pageSizeOptions]="[8]" aria-label="Select page">
+    </mat-paginator>
 </div>
 <br><br>

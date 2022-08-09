@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import gestionaleLavanderia.magistralThesis.mailSender.SmtpMailSender;
 import gestionaleLavanderia.magistralThesis.model.DAOUser;
 import gestionaleLavanderia.magistralThesis.repository.UserDaoRepository;
 
@@ -30,9 +28,6 @@ public class UserController {
 
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
-
-    @Autowired
-	private SmtpMailSender mailSender;
 
     @PostMapping("/registerUser")
     String addUser(@RequestBody DAOUser user) throws MessagingException{

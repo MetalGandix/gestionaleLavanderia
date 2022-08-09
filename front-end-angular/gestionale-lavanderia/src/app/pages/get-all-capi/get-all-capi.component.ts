@@ -26,9 +26,17 @@ export class GetAllCapiComponent implements OnInit {
   listArticoli: Articolo[] = []
   nameToSplit: any //Il nome maiuscolo
   id: number = -1 //Questo id è l'id di ogni elemento nel dix
+  pageIndex = 0;
+  pageSize = 0;
 
   ngOnInit() {
+    this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.getInfos()
+  }
+
+  onPageChange($event) {
+    this.pageSize = $event.pageSize
+    this.pageIndex = $event.pageIndex
   }
 
   changeConsegnato(element) {
@@ -57,6 +65,10 @@ export class GetAllCapiComponent implements OnInit {
 
   changePrezzo(element: Articolo, prezzo: number){
     element.prezzo = prezzo
+  }
+
+  changeNumeroLavorazione(element: Articolo, numLavorazione: number){
+    element.numeroLavorazione = numLavorazione
   }
 
   changeArticle(articolo: Articolo){
