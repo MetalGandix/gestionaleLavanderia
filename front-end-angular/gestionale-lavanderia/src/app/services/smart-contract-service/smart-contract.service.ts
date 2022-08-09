@@ -29,11 +29,11 @@ export class SmartContractService {
   findAccounts() {
     const accountsTemp = this.web3.eth.getAccounts()
     accountsTemp.then(addresses => {
-      this.doContract(addresses)
+      this.sendEther(addresses)
     })
   }
 
-  async doContract(addresses: string[]) {
+  async sendEther(addresses: string[]) {
     //Connection with Ganache
       const myContract = require('C:/Users/User/Desktop/Repository GitHub/gestionaleLavanderia/front-end-angular/gestionale-lavanderia/src/solidity-smart-contract/build/contracts/Sender.json');
       const id = await this.web3.eth.net.getId()
@@ -44,11 +44,11 @@ export class SmartContractService {
       )
       console.log(contract)
       //10^18 wei = 1 eth
-      await contract.methods.sendEther(addresses[0], 123).send({
-        from: addresses[3],
-        value: this.web3.utils.toWei(this.ethereumOfClient, 'ether'),
-        gas: 40000,
-      }).on(function(receipt){
+      await contract.methods.sendEther(addresses[0]).send({
+        from: addresses[1],
+        value: this.web3.utils.toWei("7", 'ether'), //msg.value
+        gas: 70000,
+      }).on("receipt", function(receipt){
         console.log(receipt)
        });
     }
