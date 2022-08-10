@@ -33,7 +33,6 @@ export class FindUserComponent implements OnInit {
   dictionaryMonthValue: { [key: number]: number } = {}
   dictionaryUserMoney: any[] = []
   sommaDizionario: number = 0;
-  valueOver100: boolean = false
 
   getMoney(user: User) {
     this.moneySum = 0
@@ -79,17 +78,7 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  sum(obj) {
-    this.sommaDizionario = 0;
-    for (var el of obj) {
-      if (obj.hasOwnProperty(el)) {
-        debugger
-        this.sommaDizionario += parseFloat(obj[el]);
-      }
-    }
-    return this.sommaDizionario;
-  }
-
+  //Apre un dialog con le info dell'utente
   openDialog(username: string): void {
     this.serviceUser.findUtenteSingolo(username).subscribe(user => {
       this.singleUser = user
@@ -105,6 +94,7 @@ export class FindUserComponent implements OnInit {
     this.findUsers()
   }
 
+  //Carica la lista degli utenti e per ognuno di essi calcola quanti soldi hanno e se possono ricevere ether.
   findUsers(){
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
@@ -113,7 +103,6 @@ export class FindUserComponent implements OnInit {
         this.getMoney(user)
       })
     })
-    this.valueOver100 = false
   }
 
   onPageChange($event) {
