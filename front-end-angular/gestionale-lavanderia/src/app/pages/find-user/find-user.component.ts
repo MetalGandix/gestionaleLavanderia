@@ -49,9 +49,12 @@ export class FindUserComponent implements OnInit {
       })
       let dataOdierna: Date = new Date()
       for (let key in this.dictionaryMonthValue) {
-        if(user.lastPaidEthMonth != dataOdierna.getMonth()){
-        if (dataOdierna.getMonth().toString() == key) {
-          if (this.dictionaryMonthValue[key] > 99) {
+        //Se l'if è vero significa che una transazione è già stata eseguita in questo mese.
+        if(user.lastPaidEthMonth != dataOdierna.getMonth()){ 
+        //Se l'if è vero significa che nel dizionario ci sono articoli con quel mese inserito
+        if (dataOdierna.getMonth().toString() == key) {      
+          //Se l'if è vero signifca che il cliente ha speso + di 100 euro quindi sarà possibile effettuare una transazione nel suo portafoglio
+          if (this.dictionaryMonthValue[key] > 99) {        
             user.money = this.dictionaryMonthValue[key]
             user.canReceiveEth = true
           } else {
@@ -71,7 +74,9 @@ export class FindUserComponent implements OnInit {
     this.smartContractService.convertAllMoney(user.money)
     user.paidMonth = true
     user.lastPaidEthMonth = date.getMonth()
-    this.serviceUser.saveUser(user).subscribe()
+    this.serviceUser.saveUser(user).subscribe().add(()=> {
+      this.findUsers()
+    })
   }
 
   sum(obj) {
@@ -97,6 +102,10 @@ export class FindUserComponent implements OnInit {
 
   ngOnInit() {
     this.onPageChange({ pageIndex: 0, pageSize: 8 })
+    this.findUsers()
+  }
+
+  findUsers(){
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
       this.userFiltredList.forEach(user => {
