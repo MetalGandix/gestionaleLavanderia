@@ -29,7 +29,7 @@
                     <p style="text-align-last: center;">Rimozione: </p>
                 </th>
                 <th scope="col">
-                    <p style="text-align-last: center;">Contract: </p>
+                    <p style="text-align-last: center;">Manda ethereum: </p>
                 </th>
             </tr>
         </thead>
@@ -53,8 +53,11 @@
                     <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo
                         utente</button>
                 </td>
-                <td style="text-align-last: center;">
-                    <button class="remove_user" mat-raised-button (click)="contract(list.username)">Do a smart contract</button>
+                <td *ngIf="!list.canReceiveEth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
+                    <button class="remove_user" mat-raised-button>Manda {{list.money}}€ in eth</button>
+                </td>
+                <td *ngIf="list.canReceiveEth" style="text-align-last: center;">
+                    <button class="remove_user" mat-raised-button (click)="contract(list)">Manda {{(list.money/10)}} € in eth</button>
                 </td>
             </tr>
         </tbody>

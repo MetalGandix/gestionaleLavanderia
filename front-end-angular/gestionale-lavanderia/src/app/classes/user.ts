@@ -7,4 +7,6 @@ export class User {
 	email: string;
 	sesso: string;
 	indirizzo: string;
+	canReceiveEth: boolean;
+	money: number = 0;
 }

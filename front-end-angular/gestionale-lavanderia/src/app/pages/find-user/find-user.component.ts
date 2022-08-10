@@ -31,13 +31,14 @@ export class FindUserComponent implements OnInit {
   pageIndex = 0;
   pageSize = 0;
   dictionaryMonthValue: { [key: number]: number } = {}
-  dictionaryCost: any[] = [];
+  dictionaryUserMoney: any[] = []
   sommaDizionario: number = 0;
+  valueOver100: boolean = false
 
-  contract(username: string) {
+  getMoney(user: User){
     this.moneySum = 0
     this.allMoney = []
-    this.capiService.findArticoloForSingleUser(username).subscribe(capi => {
+    this.capiService.findArticoloForSingleUser(user.username).subscribe(capi => {
       this.listArticoli = capi
     }).add(() => {
       let numberToSum: number = 0;
@@ -46,20 +47,21 @@ export class FindUserComponent implements OnInit {
         numberToSum += articolo.prezzo
         this.dictionaryMonthValue[date.getMonth()] = numberToSum
       })
-      console.log(this.dictionaryMonthValue)
       let dataOdierna: Date = new Date()
-      console.log(dataOdierna.getMonth())
       for (let key in this.dictionaryMonthValue) {
         if (dataOdierna.getMonth().toString() == key) {
           if (this.dictionaryMonthValue[key] > 100) {
-            this.moneySum = this.dictionaryMonthValue[key]
-            console.log(this.moneySum)
+            user.money = this.dictionaryMonthValue[key]
+            user.canReceiveEth = true
           }
         }
       }
-      this.smartContractService.convertAllMoney(this.moneySum)
     }
     )
+  }
+
+  contract(user: User) {
+    this.smartContractService.convertAllMoney(user.money)
   }
 
   sum(obj) {
@@ -87,7 +89,12 @@ export class FindUserComponent implements OnInit {
     this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
+      this.userFiltredList.forEach(user => {
+        user.money = 0
+        this.getMoney(user)
+      })
     })
+    this.valueOver100 = false
   }
 
   onPageChange($event) {
