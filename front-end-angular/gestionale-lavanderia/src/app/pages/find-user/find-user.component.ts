@@ -30,8 +30,8 @@ export class FindUserComponent implements OnInit {
   moneySum: number = 0;
   pageIndex = 0;
   pageSize = 0;
-  dictionaryMonthValue: { [key: number]: number[] } = {}
-  dictionaryCost : number[] = [];
+  dictionaryMonthValue: { [key: number]: number } = {}
+  dictionaryCost: any[] = [];
   sommaDizionario: number = 0;
 
   contract(username: string) {
@@ -40,15 +40,23 @@ export class FindUserComponent implements OnInit {
     this.capiService.findArticoloForSingleUser(username).subscribe(capi => {
       this.listArticoli = capi
     }).add(() => {
-      let arrayMoney: number[] = []
+      let numberToSum: number = 0;
       this.listArticoli.forEach(articolo => {
         let date = new Date(articolo.initialDate);
-        arrayMoney.push(articolo.prezzo)
-        this.dictionaryMonthValue[date.getMonth()] = arrayMoney
+        numberToSum += articolo.prezzo
+        this.dictionaryMonthValue[date.getMonth()] = numberToSum
       })
       console.log(this.dictionaryMonthValue)
-      this.sum(this.dictionaryMonthValue)
-      console.log(this.sommaDizionario)
+      let dataOdierna: Date = new Date()
+      console.log(dataOdierna.getMonth())
+      for (let key in this.dictionaryMonthValue) {
+        if (dataOdierna.getMonth().toString() == key) {
+          if (this.dictionaryMonthValue[key] > 100) {
+            this.moneySum = this.dictionaryMonthValue[key]
+            console.log(this.moneySum)
+          }
+        }
+      }
       this.smartContractService.convertAllMoney(this.moneySum)
     }
     )
@@ -56,10 +64,10 @@ export class FindUserComponent implements OnInit {
 
   sum(obj) {
     this.sommaDizionario = 0;
-    for( var el of obj ) {
-      if( obj.hasOwnProperty( el ) ) {
+    for (var el of obj) {
+      if (obj.hasOwnProperty(el)) {
         debugger
-        this.sommaDizionario += parseFloat( obj[el] );
+        this.sommaDizionario += parseFloat(obj[el]);
       }
     }
     return this.sommaDizionario;
