@@ -9,4 +9,6 @@ export class User {
 	indirizzo: string;
 	canReceiveEth: boolean;
 	money: number = 0;
+	lastPaidEthMonth: number = 0;
+	paidMonth: boolean = false;
 }

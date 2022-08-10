@@ -53,11 +53,17 @@
                     <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo
                         utente</button>
                 </td>
-                <td *ngIf="!list.canReceiveEth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
-                    <button class="remove_user" mat-raised-button>Manda {{list.money}}€ in eth</button>
+                <!-- Non può ricevere ether perchè non ha speso + di 100 euro e non ha ancora ricevuto ether questo mese -->
+                <td *ngIf="!list.canReceiveEth && !list.paidMonth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
+                    <button class="remove_user" mat-raised-button>Manda {{list.money/10}}€ in eth</button>
                 </td>
-                <td *ngIf="list.canReceiveEth" style="text-align-last: center;">
+                <!-- Può ricevere ether perchè ha speso + di 100 euro in questo mese e non ha ancora ricevuto transazioni -->
+                <td *ngIf="list.canReceiveEth && !list.paidMonth" style="text-align-last: center;">
                     <button class="remove_user" mat-raised-button (click)="contract(list)">Manda {{(list.money/10)}} € in eth</button>
+                </td>
+                <!-- Non può ricevere ether, ha speso sicuro + di 100 euro perchè ha ricevuto una transazione, quindi non può riceverne altre fino al mese prossimo -->
+                <td *ngIf="!list.canReceiveEth && list.paidMonth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
+                    <button class="remove_user" mat-raised-button>Hai già mandato eth questo mese</button>
                 </td>
             </tr>
         </tbody>

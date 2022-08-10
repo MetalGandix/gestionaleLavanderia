@@ -50,21 +50,4 @@ export class AddUserComponent implements OnInit {
       })._dismissAfter(4000)
     )
   }
-
-  existUser() {
-    if(this.user.username!=''){
-      this.registrazioneService.existUser(this.user.username).subscribe(res=>{
-        if(res){
-          this.userExist=true;
-          if(this.userExist == true){
-            console.log("Esiste")
-          }
-        }else{
-          this.userExist=false;
-          console.log("Non esiste")
-        }
-      })
-    }
-  }
-
 }

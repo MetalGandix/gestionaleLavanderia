@@ -35,7 +35,7 @@ export class FindUserComponent implements OnInit {
   sommaDizionario: number = 0;
   valueOver100: boolean = false
 
-  getMoney(user: User){
+  getMoney(user: User) {
     this.moneySum = 0
     this.allMoney = []
     this.capiService.findArticoloForSingleUser(user.username).subscribe(capi => {
@@ -49,21 +49,29 @@ export class FindUserComponent implements OnInit {
       })
       let dataOdierna: Date = new Date()
       for (let key in this.dictionaryMonthValue) {
+        if(user.lastPaidEthMonth != dataOdierna.getMonth()){
         if (dataOdierna.getMonth().toString() == key) {
           if (this.dictionaryMonthValue[key] > 99) {
             user.money = this.dictionaryMonthValue[key]
             user.canReceiveEth = true
-          }else{
+          } else {
             user.money = this.dictionaryMonthValue[key]
           }
         }
+      }else{
+        user.money = this.dictionaryMonthValue[key]
       }
+    }
     }
     )
   }
 
   contract(user: User) {
+    let date = new Date()
     this.smartContractService.convertAllMoney(user.money)
+    user.paidMonth = true
+    user.lastPaidEthMonth = date.getMonth()
+    this.serviceUser.saveUser(user).subscribe()
   }
 
   sum(obj) {

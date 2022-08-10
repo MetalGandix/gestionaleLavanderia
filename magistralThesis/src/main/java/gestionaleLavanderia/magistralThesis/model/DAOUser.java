@@ -31,6 +31,29 @@ public class DAOUser implements Serializable{
 	@Column 
 	private String indirizzo;
 
+	@Column 
+	private Integer lastPaidEthMonth = 0;
+
+	@Column 
+	private Boolean paidMonth = false;
+	
+	public Integer getLastPaidEthMonth() {
+		return lastPaidEthMonth;
+	}
+
+	public void setLastPaidEthMonth(Integer lastPaidEthMonth) {
+		this.lastPaidEthMonth = lastPaidEthMonth;
+	}
+
+
+	public Boolean isPaidMonth() {
+		return paidMonth;
+	}
+
+	public void setPaidMonth(Boolean paidMonth) {
+		this.paidMonth = paidMonth;
+	}
+
 	public String getIndirizzo() {
 		return indirizzo;
 	}
