@@ -50,9 +50,11 @@ export class FindUserComponent implements OnInit {
       let dataOdierna: Date = new Date()
       for (let key in this.dictionaryMonthValue) {
         if (dataOdierna.getMonth().toString() == key) {
-          if (this.dictionaryMonthValue[key] > 100) {
+          if (this.dictionaryMonthValue[key] > 99) {
             user.money = this.dictionaryMonthValue[key]
             user.canReceiveEth = true
+          }else{
+            user.money = this.dictionaryMonthValue[key]
           }
         }
       }
