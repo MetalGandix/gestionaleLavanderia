@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 05, 2022 alle 17:01
+-- Creato il: Ago 11, 2022 alle 01:24
 -- Versione del server: 10.4.22-MariaDB
 -- Versione PHP: 8.1.2
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `articolo` (
   `id` bigint(20) NOT NULL,
   `consegnato` bit(1) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `delivery_date` date DEFAULT NULL,
+  `initial_date` date DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   `numero_lavorazione` int(11) DEFAULT NULL,
   `prezzo` double DEFAULT NULL,
@@ -40,6 +41,16 @@ CREATE TABLE `articolo` (
   `user_username` varchar(255) DEFAULT NULL,
   `sotto_categoria_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `articolo`
+--
+
+INSERT INTO `articolo` (`id`, `consegnato`, `delivery_date`, `initial_date`, `note`, `numero_lavorazione`, `prezzo`, `pronto`, `quantity`, `servizio`, `user_username`, `sotto_categoria_id`) VALUES
+(1000, b'0', '2022-08-17', '2022-08-11', '', 1, 30, b'1', 10, 'Standard', 'Leonardo', 134),
+(1001, b'0', '2022-08-17', '2022-08-11', '', 1, 89, b'1', 18, 'Standard', 'Leonardo', 19),
+(1002, b'0', '2022-08-17', '2022-08-11', '', 1, 55, b'1', 30, 'Standard', 'Leonardo', 20),
+(1003, b'0', '2022-08-17', '2022-08-11', '', 2, 100, b'1', 100, 'Standard', 'Alexia', 21);
 
 -- --------------------------------------------------------
 
@@ -86,7 +97,7 @@ CREATE TABLE `mysequence` (
 --
 
 INSERT INTO `mysequence` (`next_val`) VALUES
-(1000);
+(1100);
 
 -- --------------------------------------------------------
 
@@ -262,6 +273,14 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dump dei dati per la tabella `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `indirizzo`, `lastname`, `number`, `password`, `sesso`, `username`) VALUES
+(1, 'leonardo.mogianesi@gmail.com', NULL, 'Mogianesi', '3663467422', '', 'Maschio', 'Leonardo'),
+(2, 'alexia.fulli@gmail.com', NULL, 'Fulli', '3338312112', '', 'Femmina', 'Alexia');
+
+--
 -- Indici per le tabelle scaricate
 --
 
@@ -313,7 +332,7 @@ ALTER TABLE `sotto_categoria`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Limiti per le tabelle scaricate
