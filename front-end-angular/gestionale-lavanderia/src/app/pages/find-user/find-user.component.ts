@@ -56,6 +56,7 @@ export class FindUserComponent implements OnInit {
           if (this.dictionaryMonthValue[key] > 99) {        
             user.money = this.dictionaryMonthValue[key]
             user.canReceiveEth = true
+            user.paidMonth = false
           } else {
             user.money = this.dictionaryMonthValue[key]
           }
