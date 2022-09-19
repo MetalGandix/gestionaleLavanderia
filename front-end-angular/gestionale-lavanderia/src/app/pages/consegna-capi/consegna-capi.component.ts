@@ -7,7 +7,6 @@ import { Categoria } from 'src/app/classes/categoria';
 import { SottoCategoria } from 'src/app/classes/sotto-categoria';
 import { User } from 'src/app/classes/user';
 import { CapiService } from 'src/app/services/capi-service/capi.service';
-import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-consegna-capi',
@@ -16,24 +15,17 @@ import { UserService } from 'src/app/services/user-service/user.service';
 })
 export class ConsegnaCapiComponent implements OnInit {
 
-  constructor(private serviceUser: UserService, private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private capiService: CapiService, private router: Router, private _snackBar: MatSnackBar) { }
 
   capiToAdd: ComplexCapiObject = new ComplexCapiObject()
   singleUser: User
   capiOfUser: ComplexCapiObject
   articolo: Articolo = new Articolo()
   choiceMenuList: number
-  selectedItems: any[] = []
-  numberClicked: number[] = []
-  extractedString: string
-  arrayProvvisorio: { property: string, icon: string, value: number, id: number }[]
   datePickerDate: String
   arrayArticoli: Articolo[] = []
   numLavorazione: number = 0;
   propertyStringArray: any[] = []
-  propertyArray: any[] = []
-  counter = 0;
-  stringNamesArray: any[] = []
   categories: Categoria[] = []
   selectedCategory: number = 1;
   subCategories: {[key: number]: SottoCategoria[]} = {}
@@ -43,9 +35,6 @@ export class ConsegnaCapiComponent implements OnInit {
   subCategoryArray: SottoCategoria[] = []
   subCategory: SottoCategoria = new SottoCategoria()
   numArray: any[] = []
-  dixStringsLateral: {[key: number]: number} = {}
-  contatoreDizionarioStringhe: number = 0;
-  idDizionario: number = 0;
   selectedSubCategoriesList: {[key: string]: number} = {}
   dixSubCategoryLenght :any;
   disabledButton: boolean = false;

@@ -44,6 +44,7 @@ export class AddUserComponent implements OnInit {
     this.user.email = this.email
     this.user.password = ""
     this.user.sesso = this.sesso
+    this.user.indirizzo = this.indirizzo
     this.registrazioneService.saveUser(this.user).subscribe().add(
       this._snackBar.open("Utente aggiunto correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']

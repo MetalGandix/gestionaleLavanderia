@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 11, 2022 alle 02:01
+-- Creato il: Set 19, 2022 alle 18:15
 -- Versione del server: 10.4.22-MariaDB
 -- Versione PHP: 8.1.2
 
@@ -50,7 +50,16 @@ INSERT INTO `articolo` (`id`, `consegnato`, `delivery_date`, `initial_date`, `no
 (1000, b'0', '2022-08-17', '2022-08-11', '', 1, 30, b'1', 10, 'Standard', 'Leonardo', 134),
 (1001, b'0', '2022-08-17', '2022-08-11', '', 1, 89, b'1', 18, 'Standard', 'Leonardo', 19),
 (1002, b'0', '2022-08-17', '2022-08-11', '', 1, 55, b'1', 30, 'Standard', 'Leonardo', 20),
-(1003, b'0', '2022-08-17', '2022-08-11', '', 2, 100, b'1', 100, 'Standard', 'Alexia', 21);
+(1003, b'0', '2022-08-17', '2022-08-13', '', 2, 8, b'1', 1, 'Standard', 'Alexia', 16),
+(1004, b'0', '2022-08-15', '2022-08-13', '', 3, 100, b'1', 1, 'Standard', 'Alexia', 19),
+(1006, b'1', '2022-08-18', '2022-08-13', 'Pantaloni si sono ristretti', 4, 0, b'1', 4, 'Standard', 'Leonardo', 20),
+(1007, b'0', '2022-08-18', '2022-08-13', '', 4, 40, b'0', 1, 'Standard', 'Leonardo', 17),
+(1008, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 1, 'Standard', 'Leonardo', 18),
+(1009, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 2, 'Standard', 'Leonardo', 16),
+(1010, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 2, 'Standard', 'Leonardo', 15),
+(1011, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 3, 'Standard', 'Leonardo', 19),
+(1051, b'0', '2022-08-27', '2022-08-26', '', 5, 30, b'1', 1, 'Standard', 'Federico', 15),
+(1052, b'0', '2022-08-29', '2022-08-26', '', 6, 8, b'1', 1, 'Standard', 'Marco', 16);
 
 -- --------------------------------------------------------
 
@@ -97,7 +106,7 @@ CREATE TABLE `mysequence` (
 --
 
 INSERT INTO `mysequence` (`next_val`) VALUES
-(1100);
+(1150);
 
 -- --------------------------------------------------------
 
@@ -117,20 +126,20 @@ CREATE TABLE `sotto_categoria` (
 --
 
 INSERT INTO `sotto_categoria` (`id`, `descrizione`, `categoria_id`, `icon_url`) VALUES
-(1, 'Abito donna serale', 5, NULL),
-(2, 'Abito donna', 5, NULL),
-(3, 'Abito lungo', 5, NULL),
-(4, 'Abito pizzo', 5, NULL),
-(5, 'Abito sposa', 5, NULL),
-(6, 'Abito uomo', 5, NULL),
-(7, 'Cravatta', 5, NULL),
-(8, 'Divisa polizia locale', 5, NULL),
-(9, 'Divisa carabiniere', 5, NULL),
-(10, 'Divisa finanza', 5, NULL),
-(11, 'Divisa polizia', 5, NULL),
-(12, 'Gilet uomo', 5, NULL),
-(13, 'Tailleur gonna', 5, NULL),
-(14, 'Tailleur pantaloni', 5, NULL),
+(1, 'Abito donna serale', 5, 'assets//images//icon-pack//abito-donna-serale.png'),
+(2, 'Abito donna', 5, 'assets//images//icon-pack//abito-donna.png'),
+(3, 'Abito lungo', 5, 'assets//images//icon-pack//abito-lungo.png'),
+(4, 'Abito pizzo', 5, 'assets//images//icon-pack//abito-pizzo.png'),
+(5, 'Abito sposa', 5, 'assets//images//icon-pack//abito-sposa.png'),
+(6, 'Abito uomo', 5, 'assets//images//icon-pack//abito-uomo.png'),
+(7, 'Cravatta', 5, 'assets//images//icon-pack//cravatta.png'),
+(8, 'Divisa polizia locale', 5, 'assets//images//icon-pack//divisa-polizia-locale.png'),
+(9, 'Divisa carabiniere', 5, 'assets//images//icon-pack//divisa-carabiniere.png'),
+(10, 'Divisa finanza', 5, 'assets//images//icon-pack//divisa-finanza.png'),
+(11, 'Divisa polizia', 5, 'assets//images//icon-pack//divisa-polizia.png'),
+(12, 'Gilet uomo', 5, 'assets//images//icon-pack//gilet-uomo.png'),
+(13, 'Tailleur gonna', 5, 'assets//images//icon-pack//tailleur-gonna.png'),
+(14, 'Tailleur pantaloni', 5, 'assets//images//icon-pack//tailleur-pantaloni.png'),
 (15, 'Pantaloni divisa', 1, 'assets//images//icon-pack//pantalone_divisa.png'),
 (16, 'Pantaloni donna', 1, 'assets//images//icon-pack//pantalone_donna.png'),
 (17, 'Pantaloni solo stiro', 1, 'assets//images//icon-pack//pantaloni_solo_stiro.png'),
@@ -208,10 +217,10 @@ INSERT INTO `sotto_categoria` (`id`, `descrizione`, `categoria_id`, `icon_url`) 
 (89, 'Sacco a pelo 2 piazze', 7, NULL),
 (90, 'Trapunta 1 piazza', 7, NULL),
 (91, 'Trapunta 2 piazze', 7, NULL),
-(92, 'Gonna', 2, NULL),
-(93, 'Gonna jeans', 2, NULL),
-(94, 'Gonna pelle', 2, NULL),
-(95, 'Gonna pieghe', 2, NULL),
+(92, 'Gonna', 2, 'assets//images//icon-pack//gonna.png'),
+(93, 'Gonna jeans', 2, 'assets//images//icon-pack//gonna-jeans.png'),
+(94, 'Gonna pelle', 2, 'assets//images//icon-pack//gonna-pelle.png'),
+(95, 'Gonna pieghe', 2, 'assets//images//icon-pack//gonna-pieghe.png'),
 (96, 'Cappotto bimbo', 6, NULL),
 (97, 'Cappotto donna', 6, NULL),
 (98, 'Cappotto unisex', 6, NULL),
@@ -240,20 +249,20 @@ INSERT INTO `sotto_categoria` (`id`, `descrizione`, `categoria_id`, `icon_url`) 
 (121, 'Soprabito', 6, NULL),
 (122, 'Tranch', 6, NULL),
 (123, 'Woolrich', 6, NULL),
-(124, 'Camicia bimbo', 3, NULL),
-(125, 'Camicia cerimonia', 3, NULL),
-(126, 'Camicia donna', 3, NULL),
-(127, 'Camicia jeans', 3, NULL),
-(128, 'Camicia pelle', 3, NULL),
-(129, 'Camicia piegata', 3, NULL),
-(130, 'Camicia seta donna', 3, NULL),
-(131, 'Camicia seta uomo', 3, NULL),
-(132, 'Camicia solo stiro', 3, NULL),
-(133, 'Camicia uomo', 3, NULL),
-(134, 'Berretto', 4, NULL),
-(135, 'Cappello', 4, NULL),
-(136, 'Cappello pelle', 4, NULL),
-(137, 'Tappeto', 11, NULL);
+(124, 'Camicia bimbo', 3, 'assets//images//icon-pack//camicia-bimbo.png'),
+(125, 'Camicia cerimonia', 3, 'assets//images//icon-pack//camicia-cerimonia.png'),
+(126, 'Camicia donna', 3, 'assets//images//icon-pack//camicia-donna.png'),
+(127, 'Camicia jeans', 3, 'assets//images//icon-pack//camicia-jeans.png'),
+(128, 'Camicia pelle', 3, 'assets//images//icon-pack//camicia-pelle.png'),
+(129, 'Camicia piegata', 3, 'assets//images//icon-pack//camicia-piegata.png'),
+(130, 'Camicia seta donna', 3, 'assets//images//icon-pack//camicia-seta-donna.png'),
+(131, 'Camicia seta uomo', 3, 'assets//images//icon-pack//camicia-seta-uomo.png'),
+(132, 'Camicia solo stiro', 3, 'assets//images//icon-pack//camicia-solo-stiro.png'),
+(133, 'Camicia uomo', 3, 'assets//images//icon-pack//camicia-uomo.png'),
+(134, 'Berretto', 4, 'assets//images//icon-pack//berretto.png'),
+(135, 'Cappello', 4, 'assets//images//icon-pack//cappello.png'),
+(136, 'Cappello pelle', 4, 'assets//images//icon-pack//cappello-pelle.png'),
+(137, 'Tappeto', 11, 'assets//images//icon-pack//tappeto.png');
 
 -- --------------------------------------------------------
 
@@ -279,8 +288,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `indirizzo`, `lastname`, `number`, `password`, `sesso`, `username`, `last_paid_eth_month`, `paid_month`) VALUES
-(1, 'leonardo.mogianesi@gmail.com', NULL, 'Mogianesi', '3663467422', '', 'Maschio', 'Leonardo', '7', b'1'),
-(2, 'alexia.fulli@gmail.com', NULL, 'Fulli', '3338312112', '', 'Femmina', 'Alexia', '7', b'1');
+(1, 'leonardo.mogianesi@gmail.com', NULL, 'Mogianesi', '3663467422', '', 'Maschio', 'Leonardo', '0', b'0'),
+(2, 'alexia.fulli@gmail.com', NULL, 'Fulli', '3338312112', '', 'Femmina', 'Alexia', '7', b'1'),
+(7, 'Federico.lattanzi@gmail.com', NULL, 'Lattanzi', '322343523', '', 'Maschio', 'Federico', '0', b'0'),
+(8, 'aurora2333@gmail.com', NULL, 'Cercasetti', '3336172122', '', 'Femmina', 'Aurora ', '0', b'0'),
+(9, 'marco20051@gmail.com', NULL, 'Solidori', '3662462401', '', 'Maschio', 'Marco', '0', b'0'),
+(12, 'rosa.barigelli@gmail.com', NULL, 'Barigelli', '3355336219', '', 'Femmina', 'Rosa', '0', b'0'),
+(13, 'sabina.pennesi@alice.it', NULL, 'Pennesi', '3338372112', '', 'Femmina', 'Sabina', '0', b'0'),
+(14, 'a.mogianesi65@gmail.com', NULL, 'Mogianesi', '3336722888', '', 'Maschio', 'Attilio ', '0', b'0'),
+(15, 'benito.b@gmail.com', NULL, 'Barigelli', '3265547119', '', 'Maschio', 'Benito', '0', b'0');
 
 --
 -- Indici per le tabelle scaricate
@@ -334,7 +350,7 @@ ALTER TABLE `sotto_categoria`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Limiti per le tabelle scaricate

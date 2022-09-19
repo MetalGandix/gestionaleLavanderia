@@ -9,7 +9,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" style="width: fit-content;">
 
-    <h4 class="name">User</h4>
+    <h4 class="name">Gestore</h4>
 
     <mat-divider></mat-divider>
 
@@ -20,13 +20,6 @@
       </span>
       <span> Consegna capi</span>
     </button> -->
-    <button mat-button class="menu-button" routerLink="/statistiche" *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()">
-      <span class="material-icons">
-        trending_up
-      </span>
-      <span> Statistiche</span>
-    </button>
     <button mat-button class="menu-button" routerLink="/get-all-capi" *ngIf="sidenav.mode === 'over'"
     (click)="sidenav.toggle()">
     <span class="material-icons">

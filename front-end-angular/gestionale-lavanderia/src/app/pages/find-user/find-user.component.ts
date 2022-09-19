@@ -37,9 +37,10 @@ export class FindUserComponent implements OnInit {
   getMoney(user: User) {
     this.moneySum = 0
     this.allMoney = []
+    this.listArticoli = []
     this.capiService.findArticoloForSingleUser(user.username).subscribe(capi => {
+      this.dictionaryMonthValue = {}
       this.listArticoli = capi
-    }).add(() => {
       let numberToSum: number = 0;
       this.listArticoli.forEach(articolo => {
         let date = new Date(articolo.initialDate);
@@ -65,8 +66,7 @@ export class FindUserComponent implements OnInit {
         user.money = this.dictionaryMonthValue[key]
       }
     }
-    }
-    )
+    })
   }
 
   contract(user: User) {
@@ -126,6 +126,10 @@ export class FindUserComponent implements OnInit {
   findUserLike() {
     this.serviceUser.findUtenteFiltrato(this.userSearched).subscribe(filteredUsers => {
       this.userFiltredList = filteredUsers
+      this.userFiltredList.forEach(user => {
+        user.money = 0
+        this.getMoney(user)
+      })
     })
   }
 

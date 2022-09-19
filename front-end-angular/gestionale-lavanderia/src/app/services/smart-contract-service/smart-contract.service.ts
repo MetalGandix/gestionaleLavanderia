@@ -8,15 +8,13 @@ export class SmartContractService {
 
   constructor() {
   }
-
-  private web3: Web3;
+  
+  //Connection to Ganache
+  private web3: Web3 = new Web3("http://127.0.0.1:7545");
   ganacheAddresses: string[] = []
   ethereumOfClient: string = ""
 
   convertAllMoney(money: number) {
-    //Connection to Ganache
-    this.web3 = new Web3("http://127.0.0.1:7545")
-
     //Il 10% dei guadagni del cliente vengono guadagnati come ethereum
     let moneyDividedBy10: number = money / 10
     let moneyToEth: number = moneyDividedBy10 / 1619
@@ -44,7 +42,7 @@ export class SmartContractService {
     const id = await this.web3.eth.net.getId()
     const deployedNetwork = myContract.networks[id];
 
-    //Istantiating the contract
+    //Instantiating the contract
     const contract = new this.web3.eth.Contract(
       myContract.abi,
       deployedNetwork.address

@@ -29,7 +29,7 @@
                     <p style="text-align-last: center;">Rimozione: </p>
                 </th>
                 <th scope="col">
-                    <p style="text-align-last: center;">Manda ethereum: </p>
+                    <p style="text-align-last: center;">Manda ether:</p>
                 </th>
             </tr>
         </thead>
@@ -55,11 +55,11 @@
                 </td>
                 <!-- Non può ricevere ether perchè non ha speso + di 100 euro e non ha ancora ricevuto ether questo mese -->
                 <td *ngIf="!list.canReceiveEth && !list.paidMonth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
-                    <button class="remove_user" mat-raised-button>Manda {{list.money/10}}€ in eth</button>
+                    <button class="remove_user" mat-raised-button>Il cliente ha speso {{list.money}}€</button>
                 </td>
                 <!-- Può ricevere ether perchè ha speso + di 100 euro in questo mese e non ha ancora ricevuto transazioni -->
                 <td *ngIf="list.canReceiveEth && !list.paidMonth" style="text-align-last: center;">
-                    <button class="remove_user" mat-raised-button (click)="contract(list)">Manda {{(list.money/10)}} € in eth</button>
+                    <button class="remove_user" mat-raised-button (click)="contract(list)">Il cliente ha speso: {{list.money}}€, manda {{(list.money/10)}}€ in eth</button>
                 </td>
                 <!-- Non può ricevere ether, ha speso sicuro + di 100 euro perchè ha ricevuto una transazione, quindi non può riceverne altre fino al mese prossimo -->
                 <td *ngIf="!list.canReceiveEth && list.paidMonth" style="text-align-last: center; pointer-events: none; opacity: 30%;">
