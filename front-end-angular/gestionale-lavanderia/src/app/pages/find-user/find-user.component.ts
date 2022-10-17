@@ -38,7 +38,7 @@ export class FindUserComponent implements OnInit {
     this.moneySum = 0
     this.allMoney = []
     this.listArticoli = []
-    this.capiService.findArticoloForSingleUser(user.username).subscribe(capi => {
+    this.capiService.findArticoloForSingleUser(user.id).subscribe(capi => {
       this.dictionaryMonthValue = {}
       this.listArticoli = capi
       let numberToSum: number = 0;
@@ -80,8 +80,8 @@ export class FindUserComponent implements OnInit {
   }
 
   //Apre un dialog con le info dell'utente
-  openDialog(username: string): void {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  openDialog(id: number): void {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
       this.dialog.open(UserDialogComponent, {
         width: '500px',
@@ -90,7 +90,7 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  createUserPage(){
     this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.findUsers()
   }
@@ -104,6 +104,10 @@ export class FindUserComponent implements OnInit {
         this.calculateMoney(user)
       })
     })
+  }
+
+  ngOnInit() {
+    this.createUserPage()
   }
 
   onPageChange($event) {
@@ -139,8 +143,8 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  goToAggiungiCapi(username: string) {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  goToAggiungiCapi(id: number) {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
     }).add(() => {
       this.router.navigate(["/consegna-capi"], {
@@ -149,8 +153,8 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  goToMostraCapi(username: string) {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  goToMostraCapi(id: number) {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
     }).add(() => {
       this.router.navigate(["/mostra-capi"], {
@@ -159,13 +163,13 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  deleteUser(username: string) {
-    this.serviceUser.deleteUser(username).subscribe().add(
+  deleteUser(id: number) {
+    this.serviceUser.deleteUser(id).subscribe().add(() => {
       this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
-      })._dismissAfter(4000)
+      })._dismissAfter(4000), this.createUserPage()
+    }
     )
-    this.findUserLike()
   }
 
 }

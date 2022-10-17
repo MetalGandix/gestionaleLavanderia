@@ -38,19 +38,19 @@
                 *ngFor="let list of userFiltredList.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize)">
                 <td style="text-align-last: center;">
                     <p style="color:black;"><a mat-raised-button color="warn"
-                            (click)="openDialog(list.username)">{{list.username}} {{list.lastname}}</a>
+                            (click)="openDialog(list.id)">{{list.username}} {{list.lastname}}</a>
                     </p>
                 </td>
                 <td style="text-align-last: center;">
-                    <button mat-raised-button class="see_capi" (click)="goToMostraCapi(list.username)">Vedi capi
+                    <button mat-raised-button class="see_capi" (click)="goToMostraCapi(list.id)">Vedi capi
                         dell'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button mat-raised-button class="add_capi" (click)="goToAggiungiCapi(list.username)">Aggiungi capi
+                    <button mat-raised-button class="add_capi" (click)="goToAggiungiCapi(list.id)">Aggiungi capi
                         all'utente</button>
                 </td>
                 <td style="text-align-last: center;">
-                    <button class="remove_user" mat-raised-button (click)="deleteUser(list.username)">Rimuovi questo
+                    <button class="remove_user" mat-raised-button (click)="deleteUser(list.id)">Rimuovi questo
                         utente</button>
                 </td>
                 <!-- Non può ricevere ether perchè non ha speso + di 100 euro e non ha ancora ricevuto ether questo mese -->

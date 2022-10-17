@@ -106,7 +106,7 @@ export class MostraCapiComponent implements OnInit {
   }
 
   getInfos(){
-    this.capiService.findArticoloForSingleUser(this.singleUser.username).subscribe(capi => {
+    this.capiService.findArticoloForSingleUser(this.singleUser.id).subscribe(capi => {
       this.listArticoli = capi
     }
     )

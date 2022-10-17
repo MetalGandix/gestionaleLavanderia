@@ -55,7 +55,7 @@ public class Articolo {
     public int numeroLavorazione;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "USER_USERNAME", referencedColumnName="username")
+    @JoinColumn(name = "USER_ID", referencedColumnName="id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     public DAOUser articoliUtente;
 

@@ -1,12 +1,9 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
 import java.util.List;
-
 import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,15 +23,8 @@ public class UserController {
     @Autowired
     private UserDaoRepository userRepository;
 
-	@Autowired
-	private PasswordEncoder bcryptEncoder;
-
     @PostMapping("/registerUser")
     String addUser(@RequestBody DAOUser user) throws MessagingException{
-        if(user.getPassword().length() != 0){
-        user.setPassword(bcryptEncoder.encode(user.getPassword()));
-        }
-        //mailSender.send(user.getEmail(), "Sei stato registrato nel portale della lavanderia. ", "Ti arriveranno delle mail che ti segnaleranno quando un tuo panno depositato è pronto.");
         userRepository.save(user);
         return "Utente aggiunto con successo!!";
     }
@@ -58,19 +48,19 @@ public class UserController {
         return (List<DAOUser>) userRepository.searchUser(user.getUsername());
     }
     
-    @GetMapping("/vediUtenti/{username}")
-    public DAOUser vediUtente(Authentication a, @PathVariable String username) {
-        return (DAOUser) userRepository.findByUsername(username);
+    @GetMapping("/vediUtenti/{id}")
+    public DAOUser vediUtente(Authentication a, @PathVariable Long id) {
+        return userRepository.findById(id).get();
     }
 
     @PutMapping("/cambiaUtente/{usernameid}")
-    public DAOUser cambiaUtente(Authentication a, @RequestBody DAOUser username) {
+    public DAOUser cambiaUtente(@RequestBody DAOUser username) {
         return (DAOUser) userRepository.save(username);
     }
 
-    @DeleteMapping("/deleteUser/{username}")
-    public String deleteUser(Authentication a, @PathVariable String username){
-        userRepository.delete(userRepository.findByUsername(username));        
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUser(Authentication a, @PathVariable Long id){
+        userRepository.delete(userRepository.findById(id).get());        
         return "Utente eliminato ";
     }
 }

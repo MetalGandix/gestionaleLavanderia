@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
 import { UserService } from 'src/app/services/user-service/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user-service/user.service';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor(private registrazioneService: UserService, private _snackBar: MatSnackBar) {
+  constructor(private registrazioneService: UserService, private router: Router, private _snackBar: MatSnackBar) {
     this.user = new User();
   }
 
@@ -25,14 +26,14 @@ export class AddUserComponent implements OnInit {
   email: string;
   sesso: string;
   codiceFiscale: string;
-	presentatoDa: string;
-	numeroCard: string;
-	scontoCard: string;
-	cap: string;
-	citta: string;
-	regioneSociale: string;
-	indirizzo: string;
-	provincia: string;
+  presentatoDa: string;
+  numeroCard: string;
+  scontoCard: string;
+  cap: string;
+  citta: string;
+  regioneSociale: string;
+  indirizzo: string;
+  provincia: string;
 
   ngOnInit(): void {
   }
@@ -45,10 +46,28 @@ export class AddUserComponent implements OnInit {
     this.user.password = ""
     this.user.sesso = this.sesso
     this.user.indirizzo = this.indirizzo
-    this.registrazioneService.saveUser(this.user).subscribe().add(
+    this.registrazioneService.saveUser(this.user).subscribe().add(() => {
       this._snackBar.open("Utente aggiunto correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
-      })._dismissAfter(4000)
+      })._dismissAfter(4000), this.router.navigate(["/find-user"])
+    }
     )
   }
+
+  existUser() {
+    if (this.user.username != '') {
+      this.registrazioneService.existUser(this.user.username).subscribe(res => {
+        if (res) {
+          this.userExist = true;
+          if (this.userExist == true) {
+            console.log("Esiste")
+          }
+        } else {
+          this.userExist = false;
+          console.log("Non esiste")
+        }
+      })
+    }
+  }
+
 }

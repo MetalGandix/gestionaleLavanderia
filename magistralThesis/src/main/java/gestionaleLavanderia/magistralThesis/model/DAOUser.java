@@ -9,18 +9,15 @@ public class DAOUser implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
+	@Column
+	private String number;
 	
 	@Column
 	private String username;
 
 	@Column
-	private String password;
-
-	@Column
 	private String lastname;
-
-	@Column
-	private String number;
 
 	@Column
 	private String email;
@@ -72,14 +69,6 @@ public class DAOUser implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getLastname() {
