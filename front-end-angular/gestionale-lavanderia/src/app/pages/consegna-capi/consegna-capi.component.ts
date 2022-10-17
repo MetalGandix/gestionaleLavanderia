@@ -107,7 +107,7 @@ export class ConsegnaCapiComponent implements OnInit {
     this.choiceMenuList = number
   }
 
-  insertIntoUser() {
+  insertArticlesIntoUser() {
     for(let key in this.selectedSubCategories){
       this.numArray.push({
         id: parseInt(key, 10)-1,

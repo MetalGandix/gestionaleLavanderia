@@ -34,7 +34,7 @@ export class FindUserComponent implements OnInit {
   dictionaryUserMoney: any[] = []
   sommaDizionario: number = 0;
 
-  getMoney(user: User) {
+  calculateMoney(user: User) {
     this.moneySum = 0
     this.allMoney = []
     this.listArticoli = []
@@ -101,7 +101,7 @@ export class FindUserComponent implements OnInit {
       this.userFiltredList = lista
       this.userFiltredList.forEach(user => {
         user.money = 0
-        this.getMoney(user)
+        this.calculateMoney(user)
       })
     })
   }
@@ -128,7 +128,7 @@ export class FindUserComponent implements OnInit {
       this.userFiltredList = filteredUsers
       this.userFiltredList.forEach(user => {
         user.money = 0
-        this.getMoney(user)
+        this.calculateMoney(user)
       })
     })
   }
