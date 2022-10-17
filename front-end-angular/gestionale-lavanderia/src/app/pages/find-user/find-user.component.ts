@@ -38,11 +38,15 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  createUserPage(){
     this.onPageChange({ pageIndex: 0, pageSize: 8 })
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
     })
+  }
+
+  ngOnInit() {
+    this.createUserPage()
   }
 
   onPageChange($event) {
@@ -95,12 +99,12 @@ export class FindUserComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.serviceUser.deleteUser(id).subscribe().add(
+    this.serviceUser.deleteUser(id).subscribe().add(() => {
       this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
-      })._dismissAfter(4000)
+      })._dismissAfter(4000), this.createUserPage()
+    }
     )
-    this.findUserLike()
   }
 
 }
