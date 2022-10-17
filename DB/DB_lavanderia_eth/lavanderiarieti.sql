@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 19, 2022 alle 18:15
+-- Creato il: Ott 17, 2022 alle 13:25
 -- Versione del server: 10.4.22-MariaDB
 -- Versione PHP: 8.1.2
 
@@ -38,7 +38,7 @@ CREATE TABLE `articolo` (
   `pronto` bit(1) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `servizio` varchar(255) DEFAULT NULL,
-  `user_username` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
   `sotto_categoria_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -46,20 +46,9 @@ CREATE TABLE `articolo` (
 -- Dump dei dati per la tabella `articolo`
 --
 
-INSERT INTO `articolo` (`id`, `consegnato`, `delivery_date`, `initial_date`, `note`, `numero_lavorazione`, `prezzo`, `pronto`, `quantity`, `servizio`, `user_username`, `sotto_categoria_id`) VALUES
-(1000, b'0', '2022-08-17', '2022-08-11', '', 1, 30, b'1', 10, 'Standard', 'Leonardo', 134),
-(1001, b'0', '2022-08-17', '2022-08-11', '', 1, 89, b'1', 18, 'Standard', 'Leonardo', 19),
-(1002, b'0', '2022-08-17', '2022-08-11', '', 1, 55, b'1', 30, 'Standard', 'Leonardo', 20),
-(1003, b'0', '2022-08-17', '2022-08-13', '', 2, 8, b'1', 1, 'Standard', 'Alexia', 16),
-(1004, b'0', '2022-08-15', '2022-08-13', '', 3, 100, b'1', 1, 'Standard', 'Alexia', 19),
-(1006, b'1', '2022-08-18', '2022-08-13', 'Pantaloni si sono ristretti', 4, 0, b'1', 4, 'Standard', 'Leonardo', 20),
-(1007, b'0', '2022-08-18', '2022-08-13', '', 4, 40, b'0', 1, 'Standard', 'Leonardo', 17),
-(1008, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 1, 'Standard', 'Leonardo', 18),
-(1009, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 2, 'Standard', 'Leonardo', 16),
-(1010, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 2, 'Standard', 'Leonardo', 15),
-(1011, b'0', '2022-08-18', '2022-08-13', '', 4, 0, b'0', 3, 'Standard', 'Leonardo', 19),
-(1051, b'0', '2022-08-27', '2022-08-26', '', 5, 30, b'1', 1, 'Standard', 'Federico', 15),
-(1052, b'0', '2022-08-29', '2022-08-26', '', 6, 8, b'1', 1, 'Standard', 'Marco', 16);
+INSERT INTO `articolo` (`id`, `consegnato`, `delivery_date`, `initial_date`, `note`, `numero_lavorazione`, `prezzo`, `pronto`, `quantity`, `servizio`, `user_id`, `sotto_categoria_id`) VALUES
+(1251, b'1', '2022-10-27', '2022-10-17', '', 1, 100, b'1', 1, 'Standard', 1, 20),
+(1252, b'0', '2022-10-27', '2022-10-17', '', 1, 0, b'0', 1, 'Standard', 1, 137);
 
 -- --------------------------------------------------------
 
@@ -94,6 +83,23 @@ INSERT INTO `categoria` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `hibernate_sequence`
+--
+
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `hibernate_sequence`
+--
+
+INSERT INTO `hibernate_sequence` (`next_val`) VALUES
+(4);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `mysequence`
 --
 
@@ -106,7 +112,7 @@ CREATE TABLE `mysequence` (
 --
 
 INSERT INTO `mysequence` (`next_val`) VALUES
-(1150);
+(1350);
 
 -- --------------------------------------------------------
 
@@ -221,22 +227,22 @@ INSERT INTO `sotto_categoria` (`id`, `descrizione`, `categoria_id`, `icon_url`) 
 (93, 'Gonna jeans', 2, 'assets//images//icon-pack//gonna-jeans.png'),
 (94, 'Gonna pelle', 2, 'assets//images//icon-pack//gonna-pelle.png'),
 (95, 'Gonna pieghe', 2, 'assets//images//icon-pack//gonna-pieghe.png'),
-(96, 'Cappotto bimbo', 6, NULL),
-(97, 'Cappotto donna', 6, NULL),
-(98, 'Cappotto unisex', 6, NULL),
-(99, 'Cappotto uomo', 6, NULL),
-(100, 'Giacca donna', 6, NULL),
-(101, 'Giacca uomo', 6, NULL),
-(102, 'Giaccone corto donna', 6, NULL),
-(103, 'Giaccone corto uomo', 6, NULL),
-(104, 'Giaccone cotone', 6, NULL),
-(105, 'Giaccone lungo donna', 6, NULL),
-(106, 'Giaccone lungo uomo', 6, NULL),
-(107, 'Giaccone unisex', 6, NULL),
-(108, 'Giubbetto', 6, NULL),
-(109, 'Giubbetto jeans', 6, NULL),
-(110, 'Giubbetto estivo unisex', 6, NULL),
-(111, 'Impermeabili unisex', 6, NULL),
+(96, 'Cappotto bimbo', 6, 'assets//images//icon-pack//cappotto-bimbo.jpg'),
+(97, 'Cappotto donna', 6, 'assets//images//icon-pack//cappotto-donna.jpg'),
+(98, 'Cappotto unisex', 6, 'assets//images//icon-pack//cappotto-unisex.jpg'),
+(99, 'Cappotto uomo', 6, 'assets//images//icon-pack//cappotto-uomo.jpg'),
+(100, 'Giacca donna', 6, 'assets//images//icon-pack//giacca-donna.jpg'),
+(101, 'Giacca uomo', 6, 'assets//images//icon-pack//giacca-uomo.jpg'),
+(102, 'Giaccone corto donna', 6, 'assets//images//icon-pack//giaccone-corto-donna.jpg'),
+(103, 'Giaccone corto uomo', 6, 'assets//images//icon-pack//giaccone-corto-uomo.jpg'),
+(104, 'Giaccone cotone', 6, 'assets//images//icon-pack//giaccone-cotone.jpg'),
+(105, 'Giaccone lungo donna', 6, 'assets//images//icon-pack//giaccone-lungo-donna.jpg'),
+(106, 'Giaccone lungo uomo', 6, 'assets//images//icon-pack//giaccone-lungo-uomo.jpg'),
+(107, 'Giaccone unisex', 6, 'assets//images//icon-pack//giaccone-unisex.jpg'),
+(108, 'Giubbetto', 6, 'assets//images//icon-pack//giubbetto.jpg'),
+(109, 'Giubbetto jeans', 6, 'assets//images//icon-pack//giubbetto-jeans.jpg'),
+(110, 'Giubbetto estivo unisex', 6, 'assets//images//icon-pack//giubbetto-estivo-unisex.jpg'),
+(111, 'Impermeabili unisex', 6, 'assets//images//icon-pack//impermeabili-unisex.jpg'),
 (112, 'Interno giaccone', 6, NULL),
 (113, 'Montone', 6, NULL),
 (114, 'Pelliccia sintetica', 6, NULL),
@@ -276,27 +282,20 @@ CREATE TABLE `user` (
   `indirizzo` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
   `sesso` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
-  `last_paid_eth_month` varchar(255) DEFAULT NULL,
-  `paid_month` bit(1) DEFAULT NULL
+  `last_paid_eth_month` int(11) DEFAULT NULL,
+  `paid_month` bit(1) DEFAULT NULL,
+  `crypto_address` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `indirizzo`, `lastname`, `number`, `password`, `sesso`, `username`, `last_paid_eth_month`, `paid_month`) VALUES
-(1, 'leonardo.mogianesi@gmail.com', NULL, 'Mogianesi', '3663467422', '', 'Maschio', 'Leonardo', '0', b'0'),
-(2, 'alexia.fulli@gmail.com', NULL, 'Fulli', '3338312112', '', 'Femmina', 'Alexia', '7', b'1'),
-(7, 'Federico.lattanzi@gmail.com', NULL, 'Lattanzi', '322343523', '', 'Maschio', 'Federico', '0', b'0'),
-(8, 'aurora2333@gmail.com', NULL, 'Cercasetti', '3336172122', '', 'Femmina', 'Aurora ', '0', b'0'),
-(9, 'marco20051@gmail.com', NULL, 'Solidori', '3662462401', '', 'Maschio', 'Marco', '0', b'0'),
-(12, 'rosa.barigelli@gmail.com', NULL, 'Barigelli', '3355336219', '', 'Femmina', 'Rosa', '0', b'0'),
-(13, 'sabina.pennesi@alice.it', NULL, 'Pennesi', '3338372112', '', 'Femmina', 'Sabina', '0', b'0'),
-(14, 'a.mogianesi65@gmail.com', NULL, 'Mogianesi', '3336722888', '', 'Maschio', 'Attilio ', '0', b'0'),
-(15, 'benito.b@gmail.com', NULL, 'Barigelli', '3265547119', '', 'Maschio', 'Benito', '0', b'0');
+INSERT INTO `user` (`id`, `email`, `indirizzo`, `lastname`, `number`, `sesso`, `username`, `last_paid_eth_month`, `paid_month`, `crypto_address`) VALUES
+(1, 'leonardo.mogianesi@gmail.com', 'Via Metauro, 89C', 'Mogianesi', '3663467422', 'Maschio', 'Leonardo', 9, b'1', '0xC386EB1d4b49eF1EB0f7ac847e4eC5DfB5D2125f'),
+(4, 'a.mogianesi65@gmail.com', 'Via Metauro 89 C', 'Mogianesi', '3663467422', 'Maschio', 'Attilio', 0, b'0', '0x3742c46379C93fFAFc038C4a3feD6ba852ea08A8');
 
 --
 -- Indici per le tabelle scaricate
@@ -307,7 +306,7 @@ INSERT INTO `user` (`id`, `email`, `indirizzo`, `lastname`, `number`, `password`
 --
 ALTER TABLE `articolo`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK3nfcpoi3pnqybsdqx57wxqsv5` (`user_username`),
+  ADD KEY `FK2qmsdqj4t1du6o0h8aas6r6bb` (`user_id`),
   ADD KEY `FKi6vde3elxv3jgivfpnee9ii4a` (`sotto_categoria_id`);
 
 --
@@ -327,8 +326,7 @@ ALTER TABLE `sotto_categoria`
 -- Indici per le tabelle `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UK_sb8bbouer5wak8vyiiy4pf2bx` (`username`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -350,7 +348,7 @@ ALTER TABLE `sotto_categoria`
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
@@ -360,7 +358,7 @@ ALTER TABLE `user`
 -- Limiti per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  ADD CONSTRAINT `FK3nfcpoi3pnqybsdqx57wxqsv5` FOREIGN KEY (`user_username`) REFERENCES `user` (`username`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK2qmsdqj4t1du6o0h8aas6r6bb` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FKi6vde3elxv3jgivfpnee9ii4a` FOREIGN KEY (`sotto_categoria_id`) REFERENCES `sotto_categoria` (`id`);
 
 --

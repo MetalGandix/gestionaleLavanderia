@@ -11,4 +11,5 @@ export class User {
 	money: number = 0;
 	lastPaidEthMonth: number = 0;
 	paidMonth: boolean = false;
+	cryptoAddress: string
 }

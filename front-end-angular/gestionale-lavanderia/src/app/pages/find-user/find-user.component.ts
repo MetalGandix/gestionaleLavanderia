@@ -71,6 +71,7 @@ export class FindUserComponent implements OnInit {
 
   contract(user: User) {
     let date = new Date()
+    this.smartContractService.clientCryptoAddress = user.cryptoAddress
     this.smartContractService.convertAllMoney(user.money)
     user.paidMonth = true
     user.lastPaidEthMonth = date.getMonth()

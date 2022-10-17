@@ -33,7 +33,18 @@ public class DAOUser implements Serializable{
 
 	@Column 
 	private Boolean paidMonth = false;
+
+	@Column 
+	private String cryptoAddress;
 	
+	public String getCryptoAddress() {
+		return cryptoAddress;
+	}
+
+	public void setCryptoAddress(String cryptoAddress) {
+		this.cryptoAddress = cryptoAddress;
+	}
+
 	public Integer getLastPaidEthMonth() {
 		return lastPaidEthMonth;
 	}
