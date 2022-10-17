@@ -58,9 +58,9 @@ public class UserController {
         return (DAOUser) userRepository.save(username);
     }
 
-    @DeleteMapping("/deleteUser/{username}")
-    public String deleteUser(Authentication a, @PathVariable String username){
-        userRepository.delete(userRepository.findByUsername(username));        
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUser(Authentication a, @PathVariable Long id){
+        userRepository.delete(userRepository.findById(id).get());        
         return "Utente eliminato ";
     }
 }
