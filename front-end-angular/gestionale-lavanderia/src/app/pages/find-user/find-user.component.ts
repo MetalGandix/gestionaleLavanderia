@@ -28,8 +28,8 @@ export class FindUserComponent implements OnInit {
   pageSize = 0;
 
 
-  openDialog(username: string): void {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  openDialog(id: number): void {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
       this.dialog.open(UserDialogComponent, {
         width: '500px',
@@ -74,8 +74,8 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  goToAggiungiCapi(username: string) {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  goToAggiungiCapi(id: number) {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
     }).add(() => {
       this.router.navigate(["/consegna-capi"], {
@@ -84,8 +84,8 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  goToMostraCapi(username: string) {
-    this.serviceUser.findUtenteSingolo(username).subscribe(user => {
+  goToMostraCapi(id: number) {
+    this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
     }).add(() => {
       this.router.navigate(["/mostra-capi"], {
@@ -94,8 +94,8 @@ export class FindUserComponent implements OnInit {
     })
   }
 
-  deleteUser(username: string) {
-    this.serviceUser.deleteUser(username).subscribe().add(
+  deleteUser(id: number) {
+    this.serviceUser.deleteUser(id).subscribe().add(
       this._snackBar.open("Utente rimosso correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
       })._dismissAfter(4000)

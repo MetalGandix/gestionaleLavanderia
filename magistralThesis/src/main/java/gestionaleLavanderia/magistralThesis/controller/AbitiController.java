@@ -44,7 +44,7 @@ public class AbitiController {
     public String insertDressForUser(@RequestBody ComplexCapiObject capiObject)
             throws ParseException, MessagingException {
         if (capiObject.getDate() != null && capiObject.getArticolo() != null) {
-            DAOUser user = userRepo.findByUsername(capiObject.getUser().getUsername());
+            DAOUser user = userRepo.findById(capiObject.getUser().getId()).get();
             DateTimeFormatter inputParser = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate deliveryDate = LocalDate.parse(capiObject.getDate(), inputParser);
             capiObject.getArticolo().setDeliveryDate(deliveryDate);
@@ -108,9 +108,9 @@ public class AbitiController {
         return complexObject;
     }
 
-    @GetMapping("/getAllArticoliFromUser/{username}")
-    public List<Articolo> getArticolo(@PathVariable String username) {
-        DAOUser user = userRepo.findByUsername(username);
+    @GetMapping("/getAllArticoliFromUser/{id}")
+    public List<Articolo> getArticolo(@PathVariable Long id) {
+        DAOUser user = userRepo.findById(id).get();
         List<Articolo> articoloList = articoloRepo.findListArticoli(user);
         return articoloList;
     }

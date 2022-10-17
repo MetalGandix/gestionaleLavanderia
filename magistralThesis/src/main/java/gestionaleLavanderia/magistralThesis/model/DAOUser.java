@@ -9,15 +9,15 @@ public class DAOUser implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
+	@Column
+	private String number;
 	
 	@Column
 	private String username;
 
 	@Column
 	private String lastname;
-
-	@Column
-	private String number;
 
 	@Column
 	private String email;

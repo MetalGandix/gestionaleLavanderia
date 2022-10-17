@@ -1,9 +1,7 @@
 package gestionaleLavanderia.magistralThesis.controller;
 
 import java.util.List;
-
 import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
@@ -50,13 +48,13 @@ public class UserController {
         return (List<DAOUser>) userRepository.searchUser(user.getUsername());
     }
     
-    @GetMapping("/vediUtenti/{username}")
-    public DAOUser vediUtente(Authentication a, @PathVariable String username) {
-        return (DAOUser) userRepository.findByUsername(username);
+    @GetMapping("/vediUtenti/{id}")
+    public DAOUser vediUtente(Authentication a, @PathVariable Long id) {
+        return userRepository.findById(id).get();
     }
 
     @PutMapping("/cambiaUtente/{usernameid}")
-    public DAOUser cambiaUtente(Authentication a, @RequestBody DAOUser username) {
+    public DAOUser cambiaUtente(@RequestBody DAOUser username) {
         return (DAOUser) userRepository.save(username);
     }
 

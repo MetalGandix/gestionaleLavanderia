@@ -23,8 +23,8 @@ export class CapiService {
     return this.http.get<ComplexCapiObject>(this.globalVariables.url + "getAllCapiFromUser/" + username);
   }
 
-  public findArticoloForSingleUser(username: string): Observable<Articolo[]> {
-    return this.http.get<Articolo[]>(this.globalVariables.url + "getAllArticoliFromUser/" + username);
+  public findArticoloForSingleUser(id: number): Observable<Articolo[]> {
+    return this.http.get<Articolo[]>(this.globalVariables.url + "getAllArticoliFromUser/" + id);
   }
 
   public insertDressForUser(complexCapiObject: ComplexCapiObject) {

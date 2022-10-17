@@ -17,8 +17,8 @@ export class UserService {
     return this.http.get<User[]>(this.globalVariables.url + "vediUtenti");
   }
 
-  public findUtenteSingolo(username: string): Observable<User> {
-    return this.http.get<User>(this.globalVariables.url + "vediUtenti/" + username);
+  public findUtenteSingolo(id: number): Observable<User> {
+    return this.http.get<User>(this.globalVariables.url + "vediUtenti/" + id);
   }
 
   public findUtenteFiltrato(username: string): Observable<User[]> {
@@ -33,8 +33,8 @@ export class UserService {
     return this.http.post<User>(this.globalVariables.url + "registerUser", user);
   }
 
-  public deleteUser(username: string){
-    return this.http.delete<string>(this.globalVariables.url + "deleteUser/" + username);
+  public deleteUser(id: number){
+    return this.http.delete<number>(this.globalVariables.url + "deleteUser/" + id);
   }
 
 
