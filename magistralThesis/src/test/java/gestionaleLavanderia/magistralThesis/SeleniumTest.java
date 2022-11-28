@@ -75,4 +75,41 @@ public class SeleniumTest {
 		System.out.println("Title is: " + driver.getTitle());
 		assertTrue(driver.getTitle().contains("GestionaleLavanderia"));
 	}
+
+	@Test
+	@Order(2)
+	public void createClient() throws InterruptedException {
+		driver.navigate().to(baseUrl + "add-user");
+		// first take each button inside the list
+		// i find the textfield with the id and i write inside username and password
+		WebElement inputUsername = driver.findElement(By.id("name"));
+		// i write inside textfield username
+		inputUsername.sendKeys("Leonardo");
+		WebElement inputSurname = driver.findElement(By.id("surname"));
+		// i write inside textfield surname
+		inputSurname.sendKeys("Mogianesi");
+		WebElement inputAddress = driver.findElement(By.id("address"));
+		// i write inside textfield address
+		inputAddress.sendKeys("Via metauro 89C");
+		WebElement inputPhone = driver.findElement(By.id("phone_number"));
+		// i write inside textfield phone_number
+		inputPhone.sendKeys("366364721");
+		WebElement inputEmail = driver.findElement(By.id("email"));
+		// i write inside textfield email
+		inputEmail.sendKeys("leonardo.mogianesi@gmail.com");
+		WebElement inputCryptoAddr = driver.findElement(By.id("wallet_address"));
+		// i write inside textfield wallet address
+		inputCryptoAddr.sendKeys("0x3742c46379C93fFAFc038C4a3feD6ba852ea08A8");
+		WebElement inputGender = driver.findElement(By.id("maschio"));
+		// i click inside radio gender male
+		inputGender.click();
+		WebElement submitButton = driver.findElement(By.id("submit_button"));
+		// i click inside submit button
+		submitButton.click();
+		Thread.sleep(2000);
+		String actualUrl = baseUrl + "find-user";
+		String expectedUrl = driver.getCurrentUrl();
+		// the router goes to /devices
+		Assert.assertEquals(expectedUrl, actualUrl);
+	}
 }

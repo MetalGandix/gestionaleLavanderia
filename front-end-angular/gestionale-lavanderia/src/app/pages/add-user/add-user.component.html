@@ -9,7 +9,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
             <div class="fr">
-                <input type="text" name="firstName" placeholder="Nome" class="textBox" autofocus="on" [(ngModel)]="username" required>
+                <input type="text" id="name" name="firstName" placeholder="Nome" class="textBox" autofocus="on" [(ngModel)]="username" required>
             </div>
             <div class="clr"></div>
         </div>
@@ -21,7 +21,7 @@
             <label for="secondName" class="fl fontLabel"> Cognome: </label>
             <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
             <div class="fr">
-                <input type="text" required name="secondName" placeholder="Cognome" class="textBox" [(ngModel)]="surname">
+                <input type="text" id="surname" required name="secondName" placeholder="Cognome" class="textBox" [(ngModel)]="surname">
             </div>
             <div class="clr"></div>
         </div>
@@ -31,7 +31,7 @@
             <label for="indirizzo" class="fl fontLabel"> Indirizzo: </label>
             <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
             <div class="fr">
-                <input type="text" required name="indirizzo" placeholder="indirizzo" class="textBox" [(ngModel)]="indirizzo">
+                <input type="text" id="address" required name="indirizzo" placeholder="indirizzo" class="textBox" [(ngModel)]="indirizzo">
             </div>
             <div class="clr"></div>
         </div>
@@ -41,7 +41,7 @@
             <label for="phone" class="fl fontLabel"> Telefono: </label>
             <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
             <div class="fr">
-                <input type="text" required name="phoneNo" maxlength="10" placeholder="Numero" class="textBox" [(ngModel)]="phone">
+                <input type="text" id="phone_number" required name="phoneNo" maxlength="10" placeholder="Numero" class="textBox" [(ngModel)]="phone">
             </div>
             <div class="clr"></div>
         </div>
@@ -52,7 +52,7 @@
             <label for="email" class="fl fontLabel"> Email: </label>
             <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
             <div class="fr">
-                <input type="email" required name="email" placeholder="Email" class="textBox" [(ngModel)]="email">
+                <input type="email" id="email" required name="email" placeholder="Email" class="textBox" [(ngModel)]="email">
             </div>
             <div class="clr"></div>
         </div>
@@ -63,7 +63,7 @@
                 <label for="crypto" class="fl fontLabel">Crypto addr: </label>
                 <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="crypto" required name="crypto" placeholder="Crypto address" class="textBox" [(ngModel)]="cryptoAddress">
+                    <input type="crypto" id="wallet_address" required name="crypto" placeholder="Crypto address" class="textBox" [(ngModel)]="cryptoAddress">
                 </div>
                 <div class="clr"></div>
             </div>
@@ -72,14 +72,14 @@
         <!---Gender----->
         <div class="box radio">
             <label for="gender" class="fl fontLabel"> Sesso: </label>
-            <input type="radio" name="Gender" value="Maschio" required [(ngModel)]="sesso"> M &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="radio" name="Gender" value="Femmina" required [(ngModel)]="sesso"> F
+            <input type="radio" id="maschio" name="Gender" value="Maschio" required [(ngModel)]="sesso"> M &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" id="femmina" name="Gender" value="Femmina" required [(ngModel)]="sesso"> F
         </div>
         <!---Gender--->
 
         <!---Submit Button------>
         <div class="box" style="background: #2d3e3f">
-            <input type="Submit" name="Submit" class="submit" value="Aggiungi l'utente" (click)="submitUser()">
+            <input type="Submit" id="submit_button" name="Submit" class="submit" value="Aggiungi l'utente" (click)="submitUser()">
         </div>
         <!---Submit Button----->
     </form>
