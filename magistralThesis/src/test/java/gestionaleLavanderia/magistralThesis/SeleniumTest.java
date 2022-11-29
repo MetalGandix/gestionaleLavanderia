@@ -109,7 +109,7 @@ public class SeleniumTest {
 		Thread.sleep(2000);
 		String actualUrl = baseUrl + "find-user";
 		String expectedUrl = driver.getCurrentUrl();
-		// the router goes to /devices
+		// the router goes to /find-user
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
 }
