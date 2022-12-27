@@ -69,6 +69,14 @@ export class FindUserComponent implements OnInit {
     })
   }
 
+  delegateMoney(){
+    //   async sendWithDelegate() {
+    //     const delegate = this.delegate;
+    //     await this.ethereumService.sendTransaction(delegate, 0);
+    //   }
+    // }
+  }
+
   contract(user: User) {
     let date = new Date()
     this.smartContractService.clientCryptoAddress = user.cryptoAddress
