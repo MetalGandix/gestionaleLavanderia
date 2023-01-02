@@ -20,5 +20,25 @@ contract Sender {
         emit ReceiverBalance(receiver, receiver.balance);
         emit OwnerBalance(msg.sender , msg.sender.balance);
     }
+
+    // Mapping of delegators to their assigned delegates
+    mapping(address => address) public delegations;
+
+    function delegateEther(address payable receiver) payable public {
+        // Get the sender of the ether
+        address sender = msg.sender;
+        // Check if the sender has an assigned delegate
+        address delegate = delegations[sender];
+        if (delegate != address(0)) {
+            // Send the ether to the delegate if one is set
+            receiver.transfer(msg.value);
+        }
+    }
+
+    // Function to set a delegate for a delegator
+    function setDelegate(address delegate) public {
+        // Set the delegate for the sender
+        delegations[msg.sender] = delegate;
+    }
     
 }
