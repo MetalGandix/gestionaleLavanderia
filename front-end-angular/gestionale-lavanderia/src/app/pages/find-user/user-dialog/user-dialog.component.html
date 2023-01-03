@@ -1,12 +1,12 @@
-<h1 mat-dialog-title>Info <b>{{singleUser.username}} {{singleUser.lastname}}</b></h1>
-<h1>Nome: {{singleUser.username}}</h1>
-<h1>Cognome: {{singleUser.lastname}}</h1>
-<h1>Numero: {{singleUser.number}}</h1>
-<h1>Email: {{singleUser.email}}</h1>
-<h1>Indirizzo: {{singleUser.indirizzo}}</h1>
-<h1>Sesso: {{singleUser.sesso}}</h1>
-<h1>Wallet addr: {{singleUser.cryptoAddress}}</h1>
-<h1>Delegator addr: {{singleUser.delegatedAddress}}</h1>
+<h1 mat-dialog-title style="text-align: center;">Info cliente:</h1>
+<h1>Nome: <input [(ngModel)]="singleUser.username"></h1>
+<h1>Cognome: <input [(ngModel)]="singleUser.lastname"></h1>
+<h1>Numero: <input [(ngModel)]="singleUser.number"></h1>
+<h1>Email: <input [(ngModel)]="singleUser.email"></h1>
+<h1>Indirizzo: <input [(ngModel)]="singleUser.indirizzo"></h1>
+<h1>Sesso: <input [(ngModel)]="singleUser.sesso"></h1>
+<h1>Wallet addr: <input [(ngModel)]="singleUser.cryptoAddress"></h1>
+<h1>Delegator addr: <input [(ngModel)]="singleUser.delegatedAddress"></h1>
 <div class="button_dialog" mat-dialog-actions>
   <button class="button_close" mat-button mat-dialog-close>Chiudi</button>
   <!-- <button class="button_open" mat-button mat-dialog-close>Modifica</button> -->

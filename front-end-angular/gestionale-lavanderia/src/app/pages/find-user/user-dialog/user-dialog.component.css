@@ -13,3 +13,10 @@ h1{
 .button_open{
     background-color:green;
 }
+
+input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 75%;
+}
