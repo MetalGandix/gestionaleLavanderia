@@ -9,5 +9,5 @@
 <h1>Delegator addr: <input [(ngModel)]="singleUser.delegatedAddress"></h1>
 <div class="button_dialog" mat-dialog-actions>
   <button class="button_close" mat-button mat-dialog-close>Chiudi</button>
-  <!-- <button class="button_open" mat-button mat-dialog-close>Modifica</button> -->
+  <button class="button_open" mat-button mat-dialog-close (click)="modifyUser()">Modifica dati utente</button>
 </div>

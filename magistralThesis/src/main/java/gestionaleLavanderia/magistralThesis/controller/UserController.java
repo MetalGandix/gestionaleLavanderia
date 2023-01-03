@@ -26,7 +26,7 @@ public class UserController {
     @PostMapping("/registerUser")
     String addUser(@RequestBody DAOUser user) throws MessagingException{
         userRepository.save(user);
-        return "Utente aggiunto con successo!!";
+        return "Success";
     }
 
     @GetMapping("/existUser/{username}")
