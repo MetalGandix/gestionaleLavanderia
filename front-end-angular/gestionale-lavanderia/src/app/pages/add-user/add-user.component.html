@@ -63,11 +63,22 @@
                 <label for="crypto" class="fl fontLabel">Crypto addr: </label>
                 <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                 <div class="fr">
-                    <input type="crypto" id="wallet_address" required name="crypto" placeholder="Crypto address" class="textBox" [(ngModel)]="cryptoAddress">
+                    <input type="text" id="wallet_address" required name="crypto" placeholder="Crypto address" class="textBox" [(ngModel)]="cryptoAddress">
                 </div>
                 <div class="clr"></div>
             </div>
             <!--Crypto address----->
+
+                      <!---Delegator address---->
+                      <div class="box">
+                        <label for="crypto" class="fl fontLabel">Delegator addr: </label>
+                        <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                        <div class="fr">
+                            <input type="text" id="delegator_address" required name="crypto" placeholder="Delegator crypto address" class="textBox" [(ngModel)]="delegatorAddress">
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                    <!---Delegator address---->
 
         <!---Gender----->
         <div class="box radio">

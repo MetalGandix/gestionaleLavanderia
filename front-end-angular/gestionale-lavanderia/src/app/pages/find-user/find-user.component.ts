@@ -93,7 +93,7 @@ export class FindUserComponent implements OnInit {
     this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
       this.dialog.open(UserDialogComponent, {
-        width: '800px',
+        width: '1000px',
         data: this.singleUser
       });
     })

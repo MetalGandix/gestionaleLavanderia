@@ -37,6 +37,21 @@ public class DAOUser implements Serializable{
 	@Column 
 	private String cryptoAddress;
 	
+	@Column 
+	private String delegatedAddress;
+
+	public Boolean getPaidMonth() {
+		return paidMonth;
+	}
+
+	public String getDelegatedAddress() {
+		return delegatedAddress;
+	}
+
+	public void setDelegatedAddress(String delegatedAddress) {
+		this.delegatedAddress = delegatedAddress;
+	}
+
 	public String getCryptoAddress() {
 		return cryptoAddress;
 	}

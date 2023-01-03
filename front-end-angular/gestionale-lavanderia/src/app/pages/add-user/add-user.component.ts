@@ -35,6 +35,7 @@ export class AddUserComponent implements OnInit {
   indirizzo: string;
   provincia: string;
   cryptoAddress: string
+  delegatorAddress: string
 
   ngOnInit(): void {
   }
@@ -48,6 +49,7 @@ export class AddUserComponent implements OnInit {
     this.user.sesso = this.sesso
     this.user.indirizzo = this.indirizzo
     this.user.cryptoAddress = this.cryptoAddress
+    this.user.delegatedAddress = this.delegatorAddress
     this.registrazioneService.saveUser(this.user).subscribe().add(() => {
       this._snackBar.open("Utente aggiunto correttamente", "Chiudi", {
         panelClass: ['blue-snackbar']
