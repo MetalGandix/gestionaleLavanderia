@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 
@@ -6,7 +7,7 @@ import Web3 from 'web3';
 })
 export class SmartContractService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   clientCryptoAddress: string;
@@ -14,16 +15,35 @@ export class SmartContractService {
   //Connection to Ganache
   private web3: Web3 = new Web3("http://127.0.0.1:7545");
   ganacheAddresses: string[] = []
-  ethereumOfClient: string = ""
+  ethereumOfClient: string;
+  exchangeRate: number
+  eur = 0;
+
+  getExchangeRate() {
+    const url = 'https://api.coingecko.com/api/v3/simple/price';
+    const options = {
+    params: {
+    ids: 'ethereum',
+    vs_currencies: 'eur'
+    }
+    };
+    return this.http.get(url, options);
+    }
+
 
   convertAllMoney(money: number) {
     //Il 10% dei guadagni del cliente vengono guadagnati come ethereum
-    let moneyDividedBy10: number = money / 10
-    let moneyToEth: number = moneyDividedBy10 / 1619
-    this.ethereumOfClient = parseFloat(moneyToEth.toString()).toFixed(6)
+    this.getExchangeRate().subscribe(data => {
+      debugger
+      let moneyDividedBy10: number = money / 10
+      const exchangeRate = data['ethereum']['eur'];
+      this.ethereumOfClient = (moneyDividedBy10 / exchangeRate).toFixed(5);
     console.log("Ethereum to send: ", this.ethereumOfClient)
     console.log("Ethereum to send in wei: ", this.web3.utils.toWei(this.ethereumOfClient, 'ether'))
+  }).add(() => {
     this.findAccounts()
+  });
+    
   }
 
   findAccounts() {

@@ -35,7 +35,7 @@ contract Sender {
         }
     }
 
-    // Function to set a delegate for a delegator
+    // Function to set a delegate
     function setDelegate(address delegate) public {
         // Set the delegate for the sender
         delegations[msg.sender] = delegate;
