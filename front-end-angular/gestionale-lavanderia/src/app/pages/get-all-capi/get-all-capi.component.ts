@@ -111,4 +111,8 @@ export class GetAllCapiComponent implements OnInit {
     )
   }
 
+  saveAndDelete(){
+    this.capiService.saveAndResetArticles(this.listArticoli).subscribe()
+  }
+
 }

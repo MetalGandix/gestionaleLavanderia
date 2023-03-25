@@ -70,4 +70,8 @@ export class CapiService {
   public changeArticleInfo(articolo: Articolo): Observable<Articolo>{
     return this.http.put<Articolo>(this.globalVariables.url + "changeArticle", articolo)
   }
+
+  public saveAndResetArticles(articoli: Articolo[]): Observable<Articolo[]>{
+    return this.http.post<Articolo[]>(this.globalVariables.url + "saveAndResetArticles", articoli)
+  }
 }
