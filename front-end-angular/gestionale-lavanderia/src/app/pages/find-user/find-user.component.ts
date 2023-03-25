@@ -32,7 +32,7 @@ export class FindUserComponent implements OnInit {
     this.serviceUser.findUtenteSingolo(id).subscribe(user => {
       this.singleUser = user
       this.dialog.open(UserDialogComponent, {
-        width: '500px',
+        width: '1000px',
         data: this.singleUser
       });
     })
@@ -63,6 +63,7 @@ export class FindUserComponent implements OnInit {
   removeFilter() {
     this.serviceUser.findAllUser().subscribe(lista => {
       this.userFiltredList = lista
+      this.userSearched = ""
     })
   }
 

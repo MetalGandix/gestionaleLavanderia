@@ -9,3 +9,14 @@ h1{
 .button_close{
     background-color:#647c7c;
 }
+
+.button_open{
+    background-color:green;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 75%;
+}
