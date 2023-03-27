@@ -111,12 +111,11 @@
                         <td class="table-element"><input style="border: none;" ngModel
                                 (ngModelChange)="changeNota(element ,$event)" [(ngModel)]="element.note"></td>
 
-                        <td class="table-element"><button (click)="changeArticle(element)" mat-raised-button>Modifica
-                                questo articolo</button></td>
+                        <td class="table-element"><button (click)="changeArticle(element)" mat-raised-button>Modifica articolo</button></td>
 
                         <td class="table-element"><button style="background-color: red;"
                                 (click)="deleteArticle(element.id, element.sottocategoria.descrizione)"
-                                mat-raised-button>Elimina questo articolo</button></td>
+                                mat-raised-button>Elimina articolo</button></td>
 
                     </tr>
                 </tbody>

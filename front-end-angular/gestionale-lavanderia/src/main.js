@@ -1,39 +1,37 @@
-const {app, BrowserWindow} = require('electron')
-    const url = require("url");
-    const path = require("path");
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
-    let mainWindow
+let mainWindow
 
-    function createWindow () {
-      mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-          nodeIntegration: true
-        }
-      })
-
-      mainWindow.loadURL(
-        url.format({
-          pathname: path.join(`C://Users//User//Desktop//Repository GitHub//gestionaleLavanderia//front-end-angular//gestionale-lavanderia//dist//gestionale-lavanderia//index.html`),
-          protocol: "file:",
-          slashes: true
-        })
-      );
-      // Open the DevTools.
-      mainWindow.webContents.openDevTools()
-
-      mainWindow.on('closed', function () {
-        mainWindow = null
-      })
+function createWindow () {
+  mainWindow = new BrowserWindow({
+    width: 1500,
+    height: 1300,
+    webPreferences: {
+      nodeIntegration: true
     }
+  })
 
-    app.on('ready', createWindow)
+  const indexPath = path.join(__dirname, '..', 'dist', 'gestionale-lavanderia', 'index.html')
+  mainWindow.loadFile(indexPath)
 
-    app.on('window-all-closed', function () {
-      if (process.platform !== 'darwin') app.quit()
-    })
+  // mainWindow.webContents.openDevTools()
 
-    app.on('activate', function () {
-      if (mainWindow === null) createWindow()
-    })
+  mainWindow.on('closed', function() {
+    mainWindow = null
+  })
+}
+
+app.on('ready', createWindow)
+
+app.on('window-all-closed', function() {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', function() {
+  if (mainWindow === null) {
+    createWindow()
+  }
+})

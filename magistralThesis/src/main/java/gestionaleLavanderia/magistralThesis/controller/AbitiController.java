@@ -165,11 +165,11 @@ public class AbitiController {
     public ResponseEntity<ByteArrayResource> saveAndResetArticles(@RequestBody List<Articolo> articles) throws StreamWriteException, DatabindException, IOException {
         try {
             // Salva la lista di articoli come file JSON
-            ObjectMapper objectMapper1 = new ObjectMapper();
+            // ObjectMapper objectMapper1 = new ObjectMapper();
             ObjectMapper objectMapper2 = new ObjectMapper();
-            objectMapper1.registerModule(new JavaTimeModule());
+            // objectMapper1.registerModule(new JavaTimeModule());
             objectMapper2.registerModule(new JavaTimeModule());
-            objectMapper1.writeValue(new File(System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "articles.json"), articles);
+            // objectMapper1.writeValue(new File(System.getProperty("user.home") + File.separator + "Downloads" + File.separator + "articles.json"), articles);
             objectMapper2.writeValue(new File("src" + File.separator + "main" + File.separator + "resources" + File.separator + "articles.json"), articles);
             
             articoloRepo.deleteAll();
